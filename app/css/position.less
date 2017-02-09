@@ -15,6 +15,13 @@ body{
   margin-top:20px;
   padding-right: 0;
 }
+
+@media (max-width: 992px) {
+  .m-jobnav-wrap{
+    display: none;
+  }
+}
+
 .m-jobnav {
   position: relative;
   &:hover .m-jobsnav {
@@ -97,33 +104,45 @@ i[class^="icon-jobnav icon-zzz-"] {
 .m-jobfocus {
   position: relative;
   margin-top:20px;
+  /* 此处覆盖了原本col的padding */
   padding-left: 0;
+}
+
+@media (max-width: 992px) {
+  .m-jobfocus {
+    padding-left: 15px;
+  }
 }
 /* 轮播 */
 .m-jobfocus-wrap {
-  height:450px;
   overflow: hidden;
   img {
     width: 100%;
     height:100%;
   }
 }
-.carousel-control {
-  opacity:.5;
-  background: transparent;
+
+@media (min-width: 992px) {
+  .m-jobfocus-wrap {
+    height:450px;
+  }
 }
-.carousel-control .glyphicon-chevron-left,
-.carousel-control .glyphicon-chevron-right {
+
+.m-jobfocus .carousel-control {
+  opacity:1;
+}
+.m-jobfocus .carousel-control .glyphicon-chevron-left,
+.m-jobfocus .carousel-control .glyphicon-chevron-right {
   height:40px;
 }
-.glyphicon-chevron-left:before,
-.glyphicon-chevron-right:before {
+.m-jobfocus .glyphicon-chevron-left:before,
+.m-jobfocus .glyphicon-chevron-right:before {
   content: " ";
 }
-.glyphicon-chevron-left {
+.m-jobfocus .glyphicon-chevron-left {
   background: url("../img/job/pre-2.png") no-repeat;
 }
-.glyphicon-chevron-right {
+.m-jobfocus .glyphicon-chevron-right {
   background: url("../img/job/next-2.png") no-repeat;
 }
 
@@ -146,6 +165,16 @@ i[class^="icon-jobnav icon-zzz-"] {
     height: 44px;
     border-left: 0;
     border-right:0;
+  }
+}
+
+@media (max-width: 768px) {
+  .m-seach.input-group {
+    padding: 0;
+    margin-left: 0;
+    span,input {
+      padding:11px 8px;
+    }
   }
 }
 .m-seach-itps {
@@ -245,14 +274,13 @@ i[class^="icon-jobnav icon-zzz-"] {
     flex-wrap:nowrap;
   }
 }
-
 .m-rmcompany-left {
   .img-wrap {
     height:100px;
     border-radius: 3px;
     border:1px solid #e8e8e8;
     background: #fff;
-    margin-bottom:10px;
+    margin-bottom: 15px;
     img {
       position: relative;
       top: 50%;
@@ -261,4 +289,53 @@ i[class^="icon-jobnav icon-zzz-"] {
       width: 60%;
     }
   }
+}
+
+@media (max-width: 768px) {
+  .m-rmcompany-left {
+    .img-wrap {
+      margin: 15px;
+    }
+  }
+}
+
+/* 找职业位图 */
+.m-jobbitmap {
+  margin-top:20px;
+  padding: 0 300px 0 220px;
+  background: #fff;
+  &>div {
+    height:300px;
+    padding:50px 15px 30px;
+  }
+  .img-wrap {
+    width: 100%;
+    height:100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .m-jobbitmap {
+    padding: 0 30px 0 20px;
+    &>div {
+      height:200px;
+      padding:20px 15px 10px;
+    }
+  }
+}
+
+/* 底部焦点图 */
+.m-jobarticle {
+  width:100%;
+  margin-top:20px;
+  max-height:400px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+/* 重置版权模块margin */
+.m-aboutus {
+  margin-top:0;
 }

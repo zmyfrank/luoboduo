@@ -72,7 +72,7 @@
 .m-newsjob-row {
   padding: 0 25px;
 }
-.carousel-control {
+.m-newsjob-row .carousel-control {
   width: 0;
   opacity: 1;
 }
@@ -80,25 +80,25 @@
 .carousel-control .glyphicon-chevron-right {
   height: 40px;
 }
-.glyphicon-chevron-left:before,
-.glyphicon-chevron-right:before {
+.m-newsjob-row .glyphicon-chevron-left:before,
+.m-newsjob-row .glyphicon-chevron-right:before {
   content: " ";
 }
 @media screen and (min-width: 768px) {
-  .carousel-control .glyphicon-chevron-right {
+  .m-newsjob-row .carousel-control .glyphicon-chevron-right {
     margin-right: -10px;
   }
-  .carousel-control .glyphicon-chevron-left {
+  .m-newsjob-row .carousel-control .glyphicon-chevron-left {
     margin-left: -10px;
   }
 }
-.glyphicon-chevron-left {
+.m-newsjob-row .glyphicon-chevron-left {
   background: url("../img/home/left.png") no-repeat;
 }
-.glyphicon-chevron-right {
+.m-newsjob-row .glyphicon-chevron-right {
   background: url("../img/home/right.png") no-repeat;
 }
-.carousel-indicators {
+.m-newsjob-row .carousel-indicators {
   display: none;
 }
 /* 服务流程 */

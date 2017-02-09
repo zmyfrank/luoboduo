@@ -15,7 +15,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
         };
 
         $urlRouterProvider.otherwise("/home");
-
+        $urlRouterProvider.when("","/home");
         $stateProvider
             .state('app',{
                 url:'',
