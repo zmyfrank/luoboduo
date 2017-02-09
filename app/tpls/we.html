@@ -1,0 +1,46 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <ul class="m-wenav col-xs-12 col-sm-3 col-md-2">
+           <li ng-click="vm.toggle=true"  ng-class="{'active':vm.toggle}"><i class="icon-aboutwe iconcollection"></i> 关于我们</li>
+           <li ng-click="vm.toggle=false"  ng-class="{'active':!vm.toggle}"><i class="icon-contactwe iconcollection"></i> 联系我们</li>
+        </ul>
+        <!-- 关于我们 -->
+        <div class="m-aboutwe col-xs-12 col-sm-9 col-md-10" ng-class="{'active':vm.toggle}">
+            <div class="m-aboutwe-content">
+                <h5> 什么是萝卜多</h5>
+                <p>萝卜多是针对创业公司以及独立人才寻找伙伴合作，提供多对多服务，以按需推荐的方式帮助创业团队以及人才解决、盲目寻找、茫然等待的问题。
+                    萝卜多不同于其他招聘网站。萝卜多的合作企业和候选人，都是萝卜多精心筛选，认证，陪伴多年的伙伴。</p>
+                <h5> 萝卜多团队介绍</h5>
+                <p>成立于2014年，2015年3月开始运营，先后开启了IT修真院、草船云、萝卜多等三条项目主线，主打高质专业高效低价的理念，以卓越的技术实力和人才鉴别能力奠定基石，立足市场。</p>
+                <p>葡萄藤始终秉持促进中国企业创新与成长为愿景，凭借其团队丰富的行业经验和全球资源网络以及在业界的声誉，
+                    不遗余力地帮助创业家和他们的企业突破自我、不断创新、共创事业、共享成功！</p>
+            </div>
+        </div>
+        <!-- 联系我们 -->
+        <div class="m-contactwe col-xs-12 col-sm-9 col-md-10" ng-class="{'active':!vm.toggle}">
+            <div class="m-aboutwe-content">
+                <h5>北京葡萄腾信息技术有限公司</h5>
+                <div class="row">
+                    <ul>
+                        <li class="col-xs-12 col-sm-6 col-md-6">
+                            <p><i class="icon-aboutwe-phone aboutweicon"></i> 电话： (010)59478634</p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-6">
+                            <p><i class="icon-aboutwe-about-url aboutweicon"></i> 网址：  www.luoboduo.com</p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-6">
+                            <p><i class="icon-aboutwe-email aboutweicon"></i> 邮箱： kefu@ptteng.com</p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-6">
+                            <p><i class="icon-aboutwe-location aboutweicon"></i> 地址： 北京市海淀区翠微路甲10院225室</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="img-wrap">
+                    <img src="img/we/maps.png" alt="萝卜多地址">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

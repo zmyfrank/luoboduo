@@ -1,0 +1,77 @@
+<header class="g-hd">
+    <nav class="navbar navbar-default container-fluid ">
+        <div class="navbar-header">
+            <!-- logo -->
+            <a class="navbar-brand" href="#">
+                <img src="img/home/logo.png" height="41" width="230"/>
+            </a>
+            <!-- 位置 -->
+            <div class="m-location navbar-brand">
+                <i class="icon-location"></i>
+                <strong>北京站</strong>
+            </div>
+            <!-- 导航菜单按钮 -->
+            <button type="button" class="navbar-toggle collapsed " data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- 导航菜单 -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav m-nav">
+                <li ng-class="{'pageactive':vm.focuspage == 1}" ng-click="vm.pagesBtn(1)">
+                    <a ui-sref=".home">首页</a>
+                    <span class="nav-underline"></span>
+                </li>
+                <li ng-class="{'pageactive':vm.focuspage == 2}" ng-click="vm.pagesBtn(2)">
+                    <a ui-sref=".position">找职位</a>
+                    <span class="nav-underline"></span>
+                </li>
+                <li ng-class="{'pageactive':vm.focuspage == 3}" ng-click="vm.pagesBtn(3)">
+                    <a ui-sref=".elite">找精英</a>
+                    <span class="nav-underline"></span>
+                </li>
+                <li ng-class="{'pageactive':vm.focuspage == 4}" ng-click="vm.pagesBtn(4)">
+                    <a ui-sref=".we">关于我们</a>
+                    <span class="nav-underline"></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main ui-view>
+
+</main>
+
+<footer>
+    <!-- 关于我们 -->
+    <div class="m-aboutus">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-4">
+                    <h5><a ui-sref=".we" ng-click="vm.aboutWe(true)">关于我们</a></h5>
+                    <p>萝卜多——知根知底的社群招聘</p>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-4">
+                    <h5><a ui-sref=".we" ng-click="vm.aboutWe(false)">联系我们</a></h5>
+                    <ul class="contactmode">
+                        <li><i class="icon-phone weicon"></i> 联系电话：（010）59478634 </li>
+                        <li><i class="icon-email weicon"></i> 邮箱支持：fuhua@ptteng.com </li>
+                        <li><i class="icon-address weicon"></i> 地       址：北京市海淀区翠微路甲10#225室 </li>
+                    </ul>
+                </div>
+                <div class="wechat col-xs-12 col-sm-4 col-md-4">
+                    <img ng-src="img/home/erweima.jpg" height="80" width="75"/>
+                    <p>微信号：ptteng-fuhuaqi</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 版权 -->
+    <div class="copyright">
+        Copyright © 2015 北京葡萄藤信息技术有限公司 All Rights Reserved | 京ICP备15035
+    </div>
+</footer>

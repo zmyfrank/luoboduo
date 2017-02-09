@@ -1,0 +1,214 @@
+<!-- banner大图 -->
+<div class="m-banner">
+    <div class="img-wrap">
+        <img ng-src="{{vm.bannerimg}}" alt="萝卜多">
+    </div>
+</div>
+<!-- 特色介绍 -->
+<div class="m-myintroduce">
+    <div class="container">
+        <div class="row">
+            <div class="tab-wrap col-xs-12 col-sm-12 col-md-3">
+                <i class="icon-jianjie icon-jianjie-1"></i>
+                <h4>超短响应时间</h4>
+                <p>48小时高效推荐</p>
+            </div>
+            <div class="tab-wrap col-xs-12 col-sm-12 col-md-3">
+                <i class="icon-jianjie icon-jianjie-2"></i>
+                <h4>行业1/3的价格 </h4>
+                <p>成功推荐仅收费1月工资</p>
+            </div>
+            <div class="tab-wrap col-xs-12 col-sm-12 col-md-3">
+                <i class="icon-jianjie icon-jianjie-3"></i>
+                <h4>三维的人才评测</h4>
+                <p>技术人事背景三维评定</p>
+            </div>
+            <div class="introduce-wrap col-xs-12 col-sm-12 col-md-3">
+                <strong>500+</strong>
+                <p>人才入职</p>
+                <strong>498人</strong>
+                <p>成功转正</p>
+                <strong>98%</strong>
+                <p>成功率</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 最新职位 -->
+<div class="m-newsjob">
+    <div class="container">
+        <div class="row">
+            <div class="m-title">
+                <h3>最新职位</h3>
+                <span class="tt-underline"></span>
+                <p class="tips"> NEW POSITION</p>
+                <p class="more"><a href="#">更多&gt;</a></p>
+            </div>
+            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="m-newsjob-row">
+                <div  uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                        <div class="img-wrap">
+                            <img ng-src="{{slide.image1}}" style="margin:auto;">
+                        </div>
+                        <div class="info">
+                            <h4>{{slide.job1}}</h4>
+                            <span class="tt-underline"></span>
+                            <p>{{slide.company1}}</p>
+                        </div>
+                    </div>
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                        <div class="img-wrap">
+                            <img ng-src="{{slide.image2}}" style="margin:auto;">
+                        </div>
+                        <div class="info">
+                            <h4>{{slide.job2}}</h4>
+                            <span class="tt-underline"></span>
+                            <p>{{slide.company2}}</p>
+                        </div>
+                    </div>
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                        <div class="img-wrap">
+                            <img ng-src="{{slide.image3}}" style="margin:auto;">
+                        </div>
+                        <div class="info">
+                            <h4>{{slide.job3}}</h4>
+                            <span class="tt-underline"></span>
+                            <p>{{slide.company3}}</p>
+                        </div>
+                    </div>
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                        <div class="img-wrap">
+                            <img ng-src="{{slide.image4}}" style="margin:auto;">
+                        </div>
+                        <div class="info">
+                            <h4>{{slide.job4}}</h4>
+                            <span class="tt-underline"></span>
+                            <p>{{slide.company4}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 服务流程 -->
+<div class="m-serviceflow-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="m-title">
+                <h3>服务流程</h3>
+                <span class="tt-underline"></span>
+                <p class="tips">SERVICE FLOW</p>
+            </div>
+            <div class="m-serviceflow col-md-offset-1 col-md-2 col-xs-12">
+                <div class="img-wrap">
+                    <img src="img/home/flow-path1.png" alt="">
+                </div>
+                <h5>1.意向洽谈，深入评审 </h5>
+            </div>
+            <div class="m-serviceflow-icon col-md-2">
+                <i class="icon-aircraft"></i>
+            </div>
+            <div class="m-serviceflow col-md-2 col-xs-12">
+                <div class="img-wrap">
+                    <img src="img/home/flow-path2.png" alt="">
+                </div>
+                <h5>2.确认合作，签订合同  </h5>
+            </div>
+            <div class="m-serviceflow-icon col-md-2">
+                <i class="icon-aircraft"></i>
+            </div>
+            <div class="m-serviceflow col-md-2 col-xs-12">
+                <div class="img-wrap">
+                    <img src="img/home/flow-path3.png" alt="">
+                </div>
+                <h5>3.提出需求，提供jd  </h5>
+            </div>
+            <div class="m-serviceflow col-md-offset-1 col-md-2 col-xs-12">
+                <div class="img-wrap">
+                    <img src="img/home/flow-path4.png" alt="">
+                </div>
+                <h5>4.开始招聘，人才海选 </h5>
+            </div>
+            <div class="m-serviceflow-icon col-md-2">
+                <i class="icon-aircraft"></i>
+            </div>
+            <div class="m-serviceflow col-md-2 col-xs-12">
+                <div class="img-wrap">
+                    <img src="img/home/flow-path5.png" alt="">
+                </div>
+                <h5>5.人才评测，简历脱水 </h5>
+            </div>
+            <div class="m-serviceflow-icon col-md-2">
+                <i class="icon-aircraft"></i>
+            </div>
+            <div class="m-serviceflow col-md-2 col-xs-12">
+                <div class="img-wrap">
+                    <img src="img/home/flow-path6.png" alt="">
+                </div>
+                <h5>6.上岗，转入售后  </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 伙伴之言 -->
+<div class="m-partnersay">
+    <div class="container">
+        <div class="row">
+            <div class="m-title">
+                <h3>伙伴之言</h3>
+                <span class="tt-underline"></span>
+                <p class="tips">PARTNER ADVICE</p>
+            </div>
+            <div myfocus class="m-myfocus"  dirpromise = 'vm.promise'>
+                <div class="m-myfocus-wrap clearfix">
+                    <div class="m-focusimg-wrap clearfix" ng-repeat="data in vm.partnersay_data track by $index">
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <div class="m-focusimg">
+                                <div class="img-wrap">
+                                    <img src="{{data.url}}" alt="托尔思集团有限公司">
+                                </div>
+                                <h5>{{data.name}}</h5>
+                                <h4>{{data.company}}</h4>
+                                <p> {{data.info}}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <div class="m-focusimg">
+                                <div class="img-wrap">
+                                    <img src="{{data.url}}" alt="托尔思集团有限公司">
+                                </div>
+                                <h5>{{data.name}}</h5>
+                                <h4>{{data.company}}</h4>
+                                <p> {{data.info}}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <div class="m-focusimg">
+                                <div class="img-wrap">
+                                    <img src="{{data.url}}" alt="托尔思集团有限公司">
+                                </div>
+                                <h5>{{data.name}}</h5>
+                                <h4>{{data.company}}</h4>
+                                <p> {{data.info}}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <div class="m-focusimg">
+                                <div class="img-wrap">
+                                    <img src="{{data.url}}" alt="托尔思集团有限公司">
+                                </div>
+                                <h5>{{data.name}}</h5>
+                                <h4>{{data.company}}</h4>
+                                <p> {{data.info}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="myfocus-pre"></a>
+                <a class="myfocus-next"></a>
+            </div>
+        </div>
+    </div>
+</div>

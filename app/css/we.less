@@ -1,0 +1,93 @@
+body {
+  background: #f6f7f8;
+}
+
+/* 关于我们导航 */
+.m-wenav {
+  margin-top:20px;
+  padding: 70px 15px;
+  background: #fff;
+}
+
+@media (min-width: 768px) {
+  .m-wenav {
+    max-width:220px;
+  }
+}
+
+.m-wenav li {
+  height:40px;
+  line-height:40px;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 -15px;
+  border-left: 5px solid #fff;
+  cursor: pointer;
+  &:hover {
+    color:#fc2b47;
+  }
+  &:hover .icon-aboutwe {background-position: -4px -5px;}
+  &:hover .icon-contactwe{background-position:-52px -5px;}
+}
+.m-wenav li.active{
+  border-left: 5px solid #fc2b47;
+  background: #f7f7f7;
+}
+.icon-aboutwe.active {
+  background-position: -4px -5px;
+}
+.icon-contactwe.active {
+  background-position:-52px -5px;
+}
+/* 关于我们 */
+.m-aboutwe h5 {
+  padding-left: 10px;
+  margin-bottom: 40px;
+  border-left: 5px solid #fc2b47;
+  font-weight: bold;
+}
+.m-aboutwe h5:nth-child(3) {
+  margin-top:40px;
+}
+/* 联系我们 */
+.m-contactwe h5 {
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.m-contactwe .img-wrap {
+  width: 100%;
+}
+
+.m-aboutwe-content,
+.m-contactwe-content  {
+  padding: 80px;
+}
+
+.m-aboutwe,
+.m-contactwe {
+  padding-left: 65px;
+  background: #fff;
+  background-clip:content-box;
+  transition: opacity .2s ease;
+  opacity: 0;
+  height:0;
+  overflow: hidden;
+}
+
+.m-contactwe.active,
+.m-aboutwe.active {
+  margin-top: 20px;
+  height: auto;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .m-aboutwe-content,
+  .m-contactwe-content  {
+    padding:15px;
+  }
+  .m-aboutwe,
+  .m-contactwe {
+    padding-left: 15px;
+  }
+}

@@ -1,0 +1,283 @@
+<div class="container">
+    <div class="row">
+        <!-- 导航栏 -->
+        <div class="m-jobnav-wrap col-md-3 col-lg-3">
+            <div class="m-jobnav" ng-mouseenter	="vm.navactive=true" ng-mouseleave ="vm.navactive =false">
+                <ul class="m-jobnav-list" ng-class="{'active':vm.navactive}">
+                    <h4 class="navtt">
+                        <i class="icon-jobnav icon-zzz-chanpin" ng-class="{'zzz-active':vm.navactive}"></i>用户体验
+                        <i class="icon-jobnav icon-findjobdayu pull-right" ng-class="{'zzz-active':vm.navactive}"></i>
+                    </h4>
+                    <li>产品</li>
+                    <li>UI</li>
+                    <li>QA</li>
+                </ul>
+                <div class="m-jobsnav ">
+                    <ol class="breadcrumb">
+                        <li>产品</li>
+                        <li>助理</li>
+                        <li>助理</li>
+                        <li>助理</li>
+                        <li>助理</li>
+                        <li>助理</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="m-jobnav" ng-mouseenter	="vm.navactive2=true" ng-mouseleave ="vm.navactive2=false">
+                <ul class="m-jobnav-list" ng-class="{'active':vm.navactive2}">
+                    <h4 class="navtt">
+                        <i class="icon-jobnav icon-zzz-jishu" ng-class="{'zzz-active':vm.navactive2}"></i>研发
+                        <i class="icon-jobnav icon-findjobdayu pull-right" ng-class="{'zzz-active':vm.navactive2}"></i>
+                    </h4>
+                    <li>Android</li>
+                    <li>IOS</li>
+                    <li>WEB</li>
+                    <li>OP</li>
+                    <li>JAVA</li>
+                </ul>
+                <div class="m-jobsnav jobsnav2">
+                    <ol class="breadcrumb">
+                        <li>Android</li>
+                        <li>初级</li>
+                        <li>中级</li>
+                        <li>高级</li>
+                    </ol>
+                    <ol class="breadcrumb">
+                        <li>IOS</li>
+                        <li>初级</li>
+                        <li>中级</li>
+                        <li>高级</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="m-jobnav" ng-mouseenter	="vm.navactive3=true" ng-mouseleave ="vm.navactive3=false">
+                <ul class="m-jobnav-list" ng-class="{'active':vm.navactive3}">
+                    <h4 class="navtt">
+                        <i class="icon-jobnav icon-zzw-sheji" ng-class="{'zzz-active':vm.navactive3}"></i>大数据
+                        <i class="icon-jobnav icon-findjobdayu pull-right" ng-class="{'zzz-active':vm.navactive3}"></i>
+                    </h4>
+                    <li>NLP</li>
+                    <li>DM</li>
+                    <li>DL</li>
+                </ul>
+                <div class="m-jobsnav jobsnav3">
+                    <ol class="breadcrumb">
+                        <li>NLP</li>
+                        <li>初级</li>
+                        <li>中级</li>
+                        <li>高级</li>
+                    </ol>
+                    <ol class="breadcrumb">
+                        <li>DM</li>
+                        <li>初级</li>
+                        <li>中级</li>
+                        <li>高级</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 焦点图轮播图 -->
+        <div class="m-jobfocus col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <!-- 搜索 -->
+            <div class="input-group m-seach">
+                <span class="input-group-addon m-seach-itps">公司名称</span>
+                <input type="text" class="form-control" placeholder="请输入公司名称" aria-describedby="basic-addon2">
+                <span class="input-group-addon m-seach-btn">搜索</span>
+            </div>
+            <!-- 轮播 -->
+            <div>
+                <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                    <div uib-slide class="m-jobfocus-wrap" ng-repeat="slide in slides track by slide.id" index="slide.id">
+                        <img ng-src="{{slide.image}}" style="margin:auto;">
+                        <div class="carousel-caption">
+                            <h4>Slide {{slide.id}}</h4>
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 推荐职位 -->
+    <div class="m-jobtt clearfix">
+        <h3 class="pull-left">推荐职位</h3>
+        <h3 class="pull-left noactive">最新职位</h3>
+        <a class="pull-right" href="#">查看更多&gt;</a>
+    </div>
+    <div class="m-rmjob clearfix">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="m-rmjob-wrap">
+                <div class="img-wrap pull-left">
+                    <img src="img/job/zwtab.jpg" alt="">
+                </div>
+                <div class="m-rmjob-info">
+                    <span>8K-15K</span>
+                    <p>视觉设计师（北京）</p>
+                    <h5>盈泰财富云</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 推荐公司 -->
+    <div class="tm-jobt clearfix">
+        <h3 class="pull-left">推荐公司</h3>
+        <a class="pull-right" href="#">查看更多&gt;</a>
+    </div>
+    <div class="m-rmcompany clearfix">
+        <div class="col-xs-12 col-sm-5 col-md-4">
+            <div class="m-rmcompany-rigth">
+                <div class="img-wrap" style="width: 100%;height: 100%;">
+                    <img src="img/job/gstab.jpg" alt="">
+                </div>
+                <div class="m-rmcompany-info">
+                    <h5>北京葡萄藤信息技术有限公司</h5>
+                    <p>携程在手 说走就走</p>
+                    <ul>
+                        <li><i class="icon-rmcompany icon-location-white"></i>移动互联网</li>
+                        <li><i class="icon-rmcompany icon-phone-url-white"></i>上市</li>
+                        <li><i class="icon-rmcompany icon-shangshi-white"></i>北京</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-8">
+            <div class="m-rmcompany-left">
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="img-wrap">
+                        <img src="img/job/tx.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- 介绍article -->
+
+</div>

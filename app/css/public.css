@@ -1,0 +1,348 @@
+/* 基础样式 */
+body {
+  background: #fff;
+  font-family: "Microsoft YaHei";
+  color: #2d3e50;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+}
+ul {
+  margin: 0;
+  padding-left: 0;
+}
+li {
+  list-style-type: none;
+}
+/* 雪碧图 */
+/* 简介 */
+.icon-jianjie {
+  background: url(../img/home/jianjie.png) no-repeat;
+}
+.icon-jianjie-3 {
+  height: 38px;
+  width: 38px;
+  background-position: 0 0;
+}
+.icon-jianjie-1 {
+  height: 45px;
+  width: 44px;
+  background-position: -38px 0;
+}
+.icon-jianjie-2 {
+  height: 42px;
+  width: 47px;
+  background-position: -82px 0;
+}
+/* 版权 */
+.weicon {
+  background: url(../img/home/weicon.jpg) no-repeat;
+  height: 21px;
+  width: 21px;
+}
+.icon-phone {
+  background-position: -65px 0;
+}
+.icon-email {
+  background-position: -31px 0;
+}
+.icon-address {
+  background-position: 0 0;
+}
+/* 找精英流程 */
+.img {
+  background: url(../images/img.png) no-repeat;
+  height: 95px;
+  width: 95px;
+}
+.zjy-liucheng-3 {
+  background-position: 0 0;
+}
+.zjy-liucheng-2 {
+  background-position: -95px 0;
+}
+.zjy-liucheng-1 {
+  background-position: -190px 0;
+}
+/* 找精英优势 */
+.img {
+  background: url(../images/img.png) no-repeat;
+  height: 125px;
+  width: 125px;
+}
+.zjy-ys-3 {
+  background-position: 0 0;
+}
+.zjy-ys-4 {
+  background-position: -125px 0;
+}
+.zjy-ys-1 {
+  background-position: -250px 0;
+}
+.zjy-ys-2 {
+  background-position: -375px 0;
+}
+/* 关于我们导航 */
+.iconcollection {
+  background: url(../img/we/IconCollection.png) no-repeat;
+  width: 18px;
+  height: 25px;
+}
+.icon-aboutwe {
+  background-position: -28px -5px;
+}
+.icon-contactwe {
+  background-position: -77px -5px;
+}
+/* 联系我们 */
+.aboutweicon {
+  background: url(../img/we/aboutwetips.png) no-repeat;
+  height: 16px;
+}
+.icon-aboutwe-phone {
+  width: 14px;
+  background-position: 0 0;
+}
+.icon-aboutwe-email {
+  width: 15px;
+  background-position: -14px 0;
+}
+.icon-aboutwe-about-url {
+  width: 14px;
+  background-position: -28px 0;
+}
+.icon-aboutwe-location {
+  width: 16px;
+  background-position: -42px 0;
+}
+/* 找职位导航 */
+.icon-jobnav {
+  background: url(../img/job/jobnav.png) no-repeat;
+}
+.icon-findjobdayu {
+  height: 13px;
+  width: 7px;
+  background-position: 0 0;
+}
+.icon-findjobdayu.zzz-active {
+  background-position: -7px 0;
+}
+.icon-zzz-jishu {
+  height: 18px;
+  width: 21px;
+  background-position: -35px 0;
+}
+.icon-zzz-jishu.zzz-active {
+  background-position: -56px 0;
+}
+.icon-zzw-sheji {
+  height: 18px;
+  width: 21px;
+  background-position: -77px 0;
+}
+.icon-zzw-sheji.zzz-active {
+  background-position: -98px 0;
+}
+.icon-zzz-chanpin {
+  height: 20px;
+  width: 21px;
+  background-position: -119px 0;
+}
+.icon-zzz-chanpin.zzz-active {
+  background-position: -14px 0;
+}
+/* 找职位页面推荐公司 */
+.icon-rmcompany {
+  background: url(../img/job/rmcompany.png) no-repeat;
+  height: 13px;
+}
+.icon-location-white {
+  width: 12px;
+  background-position: 0 0;
+}
+.icon-phone-url-white {
+  width: 14px;
+  background-position: -12px 0;
+}
+.icon-shangshi-white {
+  width: 15px;
+  background-position: -26px 0;
+}
+/* 所有雪碧图均用I标签 并以icon-开头 */
+i[class^="icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* 图片 */
+.img-wrap img {
+  max-width: 99%;
+  max-height: 99%;
+}
+/* 布局样式 */
+.container-fluid {
+  max-width: 1250px;
+}
+.container {
+  max-width: 1020px;
+}
+/* 头部 */
+header {
+  background: #fff;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+}
+.navbar-default {
+  background: #fff;
+  border: none;
+  margin-bottom: 0;
+}
+.navbar-brand {
+  height: 80px;
+  padding: 20px 15px;
+}
+/* 位置信息 */
+.m-location {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 23px;
+  margin: 20px 0;
+  border-left: 1px solid #e8e8e8;
+}
+.m-location strong {
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+}
+@media (max-width: 768px) {
+  .m-location {
+    display: none;
+  }
+}
+.icon-location {
+  width: 13px;
+  height: 15px;
+  background: url("../img/home/location-logo.png") no-repeat;
+}
+/* 导航栏 */
+.navbar-default .navbar-toggle {
+  background: rgba(252, 43, 71, 0.8) !important;
+  margin: 23.2px 0;
+  margin-right: 15px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fc2b47;
+}
+@media (min-width: 768px) {
+  .m-nav {
+    float: right;
+  }
+  .navbar-nav > li {
+    margin: 0 24px;
+  }
+  .navbar-nav > li > a {
+    padding: 0;
+    line-height: 80px;
+  }
+}
+.navbar-nav > li:hover {
+  color: #fc2b47;
+}
+.navbar-nav > li:hover .nav-underline {
+  transform: rotateY(180deg);
+  width: 100%;
+}
+/* 导肮下划线 */
+.nav-underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  transition: 1s;
+  transform: rotateY(90deg);
+  background: #fc2b47;
+}
+/* 导航选中效果 */
+.navbar-default .navbar-nav > li.pageactive > a {
+  color: #fc2b47;
+}
+.navbar-default .navbar-nav > li.pageactive > span {
+  transform: rotateY(0deg);
+  width: 100%;
+}
+/* 尾部 */
+/* 关于我们 */
+footer {
+  color: #999;
+}
+.m-aboutus {
+  width: 100%;
+  background: #fff;
+  margin-top: 20px;
+  padding: 25px 0 20px;
+}
+.m-aboutus a {
+  color: #999;
+}
+.m-aboutus a:hover {
+  color: #fc2b47;
+}
+.m-aboutus .contactmode li + li {
+  margin-top: 5px;
+  font-size: 14px;
+}
+.m-aboutus .wechat {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .m-aboutus .wechat {
+    text-align: left;
+  }
+}
+.m-aboutus .wechat p {
+  margin-top: 10px;
+}
+/* 版权 */
+.copyright {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background: #37485a;
+}
+/* 标题模块 */
+.m-title {
+  text-align: center;
+}
+.m-title h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+.m-title .tips {
+  font-size: 16px;
+}
+.m-title .more {
+  text-align: right;
+}
+.m-title .more a {
+  color: #456e8d;
+}
+/* 标题下划线 */
+.tt-underline {
+  display: block;
+  height: 3px;
+  width: 30px;
+  margin: 0 auto 8px;
+  background: #e85662;
+}

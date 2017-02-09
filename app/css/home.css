@@ -1,0 +1,226 @@
+/* banner大图 */
+.m-banner .img-wrap {
+  max-height: 500px;
+}
+/* 特色介绍 */
+.m-myintroduce {
+  padding: 70px 0;
+  background: #fff;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .m-myintroduce {
+    padding: 0;
+  }
+}
+.m-myintroduce .tab-wrap {
+  padding: 20px 15px;
+}
+.m-myintroduce h4 {
+  font-weight: bold;
+}
+.m-myintroduce strong {
+  color: #fc2b47;
+}
+/* 最新职位 */
+.m-newsjob {
+  padding: 40px 0;
+  background: #f6f7f8;
+}
+.m-newsjob .more {
+  padding-right: 35px;
+}
+/* 轮播模块1 */
+.m-slide {
+  margin-bottom: 10px;
+  padding: 0 7.5px;
+}
+.m-slide .img-wrap {
+  height: 200px;
+  background: #fff;
+  border: 1px solid #e5e9eb;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.m-slide .img-wrap img {
+  position: relative;
+  top: 100px;
+  transform: translateY(-50%);
+}
+.m-slide .info {
+  background: #fff;
+  padding-top: 14px;
+  border: 1px solid #e5e9eb;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.m-slide .info h4,
+.m-slide .info p {
+  margin: 0;
+  padding-bottom: 10px;
+}
+.m-slide .info h4 {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 3px;
+}
+.m-slide .info .tt-underline {
+  height: 2px;
+  width: 20px;
+}
+/* bs轮播插件样式重置 */
+.m-newsjob-row {
+  padding: 0 25px;
+}
+.carousel-control {
+  width: 0;
+  opacity: 1;
+}
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+  height: 40px;
+}
+.glyphicon-chevron-left:before,
+.glyphicon-chevron-right:before {
+  content: " ";
+}
+@media screen and (min-width: 768px) {
+  .carousel-control .glyphicon-chevron-right {
+    margin-right: -10px;
+  }
+  .carousel-control .glyphicon-chevron-left {
+    margin-left: -10px;
+  }
+}
+.glyphicon-chevron-left {
+  background: url("../img/home/left.png") no-repeat;
+}
+.glyphicon-chevron-right {
+  background: url("../img/home/right.png") no-repeat;
+}
+.carousel-indicators {
+  display: none;
+}
+/* 服务流程 */
+.m-serviceflow-wrap {
+  padding: 80px 0;
+}
+.m-serviceflow-wrap .container {
+  max-width: 1170px;
+}
+.m-serviceflow-wrap .m-title {
+  margin-bottom: 20px;
+}
+.m-serviceflow {
+  padding: 0;
+  background: #fff;
+  border: 1px solid #E9EDEF;
+  border-radius: 3px ;
+  text-align: center;
+  margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+  .m-serviceflow {
+    padding: 15px;
+  }
+}
+.m-serviceflow .img-wrap {
+  height: 150px;
+}
+.m-serviceflow .img-wrap img {
+  height: 100%;
+}
+.m-serviceflow h5 {
+  margin: 0;
+  height: 60px;
+  line-height: 60px;
+  border-top: 1px solid #E9EDEF;
+}
+/* 小飞机 */
+.m-serviceflow-icon {
+  height: 1px;
+  border: 1px dashed;
+  border-image: url(../img/home/border-img.png) 10;
+  margin-top: 75px;
+  position: relative;
+}
+@media (max-width: 980px) {
+  .m-serviceflow-icon {
+    display: none;
+  }
+}
+.m-serviceflow-icon .icon-aircraft {
+  display: block;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  width: 27px;
+  height: 27px;
+  background: url("../img/home/arrow.png") no-repeat;
+}
+/* 伙伴之言 */
+.m-partnersay {
+  background: #f6f7f8;
+  padding: 75px 0;
+}
+/* 轮播tab样式 */
+.m-myfocus {
+  position: relative;
+  margin: 0 auto;
+  height: 338px;
+  overflow: hidden;
+}
+@media (max-width: 980px) {
+  .m-myfocus {
+    height: 1392px;
+  }
+}
+.m-myfocus-wrap {
+  position: absolute;
+  left: 0;
+  width: 6000px;
+}
+/* 前后按钮样式 */
+.myfocus-pre,
+.myfocus-next {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 30px;
+  height: 38px;
+  background: url("../img/home/left.png") no-repeat;
+}
+.myfocus-next {
+  left: auto;
+  right: 0;
+  transform: translateY(-50%);
+  background: url("../img/home/right.png");
+}
+/* 伙伴之言轮播图片样式 */
+.m-focusimg-wrap {
+  float: left;
+  width: 1020px;
+}
+.m-focusimg {
+  height: 338px;
+  padding: 30px 20px 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 3px;
+}
+.m-focusimg:hover {
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.m-focusimg .img-wrap {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+  border: 1px solid #ebebeb;
+  border-radius: 50%;
+}
+.m-focusimg p {
+  text-align: left;
+  color: #999;
+}

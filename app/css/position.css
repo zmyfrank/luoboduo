@@ -1,0 +1,252 @@
+body {
+  background: #f6f7f8;
+}
+.container {
+  max-width: 1250px;
+}
+@media (min-width: 1250px) {
+  .container {
+    width: 1250px;
+  }
+}
+/* 导航栏 */
+.m-jobnav-wrap {
+  margin-top: 20px;
+  padding-right: 0;
+}
+.m-jobnav {
+  position: relative;
+}
+.m-jobnav:hover .m-jobsnav {
+  display: block;
+}
+.m-jobnav .navtt {
+  font-size: 18px;
+}
+i[class^="icon-jobnav icon-zzz-"] {
+  margin-right: 10px;
+}
+.m-jobnav-list {
+  width: 100%;
+  height: 150px;
+  padding: 8px 30px 8px 10px;
+  color: #fff;
+  background: #f43851;
+}
+.m-jobnav-list.active {
+  background: #fff;
+  border-top: 1px solid #f43851;
+  border-bottom: 1px solid #f43851;
+  color: #f43851;
+}
+.m-jobnav-list li {
+  float: left;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+/* 子导航栏 */
+.m-jobsnav {
+  position: absolute;
+  top: 0;
+  right: -600px;
+  width: 600px;
+  height: 450px;
+  padding: 20px 0 30px 40px;
+  background: #fff;
+  display: none;
+  z-index: 1000;
+  border: 1px solid #fc2b47;
+  border-left-width: 0;
+}
+.m-jobsnav.jobsnav2 {
+  top: -150px;
+}
+.m-jobsnav.jobsnav3 {
+  top: -300px;
+}
+.m-jobsnav .breadcrumb {
+  padding: 0;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 0;
+}
+.m-jobsnav .breadcrumb li {
+  cursor: pointer;
+}
+.m-jobsnav .breadcrumb li:first-child {
+  display: inline-block;
+  color: #fc2b47;
+  font-size: 16px;
+  margin: 10px 10px 10px 0;
+}
+.m-jobsnav .breadcrumb > li + li:before {
+  padding: 0;
+  content: "";
+}
+.m-jobsnav .breadcrumb > li + li:after {
+  padding: 0 10px;
+  color: #eee;
+  content: "|\00a0";
+}
+/* 搜索轮播 */
+.m-jobfocus {
+  position: relative;
+  margin-top: 20px;
+  padding-left: 0;
+}
+/* 轮播 */
+.m-jobfocus-wrap {
+  height: 450px;
+  overflow: hidden;
+}
+.m-jobfocus-wrap img {
+  width: 100%;
+  height: 100%;
+}
+.carousel-control {
+  opacity: .5;
+  background: transparent;
+}
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+  height: 40px;
+}
+.glyphicon-chevron-left:before,
+.glyphicon-chevron-right:before {
+  content: " ";
+}
+.glyphicon-chevron-left {
+  background: url("../img/job/pre-2.png") no-repeat;
+}
+.glyphicon-chevron-right {
+  background: url("../img/job/next-2.png") no-repeat;
+}
+/* 搜索框 */
+.m-seach.input-group {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 80%;
+  transform: translateX(-50%);
+  z-index: 900;
+  margin-left: -15px;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+.m-seach.input-group span,
+.m-seach.input-group input {
+  padding: 11px 20px;
+}
+.m-seach.input-group input {
+  height: 44px;
+  border-left: 0;
+  border-right: 0;
+}
+.m-seach-itps {
+  background: #fff;
+  color: #536a82;
+  font-weight: bold;
+}
+.m-seach-btn {
+  background: #fc2b47;
+  color: #fff;
+  border-color: #fc2b47;
+  cursor: pointer;
+}
+/* 推荐公司/推荐职位tt */
+.m-jobtt {
+  padding-left: 20px;
+}
+.m-jobtt h3 {
+  padding-right: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.m-jobtt h3.noactive {
+  font-weight: 400;
+  font-size: 13px;
+  margin: 23px 0 0;
+}
+.m-jobtt a {
+  display: inline-block;
+  margin: 20px 0 10px;
+  padding-right: 20px;
+  color: #000;
+}
+/* 推荐职位 */
+.m-rmjob {
+  padding: 30px 0 10px;
+  background: #fff;
+}
+.m-rmjob-wrap {
+  padding: 10px;
+  margin: 0 -5px 20px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+.m-rmjob-wrap .img-wrap {
+  width: 110px;
+  height: 130px;
+  padding: 5px;
+  margin-right: 30px;
+  border: 1px solid #e8e8e8;
+}
+.m-rmjob-wrap:hover {
+  cursor: pointer;
+  box-shadow: 0 0 7px #DAE0E3;
+  border: solid 1px #f5f5f5;
+}
+.m-rmjob-info {
+  padding: 10px 0;
+  height: 130px;
+  overflow: hidden;
+}
+.m-rmjob-info span {
+  display: inline-block;
+  padding: 10px 0;
+  color: #fc2b47;
+}
+.m-rmjob-info p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+.m-rmjob-info h5 {
+  color: #536a82;
+}
+/* 推荐公司 */
+.m-rmcompany {
+  padding: 30px 0;
+  background: #fff;
+}
+.m-rmcompany-rigth {
+  position: relative;
+}
+.m-rmcompany-info {
+  position: absolute;
+  left: 30px;
+  bottom: 15px;
+  color: #fff;
+}
+.m-rmcompany-info ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.m-rmcompany-left .img-wrap {
+  height: 100px;
+  border-radius: 3px;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.m-rmcompany-left .img-wrap img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
