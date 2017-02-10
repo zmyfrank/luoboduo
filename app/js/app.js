@@ -3,7 +3,7 @@
  */
 
 var routerApp = angular.module('routerApp', ['ui.router', 'oc.lazyLoad','ngCookies','ngAnimate', 'ngSanitize', 'ui.bootstrap',
-    'mainDirectives','mainCtrl','mainConstant','mainServices']);
+    'mainDirectives','mainCtrl','mainConstant','mainServices','mainFil']);
 
 routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
     function ($stateProvider, $urlRouterProvider,$locationProvider) {
