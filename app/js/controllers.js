@@ -87,8 +87,9 @@ var mainCtrl = angular.module('mainCtrl', [])
         })
     })
     /* 找职位 */
-    .controller('jobHtmlCtrl',function ($scope) {
+    .controller('jobHtmlCtrl',function ($scope,getService,$filter) {
         var vm = this;
+        /*轮播1*/
         $scope.myInterval = 5000;
         $scope.noWrapSlides = false;
         $scope.active = 0;
@@ -107,6 +108,35 @@ var mainCtrl = angular.module('mainCtrl', [])
         for (var i = 0; i < 3; i++) {
             $scope.addSlide();
         }
-    })
+        /*轮播2*/
+        getService.get_industry(1).then(function (res) {
+            if (res.data.code == 0) {
+                $scope.industry1data = res.data.approvedCompanyList;
+                //console.log($scope.industry1data);
+                $scope.newInd = $filter('reachIndustry')($scope.industry1data,'industryList');
+                console.log($scope.newInd);
+                $scope.myInterval = 500000;
+                $scope.noWrapSlides1 = false;
+                $scope.active1 = 0;
+                var industry1 = $scope.industry1 = [];
+                var currIndex1 = 0;
+                $scope.addIndustry1 = function () {
+                    industry1.push({
+                        image:$scope.newInd[i].logo,
+                        name:$scope.newInd[i].name,
+                        slogan:$scope.newInd[i].slogan,
+                        professionList:$scope.newInd[i].professionList,
+                        industryList:$scope.newInd[i].industryList,
+                        id1:currIndex1++
+                    })
+                }
+                for (var i = 0; i < 4; i++) {
+                    $scope.addIndustry1();
+                    console.log($scope.industry1);
+                    console.log($scope.newInd[i].logo);
+                };
+            }
+        });
+    });
 
 

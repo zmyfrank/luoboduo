@@ -20,6 +20,10 @@ var mainConstant = angular.module('mainServices', [])
             /* 最新/推荐职位 */
             profession_url:function (type,size) {
                 return "/lbd/a/profession/search?recommend="+type+'&size='+size;
+            },
+            /*公司信息&在招职位*/
+            industry_url:function (type) {
+                return "/lbd/a/company/search?returnPage="+type;
             }
         }
     })
@@ -32,6 +36,10 @@ var mainConstant = angular.module('mainServices', [])
             /* 最新/推荐职位 */
             'get_profession':function(type,size){
                 return $http.get(myInterface.profession_url(type,size))
+            },
+            /*公司信息&在招职位*/
+            "get_industry":function (type) {
+                return $http.get(myInterface.industry_url(type))
             }
         }
     })

@@ -102,3 +102,6 @@ var mainDirectives = angular.module('mainDirectives',[])
             }
         }
     })
+    /**/
+    .directive('')
+

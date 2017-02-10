@@ -260,6 +260,66 @@ i[class^="icon-jobnav icon-zzz-"] {
   justify-content: space-between;
   flex-wrap: nowrap;
 }
+/*Y轴轮播部分*/
+.m-recompany_sliderSt {
+  margin-top: 20px;
+}
+.m-recompany_slider {
+  margin: 0;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+.m-recompany_slider h2 {
+  font-weight: bold;
+}
+.m-recompany_slider .img-wrap {
+  height: 100px;
+  border-radius: 3px;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  position: relative;
+}
+.m-recompany_slider .img-wrap img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+.m-recompany_sliderL {
+  padding: 20px 0 20px 10px;
+}
+.m-recompany_sliderR {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  border-left: 1px solid #e8e8e8;
+}
+.m-recompany_sliderR h2 {
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+.m-recompany_sliderR ul {
+  padding-bottom: 30px;
+}
+.m-recompany_sliderR li {
+  float: left;
+}
+.m-recompany_sliderR li:nth-child(n+2) {
+  padding-left: 10px;
+  margin-left: 10px;
+  border-left: 1px solid #e8e8e8;
+}
+.m-recompany_sliderS {
+  padding: 10px 0 10px 10px;
+}
+.m-recompany_tag {
+  display: inline-block;
+  border: 1px solid #e8e8e8;
+  width: 85px;
+  text-align: center;
+  color: #536a82;
+}
 .m-rmcompany-left .img-wrap {
   height: 100px;
   border-radius: 3px;
