@@ -85,18 +85,7 @@
                 <span class="input-group-addon m-seach-btn">搜索</span>
             </div>
             <!-- 轮播 -->
-            <div>
-                <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-                    <div uib-slide class="m-jobfocus-wrap" ng-repeat="slide in slides track by slide.id" index="slide.id">
-                        <img ng-src="{{slide.image}}" style="margin:auto;">
-                        <div class="carousel-caption">
-                            <h4>Slide {{slide.id}}</h4>
-                            <p>{{slide.text}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <jobfocus1></jobfocus1>
     </div>
     <!-- 推荐职位 -->
     <div class="m-jobtt clearfix">
@@ -300,32 +289,8 @@
                 </div>
             </div>
         </div>
-        <div uib-carousel active="active2" interval="myInterval2" no-wrap="noWrapSlides2">
-            <div uib-slide ng-repeat="item2 in industry1 track by item2.id1" index="item2.id">
-                <div class="col-md-11 m-recompany_sliderSt">
-                    <div class="m-recompany_slider row">
-                        <div class="col-md-7 m-recompany_sliderL">
-                            <div class="img-wrap col-md-4">
-                                <img ng-src="{{ item2.image }}" >
-                            </div>
-                            <div class="col-md-7 col-md-offset-1">
-                                <h2>{{ item2.name }}</h2>
-                                <p>{{ item2.slogan }}</p>
-                                <span class="m-recompany_tag" ng-repeat="item in item2.industryList track by $index">{{ item }}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 m-recompany_sliderS">
-                            <div class="m-recompany_sliderR clearfix">
-                                <h2>正在热招</h2>
-                                <ul>
-                                    <li ng-repeat="item1 in item2.industryList track by $index">{{ item1 }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- 推荐公司轮播 -->
+        <jobfocus2></jobfocus2>
     </div>
     <!-- 找职业位图 -->
     <div class="m-jobbitmap clearfix">

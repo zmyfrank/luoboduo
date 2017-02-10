@@ -2,7 +2,7 @@
  * Created by ivws on 2017/1/21.
  */
 var mainDirectives = angular.module('mainDirectives',[])
-    /* 轮播图 */
+    /* 首页单个tab轮播图 */
     .directive('myfocus', function ($interval,$timeout,$window) {
         return {
             restrict:'AE',
@@ -102,4 +102,70 @@ var mainDirectives = angular.module('mainDirectives',[])
             }
         }
     })
+    /* 找职业轮播2 */
+    .directive('jobfocus2',function($filter,getService){
+        return {
+            restrict:'AE',
+            replace:true,
+            templateUrl:'../tpls/focus/jobcarot.html',
+            scope:{},
+            link:function (scope, ele, attrs,supermanCtrl) {
+                getService.get_industry(1).then(function (res) {
+                    if (res.data.code == 0) {
+                        scope.industry1data = res.data.approvedCompanyList;
+                        //console.log(scope.industry1data);
+                        scope.newInd = $filter('reachIndustry')(scope.industry1data,'industryList');
 
+                        console.log(scope.newInd);
+                        scope.myInterval = 5000;
+                        var slides = scope.slides = [];
+                        var currIndex = 0;
+
+                        scope.addIndustry1 = function () {
+                            slides.push({
+                                image:scope.newInd[i].logo,
+                                name:scope.newInd[i].name,
+                                slogan:scope.newInd[i].slogan,
+                                professionList:scope.newInd[i].professionList,
+                                industryList:scope.newInd[i].industryList,
+                                id: currIndex++
+                            })
+                        }
+
+                        for (var i = 0; i < 4; i++) {
+                            scope.addIndustry1();
+                            console.log(scope.industry1);
+                            console.log(scope.newInd[i].logo);
+                        };
+                    }
+                });
+            }
+        }
+    })
+    /* 找职业轮播2 */
+    .directive('jobfocus1',function () {
+        return {
+            restrict: 'AE',
+            replace: true,
+            templateUrl: '../tpls/focus/jobcarot2.html',
+            scope: {},
+            link:function (scope, ele, attrs,supermanCtrl){
+                scope.myInterval = 5000;
+                var slides = scope.slides = [];
+                var currIndex = 0;
+
+                scope.addSlide = function() {
+                    var newWidth = 600 + slides.length + 1;
+                    slides.push({
+                        image: '//unsplash.it/' + newWidth + '/300',
+                        text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+                        id: currIndex++
+                    });
+                };
+
+                for (var i = 0; i < 3; i++) {
+                    scope.addSlide();
+                }
+            }
+        }
+    })
