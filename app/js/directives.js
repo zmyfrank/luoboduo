@@ -106,7 +106,7 @@ var mainDirectives = angular.module('mainDirectives',[])
     .directive('jobfocus2',function($filter,getService){
         return {
             restrict:'AE',
-            replace:true,
+            replace:false,
             templateUrl:'../tpls/focus/jobcarot.html',
             scope:{},
             link:function (scope, ele, attrs,supermanCtrl) {

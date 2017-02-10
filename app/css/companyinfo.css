@@ -1,0 +1,39 @@
+/* 公司信息页面 */
+.container {
+  max-width: 1250px;
+}
+body {
+  background: #f6f7f8;
+}
+/* 公司tt */
+.m-companyinfott {
+  background: #fff;
+  margin-top: 20px;
+}
+.m-companyinfott .imgwrap {
+  height: 200px;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  text-align: center;
+}
+.m-companyinfott .imgwrap img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.m-companyinfott-info h1 {
+  display: inline-block;
+  padding-right: 10px;
+  font-size: 20px;
+}
+.m-companyinfott-info small {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 14px;
+  background: #fc2b47;
+  border-radius: 15px;
+  color: #fff;
+}
+.m-companyinfott-info p {
+  padding: 10px 0;
+}
