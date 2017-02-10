@@ -4,6 +4,11 @@ body {
 .container {
   max-width: 1250px;
 }
+.breadcrumb {
+  padding: 0;
+  background-color: #fff;
+  border-radius: 0;
+}
 @media (min-width: 1250px) {
   .container {
     width: 1250px;
@@ -70,10 +75,7 @@ i[class^="icon-jobnav icon-zzz-"] {
   top: -300px;
 }
 .m-jobsnav .breadcrumb {
-  padding: 0;
   margin-bottom: 10px;
-  background-color: #fff;
-  border-radius: 0;
 }
 .m-jobsnav .breadcrumb li {
   cursor: pointer;
@@ -255,7 +257,8 @@ i[class^="icon-jobnav icon-zzz-"] {
   bottom: 15px;
   color: #fff;
 }
-.m-rmcompany-info ul {
+/* 公司小图标和公司列表复用 */
+.m-companyicon {
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -312,7 +315,75 @@ i[class^="icon-jobnav icon-zzz-"] {
 .m-jobarticle img {
   width: 100%;
 }
-/* 重置版权模块margin */
-.m-aboutus {
-  margin-top: 0;
+/* 公司列表页面 */
+.m-companylist {
+  background: #fff;
+  margin: 20px 0;
+}
+.m-companylist .m-rmjob-wrap {
+  padding: 10px;
+  margin: 20px 0;
+}
+.m-companylist .m-rmjob-wrap .img-wrap {
+  height: 110px;
+}
+.m-companylist .m-rmjob-info {
+  height: 110px;
+  margin-bottom: 15px;
+}
+.m-companylist .m-companyicon {
+  background: #ef4259;
+  color: #fff;
+  margin: 0 -10px -10px;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+/* 职业列表页面 */
+.m-joblist-wrap {
+  padding: 10px;
+  margin: 20px 15px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}
+.m-joblist-righ,
+.m-joblist-left {
+  margin: 10px 0;
+}
+.m-joblist-right h5 {
+  font-weight: bold;
+}
+.m-joblist-right li {
+  color: #536a82;
+}
+.m-joblist-right .img-wrap {
+  width: 110px;
+  height: 110px;
+  padding: 5px;
+  margin-left: 15px;
+  border: 1px solid #e8e8e8;
+}
+.m-joblist-left {
+  border-right: 1px solid #e8e8e8;
+}
+.m-joblist-left h5 {
+  font-weight: bold;
+}
+.m-joblist-left small {
+  display: inline-block;
+  padding: 10px 0;
+  font-size: 14px;
+}
+.m-joblist-left p {
+  font-weight: bold;
+  color: #fc2b47;
+  margin: 15px 0;
+}
+.m-joblist-left .breadcrumb {
+  margin-bottom: 0;
+}
+@media (max-width: 992px) {
+  .m-joblist-left {
+    border-right: none;
+  }
 }

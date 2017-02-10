@@ -108,5 +108,25 @@ var mainCtrl = angular.module('mainCtrl', [])
             $scope.addSlide();
         }
     })
+    /* 职位列表页面 */
+    .controller('jobListCtrl',function ($scope) {
+        var vm = this;
+
+    })
+    /* 公司列表页面 */
+    .controller('companyListCtrl',function ($scope) {
+        var vm = this;
+
+    })
+    /* 公司详情页 */
+    .controller('companyInfoCtrl',function ($scope) {
+        var vm = this;
+
+    })
+    /* 职业详情页 */
+    .controller('jobInfoCtrl',function ($scope) {
+        var vm = this;
+
+    })
 
 
