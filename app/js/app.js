@@ -16,17 +16,17 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
 
         $urlRouterProvider.when("","/home")
         $stateProvider
-            .state('app',{
-                url:'',
-                templateUrl:'tpls/main.html',
-                controller:'mainHtmlCtrl',
-                controllerAs:'vm',
+            .state('app', {
+                url: '',
+                templateUrl: 'tpls/main.html',
+                controller: 'mainHtmlCtrl',
+                controllerAs: 'vm',
             })
             /* 首页 */
             .state('app.home', {
                 url: '/home',
                 templateUrl: 'tpls/home.html',
-                controller:'homeHtmlCtrl',
+                controller: 'homeHtmlCtrl',
                 controllerAs: 'vm',
                 resolve: {
                     home_file: _lazyLoad([
@@ -38,7 +38,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             .state('app.position', {
                 url: '/position',
                 templateUrl: 'tpls/position.html',
-                controller:'jobHtmlCtrl',
+                controller: 'jobHtmlCtrl',
                 controllerAs: 'vm',
                 resolve: {
                     home_file: _lazyLoad([
@@ -60,11 +60,58 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             .state('app.we', {
                 url: '/we',
                 templateUrl: 'tpls/we.html',
-                controller:'weCtrl',
-                controllerAs:'vm',
+                controller: 'weCtrl',
+                controllerAs: 'vm',
                 resolve: {
                     home_file: _lazyLoad([
                         'css/we.css'
+                    ])
+                }
+            })
+            /* 公司列表 */
+            .state('app.companylist', {
+                url: '/companylist',
+                templateUrl: 'tpls/companylist.html',
+                //controller:'companyListCtrl',
+                //controllerAs:'vm',
+                resolve: {
+                    home_file: _lazyLoad([
+                        'css/position.css'
+                    ])
+                }
+            })
+            /* 最新/推荐职业列表 */
+            .state('app.joblist', {
+                url: '/joblist',
+                templateUrl: 'tpls/joblist.html',
+                //controller:'companyListCtrl',
+                //controllerAs:'vm',
+                resolve: {
+                    home_file: _lazyLoad([
+                        'css/position.css'
+                    ])
+                }
+            })
+            /* 公司详情 */
+            .state('app.companyinfo',{
+                url: '/companyinfo',
+                templateUrl: 'tpls/companyinfo.html',
+                //controller:'companyInfoCtrl',
+                //controllerAs:'vm',
+                resolve: {
+                    home_file: _lazyLoad([
+                        'css/companyinfo.css'
+                    ])
+                }
+            })
+            .state('app.jobinfo',{
+                url: '/jobinfo',
+                templateUrl: 'tpls/jobinfo.html',
+                //controller:'jobInfoCtrl',
+                //controllerAs:'vm',
+                resolve: {
+                    home_file: _lazyLoad([
+                        'css/jobinfo.css'
                     ])
                 }
             })
