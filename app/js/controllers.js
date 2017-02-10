@@ -137,7 +137,6 @@ var mainCtrl = angular.module('mainCtrl', [])
                 };
             }
         });
-    });
     })
     /* 职位列表页面 */
     .controller('jobListCtrl',function ($scope) {
