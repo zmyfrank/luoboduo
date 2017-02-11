@@ -117,7 +117,7 @@ var mainDirectives = angular.module('mainDirectives',[])
                         scope.newInd = $filter('reachIndustry')(scope.industry1data,'industryList');
 
                         console.log(scope.newInd);
-                        scope.myInterval = 5000;
+                        scope.myInterval = 5000000;
                         var slides = scope.slides = [];
                         var currIndex = 0;
 
