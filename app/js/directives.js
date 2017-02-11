@@ -150,7 +150,7 @@ var mainDirectives = angular.module('mainDirectives',[])
             templateUrl: '../tpls/focus/jobcarot2.html',
             scope: {},
             link:function (scope, ele, attrs,supermanCtrl){
-                scope.myInterval = 5000;
+                scope.myInterval = 50000000;
                 var slides = scope.slides = [];
                 var currIndex = 0;
 

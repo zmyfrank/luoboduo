@@ -39,3 +39,6 @@ var mainFil = angular.module("mainFil",[]);
             return industry1data;
         }
     });
+    mainFil.filter('exchangename',function () {
+
+    })

@@ -28,4 +28,7 @@ var mainConstant = angular.module('mainConstant', [])
                         company:'托尔思集团创始人',
                         info:' 作为在萝卜多已经招募了50人的 leader萝卜多除了是我成功的基石，也是我的社交入口。',
                     }]
+
     })
+    /*针对数字转换为文字的筛选*/
+    .constant2
