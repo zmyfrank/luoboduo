@@ -279,6 +279,30 @@ i[class^="icon-jobnav icon-zzz-"] {
 }
 
 /*Y轴轮播部分*/
+/*设置轮播样式*/
+.cort-ctl {
+  .carousel-control.left {
+    display: none;
+  }
+  .carousel-control.right {
+    display: none;
+  }
+  .carousel-indicators {
+    right: 5%;
+    width: 3%;
+    left: inherit;
+  }
+  .carousel-indicators li {
+    border: 1px solid #e8e8e8;
+    display: inherit;
+    width: 12px;
+    line-height: 12px;
+    margin-top: 12px;
+  }
+  .carousel-indicators .active {
+    background-color: red;
+  }
+}
 .m-recompany_sliderSt {
   margin-top: 20px;
 }
@@ -287,6 +311,9 @@ i[class^="icon-jobnav icon-zzz-"] {
   margin: 0;
   border: 1px solid #e8e8e8;
   border-radius: 3px;
+  .carousel-control {
+    display: none;
+  }
   h2 {
     font-weight: bold;
   }
@@ -308,6 +335,7 @@ i[class^="icon-jobnav icon-zzz-"] {
 }
 .m-recompany_sliderL {
   padding: 20px 0 20px 10px;
+  text-align: left;
 }
 .m-recompany_sliderR {
   padding-top: 5px;
@@ -317,6 +345,7 @@ i[class^="icon-jobnav icon-zzz-"] {
   h2 {
     margin-top: 25px;
     margin-bottom: 35px;
+    text-align: left;
   }
   ul {
     padding-bottom: 30px;
@@ -340,6 +369,7 @@ i[class^="icon-jobnav icon-zzz-"] {
   width:85px;
   text-align: center;
   color: #536a82;
+  margin-right: 20px;
 }
 
 

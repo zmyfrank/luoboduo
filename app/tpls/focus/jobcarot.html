@@ -1,27 +1,26 @@
-
-<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-        <div uib-slide  dirslides="slides" ng-repeat="slide in slides  track by slide.id" index="slide.id">
-            <div class="col-md-11 m-recompany_sliderSt">
-                <div class="m-recompany_slider row">
-                    <div class="col-md-7 m-recompany_sliderL">
-                        <div class="img-wrap col-md-4">
-                            <img ng-src="{{ slide.image }}" >
-                        </div>
-                        <div class="col-md-7 col-md-offset-1">
-                            <h2>{{ slide.name }}</h2>
-                            <p>{{ slide.slogan }}</p>
-                            <span class="m-recompany_tag" ng-repeat="item in slide.industryList">{{ item }}</span>
-                        </div>
+<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class= "cort-ctl">
+    <div uib-slide dirslides="slides" ng-repeat="slide in slides  track by slide.id" index="slide.id">
+        <div class="col-md-11 m-recompany_sliderSt">
+            <div class="m-recompany_slider row">
+                <div class="col-md-7 m-recompany_sliderL">
+                    <div class="img-wrap col-md-4">
+                        <img ng-src="{{ slide.image }}">
                     </div>
-                    <div class="col-md-4 m-recompany_sliderS">
-                        <div class="m-recompany_sliderR clearfix">
-                            <h2>正在热招</h2>
-                            <ul>
-                                <li ng-repeat="item1 in slide.industryList">{{ item1 }}</li>
-                            </ul>
-                        </div>
+                    <div class="col-md-7 col-md-offset-1">
+                        <h2>{{ slide.name }}</h2>
+                        <p>{{ slide.slogan }}</p>
+                        <span class="m-recompany_tag" ng-repeat="item in slide.industryList">{{ item }}</span>
+                    </div>
+                </div>
+                <div class="col-md-4 m-recompany_sliderS">
+                    <div class="m-recompany_sliderR clearfix">
+                        <h2>正在热招</h2>
+                        <ul>
+                            <li ng-repeat="item1 in slide.professionList">{{ item1 }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
