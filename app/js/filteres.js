@@ -1,6 +1,7 @@
 /**
  * Created by ivws on 2017/1/21.
  */
+'use strict'
 var mainFil = angular.module("mainFil",[]);
         /*转化公司信息里的数字为文字*/
     mainFil.filter('reachIndustry',function () {
@@ -39,6 +40,19 @@ var mainFil = angular.module("mainFil",[]);
             return industry1data;
         }
     });
-    mainFil.filter('exchangename',function () {
-
-    })
+    /*改变职位信息里的数字为文字*/
+    mainFil.filter('changeJobListName',function (joblisttype) {
+        return function (num,name) {
+            var value = '';
+            angular.forEach(joblisttype,function (data,key) {
+                if (key == name) {
+                    angular.forEach(data,function (item) {
+                       if (item.type == num) {
+                           value = item.name;
+                       }
+                    })
+                }
+            });
+            return value;
+        }
+    });

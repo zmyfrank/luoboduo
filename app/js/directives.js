@@ -116,7 +116,7 @@ var mainDirectives = angular.module('mainDirectives',[])
                         //console.log(scope.industry1data);
                         scope.newInd = $filter('reachIndustry')(scope.industry1data,'industryList');
 
-                        console.log(scope.newInd);
+                        //console.log(scope.newInd);
                         scope.myInterval = 5000000;
                         var slides = scope.slides = [];
                         var currIndex = 0;
@@ -134,8 +134,8 @@ var mainDirectives = angular.module('mainDirectives',[])
 
                         for (var i = 0; i < 4; i++) {
                             scope.addIndustry1();
-                            console.log(scope.industry1);
-                            console.log(scope.newInd[i].logo);
+                            //console.log(scope.industry1);
+                            //console.log(scope.newInd[i].logo);
                         };
                     }
                 });
@@ -150,7 +150,7 @@ var mainDirectives = angular.module('mainDirectives',[])
             templateUrl: '../tpls/focus/jobcarot2.html',
             scope: {},
             link:function (scope, ele, attrs,supermanCtrl){
-                scope.myInterval = 50000000;
+                scope.myInterval = 5000;
                 var slides = scope.slides = [];
                 var currIndex = 0;
 

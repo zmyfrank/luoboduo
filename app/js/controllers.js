@@ -54,7 +54,7 @@ var mainCtrl = angular.module('mainCtrl', [])
               vm.newsjob = res.data.data;
               console.log(vm.newsjob);
               /* 最新职位轮播 */
-              $scope.myInterval = 50000000;
+              $scope.myInterval = 5000;
               $scope.noWrapSlides = false;
               $scope.active = 0;
               var slides = $scope.slides = [];
@@ -89,7 +89,12 @@ var mainCtrl = angular.module('mainCtrl', [])
     /* 找职位 */
     .controller('jobHtmlCtrl',function ($scope,getService,$filter) {
         var vm = this;
-
+        getService.get_profession(1,8).then(function (res) {
+            if (res.data.code == 0) {
+                vm.newprofessionList = res.data.data;
+                console.log(vm.newprofessionList);
+            }
+        })
     })
     /* 职位列表页面 */
     .controller('jobListCtrl',function ($scope) {
