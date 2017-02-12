@@ -173,6 +173,55 @@ li {
   width: 15px;
   background-position: -26px 0;
 }
+/* 职位详情页面 */
+.icon-jobinfo {
+  background: url(../img/job/jobinfo-icon.png) no-repeat;
+}
+.icon-location-jobdescripe {
+  height: 16px;
+  width: 12px;
+  background-position: 0 0;
+}
+.icon-description-1 {
+  height: 15px;
+  width: 12px;
+  background-position: -12px 0;
+}
+.icon-company-home-3 {
+  height: 16px;
+  width: 14px;
+  background-position: -24px 0;
+}
+.icon-sharing {
+  height: 16px;
+  width: 15px;
+  background-position: -38px 0;
+}
+.icon-description-2 {
+  height: 16px;
+  width: 16px;
+  background-position: -54px 0;
+}
+.icon-people {
+  height: 16px;
+  width: 16px;
+  background-position: -69px 0;
+}
+/* 职位详情页面分享图标 */
+.icon-jobshare {
+  background: url(../img/job/sharing-sprite.png) no-repeat;
+  width: 31px;
+  height: 30px;
+}
+.icon-jobwechat {
+  background-position: -8px -8px;
+}
+.icon-jobqq {
+  background-position: -47px -8px;
+}
+.icon-jobmicro-blog {
+  background-position: -86px -8px;
+}
 /* 所有雪碧图均用I标签 并以icon-开头 */
 i[class^="icon-"] {
   display: inline-block;
