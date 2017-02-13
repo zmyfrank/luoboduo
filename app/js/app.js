@@ -50,6 +50,8 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             .state('app.elite', {
                 url: '/elite',
                 templateUrl: 'tpls/elite.html',
+                controller: 'eliteHtmlCtrl',
+                controllerAs: 'vm',
                 resolve: {
                     home_file: _lazyLoad([
                         'css/elite.css'
@@ -70,7 +72,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             })
             /* 公司列表 */
             .state('app.companylist', {
-                url: '/companylist',
+                url: '/companylist?id',
                 templateUrl: 'tpls/companylist.html',
                 controller:'companyListCtrl',
                 controllerAs:'vm',
@@ -84,8 +86,8 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             .state('app.joblist', {
                 url: '/joblist',
                 templateUrl: 'tpls/joblist.html',
-                //controller:'companyListCtrl',
-                //controllerAs:'vm',
+                controller:'jobListCtrl',
+                controllerAs:'vm',
                 resolve: {
                     home_file: _lazyLoad([
                         'css/position.css'

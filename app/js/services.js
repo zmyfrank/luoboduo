@@ -10,7 +10,6 @@ var mainConstant = angular.module('mainServices', [])
             },
         };
     })
-
     .factory('myInterface',function () {
         return{
             /* 焦点图 */
@@ -18,12 +17,12 @@ var mainConstant = angular.module('mainServices', [])
                 return "/lbd/a/article/search?type="+type;
             },
             /* 最新/推荐职位 */
-            profession_url:function (type,size) {
-                return "/lbd/a/profession/search?recommend="+type+'&size='+size;
+            profession_url:function (type,size,page) {
+                return "/lbd/a/profession/search?recommend="+type+'&size='+size+'&page='+page;
             },
             /*公司信息&在招职位*/
-            industry_url:function (type) {
-                return "/lbd/a/company/search?returnPage="+type;
+            industry_url:function (type,size,page) {
+                return "/lbd/a/company/search?returnPage="+type+'&size='+size+'&page='+page;
             }
         }
     })
@@ -34,12 +33,12 @@ var mainConstant = angular.module('mainServices', [])
                 return $http.get(myInterface.article_url(type))
             },
             /* 最新/推荐职位 */
-            'get_profession':function(type,size){
-                return $http.get(myInterface.profession_url(type,size))
+            'get_profession':function(type,size,page){
+                return $http.get(myInterface.profession_url(type,size,page))
             },
             /*公司信息&在招职位*/
-            "get_industry":function (type) {
-                return $http.get(myInterface.industry_url(type))
+            "get_industry":function (type,size,page) {
+                return $http.get(myInterface.industry_url(type,size,page))
             }
         }
     })

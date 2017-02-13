@@ -3,7 +3,7 @@
 <!-- banenr图 -->
 <div class="m-banner">
     <div class="img-wrap">
-        <img src="img/elite/banner.png" alt="萝卜多">
+        <img ng-src="{{vm.articleurl}}" alt="萝卜多">
     </div>
 </div>
 
@@ -124,32 +124,14 @@
             <h3>成功案例</h3>
             <span class="tt-underline"></span>
         </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
+        <div class=" col-xs-12 col-sm-3 col-md-3" ng-repeat="data in  vm.companyimgdata">
+            <a ui-sref="app.companyinfo({id:data.id})">
+                <div class="m-elitecase-wrap"><img class="f-abscenter" ng-src="{{data.slogan}}" alt=""></div>
+            </a>
         </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
-        <div class=" col-xs-12 col-sm-3 col-md-3">
-            <div class="m-elitecase-wrap"><img class="f-abscenter" src="img/home/xd.png" alt=""></div>
-        </div>
+
         <div class="m-elitecase-btn">
-            <button type="button" class="btn btn-danger">更多合作公司</button>
+            <button type="button" ui-sref="app.companylist" class="btn btn-danger">更多合作公司</button>
         </div>
     </div>
 </div>

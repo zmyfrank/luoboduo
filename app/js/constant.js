@@ -226,6 +226,8 @@ var mainConstant = angular.module('mainConstant', [])
         {type: 10, name: "DM"},
         {type: 11, name: "DL"}
     ])
+
+
     //  begin 独立过滤器所需
     .constant('joblisttype', {
         //薪资水平

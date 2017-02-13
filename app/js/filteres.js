@@ -44,7 +44,7 @@ var mainFil = angular.module("mainFil",[]);
     mainFil.filter('changeJobListName',function (joblisttype) {
         return function (num,name) {
             var value = '';
-            angular.forEach(joblisttype,function (data,key) {
+            angular.forEach(joblisttype,function (data,key,arry) {
                 if (key == name) {
                     angular.forEach(data,function (item) {
                        if (item.type == num) {

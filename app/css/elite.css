@@ -73,6 +73,10 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.m-elitecase-wrap img {
+  max-width: 60%;
+  max-height: 60%;
+}
 .m-elitecase-btn {
   padding: 20px 0 0;
   text-align: center;

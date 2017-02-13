@@ -131,10 +131,28 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
         });
     })
-    /* 职位列表页面 */
-    .controller('jobListCtrl',function ($scope) {
+    .controller('eliteHtmlCtrl',function ($scope,getService) {
         var vm = this;
 
+        getService.get_article(2).then(function (res) {
+            if (res.data.code == 0){
+                vm.articleurl = res.data.data.articleList[0].img;
+            }
+        })
+        getService.get_industry(0,8,'').then(function (res) {
+            if (res.data.code == 0){
+                vm.companyimgdata = res.data.data;
+            }
+        })
+    })
+    /* 职位列表页面 */
+    .controller('jobListCtrl',function ($scope,getService) {
+        var vm = this;
+        getService.get_profession('',10,1).then(function (res) {
+            if (res.data.code == 0){
+                vm.joblistdata = res.data.data;
+            }
+        })
     })
     /* 公司列表页面 */
     .controller('companyListCtrl',function ($scope) {
