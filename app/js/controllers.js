@@ -49,7 +49,7 @@ var mainCtrl = angular.module('mainCtrl', [])
         })
 
         /* 最新职位 */
-        getService.get_profession(0,16).then(function (res) {
+        getService.get_profession(0,16,'').then(function (res) {
           if (res.data.code == 0){
               vm.newsjob = res.data.data;
               console.log(vm.newsjob);
