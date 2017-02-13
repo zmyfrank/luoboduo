@@ -149,9 +149,9 @@ var mainCtrl = angular.module('mainCtrl', [])
         $location.search().id?id=$location.search().id:'';
         getService.search_company(id).then(function (res) {
             if (res.data.code == 0) {
-                vm.companyData = res.data.data
+                vm.companyData = res.data.data;
             };
-            console.log(vm.companyData);
+            //console.log(vm.companyData.productList);
         })
     })
     /* 职业详情页 */
