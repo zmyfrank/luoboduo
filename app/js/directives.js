@@ -78,7 +78,7 @@ var mainDirectives = angular.module('mainDirectives',[])
 
                     myfocus_wrap.stop().animate({left:-scope.dirpromise.index*scope.dirpromise.movesize},800)
                 }
-                
+
                 /* 轮播图片大小 */
                 function imgWrapSize() {
                     if (n>1020){
@@ -169,3 +169,33 @@ var mainDirectives = angular.module('mainDirectives',[])
             }
         }
     })
+    /* 职业列表分页指令 */
+    .directive('mypagintion',function (getService) {
+        /* 分页 */
+        return {
+            restrict:'AE',
+            replace:false,
+            templateUrl:'../tpls/focus/pagination.html',
+            scope:{
+                dirjoblistdata:'=',
+            },
+            link:function (scope, ele, attrs,supermanCtrl) {
+
+                /* 分页插件参数 */
+                scope.currentPage = 1; //初始页
+                getService.get_profession('',10,scope.currentPage).then(function (res) {
+                    if (res.data.code == 0){
+                        scope.dirjoblistdata = res.data.data;
+                        scope.totalItems =res.data.total;
+                    }
+                })
+                scope.pageChanged = function() {
+                    getService.get_profession('',10,scope.currentPage).then(function (res) {
+                            scope.dirjoblistdata = res.data.data;
+                    })
+                };
+                scope.maxSize = 10;
+            }
+        }
+    })
+
