@@ -27,7 +27,7 @@ var mainConstant = angular.module('mainServices', [])
             },
             /*通过id搜索公司*/
             searchCompany_url:function (id) {
-                return "/a/company/"+id;
+                return "/lbd/a/company/"+id;
             }
         }
     })
