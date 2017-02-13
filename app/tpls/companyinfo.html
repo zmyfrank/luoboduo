@@ -18,12 +18,12 @@
         <div class="m-companyinfo-wrap clearfix">
             <!-- 信息切换 -->
             <div class="m-companyinfo-switch">
-                <h2 class="active">公司详情</h2>
-                <h2>在招职位</h2>
+                <h2 ng-class="{true:'active',false:''}[vm.isActive]" ng-click='vm.isActiveT()'>公司详情</h2>
+                <h2 ng-class="{true:'',false:'active'}[vm.isActive]" ng-click='vm.isActiveF()'>在招职位</h2>
             </div>
             <!-- 公司介绍 -->
-            <div class="m-companyinfo-brief  col-xs-12 col-sm-12 col-md-8 col-lg-9">
-                <div ng-if="vm.companyData.productList.id">
+            <div  ng-class="{true:'',false:'active'}[vm.isActive]" class="m-companyinfo-brief  col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div ng-if="vm.companyData.productList.length>0">
                     <h3 class="redborder"> 公司产品</h3>
                     <div class="m-companyinfo-brief-bd clearfix" ng-repeat="item in vm.companyData.productList">
                         <div class="img-wrap  col-xs-12 col-sm-4 col-md-3">
@@ -42,14 +42,14 @@
                 </div>
             </div>
             <!-- 公司在找职位列表 -->
-            <div class="m-companyinfo-job active col-xs-12 col-sm-12 col-md-8 col-lg-9">
-                <h3 class="redborder">在招职位N个</h3>
+            <div ng-class="{true:'active',false:''}[vm.isActive]" class="m-companyinfo-job  col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <h3 class="redborder">在招职位{{ vm.jobNum }}个</h3>
                 <ul class="m-companyinfo-job-list">
                     <li>
-                        <h4>前端工程师[重庆市]</h4>
-                        <strong>8k-15k</strong>
-                        <span>1~2年/大专</span>
-                        <span>2017-01-21 20:47发布</span>
+                        <h4>{{ vm.jobData.name }}[{{ vm.jobData.city }}]</h4>
+                        <strong>{{ vm.jobData.compensation|changeJobListName:'compensationtype' }}</strong>
+                        <span>{{ vm.jobData.experience|changeJobListName:'experiencetype' }}/{{ vm.jobData.education|changeJobListName:'educationtype'  }}</span>
+                        <span>{{ vm.jobData.updateAt|date : "yyyy-MM-dd hh:mm:ss EEEE" }}发布</span>
                     </li>
                 </ul>
             </div>
