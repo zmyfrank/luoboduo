@@ -35,6 +35,10 @@ var mainConstant = angular.module('mainServices', [])
             /*通过职位id获取职位详细信息*/
             searchJobMinute_Url:function (id) {
                 return '/lbd/a/profession/'+id;
+            },
+            /*公司名模糊搜索*/
+            searchCompanyName_Url:function (name) {
+                return '/lbd/a/company/search?name='+name;
             }
         }
     })
@@ -63,6 +67,10 @@ var mainConstant = angular.module('mainServices', [])
             /*通过职位id获取职位详细信息*/
             "search_JobMinute":function (id) {
                 return $http.get(myInterface.searchJobMinute_Url(id))
+            },
+            /*公司名模糊搜索*/
+            "search_companyName":function (name) {
+                return $http.get(myInterface.searchCompanyName_Url(name))
             }
         }
     });

@@ -9,9 +9,9 @@
                     <small>{{ vm.jobMinute.companyName }}</small>
                     <ul class="tt-wages">
                         <li> {{ vm.jobMinute.compensation|changeJobListName:'compensationtype' }} </li>
-                        <li><i class="icon-jobinfo icon-location-jobdescripe"></i> {{ vm.jobMinute.province }}</li>
-                        <li><i class="icon-jobinfo icon-description-2"> </i> {{ vm.jobMinute.education }}</li>
-                        <li><i class="icon-jobinfo icon-description-1"></i> {{ vm.jobMinute.experience }} </li>
+                        <li><i class="icon-jobinfo icon-location-jobdescripe"></i> {{ vm.jobMinute.province|changeProName }}</li>
+                        <li><i class="icon-jobinfo icon-description-2"> </i> {{ vm.jobMinute.education|changeJobListName:'educationtype' }}</li>
+                        <li><i class="icon-jobinfo icon-description-1"></i> {{ vm.jobMinute.experience|changeJobListName:'experiencetype' }} </li>
                     </ul>
                     <ul class="tt-label">
                         <li ng-repeat="item in vm.jobMinute.companyTags">{{ item.companyTag }}</li>
@@ -52,7 +52,12 @@
                     <h3>基本信息</h3>
                     <ul>
                         <li><i class="icon-jobinfo icon-company-home-3"></i> {{ vm.jobMinute.totalNum }}人</li>
-                        <li><i class="icon-jobinfo icon-people"></i> 移动互联网/金融</li>
+                        <li>
+                            <i class="icon-jobinfo icon-people"></i>
+                            <ul class="breadcrumb">
+                                <li ng-repeat="item in vm.jobMinute.industryList">{{ item.industry|changeJobListName:'industrytype' }}</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
