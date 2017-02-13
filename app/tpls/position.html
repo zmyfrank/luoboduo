@@ -72,7 +72,7 @@
         <a class="pull-right" href="#/joblist">查看更多&gt;</a>
     </div>
     <div class="m-rmjob clearfix">
-        <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="item in vm.newprofessionList">
+        <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="item in vm.newprofessionList" ui-sref="app.jobinfo({id:item.id})">
             <div class="m-rmjob-wrap">
                 <div class="img-wrap pull-left">
                     <img ng-src="{{ item.logo }}" alt="">

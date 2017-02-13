@@ -110,7 +110,7 @@ var mainDirectives = angular.module('mainDirectives',[])
             templateUrl:'../tpls/focus/jobcarot.html',
             scope:{},
             link:function (scope, ele, attrs,supermanCtrl) {
-                getService.get_industry(1).then(function (res) {
+                getService.get_industry(1,'','').then(function (res) {
                     if (res.data.code == 0) {
                         scope.industry1data = res.data.approvedCompanyList;
                         //console.log(scope.industry1data);

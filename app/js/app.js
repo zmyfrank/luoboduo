@@ -106,11 +106,12 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
                     ])
                 }
             })
+            /*职位详情*/
             .state('app.jobinfo',{
-                url: '/jobinfo',
+                url: '/jobinfo?id',
                 templateUrl: 'tpls/jobinfo.html',
-                //controller:'jobInfoCtrl',
-                //controllerAs:'vm',
+                controller:'jobInfoCtrl',
+                controllerAs:'vm',
                 resolve: {
                     home_file: _lazyLoad([
                         'css/jobinfo.css'

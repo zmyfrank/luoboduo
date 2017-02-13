@@ -56,3 +56,15 @@ var mainFil = angular.module("mainFil",[]);
             return value;
         }
     });
+    /*改变省/市名*/
+    mainFil.filter('changeProName',function (PROVINCE) {
+        return function (num) {
+            var value = '';
+            angular.forEach(PROVINCE,function (data,key) {
+                if (PROVINCE[key].ProSort == num) {
+                    value = PROVINCE[key].ProName;
+                }
+            })
+            return value
+        }
+    })

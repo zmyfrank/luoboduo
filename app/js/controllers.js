@@ -103,7 +103,7 @@ var mainCtrl = angular.module('mainCtrl', [])
         function getDataP() {
             switch (vm.isActive1) {
                 case true:
-                    getService.get_profession(1,8).then(function (res) {
+                    getService.get_profession(1,8,'').then(function (res) {
                         if (res.data.code == 0) {
                             vm.newprofessionList = res.data.data;
                             //console.log(vm.newprofessionList);
@@ -111,7 +111,7 @@ var mainCtrl = angular.module('mainCtrl', [])
                     });
                     break;
                 case false:
-                    getService.get_profession(0,8).then(function (res) {
+                    getService.get_profession(0,8,'').then(function (res) {
                         if (res.data.code == 0) {
                             vm.newprofessionList = res.data.data;
                             //console.log(vm.newprofessionList);
@@ -188,9 +188,17 @@ var mainCtrl = angular.module('mainCtrl', [])
 
     })
     /* 职业详情页 */
-    .controller('jobInfoCtrl',function ($scope) {
+    .controller('jobInfoCtrl',function ($scope,getService,$location) {
         var vm = this;
-
+        //获取ID
+        $location.search().id?id=$location.search().id:id = '';
+        //通过ID获取职位响应信息
+        getService.search_JobMinute(id).then(function (res) {
+            if (res.data.code==0) {
+                vm.jobMinute = res.data.data;
+            };
+            console.log(vm.jobMinute);
+        });
     })
 
 
