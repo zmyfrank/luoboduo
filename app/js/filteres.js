@@ -55,4 +55,48 @@ var mainFil = angular.module("mainFil",[]);
             });
             return value;
         }
+    })
+
+    /* 省市县过滤  */
+    mainFil.filter('provinceFilter', function (PROVINCE) {
+        return function (id) {
+            if (id != undefined && id != '') {
+
+                var name;
+                angular.forEach(PROVINCE, function (data) {
+                    if (data.ProID == id) {
+                        name = data.ProName;
+                    }
+                });
+                return name;
+            }
+        }
+    });
+
+    mainFil.filter('cityFilter', function (CITY) {
+        return function (id) {
+            if (id != undefined && id != '') {
+                var name;
+                angular.forEach(CITY, function (data) {
+                    if (data.CityID == id) {
+                        name = data.CityName;
+                    }
+                });
+                return name;
+            }
+        }
+    });
+
+    mainFil.filter('countyFilter', function (COUNTY) {
+        return function (id) {
+            if (id != undefined && id != '') {
+                var name;
+                angular.forEach(COUNTY, function (data) {
+                    if (data.Id == id) {
+                        name = data.countyName;
+                    }
+                });
+                return name;
+            }
+        }
     });

@@ -149,27 +149,7 @@ var mainCtrl = angular.module('mainCtrl', [])
     /* 职位列表页面 */
     .controller('jobListCtrl',function ($scope,getService) {
         var vm = this;
-        getService.get_profession('',10,1).then(function (res) {
-            if (res.data.code == 0){
-                vm.joblistdata = res.data.data;
-            }
-        })
 
-        /* 分页 */
-        $scope.totalItems = 64;
-        $scope.currentPage = 4;
-
-        $scope.setPage = function (pageNo) {
-            $scope.currentPage = pageNo;
-        };
-
-        $scope.pageChanged = function() {
-            $log.log('Page changed to: ' + $scope.currentPage);
-        };
-
-        $scope.maxSize = 5;
-        $scope.bigTotalItems = 175;
-        $scope.bigCurrentPage = 1;
     })
     /* 公司列表页面 */
     .controller('companyListCtrl',function ($scope) {
@@ -180,7 +160,7 @@ var mainCtrl = angular.module('mainCtrl', [])
     .controller('companyInfoCtrl',function ($scope,$location,getService) {
         var vm = this;
         var id = '';
-        vm.isActive = true;
+        vm.isActive = false;
         $location.search().id?id=$location.search().id:'';
         /*获取公司详情*/
         getService.search_company(id).then(function (res) {
