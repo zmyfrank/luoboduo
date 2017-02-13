@@ -7,7 +7,7 @@ var mainConstant = angular.module('mainServices', [])
         return {
             'pages': function () {
                 return $cookieStore.get('pages');
-            },
+            }
         };
     })
 
@@ -24,6 +24,10 @@ var mainConstant = angular.module('mainServices', [])
             /*公司信息&在招职位*/
             industry_url:function (type) {
                 return "/lbd/a/company/search?returnPage="+type;
+            },
+            /*通过id搜索公司*/
+            searchCompany_url:function (id) {
+                return "/a/company/"+id;
             }
         }
     })
@@ -40,6 +44,10 @@ var mainConstant = angular.module('mainServices', [])
             /*公司信息&在招职位*/
             "get_industry":function (type) {
                 return $http.get(myInterface.industry_url(type))
+            },
+            /*通过id搜索公司*/
+            "search_company":function (id) {
+                return $http.get(myInterface.searchCompany_url(id))
             }
         }
     })
