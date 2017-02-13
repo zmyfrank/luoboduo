@@ -198,4 +198,34 @@ var mainDirectives = angular.module('mainDirectives',[])
             }
         }
     })
+    /* 公司列表分页指令 */
+    .directive('mypagintion2',function (getService) {
+        /* 分页 */
+        return {
+            restrict:'AE',
+            replace:false,
+            templateUrl:'../tpls/focus/pagination.html',
+            scope:{
+                dirjoblistdata:'=',
+            },
+            link:function (scope, ele, attrs,supermanCtrl) {
+
+                /* 分页插件参数 */
+                scope.currentPage = 1; //初始页
+                getService.get_profession('',10,scope.currentPage).then(function (res) {
+                    if (res.data.code == 0){
+                        scope.dirjoblistdata = res.data.data;
+                        scope.totalItems =res.data.total;
+                    }
+                })
+                scope.pageChanged = function() {
+                    getService.get_profession('',10,scope.currentPage).then(function (res) {
+                        scope.dirjoblistdata = res.data.data;
+                    })
+                };
+                scope.maxSize = 10;
+            }
+        }
+    })
+
 
