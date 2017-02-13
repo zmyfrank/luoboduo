@@ -72,8 +72,8 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             .state('app.companylist', {
                 url: '/companylist',
                 templateUrl: 'tpls/companylist.html',
-                //controller:'companyListCtrl',
-                //controllerAs:'vm',
+                controller:'companyListCtrl',
+                controllerAs:'vm',
                 resolve: {
                     home_file: _lazyLoad([
                         'css/position.css'

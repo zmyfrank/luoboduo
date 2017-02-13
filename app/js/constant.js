@@ -203,6 +203,9 @@ var mainConstant = angular.module('mainConstant', [])
         // ]
         // begin 找职位面板的分类列表
     })
+    .constant('jobList',{
+
+    })
     // 一级分类
     .constant('jobType', [
         {type: 1, name: "用户体验"},
@@ -273,3 +276,104 @@ var mainConstant = angular.module('mainConstant', [])
             {type: 1, name: '昨天'}
         ]
     })
+    /*找工作页面上侧选择begin*/
+    /*用户体验*/
+    .constant('userFellType',[
+        {
+            name: "产品",
+            data: [
+                {type: 1, name: '助理', choose: false},
+                {type: 2, name: '初级', choose: false},
+                {type: 3, name: '中级', choose: false},
+                {type: 4, name: '高级', choose: false},
+                {type: 5, name: '总监', choose: false}]
+        },
+        {
+            name: "UI",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false},
+                {type: 4, name: '总监', choose: false}
+            ]
+        },
+        {
+            name: "QA",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        }
+    ])
+    /*研发*/
+    .constant('developType',[
+        {
+            name: "Android",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        },
+        {
+            name: "IOS",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        },
+        {
+            name: "WEB",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        },
+        {
+            name: "OP",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        },
+        {
+            name: "Java",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false},
+                {type: 4, name: '总监', choose: false}
+            ]
+        },
+    ])
+    /*大数据*/
+    .constant('bigdataType',[
+        {
+            name: "NLP",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        },
+        {
+            name: "DM",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        },
+        {
+            name: "DL",
+            data: [
+                {type: 1, name: '初级', choose: false},
+                {type: 2, name: '中级', choose: false},
+                {type: 3, name: '高级', choose: false}
+            ]
+        }
+    ])

@@ -11,7 +11,7 @@ var mainCtrl = angular.module('mainCtrl', [])
             vm.pagesBtn = function(index){
                 $cookieStore.put('pages',index);
                 vm.focuspage = index;
-            }
+            };
             /* 底部联系我们跳转 */
             vm.aboutWe = function(bl){
                 aboutWe.toggle=bl;
@@ -37,7 +37,7 @@ var mainCtrl = angular.module('mainCtrl', [])
             'Xaxis':true,
             'Yaxis':false,
             'elelength':true,
-            'data':partnerSay.partnersay_data,
+            'data':partnerSay.partnersay_data
         };
 
         /* 获取banner图列表 */
@@ -87,14 +87,49 @@ var mainCtrl = angular.module('mainCtrl', [])
         })
     })
     /* 找职位 */
-    .controller('jobHtmlCtrl',function ($scope,getService,$filter) {
+    .controller('jobHtmlCtrl',function ($scope,getService,$filter,userFellType,developType,bigdataType) {
         var vm = this;
-        getService.get_profession(1,8).then(function (res) {
-            if (res.data.code == 0) {
-                vm.newprofessionList = res.data.data;
-                console.log(vm.newprofessionList);
+        vm.isActive1 = true;
+        //改变状态，并且重新获取
+        vm.changeActive1T = function () {
+            vm.isActive1 = true;
+            getDataP();
+        };
+        vm.changeActive1F = function () {
+            vm.isActive1 = false;
+            getDataP();
+        };
+        //获取数据的函数
+        function getDataP() {
+            switch (vm.isActive1) {
+                case true:
+                    getService.get_profession(1,8).then(function (res) {
+                        if (res.data.code == 0) {
+                            vm.newprofessionList = res.data.data;
+                            //console.log(vm.newprofessionList);
+                        }
+                    });
+                    break;
+                case false:
+                    getService.get_profession(0,8).then(function (res) {
+                        if (res.data.code == 0) {
+                            vm.newprofessionList = res.data.data;
+                            //console.log(vm.newprofessionList);
+                        }
+                    });
+                    break;
             }
-        })
+        }
+        getDataP();
+        vm.userFellType = userFellType;
+        vm.developType = developType;
+        vm.bigdataType = bigdataType;
+        //获取推荐公司
+        getService.get_industry(1).then(function (res) {
+            if (res.data.code == 0) {
+                vm.approvedCompanyList1 = res.data.approvedCompanyList;
+            }
+        });
     })
     /* 职位列表页面 */
     .controller('jobListCtrl',function ($scope) {

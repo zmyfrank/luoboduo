@@ -68,6 +68,14 @@ i[class^="icon-jobnav icon-zzz-"] {
   border: 1px solid #fc2b47;
   border-left-width: 0;
 }
+.m-jobsnav span {
+  display: inline-block;
+  color: #fc2b47;
+  font-size: 16px;
+  margin: 10px 10px 10px 0;
+  text-align: right;
+  width: 60px;
+}
 .m-jobsnav.jobsnav2 {
   top: -150px;
 }
@@ -75,25 +83,19 @@ i[class^="icon-jobnav icon-zzz-"] {
   top: -300px;
 }
 .m-jobsnav .breadcrumb {
+  display: inline-block;
   margin-bottom: 10px;
 }
 .m-jobsnav .breadcrumb li {
   cursor: pointer;
+  padding: 0 10px;
 }
-.m-jobsnav .breadcrumb li:first-child {
-  display: inline-block;
-  color: #fc2b47;
-  font-size: 16px;
-  margin: 10px 10px 10px 0;
+.m-jobsnav .breadcrumb li:nth-child(n+2) {
+  border-left: 1px solid #eee;
 }
 .m-jobsnav .breadcrumb > li + li:before {
   padding: 0;
   content: "";
-}
-.m-jobsnav .breadcrumb > li + li:after {
-  padding: 0 10px;
-  color: #eee;
-  content: "|\00a0";
 }
 /* 搜索轮播 */
 .m-jobfocus {
