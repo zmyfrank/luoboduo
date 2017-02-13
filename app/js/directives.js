@@ -117,26 +117,26 @@ var mainDirectives = angular.module('mainDirectives',[])
                         scope.newInd = $filter('reachIndustry')(scope.industry1data,'industryList');
 
                         //console.log(scope.newInd);
-                        scope.myInterval = 5000000;
-                        var slides = scope.slides = [];
+                        scope.myInterval = 5000;
+                        scope.slides = scope.industry1data ;
                         var currIndex = 0;
 
-                        scope.addIndustry1 = function () {
-                            slides.push({
-                                image:scope.newInd[i].logo,
-                                name:scope.newInd[i].name,
-                                slogan:scope.newInd[i].slogan,
-                                professionList:scope.newInd[i].professionList,
-                                industryList:scope.newInd[i].industryList,
-                                id: currIndex++
-                            })
-                        }
-
-                        for (var i = 0; i < 4; i++) {
-                            scope.addIndustry1();
-                            //console.log(scope.industry1);
-                            //console.log(scope.newInd[i].logo);
-                        };
+                        // scope.addIndustry1 = function () {
+                        //     slides.push({
+                        //         image:scope.newInd[i].logo,
+                        //         name:scope.newInd[i].name,
+                        //         slogan:scope.newInd[i].slogan,
+                        //         professionList:scope.newInd[i].professionList,
+                        //         industryList:scope.newInd[i].industryList,
+                        //         id:currIndex++
+                        //     })
+                        // }
+                        //
+                        // for (var i = 0; i < 4; i++) {
+                        //     scope.addIndustry1();
+                        //     //console.log(scope.industry1);
+                        //     //console.log(scope.newInd[i].logo);
+                        // };
                     }
                 });
             }

@@ -109,9 +109,9 @@
         </div>
         <div class="col-xs-12 col-sm-7 col-md-8">
             <div class="m-rmcompany-left">
-                <div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="items in vm.approvedCompanyList1" ui-sref="app.companylist">
+                <div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="items in vm.approvedCompanyList1" ui-sref="app.companyinfo({id:items.id})">
                     <div class="img-wrap">
-                        <img ng-src="{{ items.logo }}" alt="">
+                        <img ng-src="{{ items.logo }}" alt="logo图">
                     </div>
                 </div>
             </div>

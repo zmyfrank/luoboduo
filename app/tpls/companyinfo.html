@@ -4,14 +4,14 @@
 <div class="container">
     <div class="row">
         <div class="m-companyinfott clearfix">
-            <div class="imgwrap col-xs-12 col-sm-4 col-md-3">
-                <img class="f-abscenter" src="img/job/hb.png" alt="">
+            <div class="img-wrap col-xs-12 col-sm-4 col-md-3">
+                <img class="f-abscenter" ng-src="{{ vm.companyData.company.logo }}" alt="">
             </div>
             <div class="m-companyinfott-info col-xs-12 col-sm-8 col-md-9">
-                <h1>北京咸蛋科技有限公司 </h1>
+                <h1>{{ vm.companyData.company.name }} </h1>
                 <small>萝卜多认证</small>
-                <p>高格调商品、高颜值导购、高速度配送的购物体验</p>
-                <p>咸蛋家</p>
+                <p>{{ vm.companyData.company.slogan }}</p>
+                <p ng-repeat="item in  vm.companyData.productList">{{ item.name }}</p>
             </div>
         </div>
         <!-- 公司详细信息 -->
@@ -23,46 +23,22 @@
             </div>
             <!-- 公司介绍 -->
             <div class="m-companyinfo-brief  col-xs-12 col-sm-12 col-md-8 col-lg-9">
-                <div>
+                <div ng-if="vm.companyData.productList.id">
                     <h3 class="redborder"> 公司产品</h3>
-                    <div class="m-companyinfo-brief-bd clearfix">
+                    <div class="m-companyinfo-brief-bd clearfix" ng-repeat="item in vm.companyData.productList">
                         <div class="img-wrap  col-xs-12 col-sm-4 col-md-3">
-                            <img class="f-abscenter" src="img/job/hb.png" alt="">
+                            <img class="f-abscenter" ng-src="{{ item.logo }}" alt="">
                         </div>
                         <div class="col-xs-12 col-sm-8 col-md-9">
-                            <strong>咸蛋家</strong>
-                            <p>用户可以通过iOS+安卓设备随时查看附近的高颜值超人的直播内容，用户通过直播全面了解商品，下单后由超人亲自送货上门。</p>
-                            <p>高颜值”、“闪电送货</p>
+                            <strong>{{ item.name }}</strong>
+                            <p>{{ item.summary }}</p>
+                            <p>{{ item.slogan }}</p>
                         </div>
                     </div>
                 </div>
                 <div>
                     <h3 class="redborder">公司介绍</h3>
-                    <p>我们的用户
-                    <p>目标用户：
-                    <p>22 - 30岁之间的年轻城市群体。</p>
-                    <p>他们爱玩爱闹、有不错的消费能力；</p>
-                    <p>他们接收的资讯丰富，但相信网红达人；</p>
-                    <p>他们人手一部智能手机，用手机上网娱乐的时长不低于使用电脑；</p>
-
-                    <p>未来的我们
-                    <p>在传统消费场景中，线下商场和电视购物并存，各有市场</p>
-                    <p>在移动消费场景中，咸蛋家希望能够与淘宝、京东并存，成为手机上的“电视购物”！</p>
-
-                    <p>与我们相似的产品</p>
-                    <p>波罗蜜全球购 融资3000万美金 视频验证海淘；</p>
-                    <p>映客 估值8000万美金 手机视频直播秀场；</p>
-                    <p>17 估值1亿美金 手机视频直播社交；</p>
-
-                    <p>我们的优势：</p>
-                    <p>1、可以在地图上查看附近正在直播的超人；</p>
-                    <p>2、直播&送货的超人，都是具有某方面特长的达人网红；</p>
-                    <p>3、明星股东的助阵，对人气和话题都有很大帮助；</p>
-                    <p> 4、通过有趣有话题性的直播内容，提高用户使用频次；</p>
-                    <p>5、超人网红化，用户粉丝化，有助于转化率的提升。</p>
-                    <p> 其他</p>
-                    <p> 用户通过观看超人的视频直播，全方位了解商品（有的超人还会现场直播体验），用户下单后，超人会通过同城闪送或快递以最快速度为用户送达，对于购物金额满足“亲自送”额度的，则由超人亲自送货</p>
-                    <p> 超人还会直播送货过程，让整个购物过程可信、高效、有趣！</p>
+                    <p>{{ vm.companyData.company.summary }}</p>
                 </div>
             </div>
             <!-- 公司在找职位列表 -->
@@ -81,19 +57,18 @@
             <div class="m-companyinfo-Side col-xs-12 col-sm-12 col-md-4 col-lg-3">
                 <h4>公司信息</h4>
                 <ul class="m-companyinfo-Side-info">
-                    <li>150人</li>
-                    <li>移动互联网</li>
-                    <li>北京市</li>
+                    <li>人数：{{ vm.companyData.company.totalNum }}人</li>
+                    <li>
+                        <p>行业：</p>
+                        <ul class="breadcrumb">
+                            <li ng-repeat="item2 in vm.companyData.industryList">{{ item2.industry|changeJobListName:'industrytype'}}</li>
+                        </ul>
+                    </li>
+                    <li>城市：{{ vm.companyData.company.city }}</li>
                 </ul>
-                <h4>公司标签</h4>
+                <h4 ng-if="vm.companyData.tagList.length>0">公司标签</h4>
                 <ul class="m-companyinfo-Side-label">
-                    <li>股票期权</li>
-                    <li>岗位晋升</li>
-                    <li>扁平管理</li>
-                    <li>帅哥多</li>
-                    <li>领导好</li>
-                    <li>美女多</li>
-                    <li>五险一金</li>
+                    <li ng-repeat="item in vm.companyData.tagList">{{ item.tag }}</li>
                 </ul>
             </div>
         </div>

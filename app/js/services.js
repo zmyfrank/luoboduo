@@ -7,7 +7,7 @@ var mainConstant = angular.module('mainServices', [])
         return {
             'pages': function () {
                 return $cookieStore.get('pages');
-            },
+            }
         };
     })
     .factory('myInterface',function () {
@@ -23,6 +23,12 @@ var mainConstant = angular.module('mainServices', [])
             /*公司信息&在招职位*/
             industry_url:function (type,size,page) {
                 return "/lbd/a/company/search?returnPage="+type+'&size='+size+'&page='+page;
+            industry_url:function (type) {
+                return "/lbd/a/company/search?returnPage="+type;
+            },
+            /*通过id搜索公司*/
+            searchCompany_url:function (id) {
+                return "/lbd/a/company/"+id;
             }
         }
     })
@@ -39,6 +45,12 @@ var mainConstant = angular.module('mainServices', [])
             /*公司信息&在招职位*/
             "get_industry":function (type,size,page) {
                 return $http.get(myInterface.industry_url(type,size,page))
+            "get_industry":function (type) {
+                return $http.get(myInterface.industry_url(type))
+            },
+            /*通过id搜索公司*/
+            "search_company":function (id) {
+                return $http.get(myInterface.searchCompany_url(id))
             }
         }
     })

@@ -96,10 +96,10 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             })
             /* 公司详情 */
             .state('app.companyinfo',{
-                url: '/companyinfo',
+                url: '/companyinfo?id',
                 templateUrl: 'tpls/companyinfo.html',
-                //controller:'companyInfoCtrl',
-                //controllerAs:'vm',
+                controller:'companyInfoCtrl',
+                controllerAs:'vm',
                 resolve: {
                     home_file: _lazyLoad([
                         'css/companyinfo.css'

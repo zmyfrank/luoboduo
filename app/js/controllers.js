@@ -121,6 +121,7 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
         }
         getDataP();
+        //顶部选项卡的数据
         vm.userFellType = userFellType;
         vm.developType = developType;
         vm.bigdataType = bigdataType;
@@ -160,9 +161,16 @@ var mainCtrl = angular.module('mainCtrl', [])
 
     })
     /* 公司详情页 */
-    .controller('companyInfoCtrl',function ($scope) {
+    .controller('companyInfoCtrl',function ($scope,$location,getService) {
         var vm = this;
-
+        var id = '';
+        $location.search().id?id=$location.search().id:'';
+        getService.search_company(id).then(function (res) {
+            if (res.data.code == 0) {
+                vm.companyData = res.data.data;
+            };
+            //console.log(vm.companyData.productList);
+        })
     })
     /* 职业详情页 */
     .controller('jobInfoCtrl',function ($scope) {

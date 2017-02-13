@@ -10,7 +10,7 @@ body {
 .m-companyinfott {
   background: #fff;
   margin-top:20px;
-  .imgwrap {
+  .img-wrap {
     height:200px;
     border: 1px solid #e8e8e8;
     background: #fff;
@@ -70,7 +70,7 @@ body {
 
 /* 公司介绍 */
 .m-companyinfo-brief {
-  border-right: 3px solid #f4f4f4;
+  //border-right: 3px solid #f4f4f4;
 }
 /* 侧边红边框 */
 .redborder {
@@ -85,9 +85,9 @@ body {
   }
 }
 /* 公司在招职位 */
-.m-companyinfo-job {
-  border-right: 3px solid #f4f4f4;
-}
+//.m-companyinfo-job {
+//  border-right: 3px solid #f4f4f4;
+//}
 .m-companyinfo-job-list {
   li {
     display: flex;
@@ -118,11 +118,15 @@ body {
 /* 公司信息侧边栏 */
 .m-companyinfo-Side {
   padding-left: 40px;
+  border-left: 3px solid #f4f4f4;
 }
 .m-companyinfo-Side-info{
   padding: 20px 0 20px 20px;
   li{
     padding: 10px;
+  }
+  p{
+    display: inline-block;
   }
 }
 
@@ -135,5 +139,17 @@ body {
     font-size: 12px;
     border: 1px solid #d9d9d9;
     border-radius: 25px;
+  }
+}
+/*重置breadcumb的样式*/
+.breadcrumb {
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-radius: 0;
+  li {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
