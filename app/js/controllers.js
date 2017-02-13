@@ -126,7 +126,7 @@ var mainCtrl = angular.module('mainCtrl', [])
         vm.developType = developType;
         vm.bigdataType = bigdataType;
         //获取推荐公司
-        getService.get_industry(1).then(function (res) {
+        getService.get_industry(1,'','').then(function (res) {
             if (res.data.code == 0) {
                 vm.approvedCompanyList1 = res.data.approvedCompanyList;
             }
@@ -164,13 +164,28 @@ var mainCtrl = angular.module('mainCtrl', [])
     .controller('companyInfoCtrl',function ($scope,$location,getService) {
         var vm = this;
         var id = '';
+        vm.isActive = true;
         $location.search().id?id=$location.search().id:'';
+        /*获取公司详情*/
         getService.search_company(id).then(function (res) {
             if (res.data.code == 0) {
                 vm.companyData = res.data.data;
             };
-            //console.log(vm.companyData.productList);
+        });
+        /*获取公司在招职位详情*/
+        getService.search_job(id).then(function (res) {
+            if (res.data.code == 0) {
+                vm.jobData = res.data.data;
+                vm.jobNum = res.data.total;
+            }
         })
+        vm.isActiveT = function () {
+            vm.isActive = true;
+        };
+        vm.isActiveF = function () {
+            vm.isActive = false
+        }
+
     })
     /* 职业详情页 */
     .controller('jobInfoCtrl',function ($scope) {
