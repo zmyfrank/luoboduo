@@ -22,7 +22,8 @@ var mainConstant = angular.module('mainServices', [])
             },
             /*公司信息&在招职位*/
             industry_url:function (type,size,page) {
-                return "/lbd/a/company/search?returnPage="+type+'&size='+size+'&page='+page;
+                return "/lbd/a/company/search?returnPage=" + type + '&size=' + size + '&page=' + page;
+            },
             industry_url:function (type) {
                 return "/lbd/a/company/search?returnPage="+type;
             },
@@ -44,7 +45,8 @@ var mainConstant = angular.module('mainServices', [])
             },
             /*公司信息&在招职位*/
             "get_industry":function (type,size,page) {
-                return $http.get(myInterface.industry_url(type,size,page))
+                return $http.get(myInterface.industry_url(type, size, page))
+            },
             "get_industry":function (type) {
                 return $http.get(myInterface.industry_url(type))
             },
