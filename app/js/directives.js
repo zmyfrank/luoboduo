@@ -170,8 +170,8 @@ var mainDirectives = angular.module('mainDirectives',[])
         }
     })
     /* 职业列表分页指令 */
-    .directive('mypagintion',function (getService) {
-        /* 分页 */
+/*    .directive('mypagintion',function (getService) {
+        /!* 分页 *!/
         return {
             restrict:'AE',
             replace:false,
@@ -181,7 +181,7 @@ var mainDirectives = angular.module('mainDirectives',[])
             },
             link:function (scope, ele, attrs,supermanCtrl) {
 
-                /* 分页插件参数 */
+                /!* 分页插件参数 *!/
                 scope.currentPage = 1; //初始页
                 getService.get_profession('',10,scope.currentPage).then(function (res) {
                     if (res.data.code == 0){
@@ -197,19 +197,20 @@ var mainDirectives = angular.module('mainDirectives',[])
                 scope.maxSize = 10;
             }
         }
-    })
+    })*/
     /* 公司列表分页指令 */
-    .directive('mypagintion2',function (getService) {
+    .directive('mypagintion',function (getService) {
         /* 分页 */
         return {
             restrict:'AE',
             replace:false,
             templateUrl:'../tpls/focus/pagination.html',
             scope:{
-                dirjoblistdata:'=',
+                dirvm : '&',
             },
             link:function (scope, ele, attrs,supermanCtrl) {
-
+                console.log(scope.$parent.vm.ss());
+                console.log(scope.dirvm());
                 /* 分页插件参数 */
                 scope.currentPage = 1; //初始页
                 getService.get_profession('',10,scope.currentPage).then(function (res) {

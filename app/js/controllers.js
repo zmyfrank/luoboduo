@@ -154,6 +154,11 @@ var mainCtrl = angular.module('mainCtrl', [])
                 vm.joblistdata = res.data.data;
             }
         })
+
+        vm.ss = function () {
+            console.log("ss");
+        }
+        vm.aa = '2';
     })
     /* 公司列表页面 */
     .controller('companyListCtrl',function ($scope) {
