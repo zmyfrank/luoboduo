@@ -154,6 +154,22 @@ var mainCtrl = angular.module('mainCtrl', [])
                 vm.joblistdata = res.data.data;
             }
         })
+
+        /* 分页 */
+        $scope.totalItems = 64;
+        $scope.currentPage = 4;
+
+        $scope.setPage = function (pageNo) {
+            $scope.currentPage = pageNo;
+        };
+
+        $scope.pageChanged = function() {
+            $log.log('Page changed to: ' + $scope.currentPage);
+        };
+
+        $scope.maxSize = 5;
+        $scope.bigTotalItems = 175;
+        $scope.bigCurrentPage = 1;
     })
     /* 公司列表页面 */
     .controller('companyListCtrl',function ($scope) {
@@ -173,9 +189,8 @@ var mainCtrl = angular.module('mainCtrl', [])
         })
     })
     /* 职业详情页 */
-    .controller('jobInfoCtrl',function ($scope) {
-        var vm = this;
+    .controller('PaginationDemoCtrl', function ($scope, $log) {
 
-    })
+    });
 
 
