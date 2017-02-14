@@ -598,7 +598,11 @@ i[class^="icon-jobnav icon-zzz-"] {
   background-color: #fff;
   padding: 15px 20px;
   .control-label {
-    padding-top: 0;
+    padding-top: 3px;
+    text-align:inherit;
+  }
+  .form-control {
+    width: 40%;
   }
   ul {
     display: inline-block;
@@ -606,9 +610,14 @@ i[class^="icon-jobnav icon-zzz-"] {
     li{
       display: inline-block;
       padding: 3px 13px;
+      cursor: pointer;
+      &:nth-child(n+2) {
+        margin-left: 10px;
+      }
     }
     .active {
       background-color: #EB5255;
+      color: #fff;
     }
   }
 }

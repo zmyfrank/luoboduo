@@ -166,7 +166,7 @@ var mainCtrl = angular.module('mainCtrl', [])
 
     })
     /* 公司列表页面 */
-    .controller('companyListCtrl',function ($scope,getService) {
+    .controller('companyListCtrl',function ($scope,getService,searchOptions) {
         var vm = this;
         /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
         /* 分页数据请求 */

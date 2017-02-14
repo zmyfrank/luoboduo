@@ -46,7 +46,7 @@
                 <h3 class="redborder">在招职位{{ vm.jobNum }}个</h3>
                 <ul class="m-companyinfo-job-list">
                     <li ng-repeat="item in vm.jobData" ui-sref="app.jobinfo({id:item.id})">
-                        <h4>{{ item.name }}[{{ item.city|changeProName }}]</h4>
+                        <h4>{{ item.name }}</h4>
                         <strong>{{ item.compensation|changeJobListName:'compensationtype' }}</strong>
                         <span>{{ item.experience|changeJobListName:'experiencetype' }}/{{ item.education|changeJobListName:'educationtype'  }}</span>
                         <span>{{ item.updateAt|date : "yyyy-MM-dd hh:mm:ss" }}发布</span>
