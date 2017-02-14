@@ -169,36 +169,7 @@ var mainDirectives = angular.module('mainDirectives',[])
             }
         }
     })
-    /* 职业列表分页指令 */
-/*    .directive('mypagintion',function (getService) {
-        /!* 分页 *!/
-        return {
-            restrict:'AE',
-            replace:false,
-            templateUrl:'../tpls/focus/pagination.html',
-            scope:{
-                dirjoblistdata:'=',
-            },
-            link:function (scope, ele, attrs,supermanCtrl) {
-
-                /!* 分页插件参数 *!/
-                scope.currentPage = 1; //初始页
-                getService.get_profession('',10,scope.currentPage).then(function (res) {
-                    if (res.data.code == 0){
-                        scope.dirjoblistdata = res.data.data;
-                        scope.totalItems =res.data.total;
-                    }
-                })
-                scope.pageChanged = function() {
-                    getService.get_profession('',10,scope.currentPage).then(function (res) {
-                            scope.dirjoblistdata = res.data.data;
-                    })
-                };
-                scope.maxSize = 10;
-            }
-        }
-    })*/
-    /* 公司列表分页指令 */
+    /* 分页指令 */
     .directive('mypagintion',function (getService) {
         /* 分页 */
         return {
@@ -206,25 +177,20 @@ var mainDirectives = angular.module('mainDirectives',[])
             replace:false,
             templateUrl:'../tpls/focus/pagination.html',
             scope:{
-                dirvm : '&',
+                total:'=',
             },
             link:function (scope, ele, attrs,supermanCtrl) {
-                console.log(scope.$parent.vm.ss());
-                console.log(scope.dirvm());
                 /* 分页插件参数 */
                 scope.currentPage = 1; //初始页
-                getService.get_profession('',10,scope.currentPage).then(function (res) {
-                    if (res.data.code == 0){
-                        scope.dirjoblistdata = res.data.data;
-                        scope.totalItems =res.data.total;
+                scope.$parent.vm.pagingdata(scope.currentPage)
+                scope.$watch('total',function (n,o) {
+                    if (n!=o) {
+                        scope.totalItems = scope.total;
                     }
                 })
                 scope.pageChanged = function() {
-                    getService.get_profession('',10,scope.currentPage).then(function (res) {
-                        scope.dirjoblistdata = res.data.data;
-                    })
+                    scope.$parent.vm.pagingdata(scope.currentPage);
                 };
-                scope.maxSize = 10;
             }
         }
     })

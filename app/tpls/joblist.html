@@ -4,7 +4,7 @@
     <div class="row">
         <!-- 公司列表 -->
         <div class="m-joblist">
-            <div class="m-joblist-wrap clearfix" ng-repeat="data in joblistdata">
+            <div class="m-joblist-wrap clearfix" ng-repeat="data in vm.joblistdata">
                 <div class="m-joblist-left col-xs-12 col-sm-6 col-md-6">
                     <h5> <strong>{{data.name}}({{data.province|provinceFilter}})</strong><small>发布时间：{{data.updateAt| date:'yyyy-MM-dd HH:mm'}}</small></h5>
                     <p>{{data.compensation|changeJobListName:'compensationtype'}}</p>
@@ -28,6 +28,6 @@
                 </div>
             </div>
         </div>
-        <mypagintion   dirjoblistdata = "joblistdata"></mypagintion>
+        <mypagintion total='vm.totalItems'></mypagintion>
     </div>
 </div>
