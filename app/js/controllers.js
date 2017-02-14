@@ -149,16 +149,17 @@ var mainCtrl = angular.module('mainCtrl', [])
     /* 职位列表页面 */
     .controller('jobListCtrl',function ($scope,getService) {
         var vm = this;
-        getService.get_profession('',10,1).then(function (res) {
-            if (res.data.code == 0){
-                vm.joblistdata = res.data.data;
-            }
-        })
 
-        vm.ss = function () {
-            console.log("ss");
+        /* 分页数据请求 */
+        vm.pagingdata = function (page) {
+            getService.get_profession('',10,page).then(function (res) {
+                if (res.data.code == 0){
+                    vm.joblistdata = res.data.data;
+                    vm.totalItems = res.data.total;
+                }
+            })
         }
-        vm.aa = '2';
+
     })
     /* 公司列表页面 */
     .controller('companyListCtrl',function ($scope) {
