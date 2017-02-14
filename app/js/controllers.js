@@ -165,7 +165,7 @@ var mainCtrl = angular.module('mainCtrl', [])
 
     })
     /* 公司列表页面 */
-    .controller('companyListCtrl',function ($scope,getService) {
+    .controller('companyListCtrl',function ($scope,getService,searchOptions) {
         var vm = this;
         /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
         getService.get_industry('',9,1).then(function (res) {
@@ -173,14 +173,14 @@ var mainCtrl = angular.module('mainCtrl', [])
                 vm.companyList = res.data.data;
             }
         })
-
+        vm.searchOption = searchOptions;
     })
     /* 公司详情页 */
     .controller('companyInfoCtrl',function ($scope,$location,getService) {
         var vm = this;
         var id = '';
         vm.isActive = true;
-        $location.search().id?id=$location.search().id:'';
+        $location.search().id?id=$location.search().id:id='';
         /*获取公司详情*/
         getService.search_company(id).then(function (res) {
             if (res.data.code == 0) {

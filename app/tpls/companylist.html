@@ -13,13 +13,48 @@
         <form class="form-horizontal">
             <div class="form-group row">
                 <label for="name" class="control-label col-md-1">关&nbsp;键&nbsp;字&nbsp;&nbsp;:</label>
-                <input class="col-md-6" type="text" name="name" id="name" placeholder="请输入公司名字，如：联想">
+                <input class="col-md-6 form-control" type="text" name="name" id="name" placeholder="请输入公司名字，如：联想">
             </div>
-            <div class="form-group row">
+            <div class="form-group">
                 <label class="control-label col-md-1" for="">所在地区：</label>
                 <ul class="col-md-11">
-                    <li>不限</li>
-                    <li>北京</li>
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">职位类别：</label>
+                <ul class="col-md-11">
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">所在地区：</label>
+                <ul class="col-md-11">
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">所在地区：</label>
+                <ul class="col-md-11">
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">所在地区：</label>
+                <ul class="col-md-11">
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">所在地区：</label>
+                <ul class="col-md-11">
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">所在地区：</label>
+                <ul class="col-md-11">
+                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
                 </ul>
             </div>
         </form>
