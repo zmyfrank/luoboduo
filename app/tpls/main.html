@@ -51,11 +51,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-3 col-md-4">
-                    <h5><a ui-sref=".we" ng-click="vm.aboutWe(true)">关于我们</a></h5>
+                    <h5><a ui-sref=".we"  ui-sref-opts="{reload:true}" ng-click="vm.aboutWe(true)">关于我们</a></h5>
                     <p>萝卜多——知根知底的社群招聘</p>
                 </div>
                 <div class="col-xs-12 col-sm-5 col-md-4">
-                    <h5><a ui-sref=".we" ng-click="vm.aboutWe(false)">联系我们</a></h5>
+                    <h5><a ui-sref=".we"  ui-sref-opts="{reload:true}" ng-click="vm.aboutWe(false)">联系我们</a></h5>
                     <ul class="contactmode">
                         <li><i class="icon-phone weicon"></i> 联系电话：（010）59478634 </li>
                         <li><i class="icon-email weicon"></i> 邮箱支持：fuhua@ptteng.com </li>
@@ -68,7 +68,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- 版权 -->
     <div class="copyright">

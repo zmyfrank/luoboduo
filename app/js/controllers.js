@@ -52,7 +52,7 @@ var mainCtrl = angular.module('mainCtrl', [])
         getService.get_profession(0,16,'').then(function (res) {
           if (res.data.code == 0){
               vm.newsjob = res.data.data;
-              console.log(vm.newsjob);
+              //console.log(vm.newsjob);
               /* 最新职位轮播 */
               $scope.myInterval = 5000;
               $scope.noWrapSlides = false;
@@ -135,6 +135,7 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
         });
     })
+    /* 找精英页面 */
     .controller('eliteHtmlCtrl',function ($scope,getService) {
         var vm = this;
 
@@ -168,11 +169,15 @@ var mainCtrl = angular.module('mainCtrl', [])
     .controller('companyListCtrl',function ($scope,getService) {
         var vm = this;
         /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
-        getService.get_industry('',9,1).then(function (res) {
-            if (res.data.code == 0) {
-                vm.companyList = res.data.data;
-            }
-        })
+        /* 分页数据请求 */
+        vm.pagingdata = function (page) {
+            getService.get_industry('',9,page).then(function (res) {
+                if (res.data.code == 0) {
+                    vm.companyList = res.data.data;
+                    vm.totalItems = res.data.total;
+                }
+            })
+        }
 
     })
     /* 公司详情页 */

@@ -478,6 +478,16 @@ i[class^="icon-jobnav icon-zzz-"] {
   border: 1px solid #d9d9d9;
   border-radius: 5px;
 }
+.m-joblist-wrap:hover {
+  cursor: pointer;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+.m-joblist-wrap a {
+  color: #2d3e50;
+}
+.m-joblist-wrap .breadcrumb {
+  background: #fff;
+}
 .m-joblist-righ,
 .m-joblist-left {
   margin: 10px 0;

@@ -5,27 +5,29 @@
         <!-- 公司列表 -->
         <div class="m-joblist">
             <div class="m-joblist-wrap clearfix" ng-repeat="data in vm.joblistdata">
-                <div class="m-joblist-left col-xs-12 col-sm-6 col-md-6">
-                    <h5> <strong>{{data.name}}({{data.province|provinceFilter}})</strong><small>发布时间：{{data.updateAt| date:'yyyy-MM-dd HH:mm'}}</small></h5>
-                    <p>{{data.compensation|changeJobListName:'compensationtype'}}</p>
-                    <ul class="breadcrumb">
-                        <li>{{data.city|cityFilter}}-{{data.county|countyFilter}}</li>
-                        <li>{{data.education|changeJobListName:'educationtype'}}</li>
-                        <li>{{data.experience|changeJobListName:'experiencetype'}}</li>
-                    </ul>
-                </div>
-
-                <div class="m-joblist-right col-xs-12 col-sm-6 col-md-6">
-                    <div class="img-wrap pull-right">
-                        <img src="img/job/zwtab.jpg" alt="">
-                    </div>
-                    <div class="">
-                        <h5>{{data.companyName}}</h5>
+                <a ui-sref="app.jobinfo({id:data.id})">
+                    <div class="m-joblist-left col-xs-12 col-sm-6 col-md-6">
+                        <h5> <strong>{{data.name}}({{data.province|provinceFilter}})</strong><small>发布时间：{{data.updateAt| date:'yyyy-MM-dd HH:mm'}}</small></h5>
+                        <p>{{data.compensation|changeJobListName:'compensationtype'}}</p>
                         <ul class="breadcrumb">
-                            <li ng-repeat="data in data.industryList">{{data.industry|changeJobListName:'industrytype'}}</li>
+                            <li>{{data.city|cityFilter}}-{{data.county|countyFilter}}</li>
+                            <li>{{data.education|changeJobListName:'educationtype'}}</li>
+                            <li>{{data.experience|changeJobListName:'experiencetype'}}</li>
                         </ul>
                     </div>
-                </div>
+
+                    <div class="m-joblist-right col-xs-12 col-sm-6 col-md-6">
+                        <div class="img-wrap pull-right">
+                            <img src="{{data.logo}}" alt="">
+                        </div>
+                        <div class="">
+                            <h5>{{data.companyName}}</h5>
+                            <ul class="breadcrumb">
+                                <li ng-repeat="data in data.industryList">{{data.industry|changeJobListName:'industrytype'}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
         <mypagintion total='vm.totalItems'></mypagintion>
