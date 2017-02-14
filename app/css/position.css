@@ -228,17 +228,26 @@ i[class^="icon-jobnav icon-zzz-"] {
 }
 .m-rmjob-info span {
   display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
   padding: 10px 0;
-  color: #fc2b47;
+  color: #536a82;
 }
 .m-rmjob-info p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: bold;
+  color: #999;
+}
+.m-rmjob-info p strong {
+  color: #FC3652;
 }
 .m-rmjob-info h5 {
-  color: #536a82;
+  color: #2d3e50;
+  font-size: 16px;
+  font-weight: bold;
 }
 /* 推荐公司 */
 .m-rmcompany {
@@ -259,6 +268,13 @@ i[class^="icon-jobnav icon-zzz-"] {
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
+}
+.m-companyicon .breadcrumb {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.m-companyicon .breadcrumb li {
+  padding: 0;
 }
 /*Y轴轮播部分*/
 /* 轮播 */
@@ -448,8 +464,8 @@ i[class^="icon-jobnav icon-zzz-"] {
   margin-bottom: 15px;
 }
 .m-companylist .m-companyicon {
-  background: #ef4259;
-  color: #fff;
+  background: #fafafa;
+  color: #999;
   margin: 0 -10px -10px;
   padding: 10px 20px;
   border-radius: 3px;
@@ -502,4 +518,42 @@ i[class^="icon-jobnav icon-zzz-"] {
   .m-joblist-left {
     border-right: none;
   }
+}
+/*搜索
+框样
+式*/
+/*搜索框头部*/
+.m-search-title {
+  border-bottom: 2px solid #EB5255;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+.m-search-title .m-search-title-item {
+  display: inline-block;
+  padding: 3px 20px;
+  cursor: pointer;
+  margin: 0;
+}
+.m-search-title .active {
+  background-color: #EB5255;
+  color: #fff;
+}
+/*搜索框主要*/
+.m-search-panel {
+  background-color: #fff;
+  padding: 15px 20px;
+}
+.m-search-panel .control-label {
+  padding-top: 0;
+}
+.m-search-panel ul {
+  display: inline-block;
+  padding-left: 0;
+}
+.m-search-panel ul li {
+  display: inline-block;
+  padding: 3px 13px;
+}
+.m-search-panel ul .active {
+  background-color: #EB5255;
 }

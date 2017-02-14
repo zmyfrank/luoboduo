@@ -1,24 +1,53 @@
 <!-- 职位列表页 -->
 
 <div class="container">
+    <!--条件筛选列表-->
+    <!--头部-->
+    <div class="row m-search-title clearfix">
+        <p class="m-search-title-item active">公司</p>
+        <p class="m-search-title-item ">职业</p>
+    </div>
+    <!--选项-->
+    <!--公司筛选-->
+    <div class="row m-search-panel clearfix">
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <label for="name" class="control-label col-md-1">关&nbsp;键&nbsp;字&nbsp;&nbsp;:</label>
+                <input class="col-md-6" type="text" name="name" id="name" placeholder="请输入公司名字，如：联想">
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-1" for="">所在地区：</label>
+                <ul class="col-md-11">
+                    <li>不限</li>
+                    <li>北京</li>
+                </ul>
+            </div>
+        </form>
+    </div>
     <div class="row">
         <!-- 公司列表 -->
         <div class="m-companylist clearfix">
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in vm.companyList" ui-sref="app.companyinfo({id:item.id})">
                 <!-- 此处和找职位，职业推荐tab共用样式 -->
                 <div class="m-rmjob-wrap">
                     <div class="img-wrap pull-left">
-                        <img src="img/job/zwtab.jpg" alt="">
+                        <img ng-src="{{ item.logo }}" alt="">
                     </div>
                     <div class="m-rmjob-info">
-                        <span>8K-15K</span>
-                        <p>视觉设计师（北京）</p>
-                        <h5>盈泰财富云</h5>
+                        <h5>{{ item.name }}</h5>
+                        <span>{{ item.slogan }}</span>
+                        <p><strong>{{ item.professionNum }}</strong>个在招职位</p>
+
                     </div>
                     <ul class="m-companyicon">
-                        <li><i class="icon-rmcompany icon-location-white"></i> 移动互联网</li>
-                        <li><i class="icon-rmcompany icon-phone-url-white"></i> 上市</li>
-                        <li><i class="icon-rmcompany icon-shangshi-white"></i> 北京</li>
+                        <li>
+                            <i class="icon-rmcompany icon-location"></i>
+                            <ul class="breadcrumb">
+                                <li ng-repeat="items in item.industryList">{{ items|changeJobListName:'industrytype' }}</li>
+                            </ul>
+                        </li>
+                        <li><i class="icon-rmcompany icon-phone-url-white"></i>{{ item.financing|changeJobListName:'financingtype' }}</li>
+                        <li><i class="icon-rmcompany icon-shangshi-white"></i> {{ item.province|provinceFilter }}</li>
                     </ul>
                 </div>
             </div>

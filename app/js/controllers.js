@@ -58,7 +58,7 @@ var mainCtrl = angular.module('mainCtrl', [])
               $scope.noWrapSlides = false;
               $scope.active = 0;
               var slides = $scope.slides = [];
-              var currIndex = 0;
+              //var currIndex = 0;
 
               /* 添加图片 */
               $scope.addSlide = function() {
@@ -76,7 +76,10 @@ var mainCtrl = angular.module('mainCtrl', [])
                       job2: vm.newsjob[b+1].name,
                       job3: vm.newsjob[b+2].name,
                       job4: vm.newsjob[b+3].name,
-                      id: currIndex++
+                      id1:  vm.newsjob[b].id,
+                      id2:  vm.newsjob[b+1].id,
+                      id3:  vm.newsjob[b+2].id,
+                      id4:  vm.newsjob[b+3].id,
                   });
               };
 
@@ -155,14 +158,20 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
         })
 
-        vm.ss = function () {
-            console.log("ss");
-        }
+        // vm.ss = function () {
+        //     console.log("ss");
+        // }
         vm.aa = '2';
     })
     /* 公司列表页面 */
-    .controller('companyListCtrl',function ($scope) {
+    .controller('companyListCtrl',function ($scope,getService) {
         var vm = this;
+        /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
+        getService.get_industry('',9,1).then(function (res) {
+            if (res.data.code == 0) {
+                vm.companyList = res.data.data;
+            }
+        })
 
     })
     /* 公司详情页 */

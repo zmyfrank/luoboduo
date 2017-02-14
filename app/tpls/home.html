@@ -48,18 +48,18 @@
                 <p class="more"><a href="#">更多&gt;</a></p>
             </div>
             <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="m-newsjob-row">
-                <div  uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                <div  uib-slide ng-repeat="slide in slides track by $index" index="$index">
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3" ui-sref="app.jobinfo({id:slide.id1})">
                         <div class="img-wrap">
                             <img ng-src="{{slide.image1}}" style="margin:auto;">
                         </div>
                         <div class="info">
                             <h4>{{slide.job1}}</h4>
                             <span class="tt-underline"></span>
-                            <p>{{slide.company1}}</p>
+                            <p>{{slide.company2}}</p>
                         </div>
                     </div>
-                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3" ui-sref="app.jobinfo({id:slide.id2})">
                         <div class="img-wrap">
                             <img ng-src="{{slide.image2}}" style="margin:auto;">
                         </div>
@@ -69,7 +69,7 @@
                             <p>{{slide.company2}}</p>
                         </div>
                     </div>
-                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3" ui-sref="app.jobinfo({id:slide.id3})">
                         <div class="img-wrap">
                             <img ng-src="{{slide.image3}}" style="margin:auto;">
                         </div>
@@ -79,7 +79,7 @@
                             <p>{{slide.company3}}</p>
                         </div>
                     </div>
-                    <div class="m-slide col-xs-12 col-sm-12 col-md-3">
+                    <div class="m-slide col-xs-12 col-sm-12 col-md-3" ui-sref="app.jobinfo({id:slide.id4})">
                         <div class="img-wrap">
                             <img ng-src="{{slide.image4}}" style="margin:auto;">
                         </div>
