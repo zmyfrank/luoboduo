@@ -119,36 +119,27 @@ var mainDirectives = angular.module('mainDirectives',[])
                         //console.log(scope.newInd);
                         scope.myInterval = 5000;
                         scope.slides = scope.industry1data ;
-                        var currIndex = 0;
+
                     }
                 });
             }
         }
     })
-    /* 找职业轮播2 */
-    .directive('jobfocus1',function () {
+    /* 找职业轮播1 */
+    .directive('jobfocus1',function (getService) {
         return {
             restrict: 'AE',
             replace: true,
             templateUrl: '../tpls/focus/jobcarot2.html',
             scope: {},
             link:function (scope, ele, attrs,supermanCtrl){
-                scope.myInterval = 5000;
-                var slides = scope.slides = [];
-                var currIndex = 0;
+                getService.get_article(1).then(function (res) {
+                    if (res.data.code == 0) {
+                        scope.myInterval = 5000;
+                        scope.slides = res.data.data.articleList;
+                    }
+                })
 
-                scope.addSlide = function() {
-                    var newWidth = 600 + slides.length + 1;
-                    slides.push({
-                        image: '//unsplash.it/' + newWidth + '/300',
-                        text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-                        id: currIndex++
-                    });
-                };
-
-                for (var i = 0; i < 3; i++) {
-                    scope.addSlide();
-                }
             }
         }
     })

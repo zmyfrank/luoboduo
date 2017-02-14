@@ -179,6 +179,9 @@ var mainCtrl = angular.module('mainCtrl', [])
             })
         }
 
+        /* 搜索数据渲染 */
+        vm.searchOption = searchOptions;
+
     })
     /* 公司详情页 */
     .controller('companyInfoCtrl',function ($scope,$location,getService) {
