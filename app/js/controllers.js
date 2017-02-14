@@ -178,7 +178,33 @@ var mainCtrl = angular.module('mainCtrl', [])
                 }
             })
         }
-
+        vm.searchOption = searchOptions;
+        var provinceValue = [null];
+        vm.getProvinceType = function (ele) {
+            // if (ele.items.type == null) {
+            //     provinceValue = [null]
+            // };
+            angular.forEach(provinceValue,function (data,key,arr) {
+                if (ele.items.type==null) {     //点击不限时，把所有清除
+                    provinceValue = [null];
+                }
+                if (data==ele.items.type&&ele.items.type!==null){
+                    provinceValue.splice(key,1);        //第二次点击已有的项目时，将它删除并设置为false
+                    ele.items.choose=false;
+                };
+                if (data!==ele.items.type){             //第一次点击时，在数组中加入并设置为true
+                    ele.items.choose=true
+                    provinceValue.push(ele.items.type)
+                };
+                return provinceValue;
+            })
+            console.log(provinceValue);
+        }
+        // function estimateChoose() {
+        //     angular.forEach(vm.searchOption.province,function (key) {
+        //         if (vm.searchOption.province[key].type==
+        //     })
+        // }
     })
     /* 公司详情页 */
     .controller('companyInfoCtrl',function ($scope,$location,getService) {
