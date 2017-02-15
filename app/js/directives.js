@@ -19,6 +19,7 @@ var mainDirectives = angular.module('mainDirectives',[])
                 var myfocus_wrap = $(".m-myfocus-wrap");
 
                 var n,focusimg_wrap,myfocus,length;
+
                 scope.focusimg_wrap = $timeout(function (){
                     n = $window.innerWidth
                     myfocus = $(".m-myfocus");
@@ -139,7 +140,6 @@ var mainDirectives = angular.module('mainDirectives',[])
                         scope.slides = res.data.data.articleList;
                     }
                 })
-
             }
         }
     })
