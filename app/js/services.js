@@ -14,31 +14,31 @@ var mainConstant = angular.module('mainServices', [])
         return{
             /* 焦点图 */
             article_url:function (type) {
-                return "/lbd/a/article/search?type="+type;
+                return "/carrots-ajax/a/article/search?type="+type;
             },
             /* 最新/推荐职位 */
             profession_url:function (type,size,page) {
-                return "/lbd/a/profession/search?recommend="+type+'&size='+size+'&page='+page;
+                return "/carrots-ajax/a/profession/search?recommend="+type+'&size='+size+'&page='+page;
             },
             /*公司信息&在招职位*/
             industry_url:function (type,size,page) {
-                return "/lbd/a/company/search?returnPage=" + type + '&size=' + size + '&page=' + page;
+                return "/carrots-ajax/a/company/search?returnPage=" + type + '&size=' + size + '&page=' + page;
             },
             /*通过id搜索公司*/
             searchCompany_url:function (id) {
-                return "/lbd/a/company/"+id;
+                return "/carrots-ajax/a/company/"+id;
             },
             /*通过公司id搜索对应职位*/
             searchJob_url:function (id) {
-                return '/lbd/a/profession/search?companyId='+id;
+                return '/carrots-ajax/a/profession/search?companyId='+id;
             },
             /*通过职位id获取职位详细信息*/
             searchJobMinute_Url:function (id) {
-                return '/lbd/a/profession/'+id;
+                return '/carrots-ajax/a/profession/'+id;
             },
             /*公司名模糊搜索*/
             searchCompanyName_Url:function (name) {
-                return '/lbd/a/company/search?name='+name;
+                return '/carrots-ajax/a/company/search?name='+name;
             }
         }
     })

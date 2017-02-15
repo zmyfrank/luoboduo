@@ -52,6 +52,9 @@ body {
 .m-jobinfo-info-ct {
   border-bottom: solid 1px #f6f7f8;
 }
+.m-jobinfo-info-ct p {
+  white-space: pre-line;
+}
 .m-jobinfo-info-ct h2 {
   font-weight: bold;
   padding-left: 15px;
