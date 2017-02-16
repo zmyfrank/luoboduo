@@ -9,7 +9,7 @@
 
                 <div class="form-group row">
                     <label for="name" class="control-label col-md-1">关&nbsp;键&nbsp;字&nbsp;&nbsp;:</label>
-                    <input class="col-md-6 form-control" type="text" name="name" id="name" placeholder="请输入公司名字，如：联想">
+                    <input  ng-model="vm.name"  class="col-md-6 form-control" type="text" name="name" id="name" placeholder="请输入职位名，如：前端">
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="">所在地区：</label>
@@ -69,6 +69,10 @@
                 <!--<li ng-repeat="items in vm.searchOption.education" ng-click="vm.test()">{{ items.name }}</li>-->
                 <!--</ul>-->
                 <!--</div>-->
+                <ul class="pull-right">
+                    <li ng-click="vm.clearList()">清空</li>
+                    <li class='active' ng-click="vm.pagingdata(1)">搜索</li>
+                </ul>
             </form>
         </div>
 
