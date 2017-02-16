@@ -1,14 +1,13 @@
-<!-- 职位列表页 -->
-
+<!--职业搜索页面-->
 <div class="container">
     <!--条件筛选列表-->
     <!--头部-->
     <div class="row m-search-title clearfix">
-        <p class="m-search-title-item active">公司</p>
-        <p class="m-search-title-item " ui-sref="app.searchjob">职业</p>
+        <p class="m-search-title-item" ui-sref='app.companylist'>公司</p>
+        <p class="m-search-title-item active">职业</p>
     </div>
-    <!--选项-->
-    <!--公司筛选-->
+    <!--&lt;!&ndash;选项&ndash;&gt;-->
+    <!--&lt;!&ndash;职业筛选&ndash;&gt;-->
     <!--<div class="row m-search-panel clearfix">-->
         <!--<form class="form-horizontal">-->
             <!--<div class="form-group row">-->
@@ -64,40 +63,40 @@
                 <!--</ul>-->
             <!--</div>-->
             <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-                <!--&lt;!&ndash;<label class="control-label col-md-1" for="">学历要求：</label>&ndash;&gt;-->
-                <!--&lt;!&ndash;<ul class="col-md-11">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<li ng-repeat="items in vm.searchOption.education" ng-click="vm.test()">{{ items.name }}</li>&ndash;&gt;-->
-                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+            <!--&lt;!&ndash;<label class="control-label col-md-1" for="">学历要求：</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ul class="col-md-11">&ndash;&gt;-->
+            <!--&lt;!&ndash;<li ng-repeat="items in vm.searchOption.education" ng-click="vm.test()">{{ items.name }}</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;</ul>&ndash;&gt;-->
             <!--&lt;!&ndash;</div>&ndash;&gt;-->
         <!--</form>-->
     <!--</div>-->
-    <!--&lt;!&ndash;<myseach></myseach>&ndash;&gt;-->
     <!--<div class="row">-->
-        <!--&lt;!&ndash; 公司列表 &ndash;&gt;-->
-        <!--<div class="m-companylist clearfix">-->
-            <!--<div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in vm.companyList" ui-sref="app.companyinfo({id:item.id})">-->
-                <!--&lt;!&ndash; 此处和找职位，职业推荐tab共用样式 &ndash;&gt;-->
-                <!--<div class="m-rmjob-wrap">-->
-                    <!--<div class="img-wrap pull-left">-->
-                        <!--<img ng-src="{{ item.logo }}" alt="">-->
+        <!--&lt;!&ndash; 职业列表 &ndash;&gt;-->
+        <!--<div class="m-joblist">-->
+            <!--<div class="m-joblist-wrap clearfix" ng-repeat="data in vm.joblistdata">-->
+                <!--<a ui-sref="app.jobinfo({id:data.id})">-->
+                    <!--<div class="m-joblist-left col-xs-12 col-sm-6 col-md-6">-->
+                        <!--<h5> <strong>{{data.name}}({{data.province|provinceFilter}})</strong><small>发布时间：{{data.updateAt| date:'yyyy-MM-dd HH:mm'}}</small></h5>-->
+                        <!--<p>{{data.compensation|changeJobListName:'compensationtype'}}</p>-->
+                        <!--<ul class="breadcrumb">-->
+                            <!--<li>{{data.city|cityFilter}}-{{data.county|countyFilter}}</li>-->
+                            <!--<li>{{data.education|changeJobListName:'educationtype'}}</li>-->
+                            <!--<li>{{data.experience|changeJobListName:'experiencetype'}}</li>-->
+                        <!--</ul>-->
                     <!--</div>-->
-                    <!--<div class="m-rmjob-info">-->
-                        <!--<h5>{{ item.name }}</h5>-->
-                        <!--<span>{{ item.slogan }}</span>-->
-                        <!--<p><strong>{{ item.professionNum }}</strong>个在招职位</p>-->
 
-                    <!--</div>-->
-                    <!--<ul class="m-companyicon">-->
-                        <!--<li>-->
-                            <!--<i class="icon-rmcompany icon-location"></i>-->
+                    <!--<div class="m-joblist-right col-xs-12 col-sm-6 col-md-6">-->
+                        <!--<div class="img-wrap pull-right">-->
+                            <!--<img src="{{data.logo}}" alt="">-->
+                        <!--</div>-->
+                        <!--<div class="">-->
+                            <!--<h5>{{data.companyName}}</h5>-->
                             <!--<ul class="breadcrumb">-->
-                                <!--<li ng-repeat="items in item.industryList">{{ items|changeJobListName:'industrytype' }}</li>-->
+                                <!--<li ng-repeat="data in data.industryList">{{data.industry|changeJobListName:'industrytype'}}</li>-->
                             <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li><i class="icon-rmcompany icon-phone-url-white"></i>{{ item.financing|changeJobListName:'financingtype' }}</li>-->
-                        <!--<li><i class="icon-rmcompany icon-shangshi-white"></i> {{ item.province|provinceFilter }}</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</a>-->
             <!--</div>-->
         <!--</div>-->
         <!--<mypagintion total='vm.totalItems'></mypagintion>-->

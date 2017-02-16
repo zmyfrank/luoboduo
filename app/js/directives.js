@@ -168,7 +168,7 @@ var mainDirectives = angular.module('mainDirectives', [])
             }
         }
     })
-    /*筛选多选指令*/
+    /*筛选指令，单选请添加multiselect属性等于空*/
     .directive('searchJob', function () {
         return {
             restrict: 'AE',

@@ -118,6 +118,18 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
                     ])
                 }
             })
+            /*职位搜索页面*/
+            .state('app.searchjob',{
+                url:'/searchjob',
+                templateUrl:'tpls/searchjob.html',
+                controller:'searchjobCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/position.css'
+                    ])
+                }
+            })
         //$locationProvider.html5Mode(true);
     }
 ])

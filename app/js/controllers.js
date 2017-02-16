@@ -178,47 +178,8 @@ var mainCtrl = angular.module('mainCtrl', [])
                 }
             })
         }
+        /*筛选搜索数据begin*/
         vm.searchOption = searchOptions;
-        var provinceValue = [];
-        //对数组的操作
-        vm.getProvinceType = function (ele) {
-            //console.log(ele);
-            //当点击所有的时候，清空数组
-           if (ele.items.type == null) {
-               provinceValue = [];
-           }
-           //当数组中没有选择的数字的时候，添加这个数字，并选择
-           else if (provinceValue.indexOf(ele.items.type)==-1&&ele.items.type!=null) {
-               provinceValue.push(ele.items.type);
-               ele.items.choose = true;
-           }
-           //当数组中有添加的这个数字的时候，删除这个数字，并取消选择
-           else if(provinceValue.indexOf(ele.items.type)!=-1&&ele.items.type!=null) {   //当数组中有这个点击的数字的时候，splice
-               var index = provinceValue.indexOf(ele.items.type);
-               provinceValue.splice(index, 1);
-               ele.items.choose = false;
-           };
-           //当没有选择时，自动选择所有
-           if (provinceValue.length <1) {
-               angular.forEach(vm.searchOption.province,function (data,key,arr) {
-                   if (data.type==null) {
-                       data.choose = true;
-                   };
-                   if (data.type!=null) {
-                       data.choose = false;
-                   }
-               })
-           };
-           if (provinceValue.length > 0 ) {
-               angular.forEach(vm.searchOption.province,function (data,key,arr) {
-                   if (data.type==null) {
-                       data.choose = false;
-                   };
-               })
-           }
-            console.log(provinceValue);
-            return provinceValue;
-        }
         /*所在地区*/
         vm.provinceTypeArry=[];
         /*职位类别*/
@@ -236,20 +197,15 @@ var mainCtrl = angular.module('mainCtrl', [])
         /*发布时间*/
         vm.updateAtTypeArry='';
         /*当选择两个职位类别时，清空职位等级数组*/
-        vm.clearSubCategory = function () {
-            if (vm.categeoryTypeArry.length>1) {
+        /*这里有个问题，点击清空之后无法清除高级这些，所以我决定在点击搜索的时候再将这个数据对比一下，这样就不会选错了*/
+        vm.clearSubCategory = function (ele) {
+            if (vm.categeoryTypeArry.length!==1) {
                 vm.subCategoryTypeArry=[];
-                console.log(vm.subCategoryTypeArry);
+            }
+            if(ele.items.type==null){
+                vm.subCategoryTypeArry=[];
             }
         };
-
-            // vm.a = {
-            //     b:'',
-            // }
-        // vm.test = [1,2,4,5];
-        // $filter('searchPanelChooseFilter')(1,vm.test);
-
-
     })
     /* 公司详情页 */
     .controller('companyInfoCtrl',function ($scope,$location,getService) {
@@ -261,7 +217,7 @@ var mainCtrl = angular.module('mainCtrl', [])
         getService.search_company(id).then(function (res) {
             if (res.data.code == 0) {
                 vm.companyData = res.data.data;
-            };
+            }
         });
         /*获取公司在招职位详情*/
         getService.search_job(id).then(function (res) {
@@ -269,7 +225,7 @@ var mainCtrl = angular.module('mainCtrl', [])
                 vm.jobData = res.data.data;
                 vm.jobNum = res.data.total;
             }
-        })
+        });
         vm.isActiveT = function () {
             vm.isActive = true;
         };
@@ -290,6 +246,9 @@ var mainCtrl = angular.module('mainCtrl', [])
             };
             //console.log(vm.jobMinute);
         });
+    })
+    .controller('searchjobCtrl',function ($scope) {
+        var vm = this;
     })
 
 
