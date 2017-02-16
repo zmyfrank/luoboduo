@@ -219,50 +219,45 @@ var mainDirectives = angular.module('mainDirectives', [])
     })
     /* 搜索指令测试 */
     .directive('myseach',function (getService) {
-        /* 分页 */
         return {
             restrict:'AE',
             replace:false,
             templateUrl:'../tpls/focus/search.html',
             link:function (scope, ele, attrs,supermanCtrl) {
-                var i  = 0;
-                scope.tag = function () {
+                scope.tag = function (searchName) {
                     if (this.$index != 0) {
-                        a = this.$index-1;
-                       scope.vm.searchOption.category[0].choose = false;
                        if (this.items.choose) {
-                           i--;
-                           if (i == 0) {
-                               scope.vm.searchOption.category[0].choose = true;
-                           }
                            this.items.choose = !this.items.choose;
                            scope.subname = this.items.name;
                        }else {
-                           i++;
                            this.items.choose = !this.items.choose;
-                       }
-
-                       /* 点击不限的判断 */
-                        angular.forEach(scope.vm.searchOption.category,function (data,index,arry) {
-                            var s = 0;
-                           if ( index!= 0 ) {
-                               if (data.choose) {
-                                   /* 多选时不显示3级菜单 */
-                                   s++;
-                                   s != 1 ? scope.subhidde  = false :scope.subhidde = true;
-                                   scope.subname = index;
-                               }
+                           /* 多选时不显示3级菜单 */
+                           if (this.items.choose && searchName == 'category') {
+                               var s = 0;
+                               angular.forEach(scope.vm.searchOption['' + searchName], function (data, index, arry) {
+                                   if (index != 0) {
+                                       ++s;
+                                       s != 1 ? scope.subhidde = false : scope.subhidde = true;
+                                       scope.subname = index;
+                                   }
+                               })
                            }
-                        })
-                    }else {
-                        angular.forEach(scope.vm.searchOption.category,function (data,index,arry) {
+                       }
+                    }
+                    angular.forEach(scope.vm.searchOption[''+searchName],function (data,index,arry) {
+                        if(index != 0&&data.choose == true) {
+                            scope.vm.searchOption[''+searchName][0].choose = false;
+                        }else {
                             if (index != 0) {
-                                data.choose = false;
+                                data.choose = false
+                                if (data.choose) {
+
+                                }
                             }else {
                                 data.choose = true;
                             }
-                        })
-                    }
+                        }
+                    })
                 }
                 var  j = 0;
                 scope.subtag = function (){
@@ -290,35 +285,20 @@ var mainDirectives = angular.module('mainDirectives', [])
                 }
 
               scope.ss =  function (data) {
+                    console.log(scope.vm.searchOption.subCategory);
                     //转换为字符串
                     var asdas = {};
                     var dataname;
                     for (dataname in data) {
-
-                        if ( dataname == 'subCategory') {
-                            for(var i =0;i<data.subCategory.length;i++){
-                                asdas[dataname][i] =  data.subCategory[i].data.filter(function (item, index) {
-                                   // console.log(item,index)
-                                    return item.choose === true
-                                })
-
-                                asdas[dataname][i] =  data.subCategory[i].data.map(function (item, index) {
-                                    //console.log(item,index)
-                                    return item.type
-                                })
-                                asdas[dataname][i] = asdas[dataname][i].toString()
-                            }
-                        }else {
-                            asdas[dataname] = data[dataname].filter(function (item, index) {
-                               // console.log(item,index)
-                                return item.choose === true
-                            });
-                            asdas[dataname] = asdas[dataname].map(function (item) {
-                                //console.log(item)
-                                return item.type
-                            })
-                            asdas[dataname] = asdas[dataname].toString()
-                        }
+                        asdas[dataname] = data[dataname].filter(function (item, index) {
+                           // console.log(item,index)
+                            return item.choose === true
+                        });
+                        asdas[dataname] = asdas[dataname].map(function (item) {
+                            //console.log(item)
+                            return item.type
+                        })
+                        asdas[dataname] = asdas[dataname].toString()
                     }
                     return asdas;
                 }
@@ -326,7 +306,34 @@ var mainDirectives = angular.module('mainDirectives', [])
             }
         }
     })
+    /* 搜索指令测试2 */
+    .directive('myseach2',function (searchOptions) {
+        return {
+            restrict:'AE',
+            replace:false,
+            scope:{
 
-
+            },
+            link:function (scope, ele, attrs,supermanCtrl) {
+                var i = 0;
+                scope.$parent.tag2 = function (searchName,ele) {
+                    if (this.$index!=0) {
+                        this.items.choose = !this.items.choose;
+                        if (this.items.choose) {
+                            i++;
+                            scope.$parent.vm.searchOption[''+searchName][0].choose = false;
+                        }else {
+                            i--;
+                            if (i == 0) {
+                                scope.$parent.vm.searchOption[''+searchName][0].choose = true;
+                            }else {
+                                scope.$parent.vm.searchOption[''+searchName][0].choose = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
 
 
