@@ -243,7 +243,7 @@ var mainCtrl = angular.module('mainCtrl', [])
             if (res.data.code==0) {
                 vm.jobMinute = res.data.data;
             };
-            console.log(vm.jobMinute);
+            //console.log(vm.jobMinute);
         });
     })
 
