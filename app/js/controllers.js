@@ -192,8 +192,15 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
             getService.search_jobMinute(searchData).then(function (res) {
                 if (res.data.code == 0) {
-                    vm.joblistdata = res.data.data;
-                    vm.totalItems = res.data.total;
+                    if (res.data.data.length == 0) {
+                        vm.nodata = true;
+                        vm.joblistdata = res.data.data;
+                        vm.totalItems = res.data.total;
+                    }else {
+                        vm.nodata = false;
+                        vm.joblistdata = res.data.data;
+                        vm.totalItems = res.data.total;
+                    }
                 }
             })
         };
@@ -276,8 +283,17 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
             getService.search_companyMinute(searchData).then(function (res) {
                 if (res.data.code == 0) {
-                    vm.companylistdata = res.data.data;
-                    vm.totalItems = res.data.total;
+                    if (res.data.code == 0) {
+                        if (res.data.data.length == 0) {
+                            vm.nodata = true;
+                            vm.joblistdata = res.data.data;
+                            vm.totalItems = res.data.total;
+                        }else {
+                            vm.nodata = false;
+                            vm.joblistdata = res.data.data;
+                            vm.totalItems = res.data.total;
+                        }
+                    }
                 }
             });
         }
@@ -347,6 +363,14 @@ var mainCtrl = angular.module('mainCtrl', [])
     /*职业搜索页*/
     .controller('searchjobCtrl', function ($scope, searchOptions, getService,$state) {
         var vm = this;
+        /* 搜索为空推荐职业数据 */
+        getService.get_profession(1,4,'').then(function (res) {
+            if (res.data.code == 0) {
+                vm.newprofessionList = res.data.data;
+                //console.log(vm.newprofessionList);
+            }
+        });
+
         vm.categeoryTypeArry = [];
         vm.subCategoryTypeArry = [];
         /*获取上页传入的数据*/
@@ -374,8 +398,17 @@ var mainCtrl = angular.module('mainCtrl', [])
             }
             getService.search_jobMinute(searchData).then(function (res) {
                 if (res.data.code == 0) {
-                    vm.joblistdata = res.data.data;
-                    vm.totalItems = res.data.total;
+                    if (res.data.code == 0) {
+                        if (res.data.data.length == 0) {
+                            vm.nodata = true;
+                            vm.joblistdata = res.data.data;
+                            vm.totalItems = res.data.total;
+                        }else {
+                            vm.nodata = false;
+                            vm.joblistdata = res.data.data;
+                            vm.totalItems = res.data.total;
+                        }
+                    }
                 }
             })
         };

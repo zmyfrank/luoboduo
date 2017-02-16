@@ -71,6 +71,23 @@ var mainConstant = angular.module('mainServices', [])
             /*公司名模糊搜索*/
             "search_companyName":function (name) {
                 return $http.get(myInterface.searchCompanyName_Url(name))
+            },
+            /*搜索公司的接口，接收一个对象*/
+            "search_jobMinute":function (data) {
+                return $http({
+                    method:"GET",
+                    url:"/carrots-ajax/a/profession/search",
+                    params:data
+                })
+            },
+            /*搜索公司接口，接收一个对象*/
+            "search_companyMinute":function (data) {
+                return $http({
+                    method:"GET",
+                    url:"/carrots-ajax/a/company/search",
+                    params:data
+                })
+
             }
         }
-    });
+    })

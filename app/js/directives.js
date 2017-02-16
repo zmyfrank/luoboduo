@@ -35,7 +35,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                     scope.timer = $interval(function () {
                         scope.dirpromise.index++;
                         Move()
-                    }, 5000);
+                    }, 5000000000);
 
                     myfocus.hover(function () {
                             $interval.cancel(scope.timer);
@@ -44,7 +44,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                             scope.timer = $interval(function () {
                                 scope.dirpromise.index++;
                                 Move()
-                            }, 5000);
+                            }, 500000000);
                         })
                 }, 2000)
 
@@ -204,7 +204,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                             var index = scope.slectarry.indexOf(ele.items.type);
                             scope.slectarry.splice(index, 1);
                         };
-                        console.log(scope.slectarry);
+                        //console.log(scope.slectarry);
                         return scope.slectarry;
                     }else {
                         if (ele.items.type == null) {

@@ -59,10 +59,6 @@
                         <li search-job multiselect='' slectarry="vm.updateAtTypeArry" ng-class="{'active':(items.type|radioFilter:vm.updateAtTypeArry)}" ng-repeat="items in vm.searchOption.updateAt" ng-click="gettype(this)">{{ items.name }}</li>
                     </ul>
                 </div>
-                <ul class="pull-right">
-                    <li ng-click="vm.clearList()">清空</li>
-                    <li class='active'>搜索</li>
-                </ul>
                 <!--<div class="form-group">-->
                 <!--<label class="control-label col-md-1" for="">学历要求：</label>-->
                 <!--<ul class="col-md-11">-->
@@ -79,7 +75,7 @@
         <!-- 职业列表 -->
         <div class="m-joblist">
             <!-- 搜索为空的页面 -->
-            <div>
+            <div ng-show="vm.nodata">
                 <div class="m-nodata clearfix">
                     <div class="img-wrap col-xs-12  col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-3">
                         <img src="img/404.png" alt="">

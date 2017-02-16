@@ -35,7 +35,7 @@
             </div>
             <ul class="pull-right">
                 <li ng-click="vm.clearList()">清空</li>
-                <li class='active'>搜索</li>
+                <li class='active' ng-click="vm.pagingdata(1)" >搜索</li>
             </ul>
             <!--<div class="form-group">-->
                 <!--<label class="control-label col-md-1" for="">学历要求：</label>-->
@@ -52,7 +52,7 @@
         <!-- 公司列表 -->
         <div class="m-companylist clearfix">
             <!-- 搜索为空的页面 -->
-            <div>
+            <div ng-show="vm.nodata">
                 <div class="m-nodata clearfix">
                     <div class="img-wrap col-xs-12  col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-3">
                         <img src="img/404.png" alt="">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in vm.companyList" ui-sref="app.companyinfo({id:item.id})">
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in vm.joblistdata" ui-sref="app.companyinfo({id:item.id})">
                 <!-- 此处和找职位，职业推荐tab共用样式 -->
                 <div class="m-rmjob-wrap">
                     <div class="img-wrap pull-left">

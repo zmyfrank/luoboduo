@@ -70,7 +70,7 @@
             <!--</div>-->
             <ul class="pull-right">
                 <li ng-click="vm.clearList()">清空</li>
-                <li class='active'>搜索</li>
+                <li class='active' ng-click="vm.pagingdata(1)" >搜索</li>
             </ul>
         </form>
     </div>
@@ -78,7 +78,7 @@
         <!-- 职业列表 -->
         <div class="m-joblist">
             <!-- 搜索为空的页面 -->
-            <div style="margin-top: 20px;">
+            <div ng-show="vm.nodata" style="margin-top: 20px;">
                 <div class="m-nodata clearfix">
                     <div class="img-wrap col-xs-12  col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-3">
                         <img src="img/404.png" alt="">
