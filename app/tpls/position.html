@@ -60,7 +60,7 @@
             <div class="input-group m-seach">
                 <span class="input-group-addon m-seach-itps">公司名称</span>
                 <input type="text" class="form-control" placeholder="请输入公司名称" aria-describedby="basic-addon2" ng-model="vm.companyName">
-                <span class="input-group-addon m-seach-btn">搜索</span>
+                <span class="input-group-addon m-seach-btn" ui-sref='app.companylist({name:vm.companyName})'>搜索</span>
             </div>
             <!-- 轮播 -->
             <jobfocus1></jobfocus1>
