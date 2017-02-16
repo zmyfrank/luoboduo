@@ -13,7 +13,7 @@
         <form class="form-horizontal">
             <div class="form-group row">
                 <label for="name" class="control-label col-md-1">关&nbsp;键&nbsp;字&nbsp;&nbsp;:</label>
-                <input class="col-md-6 form-control" type="text" name="name" id="name" placeholder="请输入公司名字，如：联想">
+                <input ng-model="vm.name" class="col-md-6 form-control" type="text" name="name" id="name" placeholder="请输入公司名字，如：联想">
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1" for="">所在地区：</label>
@@ -35,7 +35,7 @@
             </div>
             <ul class="pull-right">
                 <li ng-click="vm.clearList()">清空</li>
-                <li class='active'>搜索</li>
+                <li class="active" ng-click="vm.pagingdata(1)">搜索</li>
             </ul>
             <!--<div class="form-group">-->
                 <!--<label class="control-label col-md-1" for="">学历要求：</label>-->
@@ -51,6 +51,7 @@
 
         <!-- 公司列表 -->
         <div class="m-companylist clearfix">
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in vm.companylistdata " ui-sref="app.companyinfo({id:item.id})">
             <!-- 搜索为空的页面 -->
             <div>
                 <div class="m-nodata clearfix">
