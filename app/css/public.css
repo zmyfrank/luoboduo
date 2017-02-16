@@ -377,6 +377,19 @@ footer {
   text-align: center;
   background: #37485a;
 }
+/* 搜索为空页面 */
+.m-nodata {
+  background: #fff;
+  padding: 30px 15px;
+  border-bottom: 1px solid #ccc;
+}
+.m-nodata-info {
+  padding-top: 45px;
+  font-size: 20px;
+}
+.m-nodata-info p {
+  font-size: 16px;
+}
 /* 标题模块 */
 .m-title {
   text-align: center;

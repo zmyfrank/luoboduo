@@ -157,6 +157,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                 /* 分页插件参数 */
                 scope.currentPage = 1; //初始页
                 scope.$parent.vm.pagingdata(scope.currentPage)
+
                 scope.$watch('total', function (n, o) {
                     if (n != o) {
                         scope.totalItems = scope.total;

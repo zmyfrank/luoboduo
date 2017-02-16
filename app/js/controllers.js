@@ -197,6 +197,15 @@ var mainCtrl = angular.module('mainCtrl', [])
     /* 公司列表页面 */
     .controller('companyListCtrl',function ($scope,getService,searchOptions,$filter) {
         var vm = this;
+        /* 搜索为空推荐职业数据 */
+        getService.get_profession(1,4,'').then(function (res) {
+            if (res.data.code == 0) {
+                vm.newprofessionList = res.data.data;
+                //console.log(vm.newprofessionList);
+            }
+        });
+
+
         /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
         /* 分页数据请求 */
         vm.pagingdata = function (page) {
@@ -276,6 +285,13 @@ var mainCtrl = angular.module('mainCtrl', [])
     })
     .controller('searchjobCtrl',function ($scope,searchOptions,getService) {
         var vm = this;
+        /* 搜索为空推荐职业数据 */
+        getService.get_profession(1,4,'').then(function (res) {
+            if (res.data.code == 0) {
+                vm.newprofessionList = res.data.data;
+                //console.log(vm.newprofessionList);
+            }
+        });
         /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
         /* 分页数据请求 */
         vm.pagingdata = function (page) {

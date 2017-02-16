@@ -509,9 +509,37 @@ i[class^="icon-jobnav icon-zzz-"] {
     padding: 10px 20px;
     border-radius: 3px;
   }
+  /* 搜索为空时推荐职位tab样式 */
+  .m-rmjob {
+    h3 {
+      padding-left: 15px;
+      font-size: 18px;
+      margin: 0;
+    }
+    h5 {
+      margin-top:0;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 /* 职业列表页面 */
+.m-joblist {
+  /* 搜索为空时推荐职位tab样式 */
+  .m-rmjob {
+    h3 {
+      padding-left: 15px;
+      font-size: 18px;
+      margin-top: 0;
+    }
+    h5 {
+      margin-top:0;
+    }
+  }
+}
 .m-joblist-wrap {
   padding: 10px;
   margin: 20px 15px;
