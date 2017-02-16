@@ -166,7 +166,7 @@ var mainCtrl = angular.module('mainCtrl', [])
 
     })
     /* 公司列表页面 */
-    .controller('companyListCtrl',function ($scope,getService,searchOptions) {
+    .controller('companyListCtrl',function ($scope,getService,searchOptions,$filter) {
         var vm = this;
         /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
         /* 分页数据请求 */
@@ -179,32 +179,77 @@ var mainCtrl = angular.module('mainCtrl', [])
             })
         }
         vm.searchOption = searchOptions;
-        var provinceValue = [null];
+        var provinceValue = [];
+        //对数组的操作
         vm.getProvinceType = function (ele) {
-            // if (ele.items.type == null) {
-            //     provinceValue = [null]
-            // };
-            angular.forEach(provinceValue,function (data,key,arr) {
-                if (ele.items.type==null) {     //点击不限时，把所有清除
-                    provinceValue = [null];
-                }
-                if (data==ele.items.type&&ele.items.type!==null){
-                    provinceValue.splice(key,1);        //第二次点击已有的项目时，将它删除并设置为false
-                    ele.items.choose=false;
-                };
-                if (data!==ele.items.type){             //第一次点击时，在数组中加入并设置为true
-                    ele.items.choose=true
-                    provinceValue.push(ele.items.type)
-                };
-                return provinceValue;
-            })
+            //console.log(ele);
+            //当点击所有的时候，清空数组
+           if (ele.items.type == null) {
+               provinceValue = [];
+           }
+           //当数组中没有选择的数字的时候，添加这个数字，并选择
+           else if (provinceValue.indexOf(ele.items.type)==-1&&ele.items.type!=null) {
+               provinceValue.push(ele.items.type);
+               ele.items.choose = true;
+           }
+           //当数组中有添加的这个数字的时候，删除这个数字，并取消选择
+           else if(provinceValue.indexOf(ele.items.type)!=-1&&ele.items.type!=null) {   //当数组中有这个点击的数字的时候，splice
+               var index = provinceValue.indexOf(ele.items.type);
+               provinceValue.splice(index, 1);
+               ele.items.choose = false;
+           };
+           //当没有选择时，自动选择所有
+           if (provinceValue.length <1) {
+               angular.forEach(vm.searchOption.province,function (data,key,arr) {
+                   if (data.type==null) {
+                       data.choose = true;
+                   };
+                   if (data.type!=null) {
+                       data.choose = false;
+                   }
+               })
+           };
+           if (provinceValue.length > 0 ) {
+               angular.forEach(vm.searchOption.province,function (data,key,arr) {
+                   if (data.type==null) {
+                       data.choose = false;
+                   };
+               })
+           }
             console.log(provinceValue);
+            return provinceValue;
         }
-        // function estimateChoose() {
-        //     angular.forEach(vm.searchOption.province,function (key) {
-        //         if (vm.searchOption.province[key].type==
-        //     })
-        // }
+        /*所在地区*/
+        vm.provinceTypeArry=[];
+        /*职位类别*/
+        vm.categeoryTypeArry=[];
+        /*职位等级*/
+        vm.subCategoryTypeArry=[];
+        /*所属行业*/
+        vm.industryTypeArry=[];
+        /*学历要求*/
+        vm.educationTypeArry=[];
+        /*工作经验*/
+        vm.experienceTypeArry=[];
+        /*薪资水平*/
+        vm.compensationTypeArry=[];
+        /*发布时间*/
+        vm.updateAtTypeArry='';
+        /*当选择两个职位类别时，清空职位等级数组*/
+        vm.clearSubCategory = function () {
+            if (vm.categeoryTypeArry.length>1) {
+                vm.subCategoryTypeArry=[];
+                console.log(vm.subCategoryTypeArry);
+            }
+        };
+
+            // vm.a = {
+            //     b:'',
+            // }
+        // vm.test = [1,2,4,5];
+        // $filter('searchPanelChooseFilter')(1,vm.test);
+
+
     })
     /* 公司详情页 */
     .controller('companyInfoCtrl',function ($scope,$location,getService) {

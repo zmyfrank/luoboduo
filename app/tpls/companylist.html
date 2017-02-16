@@ -18,45 +18,57 @@
             <div class="form-group">
                 <label class="control-label col-md-1" for="">所在地区：</label>
                 <ul class="col-md-11">
-                    <li ng-repeat="items in vm.searchOption.province" ng-class="{'active':items.choose}" ng-click="vm.getProvinceType(this)">{{ items.name }}</li>
+                    <li search-job multiselect="true"  slectarry="vm.provinceTypeArry"  ng-class="{'active':(items.type|searchPanelChooseFilter:vm.provinceTypeArry)}" ng-repeat="items in vm.searchOption.province"  ng-click="gettype(this)">{{ items.name }}</li>
                 </ul>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1" for="">职位类别：</label>
                 <ul class="col-md-11">
-                    <li ng-repeat="items in vm.searchOption.category" ng-class="{'active':items.choose}" >{{ items.name }}</li>
+                    <li search-job multiselect='true' slectarry="vm.categeoryTypeArry" ng-repeat="items in vm.searchOption.category" ng-class="{'active':(items.type|searchPanelChooseFilter:vm.categeoryTypeArry)}" ng-click="gettype(this);;vm.clearSubCategory()">{{ items.name }}</li>
                 </ul>
             </div>
-            <div class="form-group" ng-repeat="items in vm.searchOption.subCategory">
+            <div class="form-group" ng-repeat="xx in vm.searchOption.subCategory" ng-if="vm.categeoryTypeArry[0]-1 == $index&&vm.categeoryTypeArry.length==1">
                 <label class="control-label col-md-1" for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <ul class="col-md-11">
-                    <li ng-repeat="item in items.data" ng-class="{'active':item.choose}">{{ item.name }}</li>
+                    <li search-job multiselect='true' slectarry="vm.subCategoryTypeArry" ng-repeat="items in xx.data" ng-class="{'active':(items.type|searchPanelChooseFilter:vm.subCategoryTypeArry)}" ng-click="gettype(this)">{{ items.name }}</li>
                 </ul>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1" for="">所在地区：</label>
+                <label class="control-label col-md-1" for="">所属行业：</label>
                 <ul class="col-md-11">
-                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                    <li search-job multiselect='true' slectarry="vm.industryTypeArry" ng-class="{'active':(items.type|searchPanelChooseFilter:vm.industryTypeArry)}" ng-repeat="items in vm.searchOption.industry" ng-click="gettype(this)">{{ items.name }}</li>
                 </ul>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1" for="">所在地区：</label>
+                <label class="control-label col-md-1" for="">学历要求：</label>
                 <ul class="col-md-11">
-                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                    <li search-job multiselect='true' slectarry="vm.educationTypeArry" ng-class="{'active':(items.type|searchPanelChooseFilter:vm.educationTypeArry)}" ng-repeat="items in vm.searchOption.education" ng-click="gettype(this)">{{ items.name }}</li>
                 </ul>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1" for="">所在地区：</label>
+                <label class="control-label col-md-1" for="">工作经验：</label>
                 <ul class="col-md-11">
-                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                    <li search-job multiselect='true' slectarry="vm.experienceTypeArry" ng-class="{'active':(items.type|searchPanelChooseFilter:vm.experienceTypeArry)}" ng-repeat="items in vm.searchOption.experience" ng-click="gettype(this)">{{ items.name }}</li>
                 </ul>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1" for="">所在地区：</label>
+                <label class="control-label col-md-1" for="">薪资水平：</label>
                 <ul class="col-md-11">
-                    <li class="active" ng-repeat="items in vm.searchOption.province">{{ items.name }}</li>
+                    <li search-job multiselect='true' slectarry="vm.compensationTypeArry" ng-class="{'active':(items.type|searchPanelChooseFilter:vm.compensationTypeArry)}" ng-repeat="items in vm.searchOption.compensation" ng-click="gettype(this)">{{ items.name }}</li>
                 </ul>
             </div>
+            <div class="form-group">
+                <label class="control-label col-md-1" for="">发布时间：</label>
+                <ul class="col-md-11">
+                    <li search-job multiselect='' slectarry="vm.updateAtTypeArry" ng-class="{'active':(items.type|radioFilter:vm.updateAtTypeArry)}" ng-repeat="items in vm.searchOption.updateAt" ng-click="gettype(this)">{{ items.name }}</li>
+                </ul>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="control-label col-md-1" for="">学历要求：</label>-->
+                <!--<ul class="col-md-11">-->
+                    <!--<li ng-repeat="items in vm.searchOption.education" ng-click="vm.test()">{{ items.name }}</li>-->
+                <!--</ul>-->
+            <!--</div>-->
         </form>
     </div>
     <div class="row">
