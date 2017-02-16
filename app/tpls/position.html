@@ -67,9 +67,9 @@
     </div>
     <!-- 推荐职位 -->
     <div class="m-jobtt clearfix">
-        <h3 class="pull-left " ng-class="{true:'',false:'noactive'}[vm.isActive1]" ng-click="vm.changeActive1T()" >推荐职位</h3>
-        <h3 class="pull-left" ng-class="{true:'noactive',false:''}[vm.isActive1]" ng-click="vm.changeActive1F()" >最新职位</h3>
-        <a class="pull-right" href="#/joblist">查看更多&gt;</a>
+        <h3 class="pull-left " ng-class="{true:'',false:'noactive'}[vm.isActive1]"  ng-click="vm.changeActive1T()" >推荐职位</h3>
+        <h3 class="pull-left" ng-class="{true:'noactive',false:''}[vm.isActive1]"  ng-click="vm.changeActive1F()" >最新职位</h3>
+        <a class="pull-right" ui-sref="app.joblist({new:vm.isActive1})">查看更多&gt;</a>
     </div>
     <div class="m-rmjob clearfix">
         <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="item in vm.newprofessionList" ui-sref="app.jobinfo({id:item.id})">

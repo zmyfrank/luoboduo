@@ -84,7 +84,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             })
             /* 最新/推荐职业列表 */
             .state('app.joblist', {
-                url: '/joblist',
+                url: '/joblist?new',
                 templateUrl: 'tpls/joblist.html',
                 controller:'jobListCtrl',
                 controllerAs:'vm',
