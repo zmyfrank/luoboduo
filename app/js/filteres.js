@@ -111,4 +111,44 @@ var mainFil = angular.module("mainFil",[]);
             })
             return value
         }
+    });
+    /*改变true和false的状态*/
+    mainFil.filter('searchPanelChooseFilter',function () {
+        return function (num,arr) {
+            var value ='';
+            if (arr.length==0) {
+                if (num == null) {
+                    value = true
+                } else {
+                    value = false;
+                }
+            }else {
+               if (num==null|arr.indexOf(num)==-1) {
+                   value=false
+               }else {
+                   value = true
+               }
+            }
+            return value
+        };
+    });
+    mainFil.filter('radioFilter',function () {
+        return function (num,data) {
+            var value = '';
+            if (data>=1||data===0){
+                if (num==null){
+                    value = false;
+                }
+                if (num == data) {
+                    value =true;
+                }
+            }else {
+                if (num==null){
+                    value = true;
+                }else {
+                    value = false;
+                }
+            }
+            return value
+        }
     })
