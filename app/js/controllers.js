@@ -175,6 +175,7 @@ var mainCtrl = angular.module('mainCtrl', [])
                 if (res.data.code == 0) {
                     vm.companyList = res.data.data;
                     vm.totalItems = res.data.total;
+                    console.log(vm.companyList);
                 }
             })
         }
