@@ -120,7 +120,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             })
             /*职位搜索页面*/
             .state('app.searchjob',{
-                url:'/searchjob?type&subtype',
+                url:'/searchjob',
                 templateUrl:'tpls/searchjob.html',
                 controller:'searchjobCtrl',
                 controllerAs:'vm',

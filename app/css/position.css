@@ -487,6 +487,12 @@ i[class^="icon-jobnav icon-zzz-"] {
 .m-joblist {
   /* 搜索为空时推荐职位tab样式 */
 }
+.m-joblist .m-nodata {
+  margin: 20px 15px 0 ;
+}
+.m-joblist .m-rmjob {
+  margin: 0 15px;
+}
 .m-joblist .m-rmjob h3 {
   padding-left: 15px;
   font-size: 18px;

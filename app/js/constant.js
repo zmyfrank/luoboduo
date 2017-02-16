@@ -283,7 +283,6 @@ var mainConstant = angular.module('mainConstant', [])
     .constant('userFellType',[
         {
             name: "产品",
-            type:1,
             data: [
                 {type: 1, name: '助理', choose: false},
                 {type: 2, name: '初级', choose: false},
@@ -293,7 +292,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "UI",
-            type:2,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -303,7 +301,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "QA",
-            type:3,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -315,7 +312,6 @@ var mainConstant = angular.module('mainConstant', [])
     .constant('developType',[
         {
             name: "Android",
-            type:4,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -324,7 +320,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "IOS",
-            type:5,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -333,7 +328,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "WEB",
-            type:6,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -342,7 +336,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "OP",
-            type:7,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -351,7 +344,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "Java",
-            type:8,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -364,7 +356,6 @@ var mainConstant = angular.module('mainConstant', [])
     .constant('bigdataType',[
         {
             name: "NLP",
-            type:9,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -373,7 +364,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "DM",
-            type:10,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},
@@ -382,7 +372,6 @@ var mainConstant = angular.module('mainConstant', [])
         },
         {
             name: "DL",
-            type:11,
             data: [
                 {type: 1, name: '初级', choose: false},
                 {type: 2, name: '中级', choose: false},

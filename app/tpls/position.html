@@ -8,13 +8,13 @@
                         <i class="icon-jobnav icon-zzz-chanpin" ng-class="{'zzz-active':vm.navactive}"></i>用户体验
                         <i class="icon-jobnav icon-findjobdayu pull-right" ng-class="{'zzz-active':vm.navactive}"></i>
                     </h4>
-                    <li ng-repeat="items in vm.userFellType" ui-sref="app.searchjob({type:items.type})">{{ items.name }}</li>
+                    <li ng-repeat="items in vm.userFellType">{{ items.name }}</li>
                 </ul>
                 <div class="m-jobsnav clearfix">
                     <div ng-repeat="items in vm.userFellType">
                         <span>{{ items.name }}</span>
                         <ol class="breadcrumb">
-                            <li  ng-repeat="item in items.data" ui-sref="app.searchjob({type:items.type,subtype:item.type})">{{ item.name }}</li>
+                            <li  ng-repeat="item in items.data">{{ item.name }}</li>
                         </ol>
                     </div>
                 </div>
@@ -25,13 +25,13 @@
                         <i class="icon-jobnav icon-zzz-jishu" ng-class="{'zzz-active':vm.navactive2}"></i>研发
                         <i class="icon-jobnav icon-findjobdayu pull-right" ng-class="{'zzz-active':vm.navactive2}"></i>
                     </h4>
-                    <li ng-repeat="items in vm.developType" ui-sref="app.searchjob({type:items.type})">{{ items.name }}</li>
+                    <li ng-repeat="items in vm.developType">{{ items.name }}</li>
                 </ul>
                 <div class="m-jobsnav jobsnav2">
                     <div ng-repeat="items in vm.developType">
                         <span>{{ items.name }}</span>
                         <ol class="breadcrumb">
-                            <li  ng-repeat="item in items.data" ui-sref="app.searchjob({type:items.type,subtype:item.type})">{{ item.name }}</li>
+                            <li  ng-repeat="item in items.data">{{ item.name }}</li>
                         </ol>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
                         <i class="icon-jobnav icon-zzw-sheji" ng-class="{'zzz-active':vm.navactive3}"></i>大数据
                         <i class="icon-jobnav icon-findjobdayu pull-right" ng-class="{'zzz-active':vm.navactive3}"></i>
                     </h4>
-                    <li ng-repeat="items in vm.bigdataType" ui-sref="app.searchjob({type:items.type})">{{ items.name }}</li>
+                    <li ng-repeat="items in vm.bigdataType">{{ items.name }}</li>
                 </ul>
                 <div class="m-jobsnav jobsnav3">
                     <div ng-repeat="items in vm.bigdataType">
                         <span>{{ items.name }}</span>
                         <ol class="breadcrumb">
-                            <li  ng-repeat="item in items.data" ui-sref="app.searchjob({type:items.type,subtype:item.type})">{{ item.name }}</li>
+                            <li  ng-repeat="item in items.data">{{ item.name }}</li>
                         </ol>
                     </div>
                 </div>
@@ -59,8 +59,8 @@
             <!-- 搜索 -->
             <div class="input-group m-seach">
                 <span class="input-group-addon m-seach-itps">公司名称</span>
-                <input type="text" class="form-control" placeholder="请输入公司名称" aria-describedby="basic-addon2" ng-model="vm.name">
-                <span class="input-group-addon m-seach-btn" ui-sref='app.companylist({name:vm.name})'>搜索</span>
+                <input type="text" class="form-control" placeholder="请输入公司名称" aria-describedby="basic-addon2" ng-model="vm.companyName">
+                <span class="input-group-addon m-seach-btn" ui-sref='app.companylist({name:vm.companyName})'>搜索</span>
             </div>
             <!-- 轮播 -->
             <jobfocus1></jobfocus1>

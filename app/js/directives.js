@@ -157,7 +157,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                 /* 分页插件参数 */
                 scope.currentPage = 1; //初始页
                 scope.$parent.vm.pagingdata(scope.currentPage)
-
+                
                 scope.$watch('total', function (n, o) {
                     if (n != o) {
                         scope.totalItems = scope.total;
@@ -215,43 +215,6 @@ var mainDirectives = angular.module('mainDirectives', [])
                     }
                 }
                 //console.log(scope)
-            }
-        }
-    })
-    /*搜索以及清除选项框中的数据的指令////没用到*/
-    .directive('searchClear',function (getService) {
-        return {
-            restrict:'AE',
-            replace:'true',
-            template:'<ul class="pull-right"><li ng-click="clearList()">清空</li><li class="active">搜索</li></ul>',
-            link:function (scope,ele,attrs,ctrl) {
-                scope.clearList = function () {
-                    /*清空各种*/
-                    /*所在地区*/
-                    console.log("通")
-                    var page =1;
-                    scope.vm.provinceTypeArry = [];
-                    /*职位类别*/
-                    scope.vm.categeoryTypeArry = [];
-                    /*职位等级*/
-                    scope.vm.subCategoryTypeArry = [];
-                    /*所属行业*/
-                    scope.vm.industryTypeArry = [];
-                    /*学历要求*/
-                    scope.vm.educationTypeArry = [];
-                    /*工作经验*/
-                    scope.vm.experienceTypeArry = [];
-                    /*薪资水平*/
-                    scope.vm.compensationTypeArry = [];
-                    /*发布时间*/
-                    scope.vm.updateAtTypeArry = '';
-                    getService.get_profession('', 10, page).then(function (res) {
-                        if (res.data.code == 0) {
-                            scope.vm.joblistdata = res.data.data;
-                            scope.vm.totalItems = res.data.total;
-                        }
-                    })
-                };
             }
         }
     })
@@ -373,4 +336,5 @@ var mainDirectives = angular.module('mainDirectives', [])
             }
         }
     })
+
 
