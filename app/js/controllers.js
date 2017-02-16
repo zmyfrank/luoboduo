@@ -156,24 +156,36 @@ var mainCtrl = angular.module('mainCtrl', [])
         var vm = this;
         vm.newurl = $state.params.new;
         vm.newurl == "true" ? vm.newurl = 1 : vm.newurl = 0;
-
-        /* 分页数据请求 */
+        /*使用分页器上的指令来进行各种数据的搜索和交互*/
         vm.pagingdata = function (page) {
-            getService.get_profession(vm.newurl, 10, page).then(function (res) {
+            var searchData = {
+                name: vm.name,
+                category: vm.categeoryTypeArry.join(','),
+                compensation: vm.compensationTypeArry.join(','),
+                education: vm.educationTypeArry.join(','),
+                experience: vm.experienceTypeArry.join(','),
+                //financing: 1,
+                industry: vm.industryTypeArry.join(','),
+                page: page,
+                province: vm.provinceTypeArry.join(","),
+                returnTags: 1,
+                size: 9,
+                subCategory: vm.subCategoryTypeArry.join(','),
+                updateAt: vm.updateAtTypeArry,
+            }
+            getService.search_jobMinute(searchData).then(function (res) {
                 if (res.data.code == 0) {
                     vm.joblistdata = res.data.data;
                     vm.totalItems = res.data.total;
                 }
             })
-        }
+        };
         /*筛选搜索数据begin*/
         vm.searchOption = searchOptions;
+        vm.categeoryTypeArry = [];
+        vm.subCategoryTypeArry = [];
         /*所在地区*/
         vm.provinceTypeArry = [];
-        /*职位类别*/
-        vm.categeoryTypeArry = [];
-        /*职位等级*/
-        vm.subCategoryTypeArry = [];
         /*所属行业*/
         vm.industryTypeArry = [];
         /*学历要求*/
@@ -184,8 +196,12 @@ var mainCtrl = angular.module('mainCtrl', [])
         vm.compensationTypeArry = [];
         /*发布时间*/
         vm.updateAtTypeArry = '';
+        /*融资规模*/
+        vm.financingTypeArry = [];
+        /*关键字*/
+        vm.name = '';
+        /*筛选搜索数据end*/
         /*当选择两个职位类别时，清空职位等级数组*/
-        /*这里有个问题，点击清空之后无法清除高级这些，所以我决定在点击搜索的时候再将这个数据对比一下，这样就不会选错了*/
         vm.clearSubCategory = function (ele) {
             if (vm.categeoryTypeArry.length !== 1) {
                 vm.subCategoryTypeArry = [];
@@ -193,6 +209,27 @@ var mainCtrl = angular.module('mainCtrl', [])
             if (ele.items.type == null) {
                 vm.subCategoryTypeArry = [];
             }
+        };
+        /*清空并搜索*/
+        vm.clearList = function () {
+            /*清空各种*/
+            /*所在地区*/
+            vm.provinceTypeArry = [];
+            /*职位类别*/
+            vm.categeoryTypeArry = [];
+            /*职位等级*/
+            vm.subCategoryTypeArry = [];
+            /*所属行业*/
+            vm.industryTypeArry = [];
+            /*学历要求*/
+            vm.educationTypeArry = [];
+            /*工作经验*/
+            vm.experienceTypeArry = [];
+            /*薪资水平*/
+            vm.compensationTypeArry = [];
+            /*发布时间*/
+            vm.updateAtTypeArry = '';
+            vm.pagingdata(1);
         };
     })
     /* 公司列表页面 */
