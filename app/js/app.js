@@ -72,7 +72,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
             })
             /* 公司列表 */
             .state('app.companylist', {
-                url: '/companylist',
+                url: '/companylist?name',
                 templateUrl: 'tpls/companylist.html',
                 controller:'companyListCtrl',
                 controllerAs:'vm',

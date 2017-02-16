@@ -183,22 +183,12 @@ var mainCtrl = angular.module('mainCtrl', [])
         vm.searchOption = searchOptions;
         /*所在地区*/
         vm.provinceTypeArry=[];
-        /*职位类别*/
-        vm.categeoryTypeArry=[];
-        /*职位等级*/
-        vm.subCategoryTypeArry=[];
         /*所属行业*/
         vm.industryTypeArry=[];
-        /*学历要求*/
-        vm.educationTypeArry=[];
-        /*工作经验*/
-        vm.experienceTypeArry=[];
-        /*薪资水平*/
-        vm.compensationTypeArry=[];
-        /*发布时间*/
-        vm.updateAtTypeArry='';
+        /*融资规模*/
+        vm.financingTypeArry=[];
+        /*筛选搜索数据end*/
         /*当选择两个职位类别时，清空职位等级数组*/
-        /*这里有个问题，点击清空之后无法清除高级这些，所以我决定在点击搜索的时候再将这个数据对比一下，这样就不会选错了*/
         vm.clearSubCategory = function (ele) {
             if (vm.categeoryTypeArry.length!==1) {
                 vm.subCategoryTypeArry=[];
@@ -206,6 +196,13 @@ var mainCtrl = angular.module('mainCtrl', [])
             if(ele.items.type==null){
                 vm.subCategoryTypeArry=[];
             }
+        };
+        vm.clearList = function () {
+            /*所在地区*/
+            vm.provinceTypeArry=[];
+            /*所属行业*/
+            vm.industryTypeArry=[];
+            vm.financingTypeArry=[];
         };
     })
     /* 公司详情页 */
@@ -248,8 +245,65 @@ var mainCtrl = angular.module('mainCtrl', [])
             //console.log(vm.jobMinute);
         });
     })
-    .controller('searchjobCtrl',function ($scope) {
+    .controller('searchjobCtrl',function ($scope,searchOptions,getService) {
         var vm = this;
+        /*获取公司列表信息，三个参数，第二个是每页多少个，第三个是第几页，现在为每页9个，第1页*/
+        /* 分页数据请求 */
+        vm.pagingdata = function (page) {
+            getService.get_profession('',10,page).then(function (res) {
+                if (res.data.code == 0){
+                    vm.joblistdata = res.data.data;
+                    vm.totalItems = res.data.total;
+                }
+            })
+        }
+        /*筛选搜索数据begin*/
+        vm.searchOption = searchOptions;
+        /*所在地区*/
+        vm.provinceTypeArry=[];
+        /*职位类别*/
+        vm.categeoryTypeArry=[];
+        /*职位等级*/
+        vm.subCategoryTypeArry=[];
+        /*所属行业*/
+        vm.industryTypeArry=[];
+        /*学历要求*/
+        vm.educationTypeArry=[];
+        /*工作经验*/
+        vm.experienceTypeArry=[];
+        /*薪资水平*/
+        vm.compensationTypeArry=[];
+        /*发布时间*/
+        vm.updateAtTypeArry='';
+        /*筛选搜索数据end*/
+        /*当选择两个职位类别时，清空职位等级数组*/
+        vm.clearSubCategory = function (ele) {
+            if (vm.categeoryTypeArry.length!==1) {
+                vm.subCategoryTypeArry=[];
+            }
+            if(ele.items.type==null){
+                vm.subCategoryTypeArry=[];
+            }
+        };
+        /*清空搜索数据*/
+        vm.clearList = function () {
+            /*所在地区*/
+            vm.provinceTypeArry=[];
+            /*职位类别*/
+            vm.categeoryTypeArry=[];
+            /*职位等级*/
+            vm.subCategoryTypeArry=[];
+            /*所属行业*/
+            vm.industryTypeArry=[];
+            /*学历要求*/
+            vm.educationTypeArry=[];
+            /*工作经验*/
+            vm.experienceTypeArry=[];
+            /*薪资水平*/
+            vm.compensationTypeArry=[];
+            /*发布时间*/
+            vm.updateAtTypeArry='';
+        };
     })
 
 
