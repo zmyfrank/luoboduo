@@ -1,0 +1,23 @@
+<!-- article管理页面 -->
+ <div class="panel panel-default">
+     <div class="panel-body m-article" ng-controller="DateParserDemoCtrl">
+         <div class="col-md-4">
+             <div class="input-group">
+                 <span class="input-group-addon" >发布时间</span>
+                 <dateparser ng-model = "vm.startdata"></dateparser>
+             </div>
+             <datepicker ng-model = "vm.startdata"></datepicker>
+         </div>
+         <div class="col-md-1" style="text-align: center; line-height: 30px;font-size: xx-large;">-</div>
+         <div class="form-group col-md-4">
+             <label for="exampleInputEmail1" style="display: none"></label>
+             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+         </div>
+         <div class="col-md-3">
+             <div class="input-group" >
+                 <span class="input-group-addon" id="sizing-addon3">类型</span>
+                 <input type="text" class="form-control" placeholder="如：2017-1-1" aria-describedby="sizing-addon3">
+             </div>
+         </div>
+     </div>
+ </div>

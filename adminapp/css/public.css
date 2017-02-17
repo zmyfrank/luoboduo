@@ -1,6 +1,6 @@
 /* 基础样式重置 */
 body {
-  background: #f5f5f5;
+  background: #fff;
   font-family: "Microsoft YaHei";
   color: #2d3e50;
   font-size: 16px;
@@ -20,6 +20,9 @@ ul {
 li {
   list-style-type: none;
 }
+a:hover {
+  text-decoration: none;
+}
 /* 图片 */
 .img-wrap img {
   max-width: 99%;
@@ -32,6 +35,38 @@ li {
 /* 分页插件样式从置 */
 .pagination-sm > li > a {
   padding: 10px 15px;
+}
+/* 日期插件重置 */
+/* 头部 */
+.m-hd .navbar-default .navbar-brand {
+  color: #000;
+}
+.navbar {
+  margin-bottom: 0;
+}
+/* 侧边导航 */
+.m-nav {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+.m-nav .accordion-toggle {
+  display: inline-block;
+  width: 100%;
+}
+.m-nav .panel-group {
+  border-radius: 0;
+  margin: 0 -15px;
+}
+.m-nav .panel-group .panel + .panel {
+  margin-top: 0;
+}
+.m-nav .panel-heading {
+  padding: 18px 15px;
+}
+/* 主体 */
+.m-bd {
+  background: #fff;
+  padding: 20px 15px;
 }
 /* 功能性类名 */
 /* 绝对定位垂直水平居中 */

@@ -1,7 +1,7 @@
 <!-- 主页 -->
 <div class="container-fluid">
     <div class="row">
-        <header class="">
+        <header class="m-hd">
             <nav class="navbar navbar-default ">
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand" href="#">萝卜多后台管理系统</a>
@@ -9,16 +9,12 @@
                 <p class="navbar-text pull-right glyphicon glyphicon-off"></p>
                 <p class="navbar-text pull-right">admin</p>
                 <p class="navbar-text pull-right">超级管理员</p>
-
             </nav>
         </header>
-
-
         <!-- 导航 -->
-        <nav class="col-md-3" >
-            <div ng-controller="AccordionDemoCtrl">
-                <uib-accordion close-others="oneAtATime">
-                    <div uib-accordion-group class="panel-default" heading="信息管理" is-open="status.open2">
+        <nav class="col-md-2 m-nav">
+            <uib-accordion close-others="oneAtATime">
+                    <div uib-accordion-group class="panel-default" heading="info" is-open="status.open2">
                         <uib-accordion-heading>
                             信息管理
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
@@ -31,7 +27,7 @@
                             Aarticle管理
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                         </uib-accordion-heading>
-                        <p> Aarticle列表</p>
+                        <p ui-sref=".article"> Aarticle列表</p>
                     </div>
                     <div uib-accordion-group class="panel-default"  is-open="status.open3">
                         <uib-accordion-heading>
@@ -44,11 +40,10 @@
                         <p>账户管理</p>
                     </div>
                 </uib-accordion>
-            </div>
         </nav>
         <!-- 表单 -->
-        <main class="col-md-9" >
-            我是主体
+        <main  class="m-bd col-md-10" ui-view>
+
         </main>
     </div>
 </div>

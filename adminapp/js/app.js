@@ -13,6 +13,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
         /*当没有输入跳转页面的时候，自动跳转main页面*/
         $urlRouterProvider.when("","/app");
         $statepProvider
+            /* 主页面 */
             .state('app',{
                 url:'/app',
                 templateUrl: 'tpls/main.html',
@@ -25,13 +26,21 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /* article管理页面 */
+            .state('app.article',{
+                url:'/article',
+                templateUrl: 'tpls/article.html',
+                controller: 'articleCtrl',
+                controllerAs: 'vm',
+                resolve : {
+                    home_file:_lazyLoad([
+                        'css/article.css',
+                        'js/articleCtrl.js'
+                    ])
+                }
+            })
+
     }
-])
-    .controller('AccordionDemoCtrl', function ($scope) {
-    $scope.oneAtATime = true;
-    $scope.status = {
-        isCustomHeaderOpen: false,
-        isFirstOpen: true,
-        isFirstDisabled: false
-    };
+]).controller('DateParserDemoCtrl', function ($scope, uibDateParser) {
+
 });
