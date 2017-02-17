@@ -123,6 +123,7 @@ var mainCtrl = angular.module('mainCtrl', [])
                     break;
             }
         }
+
         getDataP();
         //顶部选项卡的数据
         vm.userFellType = userFellType;
@@ -172,10 +173,11 @@ var mainCtrl = angular.module('mainCtrl', [])
         });
 
         /* 分页数据请求 */
-        vm.newurl == "true" ? vm.newurl = 1 : vm.newurl = 0;
+        //vm.newurl == "true" ? vm.newurl = 1 : vm.newurl = 0;
         /*使用分页器上的指令来进行各种数据的搜索和交互*/
         vm.pagingdata = function (page) {
             var searchData = {
+                recommend:vm.newurl,
                 name: vm.name,
                 category: vm.categeoryTypeArry.join(','),
                 compensation: vm.compensationTypeArry.join(','),
