@@ -16,7 +16,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                 scope.dirpromise.data.push(scope.dirpromise.data[0]);
                 /* 初始化轮播尺寸 */
                 var myfocus_wrap = $(".m-myfocus-wrap");
-
+                //屏幕宽度，轮播图片容器，整个轮播容器，轮播宽度
                 var n, focusimg_wrap, myfocus, length;
 
                 scope.focusimg_wrap = $timeout(function () {
@@ -176,17 +176,9 @@ var mainDirectives = angular.module('mainDirectives', [])
             scope: {
                 slectarry: '=',
             },
-           /* controller:function ($scope) {
-            },*/
             link: function (scope, ele, attrs, Ctrl) {
                 //scope.slectarry = [];
-
-                scope.$parent.ss = function (ele) {
-                    //console.log(ele);
-                }
-
                 //console.log(scope.slectarry);
-                //console.log(scope)
 
                 scope.$parent.gettype = function (ele) {
                     if (Boolean(attrs.multiselect) == true) {
@@ -312,7 +304,6 @@ var mainDirectives = angular.module('mainDirectives', [])
             restrict:'AE',
             replace:false,
             scope:{
-
             },
             link:function (scope, ele, attrs,supermanCtrl) {
                 var i = 0;
