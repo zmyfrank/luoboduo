@@ -45,7 +45,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                                 Move()
                             }, 5000);
                         })
-                }, 2000)
+                }, 5000)
 
                 /* 监听视口大小 */
                 $(window).resize(function () {

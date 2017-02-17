@@ -1,33 +1,37 @@
 /**
  * Created by Administrator on 2017/2/17.
  */
-var adminApp = angular.module('routerApp', ['ui.router', 'oc.lazyLoad','ngCookies','ngAnimate', 'ngSanitize', 'ui.bootstrap',
-    'mainDirectives','mainCtrl','mainConstant','mainServices','mainFil']);
+var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad','ngCookies','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
-adminApp.config(function ($statepProvider,$urlRouterProvider,$locationProvider) {
-    var _lazyLoad = function (loaded) {
-        return function ($ocLazyLoad) {
-            return $ocLazyLoad.load(loaded,{serie:true})
-        }
-    };
-    /*当没有输入跳转页面的时候，自动跳转login页面*/
-    $urlRouterProvider.when("","/home");
-    $statepProvider
-        .state('app',{
-            url:'',
-            templateUrl: 'tpls/main.html',
-            controller: 'mainhtmlCtrl',
-            controllerAs: 'vm',
-            resolve : {
-                home_file:_lazyLoad([
-                    'css/home.css','js/mainCtrl.js'
-                ])
+adminApp.config(['$stateProvider', '$urlRouterProvider',
+    function ($statepProvider,$urlRouterProvider) {
+        var _lazyLoad = function (loaded) {
+            return function ($ocLazyLoad) {
+                return $ocLazyLoad.load(loaded,{serie:true})
             }
-        })
-        .state('app.home',{
-            url:'',
-            templateUrl: 'tpls/home.html',
-            controller: 'homeCtrl',
-            controllerAs: 'vm'
-        })
-})
+        };
+        /*当没有输入跳转页面的时候，自动跳转main页面*/
+        $urlRouterProvider.when("","/app");
+        $statepProvider
+            .state('app',{
+                url:'/app',
+                templateUrl: 'tpls/main.html',
+                controller: 'mainCtrl',
+                controllerAs: 'vm',
+                resolve : {
+                    home_file:_lazyLoad([
+                        'css/main.css',
+                        'js/mainCtrl.js'
+                    ])
+                }
+            })
+    }
+])
+    .controller('AccordionDemoCtrl', function ($scope) {
+    $scope.oneAtATime = true;
+    $scope.status = {
+        isCustomHeaderOpen: false,
+        isFirstOpen: true,
+        isFirstDisabled: false
+    };
+});
