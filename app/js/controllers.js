@@ -372,7 +372,6 @@ var mainCtrl = angular.module('mainCtrl', [])
                 //console.log(vm.newprofessionList);
             }
         });
-
         vm.categeoryTypeArry = [];
         vm.subCategoryTypeArry = [];
         /*获取上页传入的数据*/
