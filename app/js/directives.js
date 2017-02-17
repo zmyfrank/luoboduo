@@ -14,7 +14,6 @@ var mainDirectives = angular.module('mainDirectives', [])
             link: function (scope, ele, attrs, supermanCtrl) {
 
                 scope.dirpromise.data.push(scope.dirpromise.data[0]);
-
                 /* 初始化轮播尺寸 */
                 var myfocus_wrap = $(".m-myfocus-wrap");
 
@@ -35,7 +34,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                     scope.timer = $interval(function () {
                         scope.dirpromise.index++;
                         Move()
-                    }, 5000000000);
+                    }, 5000);
 
                     myfocus.hover(function () {
                             $interval.cancel(scope.timer);
@@ -44,7 +43,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                             scope.timer = $interval(function () {
                                 scope.dirpromise.index++;
                                 Move()
-                            }, 500000000);
+                            }, 5000);
                         })
                 }, 2000)
 
@@ -73,7 +72,7 @@ var mainDirectives = angular.module('mainDirectives', [])
                     }
 
                     if (scope.dirpromise.index == -1) {
-                        myfocus_wrap.css({left: -(length - 1) * scope.dirpromise.movesize});
+                        myfocus_wrap.css({left: -(length - 1) * (scope.dirpromise.movesize*5)});
                         scope.dirpromise.index = length - 2;
                     }
 

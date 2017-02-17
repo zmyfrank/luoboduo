@@ -72,7 +72,7 @@ var mainConstant = angular.module('mainServices', [])
             "search_companyName":function (name) {
                 return $http.get(myInterface.searchCompanyName_Url(name))
             },
-            /*搜索公司的接口，接收一个对象*/
+            /*搜索职位的接口，接收一个对象*/
             "search_jobMinute":function (data) {
                 return $http({
                     method:"GET",

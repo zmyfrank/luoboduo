@@ -61,7 +61,6 @@ var mainFil = angular.module("mainFil",[]);
     mainFil.filter('provinceFilter', function (PROVINCE) {
         return function (id) {
             if (id != undefined && id != '') {
-
                 var name;
                 angular.forEach(PROVINCE, function (data) {
                     if (data.ProID == id) {
@@ -112,7 +111,7 @@ var mainFil = angular.module("mainFil",[]);
             return value
         }
     });
-    /*改变true和false的状态*/
+    /* 搜索多选改变true和false的状态*/
     mainFil.filter('searchPanelChooseFilter',function () {
         return function (num,arr) {
             var value ='';
@@ -132,6 +131,7 @@ var mainFil = angular.module("mainFil",[]);
             return value
         };
     });
+    /* 搜索单选 */
     mainFil.filter('radioFilter',function () {
         return function (num,data) {
             var value = '';
