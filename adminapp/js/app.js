@@ -15,6 +15,6 @@ routerApp.config(function ($statepProvider,$urlRouterProvider,$locationProvider)
     $statepProvider
         .state('app',{
             url:'',
-            templateUrl: ''
+            templateUrl: '../tpls/home.html'
         })
 })
