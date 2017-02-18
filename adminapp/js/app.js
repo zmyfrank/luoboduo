@@ -26,7 +26,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             .state('app.companyList',{
-                url: '/companyList',
+                url: '/companyLis',
                 templateUrl: 'tpls/companyList.html',
                 controller: 'companyListCtrl',
                 controllerAs: 'vm',
@@ -40,10 +40,3 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
 
     }
 ])
-    .controller('AccordionDemoCtrl', function ($scope) {
-        $scope.oneAtATime = true;
-        $scope.status = {
-            isCustomHeaderOpen: false,
-            isFirstOpen: true,
-        };
-    });
