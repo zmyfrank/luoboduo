@@ -51,6 +51,19 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /*职位详情页面*/
+            .state('app.jobList',{
+                url:'/jobList',
+                templateUrl: 'tpls/jobList.html',
+                controller:'jobListCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/companyList.css',
+                        'js/jobListCtrl.js'
+                    ])
+                }
+            })
 
     }
 ])

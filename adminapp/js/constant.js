@@ -203,9 +203,9 @@ var mainConstant = angular.module('mainConstant', [])
         // ]
         // begin 找职位面板的分类列表
     })
-    .constant('jobList',{
-
-    })
+    // .constant('jobList',{
+    //
+    // })
     // 一级分类
     .constant('jobType', [
         {type: 1, name: "用户体验"},
