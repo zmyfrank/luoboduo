@@ -13,5 +13,6 @@ angular.module('adminApp')
         };
         vm.test = function () {
             console.log(vm.name);
+            console.log(vm.product);
         }
     })
