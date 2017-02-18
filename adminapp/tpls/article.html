@@ -17,8 +17,8 @@
              </div>
              <div class="col-md-4">
                  <div class="input-group">
-                     <span class="input-group-addon" >发布时间</span>
-                     <select class="form-control">
+                     <span class="input-group-addon"  >类型{{vm.arcitletype}}</span>
+                     <select class="form-control" ng-model="vm.arcitletype">
                          <option value="">全部</option>
                          <option value="0">首页Banner</option>
                          <option value="1">找职位Banner</option>
@@ -29,8 +29,8 @@
              </div>
              <div class="col-md-3">
                  <div class="input-group">
-                     <span class="input-group-addon">状态</span>
-                     <select class="form-control">
+                     <span class="input-group-addon">状态{{vm.arcitlestate}}</span>
+                     <select class="form-control" ng-model="vm.arcitlestate">
                          <option value="">全部</option>
                          <option value="2">上线</option>
                          <option value="1">草稿</option>
@@ -38,8 +38,8 @@
                  </div>
              </div>
              <div class="col-md-3 col-md-offset-6">
-                 <button type="button" class="btn btn-danger" ng-click="clean()">清空</button>
-                 <button type="button" class="btn btn-success" ng-click="search()">搜索</button>
+                 <button type="button" class="btn btn-danger" ng-click="vm.clean()">清空</button>
+                 <button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
              </div>
          </div>
      </form>

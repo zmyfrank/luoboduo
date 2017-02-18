@@ -7,7 +7,9 @@ angular.module('mainServices',[])
         var searviceList = {
             /*公司搜索地址*/
             companyUrl:'/carrots-admin-ajax/a/company/search',
-            joblistUrl:'/carrots-admin-ajax/'
+            joblistUrl:'/carrots-admin-ajax/',
+            /* arcitle页面 */
+            arcitleUrl:'/carrots-admin-ajax/a/article/search',
         }
         /*请求的参数等*/
         return {
@@ -16,6 +18,13 @@ angular.module('mainServices',[])
                 return $http({
                     method:'GET',
                     url:searviceList.companyUrl,
+                    params:data
+                })
+            },
+            'searchArcitle':function (data) {
+                return $http({
+                    method:'GET',
+                    url:searviceList.arcitleUrl,
                     params:data
                 })
             }
