@@ -27,7 +27,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             .state('app.companyList',{
-                url: '/companyLis',
+                url: '/companyList',
                 templateUrl: 'tpls/companyList.html',
                 controller: 'companyListCtrl',
                 controllerAs: 'vm',
