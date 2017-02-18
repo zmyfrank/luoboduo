@@ -27,3 +27,6 @@
 .m-listcdd {
   width: 100px;
 }
+p {
+  direction: ltr;
+}
