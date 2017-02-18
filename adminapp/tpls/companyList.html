@@ -77,11 +77,11 @@
                     <tr ng-repeat="items in vm.companyListData">
                         <td>{{ $index+1 }}</td>
                         <td>{{ items.name }}</td>
-                        <td><span ng-repeat="item in items.industryList">{{ item|changeJobListName:industrytype }}</span></td>
+                        <td><span ng-repeat="item in items.industryList">{{ item|changeJobListName:'industrytype' }}</span></td>
                         <td>{{ items.province|provinceFilter }}-{{ items.city|cityFilter }}-{{ items.county|countyFilter }}</td>
-                        <td>{{ items.financing|changeJobListName:financingtype }}</td>
-                        <td>{{ items.approved|changeJobListName:approvedtype }}</td>
-                        <td>{{ items.freezed|changeJobListName:freezedtype }}</td>
+                        <td>{{ items.financing|changeJobListName:'financingtype' }}</td>
+                        <td>{{ items.approved|changeJobListName:'approvedtype' }}</td>
+                        <td>{{ items.freezed|changeJobListName:'freezedtype' }}</td>
                         <td>
                             <a class="btn btn-sm"></a>
                             <a class="btn btn-sm">职位</a>
