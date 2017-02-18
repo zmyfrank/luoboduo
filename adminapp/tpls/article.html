@@ -59,14 +59,14 @@
                 <th>状态</th>
                 <th>操作</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>电子商务</td>
-                <td>首页banner</td>
-                <td>2015-02-17 09:25:33</td>
-                <td>2015-02-17 09:25:33</td>
-                <td>admin</td>
-                <td>上线</td>
+            <tr ng-repeat="data in vm.arcitledata">
+                <td>{{data.id}}</td>
+                <td>{{data.content}}</td>
+                <td>{{data.type}}</td>
+                <td>{{data.createAt| date:'yyyy-MM-dd HH:mm:m'}}</td>
+                <td>{{data.updateAt| date:'yyyy-MM-dd HH:mm:m'}}</td>
+                <td>{{data.author}}</td>
+                <td>{{data.status}}</td>
                 <td>下线 编辑 删除</td>
             </tr>
         </table>
