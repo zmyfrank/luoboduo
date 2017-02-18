@@ -10,7 +10,9 @@ angular.module('adminApp')
             vm.name = "我是articleCtrl控制器";
 
             /* 时间1 */
+            /* 开始时间 */
             vm.startdata = new Date();
+            /* 结束时间 */
             vm.enddata = new Date();
         }
     )
