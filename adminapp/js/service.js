@@ -7,6 +7,7 @@ angular.module('mainServices',[])
         var searviceList = {
             /*公司搜索地址*/
             companyUrl:'/carrots-admin-ajax/a/company/search',
+            joblistUrl:'/carrots-admin-ajax/'
         }
         /*请求的参数等*/
         return {
