@@ -8,43 +8,49 @@
                 </div>
                 <div class="form-group col-md-4 col-xs-12">
                     <label>公司行业：</label>
-                    <select class="form-control">
-                        <option>互联网金融</option>
-                        <option>1</option>
-                        <option>1</option>
-                        <option>1</option>
+                    <select class="form-control" ng-model="vm.industry" ng-options="items.type as items.name for items in vm.joblisttype.industrytype">
+                        <option value="">全部</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4 col-xs-12">
                     <label for="">产品名称：</label>
-                    <input type="text" class="form-control">
+                    <input ng-model="vm.product" type="text" class="form-control">
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group col-md-4">
-                    <label for="companyName">公司名称：</label>
-                    <input type="text" class="form-control">
+                    <label for="">认证状态：</label>
+                    <select ng-model="vm.approved" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
+                        <option value="">全部</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="companyName">公司名称：</label>
-                    <input type="text" class="form-control">
+                    <label for="">冻结状态：</label>
+                    <select ng-model="vm.freezed" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.freezedtype">
+                        <option value="">全部</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="companyName">公司名称：</label>
-                    <input type="text" class="form-control">
+                    <label for="">融资规模：</label>
+                    <select ng-model="vm.financing" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.financingtype">
+                        <option value="">全部</option>
+                    </select>
                 </div>
             </div>
             <div class="row f-rowfix">
-                <div class="form-group m-companylist_city col-md-6">
-                    <label for="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
-                    <select class="form-control"></select>
-                    <select class="form-control"></select>
-                    <select class="form-control"></select>
-                </div>
+                <!--<div class="form-group m-companylist_city col-md-12">-->
+                    <!--<label for="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>-->
+                    <!--<select ng-model="vm.province" class="form-control" ng-options="items.ProID as items.ProName for items in vm.PROVINCE">-->
+                        <!--<option value="">请选择省份</option>-->
+                    <!--</select>-->
+                    <!--<select ng-model="vm.city" class="form-control"></select>-->
+                    <!--<select ng-model="vm.county" class="form-control"></select>-->
+                <!--</div>-->
+                <citychoose province-num='vm.province' city-num='vm.city' county-num='vm.county'></citychoose>
             </div>
             <div class="m-companylist_btngroup">
-                <button class="btn btn-small btn-warning" type="button" ng-click="vm.test()">清空</button>
-                <button class="btn btn-small btn-success" type="button">搜索</button>
+                <button class="btn btn-small btn-warning" type="button" ng-click="vm.clear()">清空</button>
+                <button class="btn btn-small btn-success" type="button" ng-click="vm.pagingdata()">搜索</button>
             </div>
         </form>
     </div>
@@ -68,14 +74,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
+                    <tr ng-repeat="items in vm.companyListData">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ items.name }}</td>
+                        <td><span ng-repeat="item in items.industryList">{{ item|changeJobListName:industrytype }}</span></td>
+                        <td>{{ items.province|provinceFilter }}-{{ items.city|cityFilter }}-{{ items.county|countyFilter }}</td>
+                        <td>{{ items.financing|changeJobListName:financingtype }}</td>
+                        <td>{{ items.approved|changeJobListName:approvedtype }}</td>
+                        <td>{{ items.freezed|changeJobListName:freezedtype }}</td>
                         <td>
                             <a class="btn btn-sm"></a>
                             <a class="btn btn-sm">职位</a>
@@ -83,11 +89,13 @@
                             <a class="btn btn-sm">编辑</a>
                             <a class="btn btn-sm">冻结</a>
                             <a class="btn btn-sm">删除</a>
-                            <a href="">111</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <mypagintion total="vm.totalItems"></mypagintion>
+            </div>
         </div>
     </div>
 </div>
