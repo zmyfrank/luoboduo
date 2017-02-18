@@ -11,8 +11,9 @@ angular.module('adminApp')
 
             /* 时间1 */
             /* 开始时间 */
-            vm.startdata = new Date();
+            vm.startdata =new Date();
             /* 结束时间 */
-            vm.enddata = new Date();
+            vm.enddata = "";
+            vm.ss = new Date();
         }
     )

@@ -1,4 +1,7 @@
 /* article管理页面 */
+.m-article .input-group {
+  margin-bottom: 20px;
+}
 /* 时间插件样式 */
 .full button span {
   background-color: limegreen;
@@ -10,9 +13,18 @@
   border-radius: 32px;
   color: black;
 }
+.input-group .input-group-addon.ui-bs {
+  float: left;
+  display: inline-table;
+  padding: 9.5px 12px;
+}
 .input-group .form-control.ui-bs {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 0;
+  width: 70%;
+}
+.input-group .btn.ui-bs {
+  padding: 6.2px 15px;
+}
+.input-group select {
+  max-width: 150px;
 }
