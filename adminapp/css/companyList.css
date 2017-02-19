@@ -24,3 +24,6 @@
   word-break: break-all;
   word-wrap: break-word;
 }
+.f-table_border {
+  border: 1px solid #e8e8e8;
+}
