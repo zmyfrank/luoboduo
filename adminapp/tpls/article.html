@@ -5,7 +5,7 @@
              <div class="col-md-4">
                  <div class="input-group">
                      <span class="input-group-addon ui-bs" >发布时间</span>
-                     <datepicker data = "vm.startdata" class="pull-left" ></datepicker>
+                     <datepicker data ="vm.startdata" class="pull-left" ></datepicker>
                  </div>
              </div>
              <!--<div style="float: left; line-height: 30px;font-size: xx-large;">-</div>-->
@@ -17,8 +17,8 @@
              </div>
              <div class="col-md-4">
                  <div class="input-group">
-                     <span class="input-group-addon"  >类型{{vm.arcitletype}}</span>
-                     <select class="form-control" ng-model="vm.arcitletype">
+                     <span class="input-group-addon"  >类型{{vm.arcitle.type}}</span>
+                     <select class="form-control" ng-model="vm.arcitle.type">
                          <option value="">全部</option>
                          <option value="0">首页Banner</option>
                          <option value="1">找职位Banner</option>
@@ -29,8 +29,8 @@
              </div>
              <div class="col-md-3">
                  <div class="input-group">
-                     <span class="input-group-addon">状态{{vm.arcitlestate}}</span>
-                     <select class="form-control" ng-model="vm.arcitlestate">
+                     <span class="input-group-addon">状态{{vm.arcitle.status}}</span>
+                     <select class="form-control" ng-model="vm.arcitle.status">
                          <option value="">全部</option>
                          <option value="2">上线</option>
                          <option value="1">草稿</option>
@@ -61,15 +61,16 @@
             </tr>
             <tr ng-repeat="data in vm.arcitledata">
                 <td>{{data.id}}</td>
-                <td>{{data.content}}</td>
-                <td>{{data.type}}</td>
+                <td>{{data.title}}</td>
+                <td>{{data.type|articleFilter:'type'}}</td>
                 <td>{{data.createAt| date:'yyyy-MM-dd HH:mm:m'}}</td>
                 <td>{{data.updateAt| date:'yyyy-MM-dd HH:mm:m'}}</td>
                 <td>{{data.author}}</td>
-                <td>{{data.status}}</td>
+                <td>{{data.status|articleFilter:'status'}}</td>
                 <td>下线 编辑 删除</td>
             </tr>
         </table>
     </div>
 </div>
+<mypagintion total='vm.totalItems'></mypagintion>
 

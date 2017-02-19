@@ -74,5 +74,17 @@ mainFil.filter('countyFilter', function (COUNTY) {
         }
     }
 });
-/*  */
-mainFil.filter('')
+
+/* article过滤 */
+mainFil.filter('articleFilter',function (article) {
+    var value;
+    return function (data,type) {
+        var datatype =  article[''+type];
+        angular.forEach(datatype,function (val,index,arry) {
+            if (data == val.type) {
+                value =  arry[index].name;
+            }
+        })
+        return value;
+    }
+})

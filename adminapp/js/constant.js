@@ -8479,3 +8479,16 @@ var mainConstant = angular.module('mainConstant', [])
             "CityID": 362,
             "DisSort": null
         }])
+
+
+    //article过滤所需
+    .constant('article',{
+        type:[{type:0,name:'首页banner'},
+            {type:1,name:'找职位banner'},
+            {type:2,name:'找精英banner'},
+            {type:3,name:'行业大图'}],
+        status:[{type:0,name:'草稿'},
+                {type:1,name:'下线'},
+                {type:2,name:'上线'}
+        ]
+    })

@@ -8,39 +8,55 @@ angular.module('adminApp')
         function ($scope,getAdminSercive) {
             var vm = this;
 
-            /* 开始时间 */
-            vm.startdata ="";
-            /* 结束时间 */
-            vm.enddata = "";
-
-            vm.data={
+            /* 搜索值 */
+            vm.arcitle = {
                 //创建者
                 author:'',
                 //标题
                 title:'',
                 //状态
-                status:vm.arcitlestate,
+                status:'',
                 //类型
-                type:vm.arcitletype,
+                type:'',
                 //终止更新时间
-                endAt:vm.enddata,
+                endAt: '',
                 //起始更新时间
-                startAt:vm.startdata,
+                startAt: '',
             }
+
             /* 搜索事件 */
-            vm.search = function () {
-                getAdminSercive.searchArcitle(vm.data).then(function (res) {
+            vm.search = function (page) {
+                vm.arcitle.page = page ? page : 1 ;
+                vm.arcitle.endAt = vm.enddata ? vm.enddata : '';
+                vm.arcitle.startAt = vm.startdata? vm.startdata : '';
+                vm.arcitleHttp(vm.arcitle);
+            }
+            /* 清除事件 */
+            vm.clean = function () {
+                for(k in vm.arcitle) {
+                    vm.arcitle[''+k] = '';
+                }
+                vm.enddata = '';
+                vm.startdata ='';
+                vm.arcitleHttp(vm.arcitle);
+            }
+
+            //arcitle请求
+            vm.arcitleHttp = function (params){
+                getAdminSercive.searchArcitle(params).then(function (res) {
                     if (res.data.code == 0) {
-                        vm.arcitledata = res.data.data;
+                        //console.log(res.data.data)
+                        vm.arcitledata = res.data.data.articleList;
+                        vm.totalItems = res.data.data.total;
                     }
                 })
             }
-            /* arcitle请求 */
-            getAdminSercive.searchArcitle(vm.data).then(function (res) {
-                if (res.data.code == 0) {
 
-                }
-            })
+            /* 进入初始调用 */
+            vm.search()
+            /* 分页 */
+            vm.pagingdata = vm.search;
+
 
         }
     )

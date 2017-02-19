@@ -16,14 +16,22 @@ angular.module('adminApp')
             },
             link: function (scope, ele, attrs, supermanCtrl) {
                 /* 日期插件 */
+
                 scope.today = function() {  //生成当前日期
-                    scope.dt = new Date();
+                    if (attrs.data == 'vm.startdata') {
+                        scope.dt = "";
+                    }else {
+                        scope.dt= new Date();
+                    }
                 };
 
-                scope.$watch('dt',function () {
-                    scope.data= scope.dt;
+                scope.$watch('dt',function (n,o) {
+                    if (n!=o){
+                        scope.data= scope.dt.valueOf();
+                    }
                 })
 
+                /* 监听前一个时间选择器的值 */
                 scope.$watch('ngModel',function () {
                     scope.toggleMin();
                 })
