@@ -60,4 +60,4 @@ angular.module('adminApp')
             vm.industry = '';
             vm.pagingdata(1);
         };
-    })
+    });
