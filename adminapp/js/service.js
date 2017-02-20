@@ -10,6 +10,10 @@ angular.module('mainServices',[])
             joblistUrl:'/carrots-admin-ajax/',
             /* arcitle页面 */
             arcitleUrl:'/carrots-admin-ajax/a/article/search',
+            /*操作公司列表*/
+            companyOperationUrl:'/carrots-admin-ajax/a/u/company/status',
+            /*删除公司*/
+            deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/'
         }
         /*请求的参数等*/
         return {
@@ -28,6 +32,20 @@ angular.module('mainServices',[])
                     url:searviceList.arcitleUrl,
                     params:data
                 })
+            },
+            /*更改职位状态*/
+            //解冻：status：0解冻解除认证，1冻结
+            //type：0：冻结状态，1：认证状态
+            'changeStatus':function (data) {
+                return $http({
+                    method:'PUT',
+                    url:searviceList.companyOperationUrl,
+                    params:data
+                })
+            },
+            /*删除公司*/
+            'deleteCompany':function (id) {
+                return $http.delete(searviceList.deleteCompanyUrl+'/'+id)
             }
         }
     })

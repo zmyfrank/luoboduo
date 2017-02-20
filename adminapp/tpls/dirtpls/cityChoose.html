@@ -1,10 +1,10 @@
-<div class="form-group m-companylist_city col-md-12">
-    <label for="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
-    <select ng-model="provinceNum" ng-change="changeProince()" class="form-control" ng-options="items.ProID as items.ProName for items in provinceIn">
+<div style="display: inline-block;width: 80%;">
+    <select ng-model="provinceNum" ng-change="changeProince()" class="form-control"
+            ng-options="items.ProID as items.ProName for items in provinceIn">
         <option value="">请选择省份</option>
     </select>
-    {{ ngModel.provinceNum }}
-    <select ng-model="cityNum" class="form-control" ng-change="changeCity()" ng-options="items.CityID as items.CityName for items in cityData">
+    <select ng-model="cityNum" class="form-control" ng-change="changeCity()"
+            ng-options="items.CityID as items.CityName for items in cityData">
         <option value="">请选择城市</option>
     </select>
     <select ng-model="countyNum" class="form-control" ng-options="items.id as items.countyName for items in countyData">
