@@ -162,3 +162,79 @@ angular.module('adminApp')
             }
         }
     })
+    /*上传时显示图片预览的指令*/
+    .directive('ngThumb', ['$window', function($window) {
+        var helper = {
+            support: !!($window.FileReader && $window.CanvasRenderingContext2D),
+            isFile: function(item) {
+                return angular.isObject(item) && item instanceof $window.File;
+            },
+            isImage: function(file) {
+                /*正则，用于确定文件是否为图片后缀*/
+                var type =  '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
+                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+            }
+        };
+
+        return {
+            restrict: 'A',
+            template: '<canvas/>',
+            link: function(scope, element, attributes) {
+                /*如果不是图片直接退出*/
+                if (!helper.support) return;
+
+                var params = scope.$eval(attributes.ngThumb);
+
+                if (!helper.isFile(params.file)) return;
+                if (!helper.isImage(params.file)) return;
+
+                var canvas = element.find('canvas');
+                /*绑定文件预览*/
+                var reader = new FileReader();
+                /*使用了FileReader新Api*/
+                reader.onload = onLoadFile;
+                reader.readAsDataURL(params.file);
+
+                function onLoadFile(event) {
+                    var img = new Image();
+                    img.onload = onLoadImage;
+                    img.src = event.target.result;
+                }
+
+                function onLoadImage() {
+                    var width = params.width || this.width / this.height * params.height;
+                    var height = params.height || this.height / this.width * params.width;
+                    canvas.attr({ width: width, height: height });
+                    canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
+                }
+            }
+        };
+    }])
+    /*选择图片上传的指令,有一个参数，传入一个选项框的名字*/
+    .directive('uploadImg',function (FileUploader,getAdminSercive) {
+        return {
+            restrict: 'AE',
+            replace: true,
+            templateUrl: 'tpls/uploadImg.html',
+            scope: {
+                labelName:'@',
+                fileItem:'='
+            },
+            controller:function ($scope) {
+                var uploader = $scope.uploader = new FileUploader({
+                    url:getAdminSercive.uploadImg()
+                })
+                uploader.onSuccessItem = function (fileItem) {
+                    $scope.fileItem = fileItem
+                }
+                /*添加过滤规则，这个是只能上传图片*/
+                uploader.filters.push({
+                    name:'imageFilter',
+                    fn: function (item/*这是传入的需要过滤的东西*/,options) {
+                        var type = '|'+item.type.slice(item.type.lastIndexOf('/') + 1) + '|'; /*确认传入文件的后缀*/
+                        return 'jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;    //确认后缀是不是图片
+                    }
+                })
+            }
+        }
+    })

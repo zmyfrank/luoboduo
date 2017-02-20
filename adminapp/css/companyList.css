@@ -27,3 +27,7 @@
 .f-table_border {
   border: 1px solid #e8e8e8;
 }
+.m-company-textarea {
+  min-width: 80%;
+  min-height: 100px;
+}

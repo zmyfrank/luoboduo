@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/2/17.
  */
-var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil']);
+var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil','angularFileUpload','isteven-multi-select']);
 
 adminApp.config(['$stateProvider', '$urlRouterProvider',
     function ($statepProvider, $urlRouterProvider) {
@@ -68,7 +68,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
             .state('app.companyEdit',{
                 url:'/companyEdit',
                 templateUrl:'tpls/companyEdit.html',
-                conroller:'companyEditCtrl',
+                controller:'companyEditCtrl',
                 controllerAs:'vm',
                 resolve: {
                     home_file:_lazyLoad([
