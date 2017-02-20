@@ -25,6 +25,7 @@ angular.module('mainServices',[])
                     params:data
                 })
             },
+            /* arcitle搜索 */
             'searchArcitle':function (data) {
                 return $http({
                     method:'GET',
