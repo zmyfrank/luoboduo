@@ -68,9 +68,11 @@
                 <td>{{data.author}}</td>
                 <td>{{data.status|articleFilter:'status'}}</td>
                 <td>
-                    <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html" operation= "vm.stastus" info = 'vm.articleinfo'
-                    ></my-modeal>
-                    编辑 删除
+                    <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.stastus" tipstext='status'
+                               tipsinfo="vm.stastusinfo(this)"><a class="btn " ng-click="open()">{{data.status == 2 ? '下线' : '上线'}}</a></my-modeal>
+
+<!--                    <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html" operation= "vm.delete" tipstext='delete'
+                               tipsinfo="vm.deleteinfo(this)"><a class="btn" ng-click="open()"> 删除</a></my-modeal>-->
                 </td>
             </tr>
         </table>
@@ -78,7 +80,8 @@
 </div>
 <mypagintion total='vm.totalItems'></mypagintion>
 
-<my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html" operation= "vm.stastus"></my-modeal>
+
+
 
 <!--
 <div ng-controller="ModalDemoCtrl">
