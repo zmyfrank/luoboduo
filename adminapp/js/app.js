@@ -64,6 +64,19 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+        /*添加公司*/
+            .state('app.companyEdit',{
+                url:'/companyEdit',
+                templateUrl:'tpls/companyEdit.html',
+                conroller:'companyEditCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/companyList.css',
+                        'js/companyEditCtrl.js'
+                    ])
+                }
+            })
 
     }
 ])
