@@ -94,7 +94,6 @@ angular.module('adminApp')
             /* 确认后处理函数 */
             vm.delete =function (ele) {
                 console.log(ele,this,$scope);
-
             }
         }
     )
