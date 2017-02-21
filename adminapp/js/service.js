@@ -8,14 +8,22 @@ angular.module('mainServices',[])
             /*公司搜索地址*/
             companyUrl:'/carrots-admin-ajax/a/company/search',
             joblistUrl:'/carrots-admin-ajax/',
-            /* arcitle页面 */
+            /* arcitle列表页面 */
             arcitleUrl:'/carrots-admin-ajax/a/article/search',
             /*操作公司列表*/
             companyOperationUrl:'/carrots-admin-ajax/a/u/company/status',
             /*删除公司*/
             deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/',
             /*上传图片，最后是我的文件夹名 hzlbd*/
-            uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd'
+            uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd',
+            /* 登陆 */
+            loginUrl:'/carrots-admin-ajax/a/login?name=admin&pwd=123456',
+            /* 删除article列表 */
+            deleteArticleUrl :'/carrots-admin-ajax/a/u/article/',
+            /* 获得单个article */
+            ingleArticleUrl:'/carrots-admin-ajax/a/article/',
+            /* 编辑article */
+            editArticleUrl:'/carrots-admin-ajax/a/u/article/',
         }
         /*请求的参数等*/
         return {
@@ -52,6 +60,26 @@ angular.module('mainServices',[])
             /*上传图片,这个我只返回一个地址*/
             'uploadImg':function () {
                 return searviceList.uploadImgUrl
+            },
+            /* 登陆 */
+            'login' :function () {
+                return $http.post(searviceList.loginUrl);
+            },
+            /* 删除article列表 */
+            'deleteArticle' :function (id) {
+                return $http.delete(searviceList.deleteArticleUrl+id)
+            },
+            /* 获得单个article */
+            'singleArticle' :function (id) {
+              return $http.get(searviceList.ingleArticleUrl+id);
+            },
+            /* 编辑article */
+            'editArticle' : function (data,id) {
+                return $http({
+                    method:'PUT',
+                    url:searviceList.editArticleUrl+id,
+                    params:data
+                })
             }
         }
     })

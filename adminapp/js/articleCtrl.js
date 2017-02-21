@@ -5,7 +5,7 @@
 
 angular.module('adminApp')
     .controller('articleCtrl',
-        function ($scope,getAdminSercive,$http,articlemodealinfo) {
+        function ($scope,getAdminSercive,$http,articlemodealinfo,$location) {
             var vm = this;
 
             /* 搜索值 */
@@ -40,14 +40,15 @@ angular.module('adminApp')
                 vm.startdata ='';
                 vm.arcitleHttp(vm.arcitle);
             }
-
             //arcitle请求
+            vm.totalItems ={};
             vm.arcitleHttp = function (params){
                 getAdminSercive.searchArcitle(params).then(function (res) {
                     if (res.data.code == 0) {
                         //console.log(res.data.data)
                         vm.arcitledata = res.data.data.articleList;
-                        vm.totalItems = res.data.data.total;
+                        vm.totalItems.totals = res.data.data.total;
+                        vm.totalItems.page = params.page;
                     }
                 })
             }
@@ -66,10 +67,7 @@ angular.module('adminApp')
 
             /* 确认后处理函数 */
             vm.stastus = function () {
-                $http({
-                    method:'POST',
-                    url:'/carrots-admin-ajax/a/login?name=admin&pwd=123456',
-                }).then(function (res) {
+                getAdminSercive.login().then(function (res) {
                     if (res.data.code == 0) {
                         $http({
                             method:'PUT',
@@ -88,12 +86,26 @@ angular.module('adminApp')
             }
             /* 删除 */
             //提示信息
-            vm.deleteinfo =function () {
+            vm.deleteinfo =function (ele) {
+                vm.id = ele.$parent.data.id;
                 articlemodealinfo.delete = ['从数据库中删除将无法回复','是否执行删除操作？','删除成功'];
             }
             /* 确认后处理函数 */
-            vm.delete =function (ele) {
-                console.log(ele,this,$scope);
+            vm.delete =function () {
+                getAdminSercive.login().then(function (res) {
+                    if (res.data.code == 0) {
+                        getAdminSercive.deleteArticle(vm.id).then(function (res) {
+                            if (res.data.code == 0) {
+                                vm.arcitleHttp(1);
+                            }
+                        })
+                    }
+                })
+            }
+            
+            /* 编辑 */
+            vm.edit = function (ele) {
+                $location.url('app/articleadd?id='+ele.data.id);
             }
         }
     )
