@@ -137,7 +137,7 @@ angular.module('adminApp')
     })
     /*分页*/
     /* 分页指令 */
-    .directive('mypagintion', function (currentPage) {
+    .directive('mypagintion', function () {
         /* 分页 */
         return {
             restrict: 'AE',
@@ -225,9 +225,9 @@ angular.module('adminApp')
                 var uploader = $scope.uploader = new FileUploader({
                     url:getAdminSercive.uploadImg()
                 })
-                $scope.fileItem = '';
+                $scope.fileItem = "";
                 uploader.onSuccessItem = function (fileItem,response) {
-                    $scope.fileItem = response.data.url
+                    $scope.fileItem = response.data.url;
                 }
                 /*添加过滤规则，这个是只能上传图片*/
                 uploader.filters.push({
@@ -237,6 +237,26 @@ angular.module('adminApp')
                         return 'jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;    //确认后缀是不是图片
                     }
                 })
+            }
+        }
+    })
+    /*规定每一个上传上去的数据都是空的，避免出现错误，外面改变了里面也会改变*/
+    .directive('dataSet',function () {
+        return {
+            restrict:"A",
+            replace:false,
+            scope: {
+                ngModel:'=',
+                /*传入一个东西，表明它是数组*/
+                isArry:'@'
+            },
+            controller:function ($scope) {
+                /*先把这个值设置为空,如果是数组则多个arry参数*/
+                if ($scope.isArry=='arry') {
+                    $scope.ngModel = $scope.ngModel.join(',');
+                }else {
+                    $scope.ngModel = null;
+                }
             }
         }
     })
