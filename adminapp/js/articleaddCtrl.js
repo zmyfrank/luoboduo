@@ -20,19 +20,25 @@ angular.module('adminApp')
             })
         }
 
-        /* 上线/存稿 */
+        /* 新增上线/存稿 */
         vm.articleadd = function (tp) {
             vm.adddata.status = tp;
-            $http({
-                method:'POST',
-                url:'/carrots-admin-ajax/a/u/article',
-                params:vm.adddata,
-            }).then(function (res) {
+            getAdminSercive.addArticle(vm.adddata).then(function (res) {
                 if (res.data.code == 0) {
                     $state.go('app.article');
                 }
             })
         }
+
+        /* 编辑上线/存稿 */
+/*        vm.articeditleadd =function (tp) {
+            vm.adddata.status = tp;
+            getAdminSercive.editArticle(vm.adddata,vm.articleId).then(function (res) {
+                if (res.data.code == 0) {
+                    console.log(res.data.data);
+                }
+            })
+        }*/
 
     }
 )

@@ -22,7 +22,7 @@ angular.module('mainServices',[])
             deleteArticleUrl :'/carrots-admin-ajax/a/u/article/',
             /* 获得单个article */
             ingleArticleUrl:'/carrots-admin-ajax/a/article/',
-            /* 编辑article */
+            /* 新增/ 编辑article */
             editArticleUrl:'/carrots-admin-ajax/a/u/article/',
         }
         /*请求的参数等*/
@@ -73,12 +73,16 @@ angular.module('mainServices',[])
             'singleArticle' :function (id) {
               return $http.get(searviceList.ingleArticleUrl+id);
             },
+            /* 新增article */
+            'addArticle' :function (data) {
+                return $http.post(searviceList.editArticleUrl,data);
+            },
             /* 编辑article */
             'editArticle' : function (data,id) {
                 return $http({
                     method:'PUT',
                     url:searviceList.editArticleUrl+id,
-                    params:data
+                    params:data,
                 })
             }
         }
