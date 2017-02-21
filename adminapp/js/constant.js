@@ -8492,3 +8492,21 @@ var mainConstant = angular.module('mainConstant', [])
                 {type:2,name:'上线'}
         ]
     })
+    //article编辑页面类型数据
+    .constant('articleEdit',{
+        status:[
+            {value:0,name:'首页Banner'},
+            {value:1,name:'找职位Banner'},
+            {value:2,name:'找精英Banner'},
+            {value:3,name:'行业大图'},
+        ],
+        industry:[
+            {value:0,name:'移动互联网'},
+            {value:1,name:'电子商务'},
+            {value:2,name:'企业服务'},
+            {value:3,name:'020'},
+            {value:4,name:'教育'},
+            {value:5,name:'金融'},
+            {value:6,name:'游戏'},
+        ]
+    })

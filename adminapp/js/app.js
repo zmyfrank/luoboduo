@@ -53,7 +53,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
             })
             /* article新增页面 */
             .state('app.articleadd',{
-                url:'/articleadd',
+                url:'/articleadd?id',
                 templateUrl: 'tpls/articleadd.html',
                 controller: 'articleaddCtrl',
                 controllerAs: 'vm',

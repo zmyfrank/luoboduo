@@ -4,10 +4,41 @@
 /* 新增article */
 angular.module('adminApp')
     .controller('articleaddCtrl',
-        function ($scope) {
+        function ($scope,$http,$state,getAdminSercive,articleEdit) {
         var vm = this;
-        vm.articleadd = function () {
-            console.log($scope)
+
+       //类型和行业的数据
+        vm.status = articleEdit.status;
+        vm.industry =articleEdit.industry;
+
+        vm.articleId =  $state.params.id;
+        if (vm.articleId) {
+            getAdminSercive.singleArticle(vm.articleId).then(function (res) {
+                if (res.data.code == 0 ) {
+                    vm.adddata = res.data.data.article;
+                }
+            })
         }
+
+        /* 新增上线/存稿 */
+        vm.articleadd = function (tp) {
+            vm.adddata.status = tp;
+            getAdminSercive.addArticle(vm.adddata).then(function (res) {
+                if (res.data.code == 0) {
+                    $state.go('app.article');
+                }
+            })
+        }
+
+        /* 编辑上线/存稿 */
+/*        vm.articeditleadd =function (tp) {
+            vm.adddata.status = tp;
+            getAdminSercive.editArticle(vm.adddata,vm.articleId).then(function (res) {
+                if (res.data.code == 0) {
+                    console.log(res.data.data);
+                }
+            })
+        }*/
+
     }
 )

@@ -137,7 +137,7 @@ angular.module('adminApp')
     })
     /*分页*/
     /* 分页指令 */
-    .directive('mypagintion', function (getAdminSercive) {
+    .directive('mypagintion', function () {
         /* 分页 */
         return {
             restrict: 'AE',
@@ -151,9 +151,10 @@ angular.module('adminApp')
                 scope.currentPage = 1; //初始页
                 scope.$parent.vm.pagingdata(scope.currentPage)
 
-                scope.$watch('total', function (n, o) {
-                    if (n != o) {
-                        scope.totalItems = scope.total;
+                scope.$watch('total.page', function (n, o) {
+                    if (n!=o) {
+                        scope.totalItems = scope.total.totals;
+                        scope.currentPage = scope.total.page;
                     }
                 })
                 scope.pageChanged = function () {
