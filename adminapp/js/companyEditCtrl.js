@@ -17,6 +17,9 @@ angular.module('adminApp')
             }
         }
         vm.deleteTag =function (index) {
-            vm.taglist.slice(index,1)
+            vm.taglist.splice(index,1);
+        }
+        vm.test = function () {
+            console.log(vm.file1)
         }
     })

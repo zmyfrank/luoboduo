@@ -37,3 +37,7 @@
   background-color: #e8e8e8;
   margin-right: 5px;
 }
+.f-help {
+  display: inline-block;
+  color: red;
+}

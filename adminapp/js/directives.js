@@ -210,7 +210,7 @@ angular.module('adminApp')
             }
         };
     }])
-    /*选择图片上传的指令,有一个参数，传入一个选项框的名字*/
+    /*选择图片上传的指令,有一个参数，传入一个选项框的名字,用=绑定成功就会有数据返回的接口*/
     .directive('uploadImg',function (FileUploader,getAdminSercive) {
         return {
             restrict: 'AE',
@@ -224,9 +224,8 @@ angular.module('adminApp')
                 var uploader = $scope.uploader = new FileUploader({
                     url:getAdminSercive.uploadImg()
                 })
-
-                uploader.onSuccessItem = function (fileItem) {
-                    $scope.fileItem = fileItem
+                uploader.onSuccessItem = function (fileItem,response) {
+                    $scope.fileItem = response
                 }
                 /*添加过滤规则，这个是只能上传图片*/
                 uploader.filters.push({
