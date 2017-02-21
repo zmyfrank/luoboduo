@@ -16,7 +16,6 @@ angular.module('adminApp')
             getAdminSercive.singleArticle(vm.articleId).then(function (res) {
                 if (res.data.code == 0 ) {
                     vm.adddata = res.data.data.article;
-                    vm.adddata.img = res.data.data.article.img;
                 }
             })
         }
