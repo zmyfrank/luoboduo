@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/2/17.
  */
-var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil','angularFileUpload','isteven-multi-select']);
+var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil','angularFileUpload','isteven-multi-select','ngMessages']);
 
 adminApp.config(['$stateProvider', '$urlRouterProvider',
     function ($statepProvider, $urlRouterProvider) {

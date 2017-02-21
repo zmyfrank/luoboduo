@@ -4,25 +4,35 @@
             详细信息
             <select ng-model="vm.xx1" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype"></select>
         </div>
-        <form action="" class="form-inline">
+        <form name='companyData' class="form-inline" novalidate="novalidate">
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*公司名称：</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model='vm.companyName' name='companyName' required>
+                    <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companyName.$touched">
+                        <span ng-message="required">请填写公司名称</span>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*公司slogan：</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model='vm.companySlogan' name="companySlogan" required>
+                    <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companySlogan.$touched">
+                        <span ng-message="required">请填写公司slogan</span>
+                    </div>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*公司人数：</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model='vm.companyNum' name="companyNum" ng-pattern="/^[\d]+$/" required>
+                    <div class="f-help" ng-messages="companyData.companyNum.$error" ng-if="companyData.companyNum.$touched">
+                        <span ng-message="required">请填写公司人数</span>
+                        <span ng-message="pattern">请输入数字</span>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*融&nbsp;资&nbsp;规&nbsp;模&nbsp;：</label>
-                    <select ng-model="vm.xx" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
+                    <select ng-model="vm.financing" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
                     </select>
                 </div>
             </div>
@@ -46,11 +56,14 @@
                     </div>
                 </div>
             </div>
-            <upload-img label-name="*公司名称：" file-item="vm.file1"></upload-img>
+            <upload-img label-name="*公司Logo：" file-item="vm.file1"></upload-img>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
                     <label for="" >*公司介绍：</label>
-                    <textarea class="form-control m-company-textarea"></textarea>
+                    <textarea class="form-control m-company-textarea" ng-model="companyIntro" name='companyIntro' required></textarea>
+                    <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companyName.$touched">
+                        <span ng-message="required">请填写公司详细信息</span>
+                    </div>
                 </div>
             </div>
             <div class="row f-rowfix">
@@ -124,7 +137,7 @@
         </form>
     </div>
     <div class="m-companylist_btngroup">
-        <button class="btn btn-small btn-warning" type="button">保存</button>
-        <button class="btn btn-small btn-success" type="button">取消</button>
+        <button class="btn btn-small btn-warning" type="button" ng-disabled="companyData.$invalid||!vm.creatData.province||!vm.outpu">保存</button>
+        <button class="btn btn-small btn-success" type="button" ng-click="vm.test()">取消</button>
     </div>
 </div>
