@@ -224,8 +224,9 @@ angular.module('adminApp')
                 var uploader = $scope.uploader = new FileUploader({
                     url:getAdminSercive.uploadImg()
                 })
+                $scope.fileItem = "";
                 uploader.onSuccessItem = function (fileItem,response) {
-                    $scope.fileItem = response
+                    $scope.fileItem = response.data.url;
                 }
                 /*添加过滤规则，这个是只能上传图片*/
                 uploader.filters.push({
