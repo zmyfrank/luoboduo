@@ -7,13 +7,13 @@
                 <div class="form-group clearfix">
                     <label class="col-md-2 control-label" >标题名称</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" name="title" ng-model ="title"  required="">
+                        <input class="form-control" type="text" name="title" ng-model ="vm.adddata.title"  required="">
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-md-2 control-label" >类 型</label>
                     <div class="col-md-2">
-                        <select class="form-control" ng-model="type"  required="">
+                        <select class="form-control" ng-model="vm.adddata.type"  required="">
                             <option value="">请选择</option>
                             <option value="0">首页Banner</option>
                             <option value="1">找职位Banner</option>
@@ -21,8 +21,8 @@
                             <option value="3">行业大图</option>
                         </select>
                     </div>
-                    <div class="col-md-2" ng-if="type == 3">
-                        <select class="form-control" ng-model="industry"   required="">
+                    <div class="col-md-2" ng-if="vm.adddata.type == 3">
+                        <select class="form-control" ng-model="vm.adddata.industry"   required="">
                         <option value="">请选择</option>
                         <option value="0">移动互联网</option>
                         <option value="1">电子商务</option>
@@ -38,7 +38,7 @@
                 <div class="form-group clearfix">
                     <label class="col-md-2 control-label">说 明</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" ng-model="content">
+                        <input class="form-control" type="text" ng-model="vm.adddata.content">
                     </div>
                 </div>
 
@@ -48,16 +48,16 @@
                         <input class="form-control" type="text" ng-model="url"  required="">
                     </div>
                 </div>
-                <upload-img label-name="配图"  file-item="">
+                <upload-img label-name="配图"  file-item="vm.adddata.img">
                 </upload-img>
                 <div class="form-group clearfix">
-                    <button type="button" class="btn btn-success" ng-disabled="!articleform.$valid"  ng-click="vm.articleadd()">立即上线
+                    <button type="button" class="btn btn-success" ng-disabled="!articleform.$valid"  ng-click="vm.articleadd(2)">立即上线
                     </button>
 
-                    <button type="button" class="btn btn-success">存为草稿
+                    <button type="button" class="btn btn-success" ng-disabled="!articleform.$valid" ng-click="vm.articleadd(1)">存为草稿
                     </button>
                     <!--<span class="text-red" ng-show="!vm.vaidShow">请补全信息</span>-->
-                    <button type="button" class="btn btn-default pull-right" ui-sref="field.articleList" href="">取消</button>
+                    <button type="button" class="btn btn-default pull-right" ui-sref="app.article">取消</button>
                 </div>
             </form>
         </div>
