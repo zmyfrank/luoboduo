@@ -13,7 +13,9 @@ angular.module('mainServices',[])
             /*操作公司列表*/
             companyOperationUrl:'/carrots-admin-ajax/a/u/company/status',
             /*删除公司*/
-            deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/'
+            deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/',
+            /*上传图片，最后是我的文件夹名 hzlbd*/
+            uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd'
         }
         /*请求的参数等*/
         return {
@@ -46,6 +48,10 @@ angular.module('mainServices',[])
             /*删除公司*/
             'deleteCompany':function (id) {
                 return $http.delete(searviceList.deleteCompanyUrl+'/'+id)
+            },
+            /*上传图片,这个我只返回一个地址*/
+            'uploadImg':function () {
+                return searviceList.uploadImgUrl
             }
         }
     })

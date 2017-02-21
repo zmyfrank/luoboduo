@@ -1,5 +1,9 @@
 <div class="container-fluid m-companylist-wrap ">
     <div class="panel panel-default clearfix">
+        <div class="panel-heading">
+            详细信息
+            <select ng-model="vm.xx1" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype"></select>
+        </div>
         <form action="" class="form-inline">
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
@@ -12,28 +16,61 @@
                 </div>
             </div>
             <div class="row f-rowfix">
-                <div class="form-group m-companylist_city col-md-8">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>*公司人数：</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>*融&nbsp;资&nbsp;规&nbsp;模&nbsp;：</label>
+                    <select ng-model="vm.xx" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="row f-rowfix">
+                <div class="form-group m-companylist_city col-md-12">
                     <label for="">*地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
-                    <select class="form-control"></select>
-                    <select class="form-control"></select>
-                    <select class="form-control"></select>
+                    <citychoose province-num="vm.creatData.province" city-num="vm.creatData.city" county-num="vm.creatData.county"></citychoose>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
-                    <label for="">*公司Logo：</label>
+                    <label for="">*公司标签：</label>
+                    <div     style="display: inline-block"
+                             isteven-multi-select
+                             input-model="vm.industryData"
+                             output-model="vm.output"
+                             button-label="name"
+                             item-label="name"
+                             tick-property="ticked"     >
+
+                    </div>
+                </div>
+            </div>
+            <upload-img label-name="*公司名称：" file-item="vm.file1"></upload-img>
+            <div class="row f-rowfix">
+                <div class="form-group m-companylist_city col-md-12">
+                    <label for="" >*公司介绍：</label>
+                    <textarea class="form-control m-company-textarea"></textarea>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
-                    <label for="">*公司介绍：</label>
-                    <textarea class="form-control"></textarea>
+                    <label for="" >公司标签：&nbsp;&nbsp;</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="vm.tag">
+                        <div class="input-group-addon" ng-click="vm.addTag()">+</div>
+                    </div>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
-                    <label for="">公司标签：</label>
-                    <input class="form-control">
+                    <label for="" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="input-group">
+                        <div class='m-edicompangy_taglist' ng-repeat="items in vm.taglist">
+                            <span>{{ items }}</span>
+                            <span class="glyphicon glyphicon-remove" ng-click="vm.deleteTag($index)"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -45,30 +82,19 @@
         <form action="" class="form-inline">
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
-                    <label>公司名称：</label>
+                    <label>产品名称：</label>
                     <input type="text" class="form-control">
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                    <label>公司slogan：</label>
+                    <label>产品slogan：</label>
                     <input type="text" class="form-control">
                 </div>
             </div>
+                <upload-img label-name="产品Logo:" file-item="vm.file2"></upload-img>
             <div class="row f-rowfix">
-                <div class="form-group col-md-8 col-xs-12">
-                    <label>产品Logo：</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row f-rowfix">
-                <div class="form-group col-md-8 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">
                     <label>产品简介：</label>
-                    <input type="file" class="form-control">
-                </div>
-            </div>
-            <div class="row f-rowfix">
-                <div class="form-group col-md-8 col-xs-12">
-                    <label>*产品简介：</label>
-                    <input type="file" class="form-control">
+                    <textarea class="form-control m-company-textarea"></textarea>
                 </div>
             </div>
         </form>
@@ -80,12 +106,12 @@
         <form action="" class="form-inline">
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
-                    <label>手机：</label>
-                    <input type="text" class="form-control">
+                    <label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
+                    <input type="tel" class="form-control">
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                    <label>邮箱：</label>
-                    <input type="text" class="form-control">
+                    <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+                    <input type="email" class="form-control">
                 </div>
             </div>
             <div class="row f-rowfix">
@@ -94,16 +120,11 @@
                     <input type="text" class="form-control">
                 </div>
             </div>
-            <div class="row f-rowfix">
-                <div class="form-group col-md-8 col-xs-12">
-                    <label>地图：</label>
-                    <input type="file" class="form-control" placeholder="请选择图片">
-                </div>
-            </div>
+            <upload-img label-name="地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图：" file-item="vm.file3"></upload-img>
         </form>
     </div>
     <div class="m-companylist_btngroup">
-        <button class="btn btn-small btn-warning" type="button">清空</button>
-        <button class="btn btn-small btn-success" type="button">搜索</button>
+        <button class="btn btn-small btn-warning" type="button">保存</button>
+        <button class="btn btn-small btn-success" type="button">取消</button>
     </div>
 </div>
