@@ -6,6 +6,11 @@
         </div>
     </div>
     <div class="row f-rowfix">
+        <div ng-if="fileItem" class="form-group">
+            <p>当前图片</p>
+            <img style="max-width: 200px;max-height: 150px" ng-src="{{ fileItem }}"/>
+        </div>
+    <div class="row f-rowfix">
         <table class="table">
             <thead>
             <tr>

@@ -239,3 +239,23 @@ angular.module('adminApp')
             }
         }
     })
+    /*规定每一个上传上去的数据都是空的，避免出现错误，外面改变了里面也会改变*/
+    .directive('dataSet',function () {
+        return {
+            restrict:"A",
+            replace:false,
+            scope: {
+                ngModel:'=',
+                /*传入一个东西，表明它是数组*/
+                isArry:'@'
+            },
+            controller:function ($scope) {
+                /*先把这个值设置为空,如果是数组则多个arry参数*/
+                if ($scope.isArry=='arry') {
+                    $scope.ngModel = $scope.ngModel.join(',');
+                }else {
+                    $scope.ngModel = null;
+                }
+            }
+        }
+    })

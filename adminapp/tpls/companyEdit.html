@@ -2,20 +2,22 @@
     <div class="panel panel-default clearfix">
         <div class="panel-heading">
             详细信息
-            <select ng-model="vm.xx1" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype"></select>
+            <select ng-model="vm.data.company.approved" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
+                <option value="">请选择</option>
+            </select>
         </div>
         <form name='companyData' class="form-inline" novalidate="novalidate">
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*公司名称：</label>
-                    <input type="text" class="form-control" ng-model='vm.companyName' name='companyName' required>
+                    <input data-set type="text" class="form-control" ng-model='vm.data.company.name' name='companyName' required>
                     <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companyName.$touched">
                         <span ng-message="required">请填写公司名称</span>
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                    <label>*公司slogan：</label>
-                    <input type="text" class="form-control" ng-model='vm.companySlogan' name="companySlogan" required>
+                    <label>*公司solgan：</label>
+                    <input data-set type="text" class="form-control" ng-model='vm.data.company.solgan' name="companySlogan" required>
                     <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companySlogan.$touched">
                         <span ng-message="required">请填写公司slogan</span>
                     </div>
@@ -24,7 +26,7 @@
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*公司人数：</label>
-                    <input type="text" class="form-control" ng-model='vm.companyNum' name="companyNum" ng-pattern="/^[\d]+$/" required>
+                    <input data-set type="text" class="form-control" ng-model='vm.data.company.totalNum' name="companyNum" ng-pattern="/^[\d]+$/" required>
                     <div class="f-help" ng-messages="companyData.companyNum.$error" ng-if="companyData.companyNum.$touched">
                         <span ng-message="required">请填写公司人数</span>
                         <span ng-message="pattern">请输入数字</span>
@@ -32,35 +34,41 @@
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*融&nbsp;资&nbsp;规&nbsp;模&nbsp;：</label>
-                    <select ng-model="vm.financing" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
+                    <select data-set ng-model="vm.data.company.financing" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
+                        <option value="">请选择</option>
                     </select>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
                     <label for="">*地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
-                    <citychoose province-num="vm.creatData.province" city-num="vm.creatData.city" county-num="vm.creatData.county"></citychoose>
+                    <!--三级联动-->
+                    <citychoose province-num="vm.data.company.province" city-num="vm.data.company.city" county-num="vm.data.company.county"></citychoose>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
-                    <label for="">*公司标签：</label>
+                    <!--这个东西在后面需要自己添加，初始给它一个空的值，然后再赋值给对象中的一个参数-->
+                    <label for="">*行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label>
                     <div     style="display: inline-block"
                              isteven-multi-select
                              input-model="vm.industryData"
                              output-model="vm.output"
                              button-label="name"
                              item-label="name"
-                             tick-property="ticked"     >
+                             on-close="vm.changeIndustry()"
+                             on-reset="vm.resetIdustry()"
+                             tick-property="choose">
 
                     </div>
                 </div>
             </div>
-            <upload-img label-name="*公司Logo：" file-item="vm.file1"></upload-img>
+            <!--公司logo上传-->
+            <upload-img label-name="*公司Logo：" file-item="vm.data.company.logo"></upload-img>
             <div class="row f-rowfix">
                 <div class="form-group m-companylist_city col-md-12">
                     <label for="" >*公司介绍：</label>
-                    <textarea class="form-control m-company-textarea" ng-model="companyIntro" name='companyIntro' required></textarea>
+                    <textarea data-set class="form-control m-company-textarea" ng-model="vm.data.company.summary" name='companyIntro' required></textarea>
                     <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companyName.$touched">
                         <span ng-message="required">请填写公司详细信息</span>
                     </div>
@@ -79,8 +87,8 @@
                 <div class="form-group m-companylist_city col-md-12">
                     <label for="" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <div class="input-group">
-                        <div class='m-edicompangy_taglist' ng-repeat="items in vm.taglist">
-                            <span>{{ items }}</span>
+                        <div class='m-edicompangy_taglist' ng-repeat="items in vm.data.tagList">
+                            <span>{{ items.tag }}</span>
                             <span class="glyphicon glyphicon-remove" ng-click="vm.deleteTag($index)"></span>
                         </div>
                     </div>
@@ -96,18 +104,18 @@
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>产品名称：</label>
-                    <input type="text" class="form-control">
+                    <input data-set ng-model="vm.data.productList.name" type="text" class="form-control">
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>产品slogan：</label>
-                    <input type="text" class="form-control">
+                    <input data-set ng-model="vm.data.productList.solgan" type="text" class="form-control">
                 </div>
             </div>
-                <upload-img label-name="产品Logo:" file-item="vm.file2"></upload-img>
+                <upload-img label-name="产品Logo:" file-item="vm.data.productList.logo"></upload-img>
             <div class="row f-rowfix">
                 <div class="form-group col-md-12 col-xs-12">
                     <label>产品简介：</label>
-                    <textarea class="form-control m-company-textarea"></textarea>
+                    <textarea data-set ng-model="vm.data.productList.summary" class="form-control m-company-textarea"></textarea>
                 </div>
             </div>
         </form>
@@ -120,24 +128,24 @@
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
-                    <input type="tel" class="form-control">
+                    <input data-set ng-model="vm.data.company.phone" type="tel" class="form-control">
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
-                    <input type="email" class="form-control">
+                    <input data-set ng-model="vm.data.company.mail" type="email" class="form-control">
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group col-md-12 col-xs-12">
                     <label>详细地址：</label>
-                    <input type="text" class="form-control">
+                    <input data-set ng-model="vm.data.company.address" type="text" class="form-control">
                 </div>
             </div>
-            <upload-img label-name="地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图：" file-item="vm.file3"></upload-img>
+            <upload-img label-name="地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图：" file-item="vm.data.company.map"></upload-img>
         </form>
     </div>
     <div class="m-companylist_btngroup">
-        <button class="btn btn-small btn-warning" type="button" ng-disabled="companyData.$invalid||!vm.creatData.province||!vm.outpu">保存</button>
+        <button class="btn btn-small btn-warning" type="button" ng-disabled="companyData.$invalid||!vm.data.company.province||!vm.data.company.logo||!vm.data.tagList">保存</button>
         <button class="btn btn-small btn-success" type="button" ng-click="vm.test()">取消</button>
     </div>
 </div>
