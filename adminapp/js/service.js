@@ -75,7 +75,11 @@ angular.module('mainServices',[])
             },
             /* 新增article */
             'addArticle' :function (data) {
-                return $http.post(searviceList.editArticleUrl,data);
+                return $http({
+                    method:'POST',
+                    url:searviceList.editArticleUrl,
+                    params:data,
+                })
             },
             /* 编辑article */
             'editArticle' : function (data,id) {
