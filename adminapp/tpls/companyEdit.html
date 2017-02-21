@@ -3,7 +3,6 @@
         <div class="panel-heading">
             详细信息
             <select ng-model="vm.data.company.approved" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
-                <option value="">请选择</option>
             </select>
         </div>
         <form name='companyData' class="form-inline" novalidate="novalidate">
@@ -35,7 +34,6 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*融&nbsp;资&nbsp;规&nbsp;模&nbsp;：</label>
                     <select data-set ng-model="vm.data.company.financing" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
-                        <option value="">请选择</option>
                     </select>
                 </div>
             </div>
@@ -145,7 +143,7 @@
         </form>
     </div>
     <div class="m-companylist_btngroup">
-        <button class="btn btn-small btn-warning" type="button" ng-disabled="companyData.$invalid||!vm.data.company.province||!vm.data.company.logo||!vm.data.tagList">保存</button>
-        <button class="btn btn-small btn-success" type="button" ng-click="vm.test()">取消</button>
+        <button class="btn btn-small btn-warning" ng-click="vm.creatCompany()" type="button" ng-disabled="companyData.$invalid||!vm.data.company.province||!vm.data.company.logo||!vm.data.tagList">保存</button>
+        <button class="btn btn-small btn-success" type="button" ng-click="vm.test()" ui-sref="app.companyList">取消</button>
     </div>
 </div>

@@ -12,7 +12,7 @@ angular.module('mainServices',[])
             arcitleUrl:'/carrots-admin-ajax/a/article/search',
             /*操作公司列表*/
             companyOperationUrl:'/carrots-admin-ajax/a/u/company/status',
-            /*删除公司*/
+            /*删除和新增公司*/
             deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/',
             /*上传图片，最后是我的文件夹名 hzlbd*/
             uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd'
@@ -52,6 +52,17 @@ angular.module('mainServices',[])
             /*上传图片,这个我只返回一个地址*/
             'uploadImg':function () {
                 return searviceList.uploadImgUrl
+            },
+            /*新增公司*/
+            'creatCompany':function (data) {
+                return $http({
+                    method:'POST',
+                    url:searviceList.deleteCompanyUrl,
+                    headers:{
+                        "Content-Type":"Application/json"
+                    },
+                    data:data
+                })
             }
         }
     })
