@@ -28,3 +28,7 @@
 .input-group select {
   max-width: 150px;
 }
+/* article新增页面 */
+.m-articleadd .table-responsive {
+  padding: 20px 30px;
+}
