@@ -51,6 +51,19 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /* article新增页面 */
+            .state('app.articleadd',{
+                url:'/articleadd',
+                templateUrl: 'tpls/articleadd.html',
+                controller: 'articleaddCtrl',
+                controllerAs: 'vm',
+                resolve : {
+                    home_file:_lazyLoad([
+                        'css/article.css',
+                        'js/articleaddCtrl.js'
+                    ])
+                }
+            })
             /*职位详情页面*/
             .state('app.jobList',{
                 url:'/jobList',

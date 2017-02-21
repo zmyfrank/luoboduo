@@ -46,7 +46,9 @@
  </div>
 <!-- article列表 -->
 <div class="panel panel-default">
-    <div class="panel-heading">Article列表</div>
+    <div class="panel-heading">Article列表
+        <button type="button" class="btn btn-xs btn-success pull-right" ui-sref="app.articleadd">+新增</button>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -67,10 +69,17 @@
                 <td>{{data.updateAt| date:'yyyy-MM-dd HH:mm:m'}}</td>
                 <td>{{data.author}}</td>
                 <td>{{data.status|articleFilter:'status'}}</td>
-                <td>下线 编辑 删除</td>
+                <td>
+                    <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.stastus" tipstext='status'
+                               tipsinfo="vm.stastusinfo(this)"><a class="btn " ng-click="open()">{{data.status == 2 ? '下线' : '上线'}}</a></my-modeal>
+
+<!--                    <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html" operation= "vm.delete" tipstext='delete'
+                               tipsinfo="vm.deleteinfo(this)"><a class="btn" ng-click="open()"> 删除</a></my-modeal>-->
+                </td>
             </tr>
         </table>
     </div>
 </div>
 <mypagintion total='vm.totalItems'></mypagintion>
-
+<my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.stastus" tipstext='status'
+           tipsinfo="vm.stastusinfo(this)"><a class="btn " ng-click="open()">{{data.status == 2 ? '下线' : '上线'}}</a></my-modeal>
