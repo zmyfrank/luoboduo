@@ -38,7 +38,7 @@
                 <div class="form-group clearfix">
                     <label class="col-md-2 control-label">说 明</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" ng-model="content" required="">
+                        <input class="form-control" type="text" ng-model="content">
                     </div>
                 </div>
 
@@ -48,7 +48,8 @@
                         <input class="form-control" type="text" ng-model="url"  required="">
                     </div>
                 </div>
-
+                <upload-img label-name="配图"  file-item="">
+                </upload-img>
                 <div class="form-group clearfix">
                     <button type="button" class="btn btn-success" ng-disabled="!articleform.$valid"  ng-click="vm.articleadd()">立即上线
                     </button>

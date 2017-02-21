@@ -6,8 +6,10 @@ angular.module('adminApp')
     .controller('articleaddCtrl',
         function ($scope) {
         var vm = this;
-        vm.articleadd = function () {
-            console.log($scope)
+        vm.articleadd = function (tp) {
+            vm.adddata = {
+                type:tp,
+            }
         }
     }
 )

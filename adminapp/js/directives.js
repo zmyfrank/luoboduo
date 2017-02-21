@@ -224,6 +224,7 @@ angular.module('adminApp')
                 var uploader = $scope.uploader = new FileUploader({
                     url:getAdminSercive.uploadImg()
                 })
+
                 uploader.onSuccessItem = function (fileItem) {
                     $scope.fileItem = fileItem
                 }

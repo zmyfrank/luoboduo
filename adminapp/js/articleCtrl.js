@@ -122,7 +122,7 @@ angular.module('adminApp')
     .directive('myModeal',function ($uibModal,articlemodealinfo) {
         return {
             restrict: 'AE',
-            replace: true,
+            replace: false,
             //templateUrl: 'tpls/dirtpls/mymodeal.html',
             scope: {
                 ngModel : '@', //模态1
@@ -168,4 +168,11 @@ angular.module('adminApp')
                 };
             }
         }
-})
+    })
+    .directive('myModealBox',function () {
+        return {
+            restrict:'AE',
+            repace:false,
+            scope:true,
+        }
+    })
