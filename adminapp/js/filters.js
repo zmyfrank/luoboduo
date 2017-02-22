@@ -91,11 +91,11 @@ mainFil.filter('articleFilter',function (article) {
 
 /* 用户列表请求转换请求数据 */
 mainFil.filter('accountFilter',function () {
-    var value=[];
     return function (data) {
+        var value=[];
         angular.forEach(data,function (val,index,arry) {
             value.push('ids='+val);
         })
-        return value.join('&');
+        return  value.join('&');
     }
 })

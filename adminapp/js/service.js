@@ -32,10 +32,12 @@ angular.module('mainServices',[])
             findJobListUrl:'/carrots-admin-ajax/a/profession/search',
 
             /* 模块管理接口 */
-            /* 获取用户列表 */
+            /* 获取全部用户列表 */
             userListUrl: '/carrots-admin-ajax/a/u/manager/?page=',
             /* 批量获取用户列表详细信息 */
             userInfoUrl:'/carrots-admin-ajax/a/u/multi/manager?',
+            /* 删除/编辑 单个用户 */
+            singleUser :'/carrots-admin-ajax/a/u/manager/',
 
         }
         /*请求的参数等*/
@@ -150,8 +152,24 @@ angular.module('mainServices',[])
                 return $http.get(searviceList.userListUrl+page)
             },
             /* 获取用户详细信息 */
-            'userInfo':function (data) {
-                return $http.get(searviceList.userInfoUrl+data)
-            }
+            'userInfo':function (data,page) {
+                return $http.get(searviceList.userInfoUrl+data+'&page='+page)
+            },
+            /* 获取单个角色下的所有用户的ids */
+            'roleuserIds':function (id) {
+                return $http.get('/carrots-admin-ajax/a/u/role/'+id+'/manager');
+            },
+            /* 删除单个用户 */
+            'deleteUser' :function (id) {
+                return $http.delete(searviceList.singleUser+id)
+            },
+            /* 编辑用户 */
+            'editUser' :function (data,id) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.singleUser+id,
+                    data:data
+                })
+            },
         }
     })

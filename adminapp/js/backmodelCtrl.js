@@ -2,27 +2,71 @@
  * Created by ivws on 2017/2/22.
  */
 angular.module('adminApp')
-    .controller('accountCtrl',function ($scope,$filter,getAdminSercive,backStageAdmin) {
+    .controller('accountCtrl',function ($scope,$filter,getAdminSercive,backStageAdmin,articlemodealinfo,userIds) {
         var vm = this;
 
         /* 角色下拉框数据 */
         vm.roledata =  backStageAdmin.role;
 
         /* 所有用户ids */
-        getAdminSercive.userList(1).then(function (res) {
-            if (res.data.code == 0 ) {
-                vm.userids = res.data.data.ids;
-                /* 把数据转换成请求约定格式 */
-                vm.userids = $filter('accountFilter')(vm.userids);
-                /* 用户详细信息 */
-                getAdminSercive.userInfo(vm.userids).then(function (res) {
+        vm.allUserhttp  = function () {
+            vm.roleids = '';
+            getAdminSercive.userList(1).then(function (res) {
+                if (res.data.code == 0 ) {
+                    userIds.userIds = res.data.data.ids
+                    vm.userInfohttp();
+                }
+            })
+        }
+        /* 获取用户详细信息展示到列表 */
+        vm.userInfohttp =function (page) {
+            /* 把数据转换成请求约定格式 */
+            page = page ? page : 1 ;
+            if (userIds.userIds == '') return;
+            vm.httpdata = $filter('accountFilter')(userIds.userIds);
+            getAdminSercive.userInfo(vm.httpdata,page).then(function (res) {
+                if (res.data.code == 0 ) {
+                    vm.userInfo = res.data.data.managerList;
+                    vm.totalItems.totals = res.data.data.total;
+                    vm.totalItems.page = page;
+                }
+            })
+        }
+
+        /* 搜索事件搜索角色下所有用户 */
+        vm.roleSearch =function () {
+            if (vm.roleids) {
+                getAdminSercive.roleuserIds(vm.roleids).then(function (res) {
                     if (res.data.code == 0 ) {
-                        vm.userInfo = res.data.data.managerList;
+                        userIds.userIds = res.data.data.ids
+                        vm.userInfohttp();
                     }
                 })
+            }else {
+                vm.allUserhttp();
             }
-        })
+        }
+        /* 删除 */
+        /* 获取ids；添加膜态文本 */
+        vm.deleteinfo =function (ele) {
+            vm.userIds = ele.$parent.data.id;
+            articlemodealinfo.deleteuser = ['从数据库中删除将无法回复','是否执行删除操作？','删除成功'];
+        }
+        /* 点击确定之后处理的函数 */
+        vm.delete = function () {
+            getAdminSercive.deleteUser(vm.userIds).then(function (res) {
+                if (res.data.code == 0) {
+                    vm.roleSearch();
+                }
+            })
+        }
+        /* 初次入 */
+        vm.allUserhttp();
 
-        /* 搜索 */
-
+        /* 分页指令 */
+        vm.pagingdata = vm.userInfohttp;
+    })
+    /* 用户ids数组 */
+    .value('userIds',{
+        userIds:'',
     })

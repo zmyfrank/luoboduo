@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="text-right col-sm-2 col-xs-12">
-            <button class="btn btn-primary pull-right">搜索</button>
+            <button class="btn btn-primary pull-right" ng-click="vm.roleSearch()">搜索</button>
         </div>
     </div>
 </div>
@@ -49,9 +49,16 @@
                     <td>{{data.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{data. updateBy}}</td>
                     <td>{{data. updateAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                    <td>编辑 删除</td>
+                    <td>
+                        <a class="btn ">编辑</a>
+                        <my-modeal-box>
+                            <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.delete" tipstext='deleteuser'
+                                       tipsinfo="vm.deleteinfo(this)"><a class="btn " ng-click="open()">删除</a></my-modeal>
+                        </my-modeal-box>
+                    </td>
                 </tr>
             </table>
+            <mypagintion total='vm.totalItems'></mypagintion>
         </div>
     </div>
 </div>
