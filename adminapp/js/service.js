@@ -25,7 +25,9 @@ angular.module('mainServices',[])
             /* 新增/ 编辑article */
             editArticleUrl:'/carrots-admin-ajax/a/u/article/',
             /*通过id获取公司明细*/
-            companySeachrByIdUrl:'/carrots-admin-ajax/a/company/'
+            companySeachrByIdUrl:'/carrots-admin-ajax/a/company/',
+            /*获取公司职位信息*/
+            findJobListUrl:'/carrots-admin-ajax/a/profession/search'
         }
         /*请求的参数等*/
         return {
@@ -112,6 +114,13 @@ angular.module('mainServices',[])
                     method:"PUT",
                     url:searviceList.deleteCompanyUrl+id,
                     data:data
+                })
+            },
+            'findJobList':function (data) {
+                return $http({
+                    method:"GET",
+                    url:searviceList.findJobListUrl,
+                    params:data
                 })
             }
         }

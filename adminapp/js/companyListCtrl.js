@@ -5,14 +5,13 @@ angular.module('adminApp')
     .controller('companyListCtrl', function ($scope, getAdminSercive, joblisttype, $uibModal) {
         var vm = this;
         vm.joblisttype = joblisttype;
-
+        vm.companyData = {
+            page:""
+        };
         /*获取数据*/
         vm.pagingdata = function (page) {
             /*搜索的参数*/
-            page?page:1;
-            vm.companyData = {
-                page:page
-            };
+            vm.companyData.page = page?page:1;
             vm.totalItems = {};
             getAdminSercive.searchCompany(vm.companyData).then(function (res) {
                 if (res.data.code == 0) {
@@ -26,8 +25,9 @@ angular.module('adminApp')
         };
         /*清空数据并搜索*/
         vm.clear = function () {
+            /*重新给对象赋个值*/
             vm.companyData = {
-                page: 1
+                page: ""
             };
             vm.pagingdata();
         };

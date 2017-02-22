@@ -11,7 +11,9 @@ angular.module('adminApp')
             replace: false,
             templateUrl: 'tpls/dirtpls/data.html',
             scope: {
+                /*绑定最小值*/
                 ngModel:'=',
+                /*当前选中值*/
                 data:'=',
             },
             link: function (scope, ele, attrs, supermanCtrl) {
@@ -154,7 +156,7 @@ angular.module('adminApp')
                 scope.currentPage = 1; //初始页
                 scope.$parent.vm.pagingdata(scope.currentPage)
 
-                scope.$watch('total.page', function (n, o) {
+                scope.$watch('total.page;total.totals', function (n, o) {
                     if (n!=o) {
                         scope.totalItems = scope.total.totals;
                         scope.currentPage = scope.total.page;

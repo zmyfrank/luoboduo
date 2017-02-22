@@ -5,6 +5,8 @@ angular.module('adminApp')
     .controller('companyEditCtrl', function ($scope, getAdminSercive, FileUploader, joblisttype,$location) {
         var vm = this;
         /*上传信息的列表,有两个东西有初始值*/
+        vm.industryData = [];
+        vm.output = [];
         vm.data = {
             company: {
                 approved: 0,
@@ -13,6 +15,10 @@ angular.module('adminApp')
             tagList: [],
             productList:[]
         };
+        /*由于插件的原因，在进入的时候给它设置一个全选为false，保证在新增页面正确显示*/
+        angular.forEach(joblisttype.industrytype,function (data) {
+            data.choose = false;
+        })
         /*从服务器上获取到的数据，对这个数据进行处理才能正确显示我页面中的东西，begin*/
         vm.industryData = joblisttype.industrytype;
         /*如果有传入ID的话，先获取并渲染一下页面啦*/
@@ -21,7 +27,7 @@ angular.module('adminApp')
             getAdminSercive.companySeachrById(vm.searchid).then(function (res) {
                 if (res.data.code==0) {
                     vm.data = res.data.data;
-                    /*对于productList储存的是对象的处理*/
+                    /*对于productList储存的对象的处理*/
                     vm.productList = vm.data.productList[0]
                 }
                 /*新建一个数组，用于储存服务器上数据的值，下面是储存操作*/

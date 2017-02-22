@@ -287,6 +287,30 @@ var mainConstant = angular.module('mainConstant', [])
             {type:0,name:'正常'},
             {type:1,name:'冻结'}
         ],
+        /*职业子类*/
+        categorytype: [
+            {type: 1, name: "用户体验"},
+            {type: 2, name: "研发"},
+            {type: 3, name: "大数据"}
+        ],
+        /*职业子类*/
+        subCategorytype: [
+            {type: 1, name: "产品"},
+            {type: 2, name: "UI"},
+            {type: 3, name: "QA"},
+            {type: 4, name: "Android"},
+            {type: 5, name: "IOS"},
+            {type: 6, name: "WEB"},
+            {type: 7, name: "OP"},
+            {type: 8, name: "JAVA"},
+            {type: 9, name: "NLP"},
+            {type: 10, name: "DM"},
+            {type: 11, name: "DL"}
+        ],
+        statustype:[
+            {type: 1, name: "上架"},
+            {type: 0, name: "下架"}
+        ]
     })
     /*找工作页面上侧选择begin*/
     /*用户体验*/
