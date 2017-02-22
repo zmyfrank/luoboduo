@@ -7,11 +7,10 @@
                     <a class="navbar-brand" href="#">萝卜多后台管理系统</a>
                 </div>
                 <p class="navbar-text pull-right glyphicon glyphicon-off"></p>
-                <p class="navbar-text pull-right">admin</p>
-                <p class="navbar-text pull-right">超级管理员</p>
+                <p class="navbar-text pull-right">{{vm.logindata.manager}}</p>
+                <p class="navbar-text pull-right">{{vm.logindata.role}}</p>
             </nav>
         </header>
-        <!-- 导航 -->
         <!-- 导航 -->
         <nav class="col-md-2 m-nav">
             <uib-accordion close-others="oneAtATime">
@@ -44,7 +43,7 @@
         </nav>
         <!-- 表单 -->
         <main  class="m-bd col-md-10" ui-view>
-
+            <h1>欢迎登陆萝卜多后台管理系统！</h1>
         </main>
     </div>
 </div>

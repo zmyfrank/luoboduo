@@ -65,6 +65,14 @@ angular.module('mainServices',[])
             'login' :function () {
                 return $http.post(searviceList.loginUrl);
             },
+            /* 登陆2 */
+            'login2' :function (data) {
+                return $http({
+                    method: 'POST',
+                    url:'/carrots-admin-ajax/a/login',
+                    params:data,
+                })
+            },
             /* 删除article列表 */
             'deleteArticle' :function (id) {
                 return $http.delete(searviceList.deleteArticleUrl+id)

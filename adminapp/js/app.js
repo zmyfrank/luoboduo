@@ -26,6 +26,19 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            .state('login',{
+                url:'/login',
+                templateUrl:'tpls/login.html',
+                controller:'mainCtrl',
+                controllerAs:'vm',
+                resolve:{
+                    login_file:_lazyLoad([
+                        'css/main.css',
+                        'js/mainCtrl.js'
+                    ])
+                }
+            })
+            /* 公司列表 */
             .state('app.companyList',{
                 url: '/companyList',
                 templateUrl: 'tpls/companyList.html',

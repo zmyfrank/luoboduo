@@ -68,6 +68,20 @@ a:hover {
   background: #fff;
   padding: 20px 15px;
 }
+/* 登陆页面 */
+.m-login {
+  width: 500px;
+  margin: 200px auto 0;
+}
+.m-login .panel-body {
+  padding: 30px;
+}
+.m-login .input-group {
+  margin-bottom: 30px;
+}
+.m-login .btn-wrap {
+  text-align: right;
+}
 /* 功能性类名 */
 /* 绝对定位垂直水平居中 */
 .f-abscenter {

@@ -1,0 +1,24 @@
+<!-- 登陆界面 -->
+<div class="m-login">
+    <form name="loginform">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">萝卜多后台管理</h3>
+            </div>
+            <div class="panel-body">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1" required="">账号：</span>
+                    <input type="text" ng-model="vm.logindata.name" class="form-control" placeholder="Username">
+                </div>
+
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon2">密码：</span>
+                    <input type="password" ng-model="vm.logindata.pwd" class="form-control" placeholder="password" required="">
+                </div>
+                <div class="btn-wrap">
+                   <button type="button" ng-disabled="!loginform.$valid" ng-click="vm.login()" class="btn btn-primary">登陆</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
