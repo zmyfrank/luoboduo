@@ -29,7 +29,7 @@ angular.module('mainServices',[])
             /*通过id获取公司明细*/
             companySeachrByIdUrl:'/carrots-admin-ajax/a/company/',
             /*获取公司职位信息*/
-            findJobListUrl:'/carrots-admin-ajax/a/profession/search'
+            findJobListUrl:'/carrots-admin-ajax/a/profession/search',
 
             /* 模块管理接口 */
             /* 获取用户列表 */
