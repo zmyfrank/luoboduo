@@ -4,35 +4,35 @@
             <div class="row f-rowfix">
                 <div class="form-group col-md-4 col-xs-12">
                     <label>公司名称：</label>
-                    <input ng-model="vm.name" type="text" class="form-control" id="companyName">
+                    <input data-set ng-model="vm.companyData.name" type="text" class="form-control" id="companyName">
                 </div>
                 <div class="form-group col-md-4 col-xs-12">
                     <label>公司行业：</label>
-                    <select class="form-control" ng-model="vm.industry" ng-options="items.type as items.name for items in vm.joblisttype.industrytype">
+                    <select data-set= class="form-control" ng-model="vm.companyData.industry" ng-options="items.type as items.name for items in vm.joblisttype.industrytype">
                         <option value="">全部</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4 col-xs-12">
                     <label for="">产品名称：</label>
-                    <input ng-model="vm.product" type="text" class="form-control">
+                    <input data-set ng-model="vm.companyData.product" type="text" class="form-control">
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group col-md-4">
                     <label for="">认证状态：</label>
-                    <select ng-model="vm.approved" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
+                    <select data-set ng-model="vm.companyData.approved" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
                         <option value="">全部</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">冻结状态：</label>
-                    <select ng-model="vm.freezed" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.freezedtype">
+                    <select data-set ng-model="vm.companyData.freezed" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.freezedtype">
                         <option value="">全部</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">融资规模：</label>
-                    <select ng-model="vm.financing" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.financingtype">
+                    <select data-set ng-model="vm.companyData.financing" class="form-control" ng-options="items.type as items.name for items in vm.joblisttype.financingtype">
                         <option value="">全部</option>
                     </select>
                 </div>
@@ -48,7 +48,7 @@
                 <!--</div>-->
                 <div class="form-group m-companylist_city col-md-12 clearfix">
                     <label for="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
-                    <citychoose  province-num='vm.province' city-num='vm.city' county-num='vm.county'></citychoose>
+                    <citychoose search="search"  province-num='vm.companyData.province' city-num='vm.companyData.city' county-num='vm.companyData.county'></citychoose>
                 </div>
             </div>
             <div class="m-companylist_btngroup">

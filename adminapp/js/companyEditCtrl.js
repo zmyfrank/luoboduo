@@ -8,17 +8,21 @@ angular.module('adminApp')
         vm.data = {
             company: {
                 approved: 0,
-                financing:0
+                financing:0,
             },
             tagList: [],
             productList:[]
         };
+        /*从服务器上获取到的数据，对这个数据进行处理才能正确显示我页面中的东西，begin*/
+        vm.industryData = joblisttype.industrytype;
         /*如果有传入ID的话，先获取并渲染一下页面啦*/
         if($location.search().id) {
             vm.searchid = $location.search().id
             getAdminSercive.companySeachrById(vm.searchid).then(function (res) {
                 if (res.data.code==0) {
-                    vm.data = res.data.data
+                    vm.data = res.data.data;
+                    /*对于productList储存的是对象的处理*/
+                    vm.productList = vm.data.productList[0]
                 }
                 /*新建一个数组，用于储存服务器上数据的值，下面是储存操作*/
                 var _industryData = [];
@@ -40,7 +44,8 @@ angular.module('adminApp')
         };
         /*这个是点击上传,有ID的时候修改公司，没有ID的时候创建公司*/
         vm.creatCompany = function () {
-            if (vm.id) {
+            vm.data.productList.push(vm.productList);
+            if (!vm.searchid) {
                 getAdminSercive.login().then(function () {
                     getAdminSercive.creatCompany(vm.data).then(function (res) {
                         if (res.data.code==0) {
@@ -49,7 +54,7 @@ angular.module('adminApp')
                     })
                 })
             }else {
-                getAdminSercive.companyChangeById(vm.id,vm.data).then(function (res) {
+                getAdminSercive.companyChangeById(vm.searchid,vm.data).then(function (res) {
                     if (res.data.code==0) {
                         $location.url('app/companyList');
                     }else {
@@ -59,8 +64,6 @@ angular.module('adminApp')
             }
         };
         vm.joblisttype = joblisttype;
-        /*从服务器上获取到的数据，对这个数据进行处理才能正确显示我页面中的东西，begin*/
-        vm.industryData = joblisttype.industrytype;
         /*这里是对于tag列表的操作*/
         /*对于taglist的操作*/
         /*添加操作*/
@@ -77,7 +80,7 @@ angular.module('adminApp')
         vm.deleteTag = function (index) {
             vm.data.tagList.splice(index, 1);
         };
-        /*关闭的时候把选择的东西，传入我要上传的对象中*/
+        /*对于公司行业列表的操作，关闭的时候把选择的东西，传入我要上传的对象中*/
         vm.changeIndustry = function () {
             vm.data.industryList = [];
             angular.forEach(vm.output, function (data) {

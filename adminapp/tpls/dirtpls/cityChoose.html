@@ -1,13 +1,14 @@
 <div style="display: inline-block;width: 80%;">
-    <select ng-model="provinceNum" ng-change="changeProince()" class="form-control"
+    <select ng-model="provinceNum" class="form-control"
             ng-options="items.ProID as items.ProName for items in provinceIn">
         <option value="">请选择省份</option>
     </select>
-    <select ng-model="cityNum" class="form-control" ng-change="changeCity()"
+    <select ng-model="cityNum" class="form-control"
             ng-options="items.CityID as items.CityName for items in cityData">
         <option value="">请选择城市</option>
     </select>
-    <select ng-model="countyNum" class="form-control" ng-options="items.Id as items.countyName for items in countyData">
+    <select ng-model="countyNum" class="form-control"
+            ng-options="items.Id as items.countyName for items in countyData">
         <option value="">请选择区县</option>
     </select>
 </div>
