@@ -12,7 +12,7 @@ angular.module('mainServices',[])
             arcitleUrl:'/carrots-admin-ajax/a/article/search',
             /*操作公司列表*/
             companyOperationUrl:'/carrots-admin-ajax/a/u/company/status',
-            /*删除和新增公司*/
+            /*删除和新增公司还有修改公司，修改时传入id*/
             deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/',
             /*上传图片，最后是我的文件夹名 hzlbd*/
             uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd',
@@ -24,6 +24,8 @@ angular.module('mainServices',[])
             ingleArticleUrl:'/carrots-admin-ajax/a/article/',
             /* 新增/ 编辑article */
             editArticleUrl:'/carrots-admin-ajax/a/u/article/',
+            /*通过id获取公司明细*/
+            companySeachrByIdUrl:'/carrots-admin-ajax/a/company/'
         }
         /*请求的参数等*/
         return {
@@ -93,7 +95,19 @@ angular.module('mainServices',[])
                 return $http({
                     method:'PUT',
                     url:searviceList.editArticleUrl+id,
-                    params:data,
+                    params:data
+                })
+            },
+            /*通过id获取公司详细信息*/
+            'companySeachrById':function (id) {
+                return $http.get(searviceList.companySeachrByIdUrl+id)
+            },
+            /*通过id修改公司详细信息，传入两个参数，第一个是当前公司id，第二个是参数数组*/
+            'companyChangeById':function (id,data) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.deleteCompanyUrl+id,
+                    data:data
                 })
             }
         }

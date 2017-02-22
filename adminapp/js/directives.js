@@ -105,10 +105,22 @@ angular.module('adminApp')
                 /*原始省份数据*/
                 scope.provinceIn = PROVINCE;
                 /*原始省份绑定数据,为了它最开始传过去有值*/
-                scope.provinceNum = null;
-                scope.cityNum = null;
-                scope.countyNum = null;
+                 //scope.provinceNum = ;
+                // scope.cityNum = null;
+                // scope.countyNum = null;
                 /*选择省市之后弹出显示省市后边的城市名字*/
+                scope.$watch(scope.provinceNum,function () {
+                    scope.cityData = [];    //每次选择都会清空市的数组
+                    scope.countyNum = null;     //每次改变都会清空最后countynum选择的值
+                    if (scope.provinceNum != null) {
+                        angular.forEach(CITY, function (data, key, obj) {
+                            if (data.ProID == scope.provinceNum) {
+                                scope.cityData.push(data);
+                            }
+                        })
+                    }
+                })
+                scope.$watch()
                 scope.changeProince = function () {
                     scope.cityData = [];    //每次选择都会清空市的数组
                     scope.countyNum = null;     //每次改变都会清空最后countynum选择的值

@@ -10,35 +10,57 @@ angular.module('adminApp')
                 approved: 0,
                 financing:0
             },
-            tagList: []
+            tagList: [],
+            productList:[]
         };
+        /*如果有传入ID的话，先获取并渲染一下页面啦*/
+        if($location.search().id) {
+            vm.searchid = $location.search().id
+            getAdminSercive.companySeachrById(vm.searchid).then(function (res) {
+                if (res.data.code==0) {
+                    vm.data = res.data.data
+                }
+                /*新建一个数组，用于储存服务器上数据的值，下面是储存操作*/
+                var _industryData = [];
+                angular.forEach(vm.data.industryList, function (data) {
+                    _industryData.push(data.industry);
+                });
+                /*改变数组为我需要的样子，也就是添加choose属性，给它一个true和false*/
+                angular.forEach(vm.industryData, function (data) {
+                    if (_industryData.indexOf(data.type) == -1) {
+                        data.choose = false
+                    } else {
+                        data.choose = true
+                    }
+                });
+            })
+        }
         vm.test = function () {
 
         };
+        /*这个是点击上传,有ID的时候修改公司，没有ID的时候创建公司*/
         vm.creatCompany = function () {
-            getAdminSercive.login
-            getAdminSercive.creatCompany(vm.data).then(function (res) {
-                if (res.data.code==0) {
-                    $location.url('app/companyList')
-                }
-            })
-        }
+            if (vm.id) {
+                getAdminSercive.login().then(function () {
+                    getAdminSercive.creatCompany(vm.data).then(function (res) {
+                        if (res.data.code==0) {
+                            $location.url('app/companyList')
+                        }
+                    })
+                })
+            }else {
+                getAdminSercive.companyChangeById(vm.id,vm.data).then(function (res) {
+                    if (res.data.code==0) {
+                        $location.url('app/companyList');
+                    }else {
+                        alert('上传失败，请联系管理员');
+                    }
+                });
+            }
+        };
         vm.joblisttype = joblisttype;
         /*从服务器上获取到的数据，对这个数据进行处理才能正确显示我页面中的东西，begin*/
         vm.industryData = joblisttype.industrytype;
-        /*新建一个数组，用于储存服务器上数据的值，下面是储存操作*/
-        var _industryData = [];
-        angular.forEach(vm.data.industryList, function (data) {
-            _industryData.push(data.industry);
-        });
-        /*改变数组为我需要的样子，也就是添加choose属性，给它一个true和false*/
-        angular.forEach(vm.industryData, function (data) {
-            if (_industryData.indexOf(data.type) == -1) {
-                data.choose = false
-            } else {
-                data.choose = true
-            }
-        });
         /*这里是对于tag列表的操作*/
         /*对于taglist的操作*/
         /*添加操作*/

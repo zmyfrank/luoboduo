@@ -90,7 +90,7 @@
                             <a class="btn btn-sm">职位</a>
                             <a ng-if="items.approved ===0" class="btn btn-sm"  ng-click="vm.getType(this,1,'认证后该公司将被标记为推荐公司。','是否执行认证操作？');">认证</a>
                             <a ng-if="items.approved !==0" class="btn btn-sm"  ng-click="vm.getType(this,1,'解除认证后该公司将不再标记为推荐公司。','是否执行解除操作？');">解除</a>
-                            <a  class="btn btn-sm">编辑</a>
+                            <a  class="btn btn-sm" ui-sref="app.companyEdit({id:items.id})">编辑</a>
                             <a ng-if="items.freezed===0" class="btn btn-sm" ng-click="vm.getType(this,0,'冻结后该公司下的所有信息将不可用。','是否执行冻结操作？');">冻结</a>
                             <a ng-if="items.freezed!==0" class="btn btn-sm" ng-click="vm.getType(this,0,'解冻后该公司下的信息将可继续使用。','是否执行解冻操作？');">解冻</a>
                             <a class="btn btn-sm" ng-click="vm.deleteCompany(this);">删除</a>
