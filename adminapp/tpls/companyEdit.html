@@ -1,9 +1,9 @@
 <div class="container-fluid m-companylist-wrap ">
     <div class="panel panel-default clearfix">
         <div class="panel-heading">
-            详细信息
+            <span ng-show="vm.searchid">{{ vm.data.company.name }}详细信息</span>
+            <span ng-show="!vm.searchid">详细信息</span>
             <select ng-model="vm.data.company.approved" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
-                <option value="">请选择</option>
             </select>
         </div>
         <form name='companyData' class="form-inline" novalidate="novalidate">
@@ -16,8 +16,8 @@
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                    <label>*公司solgan：</label>
-                    <input data-set type="text" class="form-control" ng-model='vm.data.company.solgan' name="companySlogan" required>
+                    <label>*公司slogan：</label>
+                    <input data-set type="text" class="form-control" ng-model='vm.data.company.slogan' name="companySlogan" required>
                     <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="companyData.companySlogan.$touched">
                         <span ng-message="required">请填写公司slogan</span>
                     </div>
@@ -35,7 +35,6 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label>*融&nbsp;资&nbsp;规&nbsp;模&nbsp;：</label>
                     <select data-set ng-model="vm.data.company.financing" ng-options='items.type as items.name for items in vm.joblisttype.financingtype' class="form-control">
-                        <option value="">请选择</option>
                     </select>
                 </div>
             </div>
@@ -57,11 +56,11 @@
                              button-label="name"
                              item-label="name"
                              on-close="vm.changeIndustry()"
-                             on-reset="vm.resetIdustry()"
                              tick-property="choose">
 
                     </div>
                 </div>
+
             </div>
             <!--公司logo上传-->
             <upload-img label-name="*公司Logo：" file-item="vm.data.company.logo"></upload-img>
@@ -104,18 +103,18 @@
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>产品名称：</label>
-                    <input data-set ng-model="vm.data.productList.name" type="text" class="form-control">
+                    <input data-set ng-model="vm.productList.name" type="text" class="form-control">
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>产品slogan：</label>
-                    <input data-set ng-model="vm.data.productList.solgan" type="text" class="form-control">
+                    <input data-set ng-model="vm.productList.slogan" type="text" class="form-control">
                 </div>
             </div>
-                <upload-img label-name="产品Logo:" file-item="vm.data.productList.logo"></upload-img>
+                <upload-img label-name="产品Logo:" file-item="vm.productList.logo"></upload-img>
             <div class="row f-rowfix">
                 <div class="form-group col-md-12 col-xs-12">
                     <label>产品简介：</label>
-                    <textarea data-set ng-model="vm.data.productList.summary" class="form-control m-company-textarea"></textarea>
+                    <textarea data-set ng-model="vm.productList.summary" class="form-control m-company-textarea"></textarea>
                 </div>
             </div>
         </form>
@@ -145,7 +144,7 @@
         </form>
     </div>
     <div class="m-companylist_btngroup">
-        <button class="btn btn-small btn-warning" type="button" ng-disabled="companyData.$invalid||!vm.data.company.province||!vm.data.company.logo||!vm.data.tagList">保存</button>
-        <button class="btn btn-small btn-success" type="button" ng-click="vm.test()">取消</button>
+        <button class="btn btn-small btn-warning" ng-click="vm.creatCompany()" type="button" ng-disabled="companyData.$invalid||!vm.data.company.county||!vm.data.company.logo||!vm.data.tagList">保存</button>
+        <button class="btn btn-small btn-success" type="button" ng-click="vm.test()" ui-sref="app.companyList">取消</button>
     </div>
 </div>

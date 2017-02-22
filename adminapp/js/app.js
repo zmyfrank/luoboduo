@@ -103,7 +103,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
             })
             /*添加公司*/
             .state('app.companyEdit',{
-                url:'/companyEdit',
+                url:'/companyEdit?id',
                 templateUrl:'tpls/companyEdit.html',
                 controller:'companyEditCtrl',
                 controllerAs:'vm',

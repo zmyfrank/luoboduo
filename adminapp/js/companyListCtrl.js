@@ -5,43 +5,19 @@ angular.module('adminApp')
     .controller('companyListCtrl', function ($scope, getAdminSercive, joblisttype, $uibModal) {
         var vm = this;
         vm.joblisttype = joblisttype;
-        /*公司数据begin*/
-        vm.name = "";
-        vm.product = "";
-        vm.province = null;
-        vm.city = null;
-        vm.county = null;
-        vm.approved = '';
-        vm.freezed = '';
-        vm.financing = '';
-        vm.industry = '';
+        vm.companyData = {
+            page:""
+        };
         /*获取数据*/
         vm.pagingdata = function (page) {
             /*搜索的参数*/
-            var companyData = {
-                /*公司名称*/
-                name: vm.name,
-                /*产品名称*/
-                product: vm.product,
-                /*行业*/
-                industry: vm.industry,
-                /*地区*/
-                province: vm.province,
-                city: vm.city,
-                county: vm.county,
-                /*认证*/
-                approved: vm.approved,
-                /*冻结状态*/
-                freezed: vm.freezed,
-                /*融资状态*/
-                financing: vm.financing,
-                /*页数*/
-                page: page
-            };
-            getAdminSercive.searchCompany(companyData).then(function (res) {
+            vm.companyData.page = page?page:1;
+            vm.totalItems = {};
+            getAdminSercive.searchCompany(vm.companyData).then(function (res) {
                 if (res.data.code == 0) {
                     vm.companyListData = res.data.data;
-                    vm.totalItems = res.data.total;
+                    vm.totalItems.totals = res.data.total;
+                    vm.totalItems.page = page
                 } else {
                     alert('获取数据失败，请联系管理员')
                 }
@@ -49,16 +25,11 @@ angular.module('adminApp')
         };
         /*清空数据并搜索*/
         vm.clear = function () {
-            vm.name = "";
-            vm.product = "";
-            vm.province = null;
-            vm.city = null;
-            vm.county = null;
-            vm.approved = '';
-            vm.freezed = '';
-            vm.financing = '';
-            vm.industry = '';
-            vm.pagingdata(1);
+            /*重新给对象赋个值*/
+            vm.companyData = {
+                page: ""
+            };
+            vm.pagingdata();
         };
         /*改变认证、冻结状态，传入三个参数，对应的是，type:认证或者冻结，title:第一个模态框的标题，content:第一个模态框的显示内容*/
         vm.getType = function (ele,type,title,content) {

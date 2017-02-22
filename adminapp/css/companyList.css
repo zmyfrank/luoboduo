@@ -42,3 +42,10 @@
   color: red;
   font-size: 12px;
 }
+.m-joblist-time .input-group-btn,
+.m-joblist-time div {
+  display: inline-block;
+}
+.m-jobtable-width {
+  font-size: 14px;
+}

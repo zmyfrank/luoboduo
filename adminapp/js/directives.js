@@ -11,7 +11,9 @@ angular.module('adminApp')
             replace: false,
             templateUrl: 'tpls/dirtpls/data.html',
             scope: {
+                /*绑定最小值*/
                 ngModel:'=',
+                /*当前选中值*/
                 data:'=',
             },
             link: function (scope, ele, attrs, supermanCtrl) {
@@ -89,8 +91,8 @@ angular.module('adminApp')
             }
         }
 })
-    /*三级联动地区搜索*/
-    .directive('citychoose', function (PROVINCE, CITY, COUNTY) {
+    /*三级联动地区搜索,里面的search是用来标识是否用于搜索，用于搜索的时候不强制转为数字*/
+    .directive('citychoose', function (PROVINCE, CITY, COUNTY,$timeout) {
         return {
             restrict: 'E',
             replace: true,
@@ -98,40 +100,42 @@ angular.module('adminApp')
             scope: {
                 provinceNum: '=',
                 cityNum: '=',
-                countyNum: '='
-                //ngModel:'='
+                countyNum: '=',
+                search:'@'
             },
             link: function (scope, ele, arrts, Ctrl) {
                 /*原始省份数据*/
                 scope.provinceIn = PROVINCE;
                 /*原始省份绑定数据,为了它最开始传过去有值*/
-                scope.provinceNum = null;
-                scope.cityNum = null;
-                scope.countyNum = null;
                 /*选择省市之后弹出显示省市后边的城市名字*/
-                scope.changeProince = function () {
+                scope.$watch('provinceNum', function () {
                     scope.cityData = [];    //每次选择都会清空市的数组
-                    scope.countyNum = null;     //每次改变都会清空最后countynum选择的值
+                    //scope.countyNum = null;     //每次改变都会清空最后countynum选择的值
                     if (scope.provinceNum != null) {
-                        angular.forEach(CITY, function (data, key, obj) {
+                        angular.forEach(CITY, function (data) {
                             if (data.ProID == scope.provinceNum) {
                                 scope.cityData.push(data);
                             }
                         })
                     }
-                };
-                /*选择城市之后弹出下面区县的值*/
-                scope.changeCity = function () {
+                })
+                scope.$watch('cityNum', function () {
                     scope.countyData = [];  //改变的时候清空区县的值
-                    scope.countyNum = null; //改变的时候清空区县里的选择
-                    if (scope.cityNum!= null) {
-                        angular.forEach(COUNTY,function (data,key,obj) {
-                            if (data.CityID ==scope.cityNum) {
+                    //scope.countyNum = null; //改变的时候清空区县里的选择
+                    /*下面这一步是把取到的东西全部转成数字*/
+                    if (!scope.search) {
+                        scope.provinceNum = +scope.provinceNum;
+                        scope.cityNum = +scope.cityNum;
+                        scope.countyNum = +scope.countyNum;
+                    }
+                    if (scope.cityNum != null) {
+                        angular.forEach(COUNTY, function (data) {
+                            if (data.CityID == scope.cityNum) {
                                 scope.countyData.push(data);
                             }
                         })
                     }
-                };
+                })
             }
         }
     })
@@ -148,10 +152,11 @@ angular.module('adminApp')
             },
             link: function (scope, ele, attrs, supermanCtrl) {
                 /* 分页插件参数 */
+                //scope.total = {};
                 scope.currentPage = 1; //初始页
                 scope.$parent.vm.pagingdata(scope.currentPage)
 
-                scope.$watch('total.page', function (n, o) {
+                scope.$watch('total.page;total.totals', function (n, o) {
                     if (n!=o) {
                         scope.totalItems = scope.total.totals;
                         scope.currentPage = scope.total.page;

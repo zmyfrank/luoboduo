@@ -12,7 +12,7 @@ angular.module('mainServices',[])
             arcitleUrl:'/carrots-admin-ajax/a/article/search',
             /*操作公司列表*/
             companyOperationUrl:'/carrots-admin-ajax/a/u/company/status',
-            /*删除公司*/
+            /*删除和新增公司还有修改公司，修改时传入id*/
             deleteCompanyUrl:'/carrots-admin-ajax/a/u/company/',
             /*上传图片，最后是我的文件夹名 hzlbd*/
             uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd',
@@ -26,6 +26,10 @@ angular.module('mainServices',[])
             ingleArticleUrl:'/carrots-admin-ajax/a/article/',
             /* 新增/ 编辑article */
             editArticleUrl:'/carrots-admin-ajax/a/u/article/',
+            /*通过id获取公司明细*/
+            companySeachrByIdUrl:'/carrots-admin-ajax/a/company/',
+            /*获取公司职位信息*/
+            findJobListUrl:'/carrots-admin-ajax/a/profession/search'
 
             /* 模块管理接口 */
             /* 获取用户列表 */
@@ -70,6 +74,17 @@ angular.module('mainServices',[])
             'uploadImg':function () {
                 return searviceList.uploadImgUrl
             },
+            /*新增公司*/
+            'creatCompany':function (data) {
+                return $http({
+                    method:'POST',
+                    url:searviceList.deleteCompanyUrl,
+                    headers:{
+                        "Content-Type":"Application/json"
+                    },
+                    data:data
+                })
+            },
             /* 登陆 */
             'login' :function () {
                 return $http.post(searviceList.loginUrl);
@@ -107,7 +122,26 @@ angular.module('mainServices',[])
                 return $http({
                     method:'PUT',
                     url:searviceList.editArticleUrl+id,
-                    params:data,
+                    params:data
+                })
+            },
+            /*通过id获取公司详细信息*/
+            'companySeachrById':function (id) {
+                return $http.get(searviceList.companySeachrByIdUrl+id)
+            },
+            /*通过id修改公司详细信息，传入两个参数，第一个是当前公司id，第二个是参数数组*/
+            'companyChangeById':function (id,data) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.deleteCompanyUrl+id,
+                    data:data
+                })
+            },
+            'findJobList':function (data) {
+                return $http({
+                    method:"GET",
+                    url:searviceList.findJobListUrl,
+                    params:data
                 })
             },
             /* 模块管理页面 */
