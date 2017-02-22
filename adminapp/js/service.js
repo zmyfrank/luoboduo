@@ -26,6 +26,13 @@ angular.module('mainServices',[])
             ingleArticleUrl:'/carrots-admin-ajax/a/article/',
             /* 新增/ 编辑article */
             editArticleUrl:'/carrots-admin-ajax/a/u/article/',
+
+            /* 模块管理接口 */
+            /* 获取用户列表 */
+            userListUrl: '/carrots-admin-ajax/a/u/manager/?page=',
+            /* 批量获取用户列表详细信息 */
+            userInfoUrl:'/carrots-admin-ajax/a/u/multi/manager?',
+
         }
         /*请求的参数等*/
         return {
@@ -102,6 +109,15 @@ angular.module('mainServices',[])
                     url:searviceList.editArticleUrl+id,
                     params:data,
                 })
+            },
+            /* 模块管理页面 */
+            /* 获取用户列表ids */
+            'userList':function (page) {
+                return $http.get(searviceList.userListUrl+page)
+            },
+            /* 获取用户详细信息 */
+            'userInfo':function (data) {
+                return $http.get(searviceList.userInfoUrl+data)
             }
         }
     })

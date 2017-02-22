@@ -88,3 +88,14 @@ mainFil.filter('articleFilter',function (article) {
         return value;
     }
 })
+
+/* 用户列表请求转换请求数据 */
+mainFil.filter('accountFilter',function () {
+    var value=[];
+    return function (data) {
+        angular.forEach(data,function (val,index,arry) {
+            value.push('ids='+val);
+        })
+        return value.join('&');
+    }
+})

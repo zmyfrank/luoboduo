@@ -8492,7 +8492,7 @@ var mainConstant = angular.module('mainConstant', [])
                 {type:2,name:'上线'}
         ]
     })
-    //article编辑页面类型数据
+    //article编辑页面类型数据下拉列表
     .constant('articleEdit',{
         status:[
             {value:0,name:'首页Banner'},
@@ -8509,4 +8509,12 @@ var mainConstant = angular.module('mainConstant', [])
             {value:5,name:'金融'},
             {value:6,name:'游戏'},
         ]
+    })
+    //用户管理页面下拉框
+    .constant('backStageAdmin',{
+        role:[
+            {value:1,name:'超级管理员'},
+            {value:30,name:'猎头'},
+            {value:31,name:'1234'}
+        ],
     })

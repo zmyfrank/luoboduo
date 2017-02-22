@@ -5,6 +5,8 @@ var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookie
 
 adminApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cookies){
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+             if(toState.name=='login')return;
+             //获取本地cookies值用作判断是否有登陆
              $rootScope.loginCook =  $cookies.getObject('login');
              if (!$rootScope.loginCook) {
                  $state.go('login');
@@ -99,7 +101,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
-        /*添加公司*/
+            /*添加公司*/
             .state('app.companyEdit',{
                 url:'/companyEdit',
                 templateUrl:'tpls/companyEdit.html',
@@ -112,6 +114,18 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
-
+            /* 账户管理 */
+            .state('app.account',{
+                url:'/account',
+                templateUrl:'tpls/backmodel/account.html',
+                controller:'accountCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
     }
 ])
