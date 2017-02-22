@@ -42,11 +42,19 @@
                 <upload-img  label-name="配图"  file-item="vm.adddata.img">
                 </upload-img>
                 <div class="form-group clearfix">
-                    <button type="button" class="btn btn-success" ng-disabled="!articleform.$valid"  ng-click="vm.articleadd(2)">立即上线
+
+                    <button ng-if="!vm.articleId" type="button" class="btn btn-success" ng-disabled="!articleform.$valid"  ng-click="vm.articleadd(2)">立即上线
                     </button>
 
-                    <button type="button" class="btn btn-success" ng-disabled="!articleform.$valid" ng-click="vm.articleadd(1)">存为草稿
+                    <button ng-if="!vm.articleId" type="button" class="btn btn-success" ng-disabled="!articleform.$valid" ng-click="vm.articleadd(1)">存为草稿
                     </button>
+
+                    <button ng-if="vm.articleId" type="button" class="btn btn-success" ng-disabled="!articleform.$valid"  ng-click="vm.articeditleadd(2)">立即上线
+                    </button>
+
+                    <button ng-if="vm.articleId" type="button" class="btn btn-success" ng-disabled="!articleform.$valid" ng-click="vm.articeditleadd(1)">存为草稿
+                    </button>
+
                     <!--<span class="text-red" ng-show="!vm.vaidShow">请补全信息</span>-->
                     <button type="button" class="btn btn-default pull-right" ui-sref="app.article">取消</button>
                 </div>

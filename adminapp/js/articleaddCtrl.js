@@ -24,21 +24,20 @@ angular.module('adminApp')
         vm.articleadd = function (tp) {
             vm.adddata.status = tp;
             getAdminSercive.addArticle(vm.adddata).then(function (res) {
+                 if (res.data.code == 0) {
+                    $state.go('app.article');
+                 }
+            })
+        }
+
+        /* 编辑上线/存稿 */
+        vm.articeditleadd =function (tp) {
+            vm.adddata.status = tp;
+            getAdminSercive.editArticle(vm.adddata,vm.articleId).then(function (res) {
                 if (res.data.code == 0) {
                     $state.go('app.article');
                 }
             })
         }
-
-        /* 编辑上线/存稿 */
-/*        vm.articeditleadd =function (tp) {
-            vm.adddata.status = tp;
-            getAdminSercive.editArticle(vm.adddata,vm.articleId).then(function (res) {
-                if (res.data.code == 0) {
-                    console.log(res.data.data);
-                }
-            })
-        }*/
-
     }
 )
