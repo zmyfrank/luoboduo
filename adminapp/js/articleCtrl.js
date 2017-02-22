@@ -52,6 +52,7 @@ angular.module('adminApp')
                     }
                 })
             }
+
             /* 进入初始调用 */
             vm.search()
             /* 分页 */

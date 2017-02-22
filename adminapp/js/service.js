@@ -18,6 +18,8 @@ angular.module('mainServices',[])
             uploadImgUrl:'/carrots-admin-ajax/a/u/img/hzlbd',
             /* 登陆 */
             loginUrl:'/carrots-admin-ajax/a/login?name=admin&pwd=123456',
+            /* 退出 */
+            outloginUrl:'/carrots-admin-ajax/a/logout',
             /* 删除article列表 */
             deleteArticleUrl :'/carrots-admin-ajax/a/u/article/',
             /* 获得单个article */
@@ -72,6 +74,10 @@ angular.module('mainServices',[])
                     url:'/carrots-admin-ajax/a/login',
                     params:data,
                 })
+            },
+            /* 退出 */
+            'outLogin' :function () {
+                return $http.post(searviceList.outloginUrl);
             },
             /* 删除article列表 */
             'deleteArticle' :function (id) {

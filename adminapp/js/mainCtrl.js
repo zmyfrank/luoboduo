@@ -11,16 +11,16 @@ angular.module('adminApp')//主要的model名称
         vm.login = function () {
             getAdminSercive.login2(vm.logindata).then(function (res) {
                 if (res.data.code == 0 ) {
-                    console.log(res.data.data)
+                    //console.log(res.data.data)
                     var expireDate = new Date();
                     expireDate.setDate(expireDate.getDate() + 1);
                     $cookies.putObject('login',
                         {'status':true,'manager':res.data.data.manager.name,
-                         'role':res.data.data.role.name,
-
-                        },
+                         'role':res.data.data.role.name,},
                         [{'expires':expireDate}]);
                     $location.url('app');
+                }else {
+                    vm.loginMessage = res.data.message;
                 }
             })
         }
@@ -29,7 +29,12 @@ angular.module('adminApp')//主要的model名称
 
         /* 退出登陆 */
         vm.outlogin =function () {
-
+            getAdminSercive.outLogin().then(function (res) {
+                if (res.data.code == 0 ) {
+                    $cookies.remove('login');
+                    $location.url('login');
+                }
+            })
         }
 
         /* 下拉插件 */

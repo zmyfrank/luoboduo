@@ -6,7 +6,7 @@
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand" href="#">萝卜多后台管理系统</a>
                 </div>
-                <p class="navbar-text pull-right glyphicon glyphicon-off"></p>
+                <p class="icon-login navbar-text pull-right glyphicon glyphicon-off" ng-class="{'down':vm.logindata.status}" ng-click="vm.outlogin()"></p>
                 <p class="navbar-text pull-right">{{vm.logindata.manager}}</p>
                 <p class="navbar-text pull-right">{{vm.logindata.role}}</p>
             </nav>

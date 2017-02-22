@@ -3,6 +3,15 @@
  */
 var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil','angularFileUpload','isteven-multi-select','ngMessages']);
 
+adminApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cookies){
+        $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+             $rootScope.loginCook =  $cookies.getObject('login');
+             if (!$rootScope.loginCook) {
+                 $state.go('login');
+             }
+        });
+    }])
+
 adminApp.config(['$stateProvider', '$urlRouterProvider',
     function ($statepProvider, $urlRouterProvider) {
         var _lazyLoad = function (loaded) {

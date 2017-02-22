@@ -41,6 +41,9 @@ a:hover {
 .m-hd .navbar-default .navbar-brand {
   color: #000;
 }
+.m-hd .icon-login.down {
+  color: #5cb85c;
+}
 .navbar {
   margin-bottom: 0;
 }
