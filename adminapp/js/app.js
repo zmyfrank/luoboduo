@@ -140,5 +140,18 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /* 角色管理页面 */
+            .state('app.role',{
+                url:'/role',
+                templateUrl:'tpls/backmodel/role.html',
+                controller:'roleCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
     }
 ])

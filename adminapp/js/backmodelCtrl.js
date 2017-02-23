@@ -120,3 +120,7 @@ angular.module('adminApp')
             })
         }
     })
+    /* 角色管理页面 */
+    .controller('roleCtrl',function ($scope) {
+        var vm = this;
+    })

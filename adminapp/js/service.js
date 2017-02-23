@@ -38,6 +38,13 @@ angular.module('mainServices',[])
             userInfoUrl:'/carrots-admin-ajax/a/u/multi/manager?',
             /* 删除/编辑/新增 单个用户 */
             singleUser :'/carrots-admin-ajax/a/u/manager/',
+            /* 获取角色列表 */
+            roleListUrl :'/carrots-admin-ajax/a/u/role/',
+            /* 批量获取角色详细信息 */
+            roleInfoUrl :'/carrots-admin-ajax/a/u/multi/role?',
+            /* 新增角色 */
+            singleroleUel :''
+            /* 编辑角色 */
 
         }
         /*请求的参数等*/
