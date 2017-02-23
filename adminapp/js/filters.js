@@ -32,20 +32,6 @@ mainFil.filter('provinceFilter', function (PROVINCE) {
         }
     }
 });
-/* 省市县过滤  */
-mainFil.filter('provinceFilter', function (PROVINCE) {
-    return function (id) {
-        if (id != undefined && id != '') {
-            var name;
-            angular.forEach(PROVINCE, function (data) {
-                if (data.ProID == id) {
-                    name = data.ProName;
-                }
-            });
-            return name;
-        }
-    }
-});
 
 mainFil.filter('cityFilter', function (CITY) {
     return function (id) {

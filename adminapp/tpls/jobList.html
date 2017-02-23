@@ -99,9 +99,10 @@
                     <td>{{ items.updateAt|date:'yyyy-MM-dd' }}</td>
                     <td>{{ items.status|changeJobListName:'statustype' }}</td>
                     <td>
-                        <a class="btn btn-sm">下架</a>
+                        <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getData(this)" ng-if="items.status===1" class="btn btn-sm">下架</a>
+                        <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getData(this)" ng-if="items.status===0" class="btn btn-sm">上架</a>
                         <a class="btn btn-sm">编辑</a>
-                        <a class="btn btn-sm">删除</a>
+                        <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getDeleteData(this)" class="btn btn-sm" ng-click="vm.getDeleteData(this)">删除</a>
                     </td>
                 </tr>
                 </tbody>

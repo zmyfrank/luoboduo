@@ -333,7 +333,7 @@ angular.module('adminApp')
                     }, function () {
                         //console.log('模态已关闭: ' + new Date());
                     });
-                }
+                };
                 scope.animationsEnabled = true;
                 scope.toggleAnimation = function () {
                     scope.animationsEnabled = !scope.animationsEnabled;//动画效果
@@ -348,4 +348,66 @@ angular.module('adminApp')
             repace:false,
             scope:true,
         }
+    })
+    /*模态指令fromFrank*/
+    .directive('useModal',function ($uibModal) {
+        return {
+            restrict:"A",
+            replace:false,
+            scope:{
+                /*点击确认后执行的函数*/
+                ctrFn: '&',
+                /*获取各种数据的函数*/
+                ctrclick:'&',
+                /*是否要显示第二段弹出框，没有默认会弹出第二段*/
+                modalTwice:"@",
+                /*第一次是否有确认按钮，没有就默认弹出会有*/
+                okChoose:"@",
+
+            },
+            //scope.modaldata中对应三个参数，首先第一个模板默认显示两行，第一行是tilte，第二行是content。第二个模板默认只显示一行，success并且只有一个取消按钮
+            link:function (scope,ele) {
+                /*给属性添加一个点击事件*/
+                ele.bind("click",function () {
+                    /*执行我那边传入值的函数*/
+                    scope.modaldata=scope.ctrclick();
+                    scope.openModle();
+                });
+                scope.openModle = function (size,num) {
+                    /*打开模态框的过程*/
+                    var modalInstance = $uibModal.open({
+                        animation: true,
+                        templateUrl: 'tpls/modaltpls/test.html',//模态框的页面内容,这里的url是可以自己定义的,也就意味着什么都可以写
+                        controller: 'ModalInstanceCtrl',//这是模态框的控制器,是用来控制模态框的
+                        size: size,//模态框的大小尺寸
+                        resolve: {//这是一个入参,这个很重要,它可以把主控制器中的参数传到模态框控制器中
+                            items: function () {//items是一个回调函数,我这里需要让它在外部获取到
+                                scope.modaldata.num = num?1:false;
+                                scope.modaldata.okChoose = scope.okChoose?2:1;
+                                return scope.modaldata;//这个值会被模态框的控制器获取到
+                            }
+                        }
+                    });
+                    modalInstance.result.then(function () {
+                        scope.ctrFn();
+                        scope.modalTwice?false:scope.openModle(size,1);
+                    })
+                }
+            }
+        }
+    })
+    /*模态框控制器*/
+    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+        //这是模态框的控制器,记住$uibModalInstance这个是用来调用函数将模态框内的数据传到外层控制器中的,items则上面所说的入参函数,它可以获取到外层主控制器的参数
+        $scope.items = items;//这里就可以去外层主控制器的数据了
+
+        $scope.ok = function () {
+            //close函数是在模态框关闭后调用的函数,他会将这个参数传到主控制器的results函数中,作为回调值
+            $uibModalInstance.close('OK');
+        };
+
+        $scope.cancel = function () {
+            //dismiss也是在模态框关闭的时候进行调用,而它返回的是一个reason
+            $uibModalInstance.dismiss('cancel');
+        };
     })
