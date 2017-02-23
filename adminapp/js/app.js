@@ -153,5 +153,18 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /* 新增编辑角色 */
+            .state('app.addrole',{
+                url:'/addrole',
+                templateUrl:'tpls/backmodel/addrole.html',
+                controller:'addRoleCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
     }
 ])

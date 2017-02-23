@@ -1,0 +1,171 @@
+<!-- 新增/编辑角色页面 -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">角色编辑</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="addroleForm">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">角色名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入角色名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">权限：</label>
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 全选/全不选
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> article管理
+                        </label>
+                    </div>
+                    <div class="checkbox col-sm-offset-1 col-sm-2">
+                        <label>
+                            <input type="checkbox" ng-model="vm.articleAll" ng-click="vm.subsetValue(vm.article)"> article列表
+                        </label>
+                    </div>
+                    <div class="checkbox col-sm-9">
+                        <label>
+                            <input name="create" ng-model="vm.article.create" type="checkbox" ng-click="vm.ss(this)"> 新增
+                        </label>
+                        <label>
+                            <input name="update" ng-model="vm.article.update" type="checkbox" ng-click="vm.ss(this)"> 编辑
+                        </label>
+                        <label>
+                            <input name="delete" ng-model="vm.article.delete" type="checkbox" ng-click="vm.ss(this)"> 删除
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                <!--<div class="checkbox">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 信息管理-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 职位列表-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-9" >-->
+                    <!--<label>-->
+                        <!--<input name="job" type="checkbox"> 新增-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="job" type="checkbox"> 编辑-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="job" type="checkbox"> 删除-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 公司列表-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-9" >-->
+                    <!--<label>-->
+                        <!--<input name="company" type="checkbox"> 新增-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="company" type="checkbox"> 编辑-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="company" type="checkbox"> 删除-->
+                    <!--</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                <!--<div class="checkbox">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 后台管理-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 账户管理-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-9" >-->
+                    <!--<label>-->
+                        <!--<input name="user" type="checkbox"> 新增-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="user" type="checkbox"> 编辑-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="user" type="checkbox"> 删除-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 密码修改-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-9" >-->
+                    <!--<label>-->
+                        <!--<input name="pwd"  type="checkbox"> 新增-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="pwd"  type="checkbox"> 编辑-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="pwd"  type="checkbox"> 删除-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 角色管理-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-9" >-->
+                    <!--<label>-->
+                        <!--<input name="role" type="checkbox"> 新增-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="role" type="checkbox"> 编辑-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="role" type="checkbox"> 删除-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> 模块管理-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="checkbox col-sm-9" >-->
+                    <!--<label>-->
+                        <!--<input name="model"  type="checkbox"> 新增-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="model"  type="checkbox"> 编辑-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<input name="model"  type="checkbox"> 删除-->
+                    <!--</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10"  style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-success">保存</button>
+                    <button type="submit" class="btn btn-danger">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<label>someProperty = {{someProperty}}</label>
+<input type="checkbox"
+       ng-checked="someProperty"
+       ng-init="someProperty = true"
+       ng-model="someProperty">
+

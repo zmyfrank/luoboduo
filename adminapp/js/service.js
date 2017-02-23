@@ -38,14 +38,10 @@ angular.module('mainServices',[])
             userInfoUrl:'/carrots-admin-ajax/a/u/multi/manager?',
             /* 删除/编辑/新增 单个用户 */
             singleUser :'/carrots-admin-ajax/a/u/manager/',
-            /* 获取角色列表 */
+            /* 获取角色列表/编辑/删除/新增角色 */
             roleListUrl :'/carrots-admin-ajax/a/u/role/',
             /* 批量获取角色详细信息 */
             roleInfoUrl :'/carrots-admin-ajax/a/u/multi/role?',
-            /* 新增角色 */
-            singleroleUel :''
-            /* 编辑角色 */
-
         }
         /*请求的参数等*/
         return {
@@ -163,7 +159,7 @@ angular.module('mainServices',[])
                 return $http.get(searviceList.userInfoUrl+data+'&page='+page)
             },
             /* 获取单个角色下的所有用户的ids */
-            'roleuserIds':function (id) {
+            'roleuserIds':function (id){
                 return $http.get('/carrots-admin-ajax/a/u/role/'+id+'/manager');
             },
             /* 删除单个用户 */
@@ -190,6 +186,38 @@ angular.module('mainServices',[])
             /* 编辑用户 */
             'userIdInfo' :function (id) {
                 return $http.get(searviceList.singleUser+id)
+            },
+            /* 查询角色所有角色ids */
+            'roleIds' :function () {
+                return $http.get(searviceList.roleListUrl)
+            },
+            /* 批量查询角色信息 */
+            'roleInfo' :function (data) {
+                return $http.get(searviceList.roleInfoUrl+data)
+            },
+            /* 新增角色 */
+            'roleUser' :function (data) {
+                return $http({
+                    method:"POST",
+                    url:searviceList.roleListUrl,
+                    params:data
+                })
+            },
+            /* 编辑角色 */
+            'editRole' :function (data,id) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.roleListUrl+id,
+                    params:data
+                })
+            },
+            /* 删除角色 */
+            'deleteRole' :function (id) {
+                return $http.delete(searviceList.roleListUrl+id)
+            },
+            /* 返回单个角色及权限!!! */
+            'roleIdsRight':function (id){
+                return $http.get(searviceList.roleListUrl+id);
             },
         }
     })
