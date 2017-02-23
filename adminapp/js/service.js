@@ -36,7 +36,7 @@ angular.module('mainServices',[])
             userListUrl: '/carrots-admin-ajax/a/u/manager/?page=',
             /* 批量获取用户列表详细信息 */
             userInfoUrl:'/carrots-admin-ajax/a/u/multi/manager?',
-            /* 删除/编辑 单个用户 */
+            /* 删除/编辑/新增 单个用户 */
             singleUser :'/carrots-admin-ajax/a/u/manager/',
 
         }
@@ -168,8 +168,21 @@ angular.module('mainServices',[])
                 return $http({
                     method:"PUT",
                     url:searviceList.singleUser+id,
-                    data:data
+                    params:data
                 })
+            },
+            /* 新增用户 */
+            'addUser' :function (data) {
+                return $http({
+                    method:"POST",
+                    url:searviceList.singleUser,
+                    params:data
+                })
+            },
+            /* 根据id获取单个用户信息 */
+            /* 编辑用户 */
+            'userIdInfo' :function (id) {
+                return $http.get(searviceList.singleUser+id)
             },
         }
     })

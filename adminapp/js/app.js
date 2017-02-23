@@ -127,5 +127,18 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /* 用户新增/编辑页面 */
+            .state('app.accountadd',{
+                url:'/accountadd',
+                templateUrl:'tpls/backmodel/accountadd.html',
+                controller:'accountAddCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
     }
 ])
