@@ -46,6 +46,11 @@ angular.module('mainServices',[])
             professionUrl:'/carrots-admin-ajax/a/u/profession/',
             /*公司tag请求*/
             professionTagUrl:'/carrots-admin-ajax/a/tags/',
+            /* 删除/编辑/新增 模块管理 */
+            singleModular :'/carrots-admin-ajax/a/u/module/',
+            /* 模块详细信息列表 */
+            modularInfoUrl :'/carrots-admin-ajax/a/u/multi/module?',
+
         }
         /*请求的参数等*/
         return {
@@ -200,11 +205,11 @@ angular.module('mainServices',[])
                 return $http.get(searviceList.roleInfoUrl+data)
             },
             /* 新增角色 */
-            'roleUser' :function (data) {
+            'addRole' :function (data) {
                 return $http({
                     method:"POST",
                     url:searviceList.roleListUrl,
-                    params:data
+                    data:data
                 })
             },
             /* 编辑角色 */
@@ -222,6 +227,38 @@ angular.module('mainServices',[])
             /* 返回单个角色及权限!!! */
             'roleIdsRight':function (id){
                 return $http.get(searviceList.roleListUrl+id);
+            },
+            /* 模块id列表 */
+            'modularIdsList':function () {
+                return $http.get(searviceList.singleModular)
+            },
+            /* 批量查询模块详细信息 */
+            'modularInfo' :function (data) {
+                return $http.get(searviceList.modularInfoUrl+data)
+            },
+            /* 新增模块 */
+            'addModular' :function (data) {
+                return $http({
+                    method:"POST",
+                    url:searviceList.singleModular,
+                    data:data
+                })
+            },
+            /* 根据ID查询单个模块 */
+            'modularIds':function (id){
+                return $http.get(searviceList.singleModular+id);
+            },
+            /* 编辑模块 */
+            'editModular' :function (data,id) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.singleModular+id,
+                    data:data
+                })
+            },
+            /* 删除模块 */
+            'deleteModular' :function (id) {
+                return $http.delete(searviceList.singleModular+id)
             },
             /*改变职位上下架状态*/
             'changeProStatu':function (data) {

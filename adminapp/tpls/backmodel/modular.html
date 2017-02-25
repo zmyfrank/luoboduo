@@ -1,0 +1,46 @@
+<!-- 模块管理页面 -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            模块管理
+            <button type="button" class="btn btn-xs btn-primary pull-right">+新增</button>
+        </h3>
+    </div>
+    <div class="panel-body" style="padding: 0">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>自增长ID</th>
+                    <th>名称</th>
+                    <th>模块对应url地址</th>
+                    <th>父级ID</th>
+                    <th>类型</th>
+                    <th>数据更新时间</th>
+                    <th>更新人ID</th>
+                    <th>数据创建时间</th>
+                    <th>创建人ID</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat="data in vm.modularInfo">
+                    <td>{{data.id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.url}}</td>
+                    <td>{{data.parentID}}</td>
+                    <td>{{data.type}}</td>
+                    <td>{{data.updateAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>{{data.uodateBy}}</td>
+                    <td>{{data.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>{{data.createBy}}</td>
+                    <td>
+                        <a class="btn" ng-click="vm.editJump(data.id)">编辑</a>
+                        <my-modeal-box>
+                            <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.delete" tipstext='deleteuser'
+                                       tipsinfo="vm.deleteinfo(this)"><a class="btn " ng-click="open()">删除</a></my-modeal>
+                        </my-modeal-box>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <mypagintion total='vm.totalItems'></mypagintion>
+    </div>
+</div>

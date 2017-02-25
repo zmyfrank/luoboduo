@@ -166,6 +166,32 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /* 模块管理页面 */
+            .state('app.modular',{
+                url:'/modular',
+                templateUrl:'tpls/backmodel/modular.html',
+                controller:'modularCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
+            /* 编辑/新增模块页面 */
+            .state('app.addmodular',{
+                url:'/addmodular',
+                templateUrl:'tpls/backmodel/addmodular.html',
+                controller:'addModularCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
             /*添加职位*/
             .state('app.jobEdit',{
                 url:'/jobEdit?id&companyId&companyName',

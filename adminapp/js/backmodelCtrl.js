@@ -80,7 +80,7 @@ angular.module('adminApp')
     .controller('accountAddCtrl',function ($scope,$location,backStageAdmin,getAdminSercive) {
         var vm = this;
 
-        /* 角色下拉框 */
+        /* 角色下拉框数据 */
         vm.roled =  backStageAdmin.role;
 
         /* 表单验证测试函数 */
@@ -171,9 +171,51 @@ angular.module('adminApp')
         vm.roleIdsHttp();
 
     })
+    /* 角色新增/编辑页面 */
     .controller('addRoleCtrl',function ($scope,$filter,$location,getAdminSercive,$http) {
         var vm = this;
-
+        /* 获取权限列表 */
+        vm.rolemodel = function () {
+            $http({
+                method:"GET",
+                url:'/carrots-admin-ajax/a/u/module/',
+                params:{next: undefined, page: 1, size: 65535}
+            }).then(function (res) {
+                if (res.data.code == 0) {
+                    var id = $filter('accountFilter')(res.data.data.ids);
+                    $http({
+                        method:"GET",
+                        url:'/carrots-admin-ajax/a/u/multi/module?'+id,
+                    }).then(function (res) {
+                        if (res.data.code == 0) {
+                            var tree =[];
+                            vm.rolerigthdata =  rightFilter(0,null,tree,res.data.data.moduleList);
+                            //console.log(vm.rolerigthdata)
+                            /* 获取用户id */
+                            /* 判断是新增还是编辑 */
+                            vm.id = $location.search().id;
+                            if (vm.id) {
+                                /* 编辑 */
+                                vm.addrole.id = vm.id;
+                                getAdminSercive.roleIdsRight(vm.id).then(function (res) {
+                                    if (res.data.code == 0) {
+                                        /* 单个id的name */
+                                        vm.addrole.name = res.data.data.role.name;
+                                        /* 单个id权限数据 */
+                                        vm.roleIdRight =  res.data.data.role.permissionsSet;
+                                        subRightFilter();
+                                    }
+                                })
+                            }else {
+                                /* 新增 */
+                                subRightFilter();
+                            }
+                        }
+                    })
+                }
+            })
+        }
+        vm.rolemodel();
         /* 子集权限选择 */
         vm.rightChoice = function (data,bl) {
             for (k in data ) {
@@ -182,6 +224,7 @@ angular.module('adminApp')
         }
         /* 父级权限选择 */
         vm.p_rightChoice  = function (index,bl) {
+            /* 页面的排序和原数据的排序匹配不上 */
             if (index == 0) {
                 index = 1;
             }else if (index == 2) {
@@ -206,53 +249,9 @@ angular.module('adminApp')
                 })
             })
         }
-        /* 获取角色权限列表 */
-        vm.rolemodel = function () {
-            $http({
-                method:"GET",
-                url:'/carrots-admin-ajax/a/u/module/',
-                params:{next: undefined, page: 1, size: 65535}
-            }).then(function (res) {
-                if (res.data.code == 0) {
-                    var id = $filter('accountFilter')(res.data.data.ids);
-                    $http({
-                        method:"GET",
-                        url:'/carrots-admin-ajax/a/u/multi/module?'+id,
-                    }).then(function (res) {
-                        if (res.data.code == 0) {
-                            var tree =[];
-                            vm.rolerigthdata =  rightFilter(0,null,tree,res.data.data.moduleList);
-                            //console.log(vm.rolerigthdata)
-                            /* 获取用户id */
-                            vm.id = $location.search().id;
-                            /* vm.id值为编辑请求时的id字段 */
-                            vm.addrole.id = vm.id;
-                            getAdminSercive.roleIdsRight(vm.id).then(function (res) {
-                                if (res.data.code == 0) {
-                                    /* 单个id的name */
-                                    vm.addrole.name = res.data.data.role.name;
-                                    /* 单个id权限数据 */
-                                    vm.roleIdRight =  res.data.data.role.permissionsSet;
-                                    angular.forEach(vm.rolerigthdata, function(item, key) {
-                                        angular.forEach(item.nodes, function(it, k) {
-                                            //调用过滤器把匹配到id的权限添加到对应的对象内。
-                                            item.nodes[k].right = $filter('roleRigthFilter')(it.id,vm.roleIdRight)
-                                            //根据当前id的权限给父级添加checkbox的ng-model值
-                                            item.nodes[k].p_right=item.nodes[k].right.p
-                                            item.all_right=item.nodes[k].right.p;
-                                            delete item.nodes[k].right.p;
-                                        })
-                                    })
-                                    //console.log(vm.rolerigthdata);
-                                }
-                            })
-                        }
-                    })
-                }
-            })
-        }
-        vm.rolemodel();
-        /* 过滤数据为页面可输出格式 */
+
+
+        /* 过滤权限总数据为页面可输出格式 */
         function rightFilter(pid,node, tree, modules) {
             var now = this;
             angular.forEach(modules, function (data, index, array) {
@@ -277,18 +276,27 @@ angular.module('adminApp')
             });
             return rolerigthdata
         }
+        /* 把子集权限字段添加进总数据中 */
+        function subRightFilter() {
+            angular.forEach(vm.rolerigthdata, function(item, key) {
+                angular.forEach(item.nodes, function(it, k) {
+                    //调用过滤器把匹配到id的权限添加到对应的对象内。
+                    item.nodes[k].right = $filter('roleRigthFilter')(it.id,vm.roleIdRight)
+                    //根据当前id的权限给父级添加checkbox的ng-model值
+                    item.nodes[k].p_right=item.nodes[k].right.p
+                    item.all_right=item.nodes[k].right.p;
+                    delete item.nodes[k].right.p;
+                })
+            })
+            console.log(vm.rolerigthdata);
+        }
+
         /* 角色权限请求 */
         vm.addrole = {};
         vm.addrole.permissionsSet = {};
+        /* 编辑请求 */
         vm.roleEitHtttp = function () {
-            angular.forEach(vm.rolerigthdata,function (item,index) {
-                angular.forEach(item.nodes,function (it,key) {
-                    //把当前权限的id和权限值赋给请求数据
-                    vm.addrole.permissionsSet[item.nodes[key].id] = roleHttp(item.nodes[key].right)
-                })
-            })
-
-            /* 编辑请求 */
+            getRoleIdRight();
             getAdminSercive.editRole(vm.addrole,vm.id).then(function (res) {
                 if (res.data.code == 0 ) {
                     $location.url('app/role');
@@ -296,7 +304,28 @@ angular.module('adminApp')
             })
         }
 
-        /* 权限数据转请求数据 */
+        /* 新增请求 */
+        vm.roleAddHtttp = function () {
+            getRoleIdRight()
+            getAdminSercive.addRole(vm.addrole).then(function (res) {
+                if (res.data.code == 0 ) {
+                    $location.url('app/role');
+                }
+            })
+        }
+
+        /* 遍历原数据筛选出每个权限下的nodes对象 */
+        /* nodes对象存放的是当前id的具体权限 */
+        function getRoleIdRight() {
+            angular.forEach(vm.rolerigthdata,function (item,index) {
+                angular.forEach(item.nodes,function (it,key) {
+                    //把数据转成符合后台要求的格式
+                    //把当前权限的id和权限值赋给请求数据
+                    vm.addrole.permissionsSet[item.nodes[key].id] = roleHttp(item.nodes[key].right)
+                })
+            })
+        }
+        /* 转请求约定格式数据 */
         function roleHttp(data) {
             var role = [];
             for (k in data) {
@@ -327,16 +356,108 @@ angular.module('adminApp')
         }
         return function (id,role) {
             var value=[];
-            angular.forEach(role,function (item,index,arry) {
-                if (item.length !=0 ) {
-                    //匹配权限id和角色id匹配的数组
-                    if (index == id) {
-                        value = rigth(item)
+            if (role) {
+                //当role有值时判断为编辑页面
+                angular.forEach(role,function (item,index,arry) {
+                    if (item.length !=0 ) {
+                        //匹配权限id和角色id匹配的数组
+                        if (index == id) {
+                            value = rigth(item)
+                        }
                     }
-                }
-            })
+                })
+            }else {
+                //当role为空时判断为新增页面
+                value = rigth(['sort']);
+            }
             return value;
         }
+    })
+    /* 模块管理页面 */
+    .controller('modularCtrl',function ($scope,$filter,$location,getAdminSercive,articlemodealinfo) {
+        var vm = this;
+
+        /* 所有模块ids */
+        vm.modularIdsHttp = function () {
+            getAdminSercive.modularIdsList().then(function (res) {
+                if (res.data.code == 0) {
+                    vm.modularIds = res.data.data.ids;
+                    vm.modularInfoHttp();
+                }
+            })
+        }
+        /* 进入页面初次调用 */
+        vm.modularIdsHttp();
+        /* 模块列表详细信息请求 */
+        vm.modularInfoHttp = function () {
+            vm.httpdata = $filter('accountFilter')(vm.modularIds);
+            getAdminSercive.modularInfo(vm.httpdata).then(function (res) {
+                if (res.data.code == 0 ) {
+                    vm.modularInfo = res.data.data.moduleList;
+                    //console.log(vm.modularInfo);
+                    vm.totalItems.totals = res.data.data.total;
+                    //vm.totalItems.page = page;
+                }
+            })
+        }
+
+        /* 删除模块 */
+        /* 获取ids；添加膜态文本 此处模板和删除用户的共用 */
+        vm.deleteinfo =function (ele) {
+            vm.deleteModilarId = ele.data.id;
+            articlemodealinfo.deleteuser = ['从数据库中删除将无法回复','是否执行删除操作？','删除成功'];
+        }
+
+        /* 点击确定之后处理的函数 */
+        vm.delete = function () {
+            getAdminSercive.deleteModular(vm.deleteModilarId).then(function (res) {
+                if (res.data.code == 0) {
+                    vm.modularIdsHttp();
+                }
+            })
+        }
+        /* 编辑跳转 */
+        vm.editJump = function (id) {
+            $location.url('app/addmodular?id='+id);
+        }
+        /* 分页 */
+        vm.pagingdata = vm.modularInfoHttp;
+    })
+    /* 新增/编辑模块页面 */
+    .controller('addModularCtrl',function ($scope,$location,getAdminSercive) {
+        var vm = this;
+        vm.id =  $location.search().id;
+
+        /* 用id请求对应的模块数据 */
+        if (vm.id != undefined) {
+            vm.ifEditModular = true;
+            getAdminSercive.modularIds(vm.id).then(function (res) {
+                if (res.data.code == 0 ) {
+                    vm.modularFormData =  res.data.data.module;
+                    //console.log(vm.modularFormData);
+                }
+            })
+        }
+
+        /* 新增请求 */
+        vm.addModular = function () {
+            //console.log(vm.adduser)
+            getAdminSercive.editUser(vm.adduser,vm.id).then(function (res) {
+                if (res.data.code == 0 ) {
+                   //$location.url('app/modular');
+                }
+            })
+        }
+
+        /* 编辑请求 */
+        vm.editModular = function () {
+            getAdminSercive.editModular(vm.modularFormData,vm.id).then(function (res) {
+                if (res.data.code == 0 ) {
+                    //$location.url('app/modular');
+                }
+            })
+        }
+
     })
 
 
