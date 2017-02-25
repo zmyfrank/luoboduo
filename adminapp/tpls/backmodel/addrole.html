@@ -16,144 +16,39 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> 全选/全不选
+                            <input type="checkbox" ng-model="vm.allright" ng-click="vm.all_rightChoice(vm.allright)"> 全选/全不选
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="col-sm-offset-2 col-sm-10" ng-repeat=" data in  vm.rolerigthdata | orderBy:'id':true" ng-init="p_index = $index">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> article管理
+                            <input type="checkbox" ng-model="data.all_right"  ng-click="vm.p_rightChoice(p_index,data.all_right)"> {{data.name}}{{data.all_right}}
                         </label>
                     </div>
-                    <div class="checkbox col-sm-offset-1 col-sm-2">
-                        <label>
-                            <input type="checkbox" ng-model="vm.articleAll" ng-click="vm.subsetValue(vm.article)"> article列表
-                        </label>
-                    </div>
-                    <div class="checkbox col-sm-9">
-                        <label>
-                            <input name="create" ng-model="vm.article.create" type="checkbox" ng-click="vm.ss(this)"> 新增
-                        </label>
-                        <label>
-                            <input name="update" ng-model="vm.article.update" type="checkbox" ng-click="vm.ss(this)"> 编辑
-                        </label>
-                        <label>
-                            <input name="delete" ng-model="vm.article.delete" type="checkbox" ng-click="vm.ss(this)"> 删除
-                        </label>
+                    <div ng-repeat="items in data.nodes" ng-init="s_index = $index">
+                        <div class="checkbox col-sm-offset-1 col-sm-2">
+                            <label ng-click="vm.rightChoice(items.right,items.p_right)">
+                                <input type="checkbox" ng-model="items.p_right" > {{items.name}}{{items.p_right}}
+                            </label>
+                        </div>
+                        <div class="checkbox col-sm-9">
+                            <label>
+                                <input ng-model="items.right.create"
+                                       type="checkbox"> 新增{{items.right.create}}
+                            </label>
+                            <label>
+                                <input ng-model="items.right.update"
+                                       type="checkbox"> 编辑{{items.right.update}}
+                            </label>
+                            <label>
+                                <input ng-model="items.right.delete"
+                                       type="checkbox"> 删除{{items.right.delete}}
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--<div class="col-sm-offset-2 col-sm-10">-->
-                <!--<div class="checkbox">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 信息管理-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 职位列表-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-9" >-->
-                    <!--<label>-->
-                        <!--<input name="job" type="checkbox"> 新增-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="job" type="checkbox"> 编辑-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="job" type="checkbox"> 删除-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 公司列表-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-9" >-->
-                    <!--<label>-->
-                        <!--<input name="company" type="checkbox"> 新增-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="company" type="checkbox"> 编辑-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="company" type="checkbox"> 删除-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-sm-offset-2 col-sm-10">-->
-                <!--<div class="checkbox">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 后台管理-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 账户管理-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-9" >-->
-                    <!--<label>-->
-                        <!--<input name="user" type="checkbox"> 新增-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="user" type="checkbox"> 编辑-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="user" type="checkbox"> 删除-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 密码修改-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-9" >-->
-                    <!--<label>-->
-                        <!--<input name="pwd"  type="checkbox"> 新增-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="pwd"  type="checkbox"> 编辑-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="pwd"  type="checkbox"> 删除-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 角色管理-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-9" >-->
-                    <!--<label>-->
-                        <!--<input name="role" type="checkbox"> 新增-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="role" type="checkbox"> 编辑-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="role" type="checkbox"> 删除-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-offset-1 col-sm-2">-->
-                    <!--<label>-->
-                        <!--<input type="checkbox"> 模块管理-->
-                    <!--</label>-->
-                <!--</div>-->
-                <!--<div class="checkbox col-sm-9" >-->
-                    <!--<label>-->
-                        <!--<input name="model"  type="checkbox"> 新增-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="model"  type="checkbox"> 编辑-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input name="model"  type="checkbox"> 删除-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</div>-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10"  style="margin-top: 20px;">
                     <button type="submit" class="btn btn-success">保存</button>

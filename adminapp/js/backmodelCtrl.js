@@ -169,20 +169,12 @@ angular.module('adminApp')
 
         /* 初次进入请求角色列表 */
         vm.roleIdsHttp();
+
     })
     .controller('addRoleCtrl',function ($scope,$filter,$location,getAdminSercive,$http) {
         var vm = this;
-        vm.article ={}
-        var b=[];
-        vm.ss = function (ele) {
 
-        }
-        
-        vm.subsetValue = function () {
-            
-        }
-        
-        var filter=  function (obj) {
+        var filter =  function (obj) {
             var s = [];
             for (data in obj) {
                 console.log(vm.article[data])
@@ -193,21 +185,44 @@ angular.module('adminApp')
             return s;
         }
 
-        /* 获取用户id */
-        vm.id = $location.search().id;
-        getAdminSercive.roleIdsRight(vm.id).then(function (res) {
-            if (res.data.code == 0) {
-                //console.log(res.data.data)
+        /* 子集权限选择 */
+        vm.rightChoice = function (data,bl) {
+            for (k in data ) {
+                data[k] = bl;
             }
-        })
+        }
 
+        /* 父级权限选择 */
+        vm.p_rightChoice  = function (index,bl) {
+            if (index == 0) {
+                index = 1;
+            }else if (index == 2) {
+                index = 0;
+            }else if (index == 1) {
+                index = 2;
+            }
+            angular.forEach(vm.rolerigthdata[index].nodes,function (items,k) {
+                items.p_right = bl;
+                vm.rightChoice(items.right,bl);
+            })
+        }
 
+        /* 所有权限选择 */
+        vm.allright = true;
+        vm.all_rightChoice =function (bl) {
+            angular.forEach(vm.rolerigthdata, function(item, key) {
+                item.all_right = bl;
+                angular.forEach(item.nodes, function(it, k) {
+                    it.p_right = bl;
+                    for (sk in it.right) {
+                        it.right[sk] = bl
+                    }
+                })
+            })
+        }
 
-
-
+        /* 获取角色权限列表 */
         vm.rolemodel = function () {
-
-
             $http({
                 method:"GET",
                 url:'/carrots-admin-ajax/a/u/module/',
@@ -220,22 +235,48 @@ angular.module('adminApp')
                         url:'/carrots-admin-ajax/a/u/multi/module?'+id,
                     }).then(function (res) {
                         if (res.data.code == 0) {
-                            console.log(res.data.data.moduleList)
                             var tree =[];
-                            rigthFilter(0,null,tree,res.data.data.moduleList)
+                            vm.rolerigthdata =  rightFilter(0,null,tree,res.data.data.moduleList);
+                            //console.log(vm.rolerigthdata)
+                            /* 获取用户id */
+                            vm.id = $location.search().id;
+                            getAdminSercive.roleIdsRight(vm.id).then(function (res) {
+                                if (res.data.code == 0) {
+                                    vm.roleIdRight =  res.data.data.role.permissionsSet;
+                                    angular.forEach(vm.rolerigthdata, function(item, key) {
+                                        angular.forEach(item.nodes, function(it, k) {
+                                            item.nodes[k].right = $filter('roleRigthFilter')(it.id,vm.roleIdRight)
+                                            var length=0;
+                                            for (objk in item.nodes[k].right) {
+                                                ++length
+                                            }
+                                            if (length>=4) {
+                                                item.nodes[k].p_right=true;
+                                                item.all_right=true;
+                                            }else {
+                                                item.nodes[k].p_right=false;
+                                                item.all_right=false;
+                                            }
+                                        })
+                                    })
+                                    //console.log(vm.rolerigthdata);
+                                }
+                            })
                         }
                     })
                 }
             })
         }
+
         vm.rolemodel();
-        
-        function rigthFilter(pid,node, tree, modules) {
+
+        /* 过滤数据为页面可输出格式 */
+        function rightFilter(pid,node, tree, modules) {
             var now = this;
             angular.forEach(modules, function (data, index, array) {
                 var module = data;
                 if (module.parentID == pid) {
-                    tree = rigthFilter(module.id, module, tree, modules);
+                    tree = rightFilter(module.id, module, tree, modules);
                     if (pid == 0) {
                         tree.push(module);
                     } else {
@@ -246,11 +287,36 @@ angular.module('adminApp')
                     }
                 }
             });
-            angular.forEach(tree,function (item, index) {
+            var rolerigthdata = [];
+            angular.forEach(tree,function (item, index,arry) {
                 if (item.nodes) {
-                    item.nodes = item.nodes.sort(now.treeSort);
+                    rolerigthdata.push(arry[index]);
                 }
             });
-            return tree;
+            return rolerigthdata
         }
     })
+    /* 用户权限过滤 */
+    .filter('roleRigthFilter',function () {
+        function rigth(data) {
+            var value = {}
+            angular.forEach(data,function (item,index) {
+                value[''+item] = true;
+            })
+            return value;
+        }
+        return function (id,role) {
+            if (!role) return;
+            var value=[];
+            angular.forEach(role,function (item,index,arry) {
+                if (item.length !=0 ) {
+                    if (index == id) {
+                        value =rigth(item)
+                    }
+                }
+            })
+            return value;
+        }
+    })
+
+
