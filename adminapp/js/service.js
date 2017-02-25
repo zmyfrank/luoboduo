@@ -212,7 +212,7 @@ angular.module('mainServices',[])
                 return $http({
                     method:"PUT",
                     url:searviceList.roleListUrl+id,
-                    params:data
+                    data:data
                 })
             },
             /* 删除角色 */

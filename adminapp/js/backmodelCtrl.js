@@ -174,24 +174,12 @@ angular.module('adminApp')
     .controller('addRoleCtrl',function ($scope,$filter,$location,getAdminSercive,$http) {
         var vm = this;
 
-        var filter =  function (obj) {
-            var s = [];
-            for (data in obj) {
-                console.log(vm.article[data])
-                if (vm.article[data]  == true) {
-                    b.push(data);
-                }
-            }
-            return s;
-        }
-
         /* 子集权限选择 */
         vm.rightChoice = function (data,bl) {
             for (k in data ) {
                 data[k] = bl;
             }
         }
-
         /* 父级权限选择 */
         vm.p_rightChoice  = function (index,bl) {
             if (index == 0) {
@@ -206,9 +194,7 @@ angular.module('adminApp')
                 vm.rightChoice(items.right,bl);
             })
         }
-
         /* 所有权限选择 */
-        vm.allright = true;
         vm.all_rightChoice =function (bl) {
             angular.forEach(vm.rolerigthdata, function(item, key) {
                 item.all_right = bl;
@@ -220,7 +206,6 @@ angular.module('adminApp')
                 })
             })
         }
-
         /* 获取角色权限列表 */
         vm.rolemodel = function () {
             $http({
@@ -240,23 +225,22 @@ angular.module('adminApp')
                             //console.log(vm.rolerigthdata)
                             /* 获取用户id */
                             vm.id = $location.search().id;
+                            /* vm.id值为编辑请求时的id字段 */
+                            vm.addrole.id = vm.id;
                             getAdminSercive.roleIdsRight(vm.id).then(function (res) {
                                 if (res.data.code == 0) {
+                                    /* 单个id的name */
+                                    vm.addrole.name = res.data.data.role.name;
+                                    /* 单个id权限数据 */
                                     vm.roleIdRight =  res.data.data.role.permissionsSet;
                                     angular.forEach(vm.rolerigthdata, function(item, key) {
                                         angular.forEach(item.nodes, function(it, k) {
+                                            //调用过滤器把匹配到id的权限添加到对应的对象内。
                                             item.nodes[k].right = $filter('roleRigthFilter')(it.id,vm.roleIdRight)
-                                            var length=0;
-                                            for (objk in item.nodes[k].right) {
-                                                ++length
-                                            }
-                                            if (length>=4) {
-                                                item.nodes[k].p_right=true;
-                                                item.all_right=true;
-                                            }else {
-                                                item.nodes[k].p_right=false;
-                                                item.all_right=false;
-                                            }
+                                            //根据当前id的权限给父级添加checkbox的ng-model值
+                                            item.nodes[k].p_right=item.nodes[k].right.p
+                                            item.all_right=item.nodes[k].right.p;
+                                            delete item.nodes[k].right.p;
                                         })
                                     })
                                     //console.log(vm.rolerigthdata);
@@ -267,9 +251,7 @@ angular.module('adminApp')
                 }
             })
         }
-
         vm.rolemodel();
-
         /* 过滤数据为页面可输出格式 */
         function rightFilter(pid,node, tree, modules) {
             var now = this;
@@ -295,23 +277,61 @@ angular.module('adminApp')
             });
             return rolerigthdata
         }
+        /* 角色权限请求 */
+        vm.addrole = {};
+        vm.addrole.permissionsSet = {};
+        vm.roleEitHtttp = function () {
+            angular.forEach(vm.rolerigthdata,function (item,index) {
+                angular.forEach(item.nodes,function (it,key) {
+                    //把当前权限的id和权限值赋给请求数据
+                    vm.addrole.permissionsSet[item.nodes[key].id] = roleHttp(item.nodes[key].right)
+                })
+            })
+
+            /* 编辑请求 */
+            getAdminSercive.editRole(vm.addrole,vm.id).then(function (res) {
+                if (res.data.code == 0 ) {
+                    $location.url('app/role');
+                }
+            })
+        }
+
+        /* 权限数据转请求数据 */
+        function roleHttp(data) {
+            var role = [];
+            for (k in data) {
+                if (data[k]  == true) {
+                    role.push(k);
+                }
+            }
+            return role;
+        }
     })
     /* 用户权限过滤 */
     .filter('roleRigthFilter',function () {
         function rigth(data) {
             var value = {}
-            angular.forEach(data,function (item,index) {
-                value[''+item] = true;
+            var orole =  ['create','delete','update','sort'];
+            var pright;
+            angular.forEach(orole,function (item,index) {
+                //判断是不是具有所有权限
+                if (data.indexOf(item) == -1 ) {
+                    value[''+item] = false;
+                    pright = false;
+                }else {
+                    value[''+item] = true;
+                }
             })
+            value.p =  pright == undefined ? true : false;
             return value;
         }
         return function (id,role) {
-            if (!role) return;
             var value=[];
             angular.forEach(role,function (item,index,arry) {
                 if (item.length !=0 ) {
+                    //匹配权限id和角色id匹配的数组
                     if (index == id) {
-                        value =rigth(item)
+                        value = rigth(item)
                     }
                 }
             })

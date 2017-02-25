@@ -8,9 +8,9 @@ adminApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cook
              if(toState.name=='login')return;
              //获取本地cookies值用作判断是否有登陆
              $rootScope.loginCook =  $cookies.getObject('login');
-/*             if (!$rootScope.loginCook) {
+             if (!$rootScope.loginCook) {
                  $state.go('login');
-             }*/
+             }
         });
     }])
 
