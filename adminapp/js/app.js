@@ -166,5 +166,18 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /*添加职位*/
+            .state('app.jobEdit',{
+                url:'/jobEdit',
+                templateUrl:'tpls/jobEdit.html',
+                controller:'jobEditCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/companyList.css',
+                        'js/jobEditCtrl.js'
+                    ])
+                }
+            })
     }
 ])

@@ -38,14 +38,6 @@
                 </div>
             </div>
             <div class="row f-rowfix">
-                <!--<div class="form-group m-companylist_city col-md-12">-->
-                    <!--<label for="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>-->
-                    <!--<select ng-model="vm.province" class="form-control" ng-options="items.ProID as items.ProName for items in vm.PROVINCE">-->
-                        <!--<option value="">请选择省份</option>-->
-                    <!--</select>-->
-                    <!--<select ng-model="vm.city" class="form-control"></select>-->
-                    <!--<select ng-model="vm.county" class="form-control"></select>-->
-                <!--</div>-->
                 <div class="form-group m-companylist_city col-md-12 clearfix">
                     <label for="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
                     <citychoose search="search"  province-num='vm.companyData.province' city-num='vm.companyData.city' county-num='vm.companyData.county'></citychoose>
@@ -88,12 +80,12 @@
                         <td>
                             <a class="btn btn-sm"></a>
                             <a class="btn btn-sm">职位</a>
-                            <a ng-if="items.approved ===0" class="btn btn-sm"  ng-click="vm.getType(this,1,'认证后该公司将被标记为推荐公司。','是否执行认证操作？');">认证</a>
-                            <a ng-if="items.approved !==0" class="btn btn-sm"  ng-click="vm.getType(this,1,'解除认证后该公司将不再标记为推荐公司。','是否执行解除操作？');">解除</a>
+                            <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,1,'认证后该公司将被标记为推荐公司。','是否执行认证操作？')" ng-if="items.approved ===0" class="btn btn-sm">认证</a>
+                            <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,1,'解除认证后该公司将不再标记为推荐公司。','是否执行解除操作？')" ng-if="items.approved !==0" class="btn btn-sm">解除</a>
                             <a  class="btn btn-sm" ui-sref="app.companyEdit({id:items.id})">编辑</a>
-                            <a ng-if="items.freezed===0" class="btn btn-sm" ng-click="vm.getType(this,0,'冻结后该公司下的所有信息将不可用。','是否执行冻结操作？');">冻结</a>
-                            <a ng-if="items.freezed!==0" class="btn btn-sm" ng-click="vm.getType(this,0,'解冻后该公司下的信息将可继续使用。','是否执行解冻操作？');">解冻</a>
-                            <a class="btn btn-sm" ng-click="vm.deleteCompany(this);">删除</a>
+                            <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,0,'冻结后该公司下的所有信息将不可用。','是否执行冻结操作？')" ng-if="items.freezed===0" class="btn btn-sm">冻结</a>
+                            <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,0,'解冻后该公司下的信息将可继续使用。','是否执行解冻操作？')" ng-if="items.freezed!==0" class="btn btn-sm">解冻</a>
+                            <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.deleteCompany(this)" class="btn btn-sm">删除</a>
                         </td>
                     </tr>
                 </tbody>

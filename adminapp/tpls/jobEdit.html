@@ -1,0 +1,83 @@
+<div class="container-fluid m-companylist-wrap ">
+    <div class="panel panel-info clearfix">
+        <div class="panel-heading">
+            职业信息
+            <select ng-model="vm.data.company.approved" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
+            </select>
+        </div>
+        <form name='jobData' class="form-inline" novalidate="novalidate">
+            <div class="row f-rowfix">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>职位名称：</label>
+                    <input data-set type="text" class="form-control" ng-model='vm.jobData.profession.name' name='name' required>
+                    <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="jobData.name.$touched">
+                        <span ng-message="required">职位名称必须填写</span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>公司名称：</label>
+                    <input data-set type="text" class="form-control" id="disabledTextInput" ng-model='vm.jobData.profession.companyName' disabled>
+                </div>
+            </div>
+            <div class="row f-rowfix">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>工作经验：</label>
+                    <select data-set ng-model="vm.jobData.profession.experience" ng-options='items.type as items.name for items in vm.joblisttype.experiencetype' class="form-control">
+                    </select>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>学历要求：</label>
+                    <select data-set ng-model="vm.jobData.profession.education" ng-options='items.type as items.name for items in vm.joblisttype.educationtype' class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="row f-rowfix">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label>薪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资：</label>
+                    <select data-set ng-model="vm.jobData.profession.compensation" ng-options='items.type as items.name for items in vm.joblisttype.compensationtype' class="form-control">
+                    </select>
+                </div>
+                <div class="form-group col-md-6 col-xs-12 m-joblist-cat">
+                    <label>职业分类：</label>
+                    <select data-set ng-model="vm.jobData.profession.category" ng-options='items.type as items.name for items in vm.joblisttype.categorytype' class="form-control">
+                    </select>
+                    <span style="text-align: center;">——</span>
+                    <select data-set ng-model="vm.jobData.profession.subCategory" ng-options='items.type as items.name for items in vm.joblisttype.subCategorytype' class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="row f-rowfix">
+                <div class="form-group col-md-12 col-xs-12 m-joblist-checkbox">
+                    <label>公司福利：</label>
+                    <label class="checkbox-inline" ng-repeat="items in vm.jobData.tags">
+                        <input ng-checked="vm.isSelect(items.tag)" type="checkbox" name="items.name" ng-click=vm.chooseTag($event,items.tag)>
+                        <span class="label-info">{{ items.tag }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="panel panel-info m-joblist-panel">
+                <div class="panel-heading">
+                    职位描述
+                </div>
+                <div class="row f-rowfix">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>岗位职责：</label>
+                        <textarea data-set ng-model="vm.jobData.profession.responsibility" class="form-control m-company-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="row f-rowfix">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>必备条件：</label>
+                        <textarea data-set ng-model="vm.jobData.profession.requisite" class="form-control m-company-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="row f-rowfix">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>公司福利：</label>
+                        <textarea data-set ng-model="vm.jobData.profession.boon" class="form-control m-company-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

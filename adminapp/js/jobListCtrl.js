@@ -2,18 +2,18 @@
  * Created by Administrator on 2017/2/18.
  */
 angular.module('adminApp')
-    .controller('jobListCtrl',function ($scope,joblisttype,getAdminSercive) {
+    .controller('jobListCtrl', function ($scope, joblisttype, getAdminSercive) {
         var vm = this;
         vm.joblisttype = joblisttype;
         /*外面值定义一下这个对象的page属性*/
         vm.jobListData = {
-            page:""
+            page: ""
         };
         /*翻页*/
         vm.pagingdata = function (page) {
             /*搜索的参数*/
 
-            vm.jobListData.page = page?page:1;
+            vm.jobListData.page = page ? page : 1;
             vm.totalItems = {};
             getAdminSercive.findJobList(vm.jobListData).then(function (res) {
                 if (res.data.code == 0) {
@@ -25,11 +25,58 @@ angular.module('adminApp')
                 }
             });
         };
-        /*清除*/
+        /*清除，所有数据设为空，值留一个page*/
         vm.clear = function () {
             vm.jobListData = {
-                page:""
+                page: ""
             };
             vm.pagingdata()
+        };
+        /*上下架操作*/
+        vm.getData = function (data) {
+            console.log(data)
+            vm.changeData = {};
+            vm.changeData.id = data.$parent.items.id;
+            vm.changeData.status = data.$parent.items.status
+            if (data.$parent.items.status == 1) {
+                vm.textData = {
+                    title: '下架后该职位将不在前台展示',
+                    content: '是否执行下架操作？',
+                    success: '已成功下架'
+                }
+            } else {
+                vm.textData = {
+                    title: '上架后该职位将在前台展示',
+                    content: '是否执行上架操作？',
+                    success: '已成功上架'
+                }
+            }
+            return vm.textData;
+        };
+        /*删除操作*/
+        vm.getDeleteData = function (data) {
+            vm.changeData={}
+            console.log(data)
+            vm.textData = {
+                title: '您确定删除这条数据?',
+                content: '你确定要执行删除操作吗？',
+                success: '删除成功'
+            };
+            vm.changeData.id = data.items.id;
+            return vm.textData;
+        };
+        /*服务器请求*/
+        vm.changeDataFn = function () {
+            if (vm.changeData.status==0||vm.changeData.status) {
+                vm.changeData.status = vm.changeData.status == 1 ? 0 : 1;
+                getAdminSercive.changeProStatu(vm.changeData).then(function () {
+                   vm.clear()
+                })
+            }else {
+                getAdminSercive.deletejob(vm.changeData.id).then(function () {
+                   vm.clear()
+                })
+            }
+
         }
     })

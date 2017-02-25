@@ -42,6 +42,10 @@ angular.module('mainServices',[])
             roleListUrl :'/carrots-admin-ajax/a/u/role/',
             /* 批量获取角色详细信息 */
             roleInfoUrl :'/carrots-admin-ajax/a/u/multi/role?',
+            /*职位各种信息修改*/
+            professionUrl:'/carrots-admin-ajax/a/u/profession/',
+            /*公司tag请求*/
+            professionTagUrl:'/carrots-admin-ajax/a/tags/',
         }
         /*请求的参数等*/
         return {
@@ -218,6 +222,22 @@ angular.module('mainServices',[])
             /* 返回单个角色及权限!!! */
             'roleIdsRight':function (id){
                 return $http.get(searviceList.roleListUrl+id);
+            },
+            /*改变职位上下架状态*/
+            'changeProStatu':function (data) {
+                return  $http({
+                    method:"PUT",
+                    url:searviceList.professionUrl+'/status',
+                    params:data
+                })
+            },
+            /*删除职位*/
+            'deletejob':function (id) {
+                return $http.delete(searviceList.professionUrl+id)
+            },
+            /*获取公司tag*/
+            'getprofessionTag':function (id) {
+                return $http.get(searviceList.getprofessionTag(id))
             },
         }
     })
