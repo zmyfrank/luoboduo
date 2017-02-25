@@ -26,7 +26,10 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">用户列表</h3>
+        <h3 class="panel-title">
+            用户列表
+            <button type="button" class="btn btn-xs btn-primary pull-right" ui-sref="app.accountadd">+新增</button>
+        </h3>
     </div>
     <div class="panel-body" style="padding: 0">
         <div class="table-responsive">
@@ -50,7 +53,7 @@
                     <td>{{data. updateBy}}</td>
                     <td>{{data. updateAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>
-                        <a class="btn ">编辑</a>
+                        <a class="btn" ng-click="vm.editJump(this)">编辑</a>
                         <my-modeal-box>
                             <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.delete" tipstext='deleteuser'
                                        tipsinfo="vm.deleteinfo(this)"><a class="btn " ng-click="open()">删除</a></my-modeal>

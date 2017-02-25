@@ -8,9 +8,9 @@ adminApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cook
              if(toState.name=='login')return;
              //获取本地cookies值用作判断是否有登陆
              $rootScope.loginCook =  $cookies.getObject('login');
-             if (!$rootScope.loginCook) {
+/*             if (!$rootScope.loginCook) {
                  $state.go('login');
-             }
+             }*/
         });
     }])
 
@@ -119,6 +119,45 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 url:'/account',
                 templateUrl:'tpls/backmodel/account.html',
                 controller:'accountCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
+            /* 用户新增/编辑页面 */
+            .state('app.accountadd',{
+                url:'/accountadd',
+                templateUrl:'tpls/backmodel/accountadd.html',
+                controller:'accountAddCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
+            /* 角色管理页面 */
+            .state('app.role',{
+                url:'/role',
+                templateUrl:'tpls/backmodel/role.html',
+                controller:'roleCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'css/backmodel.css',
+                        'js/backmodelCtrl.js'
+                    ])
+                }
+            })
+            /* 新增编辑角色 */
+            .state('app.addrole',{
+                url:'/addrole',
+                templateUrl:'tpls/backmodel/addrole.html',
+                controller:'addRoleCtrl',
                 controllerAs:'vm',
                 resolve: {
                     home_file:_lazyLoad([

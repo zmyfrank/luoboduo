@@ -1,0 +1,66 @@
+<!-- 新增/编辑角色页面 -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">角色编辑</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="addroleForm">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">角色名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入角色名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">权限：</label>
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="vm.allright" ng-click="vm.all_rightChoice(vm.allright)"> 全选/全不选
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-offset-2 col-sm-10" ng-repeat=" data in  vm.rolerigthdata | orderBy:'id':true" ng-init="p_index = $index">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="data.all_right"  ng-click="vm.p_rightChoice(p_index,data.all_right)"> {{data.name}}{{data.all_right}}
+                        </label>
+                    </div>
+                    <div ng-repeat="items in data.nodes" ng-init="s_index = $index">
+                        <div class="checkbox col-sm-offset-1 col-sm-2">
+                            <label ng-click="vm.rightChoice(items.right,items.p_right)">
+                                <input type="checkbox" ng-model="items.p_right" > {{items.name}}{{items.p_right}}
+                            </label>
+                        </div>
+                        <div class="checkbox col-sm-9">
+                            <label>
+                                <input ng-model="items.right.create"
+                                       type="checkbox"> 新增{{items.right.create}}
+                            </label>
+                            <label>
+                                <input ng-model="items.right.update"
+                                       type="checkbox"> 编辑{{items.right.update}}
+                            </label>
+                            <label>
+                                <input ng-model="items.right.delete"
+                                       type="checkbox"> 删除{{items.right.delete}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10"  style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-success">保存</button>
+                    <button type="submit" class="btn btn-danger">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<label>someProperty = {{someProperty}}</label>
+<input type="checkbox"
+       ng-checked="someProperty"
+       ng-init="someProperty = true"
+       ng-model="someProperty">
+

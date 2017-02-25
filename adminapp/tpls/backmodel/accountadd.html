@@ -1,0 +1,79 @@
+<!-- /accountadd 用户新增页面 -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">新增用户</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="addUserForm">
+            <div class="form-group">
+                <label class="control-label col-xs-2 text-right">登录名</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" name="name" ng-model="vm.adduser.name"  placeholder="请输入登录名" required="">
+                    <div ng-show="addUserForm.name.$invalid">
+                        <span class="error">请输入用户名</span>
+                    </div>
+  <!--                   有输入/输入有误
+                    <div ng-show="addUserForm.name.$dirty && addUserForm.name.$invalid">
+                    </div>-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2 text-right">手机号码</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" name="mobile"   ng-model="vm.adduser.mobile" ng-disabled="vm.ifEditUser"
+                           ng-minlength="11" ng-maxlength="11" ng-pattern="/^[\d]{11,11}$/"   placeholder="请输入手机号码">
+                    <div ng-show="addUserForm.mobile.$invalid">
+                        <!-- ng-pattern="/^[\d]{6,15}$/" -->
+                        <span class="error" ng-show="addUserForm.mobile.$error.minlength||addUserForm.mobile.$error.maxlength||addUserForm.mobile.$error.pattern">请输入11位号码</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2 text-right">密码</label>
+                <div class="col-xs-9">
+                    <input type="password" class="form-control" name="pwd" ng-model="vm.adduser.pwd"  placeholder="请输入密码"
+                           ng-minlength="6" ng-maxlength="16" required="">
+                    <div ng-show="addUserForm.pwd.$invalid">
+                        <span class="error" ng-show="addUserForm.pwd.$error.minlength||addUserForm.pwd.$error.maxlength" >请输入6~16位密码</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2 text-right">密码确认</label>
+                <div class="col-xs-9">
+                    <input type="password" class="form-control" name="newPwd" ng-model="vm.adduser.newPwd"  ng-change="vm.ss(this)" placeholder="请输入密码" required="">
+                    <span class="error" ng-show="!(vm.adduser.newPwd == vm.adduser.pwd)">密码输入不一致</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2 text-right">角色</label>
+                <div class="col-xs-3">
+                    <select class="form-control" style="min-width: 160px" name="roleID" ng-model="vm.adduser.roleID"
+                        ng-options="items.value as items.name for items in vm.roled" required="" >
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-9 col-xs-offset-2">
+                    <div class="col-xs-4" ng-if="!vm.ifEditUser">
+                        <button class="btn btn-default btn-block" disabled="disabled"
+                                ng-disabled="addUserForm.$invalid" ng-click="vm.addUser()">保存
+                        </button>
+                    </div>
+
+                    <div class="col-xs-4" ng-if="vm.ifEditUser">
+                        <button class="btn btn-default btn-block" disabled="disabled"
+                                ng-disabled="addUserForm.$invalid" ng-click="vm.editUser()">保存
+                        </button>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <button class="btn btn-default btn-block" ui-sref="app.account">取消</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
