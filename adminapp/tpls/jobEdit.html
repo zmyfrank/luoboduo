@@ -2,7 +2,7 @@
     <div class="panel panel-info clearfix">
         <div class="panel-heading">
             职业信息
-            <select ng-model="vm.data.company.approved" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.approvedtype">
+            <select data-set ng-model="vm.jobData.profession.recommend" class="btn btn-xs pull-right" ng-options="items.type as items.name for items in vm.joblisttype.recommendtype">
             </select>
         </div>
         <form name='jobData' class="form-inline" novalidate="novalidate">
@@ -10,7 +10,7 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label>职位名称：</label>
                     <input data-set type="text" class="form-control" ng-model='vm.jobData.profession.name' name='name' required>
-                    <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="jobData.name.$touched">
+                    <div class="f-help" ng-messages="jobData.name.$error" ng-if="jobData.name.$touched">
                         <span ng-message="required">职位名称必须填写</span>
                     </div>
                 </div>
@@ -22,34 +22,48 @@
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>工作经验：</label>
-                    <select data-set ng-model="vm.jobData.profession.experience" ng-options='items.type as items.name for items in vm.joblisttype.experiencetype' class="form-control">
+                    <select data-set ng-class="{ 'f-border-red': jobData.experience.$invalid&&jobData.experience.$touched }" name="experience" ng-model="vm.jobData.profession.experience" ng-options='items.type as items.name for items in vm.joblisttype.experiencetype' class="form-control" required>
+                        <option value="">请选择</option>
                     </select>
+                    <div class="f-help" ng-messages="jobData.experience.$error" ng-if="jobData.experience.$touched">
+                        <span ng-message="required">此项必选</span>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>学历要求：</label>
-                    <select data-set ng-model="vm.jobData.profession.education" ng-options='items.type as items.name for items in vm.joblisttype.educationtype' class="form-control">
+                    <select ng-class="{ 'f-border-red': jobData.education.$invalid&&jobData.education.$touched }" data-set ng-model="vm.jobData.profession.education" name="education" ng-options='items.type as items.name for items in vm.joblisttype.educationtype' class="form-control" required>
+                        <option value="">请选择</option>
                     </select>
+                    <div class="f-help" ng-messages="jobData.education.$error" ng-if="jobData.education.$touched">
+                        <span ng-message="required">此项必选</span>
+                    </div>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group col-md-6 col-xs-12">
                     <label>薪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资：</label>
-                    <select data-set ng-model="vm.jobData.profession.compensation" ng-options='items.type as items.name for items in vm.joblisttype.compensationtype' class="form-control">
+                    <select  ng-class="{ 'f-border-red': jobData.compensation.$invalid&&jobData.compensation.$touched }" name="compensation" data-set ng-model="vm.jobData.profession.compensation" ng-options='items.type as items.name for items in vm.joblisttype.compensationtype' class="form-control" required>
+                        <option value="">请选择</option>
                     </select>
+                    <div class="f-help" ng-messages="jobData.compensation.$error" ng-if="jobData.compensation.$touched">
+                        <span ng-message="required">此项必选</span>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12 m-joblist-cat">
                     <label>职业分类：</label>
-                    <select data-set ng-model="vm.jobData.profession.category" ng-options='items.type as items.name for items in vm.joblisttype.categorytype' class="form-control">
+                    <select  ng-class="{ 'f-border-red': jobData.category.$invalid&&jobData.category.$touched }" name="category" data-set ng-model="vm.jobData.profession.category" ng-options='items.type as items.name for items in vm.joblisttype.categorytype' class="form-control" required>
+                        <option value="">请选择</option>
                     </select>
                     <span style="text-align: center;">——</span>
-                    <select data-set ng-model="vm.jobData.profession.subCategory" ng-options='items.type as items.name for items in vm.joblisttype.subCategorytype' class="form-control">
+                    <select ng-class="{ 'f-border-red': jobData.subCategory.$invalid&&jobData.subCategory.$touched }" name="subCategory"  data-set ng-model="vm.jobData.profession.subCategory" ng-options='items.type as items.name for items in vm.joblisttype.subCategorytype' class="form-control" required>
+                        <option value="">请选择</option>
                     </select>
                 </div>
             </div>
             <div class="row f-rowfix">
                 <div class="form-group col-md-12 col-xs-12 m-joblist-checkbox">
                     <label>公司福利：</label>
-                    <label class="checkbox-inline" ng-repeat="items in vm.jobData.tags">
+                    <label class="checkbox-inline" ng-repeat="items in vm.alltag">
                         <input ng-checked="vm.isSelect(items.tag)" type="checkbox" name="items.name" ng-click=vm.chooseTag($event,items.tag)>
                         <span class="label-info">{{ items.tag }}</span>
                     </label>
@@ -62,22 +76,30 @@
                 <div class="row f-rowfix">
                     <div class="form-group col-md-12 col-xs-12">
                         <label>岗位职责：</label>
-                        <textarea data-set ng-model="vm.jobData.profession.responsibility" class="form-control m-company-textarea"></textarea>
+                        <textarea ng-class="{ 'f-border-red': jobData.responsibility.$invalid&&jobData.responsibility.$touched }" name="responsibility" data-set ng-model="vm.jobData.profession.responsibility" class="form-control m-company-textarea" required></textarea>
+                        <div class="f-help" ng-messages="companyData.companyName.$error" ng-if="jobData.name.$touched">
+                            <span ng-message="required">职位名称必须填写</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row f-rowfix">
                     <div class="form-group col-md-12 col-xs-12">
                         <label>必备条件：</label>
-                        <textarea data-set ng-model="vm.jobData.profession.requisite" class="form-control m-company-textarea"></textarea>
+                        <textarea ng-class="{ 'f-border-red': jobData.requisite.$invalid&&jobData.requisite.$touched }" name="requisite" data-set ng-model="vm.jobData.profession.requisite" class="form-control m-company-textarea" required></textarea>
                     </div>
                 </div>
                 <div class="row f-rowfix">
                     <div class="form-group col-md-12 col-xs-12">
                         <label>公司福利：</label>
-                        <textarea data-set ng-model="vm.jobData.profession.boon" class="form-control m-company-textarea"></textarea>
+                        <textarea ng-class="{ 'f-border-red': jobData.boon.$invalid&&jobData.boon.$touched }" name="boon" data-set ng-model="vm.jobData.profession.boon" class="form-control m-company-textarea" required></textarea>
                     </div>
                 </div>
             </div>
         </form>
+    </div>
+    <div class="m-companylist_btngroup">
+        <button class="btn btn-small btn-warning" ng-click="vm.confirm()" type="button" ng-disabled="jobData.$invalid">保存</button>
+        <button ng-if="!vm.companyName" class="btn btn-small btn-success" type="button"  ui-sref="app.jobList">取消</button>
+        <button ng-if="vm.companyName" class="btn btn-small btn-success" type="button"  ui-sref="app.jobList({id:vm.companyId,companyName:vm.companyName})">取消</button>
     </div>
 </div>

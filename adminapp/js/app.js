@@ -90,7 +90,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
             })
             /*职位详情页面*/
             .state('app.jobList',{
-                url:'/jobList',
+                url:'/jobList?id$companyName',
                 templateUrl: 'tpls/jobList.html',
                 controller:'jobListCtrl',
                 controllerAs:'vm',
@@ -129,7 +129,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
             })
             /*添加职位*/
             .state('app.jobEdit',{
-                url:'/jobEdit',
+                url:'/jobEdit?id&companyId&companyName',
                 templateUrl:'tpls/jobEdit.html',
                 controller:'jobEditCtrl',
                 controllerAs:'vm',

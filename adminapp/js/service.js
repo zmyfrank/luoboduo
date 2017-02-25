@@ -29,7 +29,7 @@ angular.module('mainServices',[])
             /*通过id获取公司明细*/
             companySeachrByIdUrl:'/carrots-admin-ajax/a/company/',
             /*获取公司职位信息*/
-            findJobListUrl:'/carrots-admin-ajax/a/profession/search',
+            findJobListUrl:'/carrots-admin-ajax/a/profession/',
 
             /* 模块管理接口 */
             /* 获取全部用户列表 */
@@ -145,7 +145,7 @@ angular.module('mainServices',[])
             'findJobList':function (data) {
                 return $http({
                     method:"GET",
-                    url:searviceList.findJobListUrl,
+                    url:searviceList.findJobListUrl+'search',
                     params:data
                 })
             },
@@ -186,9 +186,29 @@ angular.module('mainServices',[])
             'deletejob':function (id) {
                 return $http.delete(searviceList.professionUrl+id)
             },
+            /*获取职位信息*/
+            "getPosition":function (id) {
+                return $http.get(searviceList.findJobListUrl+id)
+            },
             /*获取公司tag*/
             'getprofessionTag':function (id) {
-                return $http.get(searviceList.getprofessionTag(id))
+                return $http.get(searviceList.professionTagUrl+id)
+            },
+            /*改变公司职位信息*/
+            'changeProfession':function (id,data) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.professionUrl+id,
+                    data:data
+                })
+            },
+            /*新建职位*/
+            'creatProfession':function (data) {
+                return $http({
+                    method:"POST",
+                    url:searviceList.professionUrl,
+                    data:data
+                })
             },
         }
     })

@@ -97,3 +97,31 @@ angular.module('adminApp')
             console.log(vm.data.industryList)
         };
     })
+
+// demo2
+function test() {
+    console.log(foo);
+    console.log(bar);
+
+    var foo = 'Hello';
+    console.log(foo);
+    var bar = function () {
+        return 'world';
+    }
+
+    function foo() {
+        return 'hello';
+    }
+}
+
+test();
+
+//这个函数按照现在的理解，它应该是这样的：
+//首先是创建阶段
+vo = {
+    arguments:{},
+    foo:'foo reference',
+    bar:'undefined'     //因为函数中有两个同名变量，后面的同名变量并不会覆盖掉前面的同名变量
+}
+
+//执行阶段：首先是

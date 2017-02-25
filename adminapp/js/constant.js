@@ -310,6 +310,10 @@ var mainConstant = angular.module('mainConstant', [])
         statustype:[
             {type: 1, name: "上架"},
             {type: 0, name: "下架"}
+        ],
+        recommendtype:[
+            {type: 0, name: "普通"},
+            {type: 1, name: "推荐"}
         ]
     })
     /*找工作页面上侧选择begin*/

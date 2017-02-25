@@ -2,12 +2,15 @@
  * Created by Administrator on 2017/2/18.
  */
 angular.module('adminApp')
-    .controller('jobListCtrl', function ($scope, joblisttype, getAdminSercive) {
+    .controller('jobListCtrl', function ($scope, joblisttype, getAdminSercive,$location) {
         var vm = this;
+        vm.searchId = $location.search().id?$location.search().id:'';
+        vm.companyName = $location.search().companyName?$location.search().companyName:'';
         vm.joblisttype = joblisttype;
         /*外面值定义一下这个对象的page属性*/
         vm.jobListData = {
-            page: ""
+            page: "",
+            companyId:vm.searchId
         };
         /*翻页*/
         vm.pagingdata = function (page) {
@@ -34,7 +37,6 @@ angular.module('adminApp')
         };
         /*上下架操作*/
         vm.getData = function (data) {
-            console.log(data)
             vm.changeData = {};
             vm.changeData.id = data.$parent.items.id;
             vm.changeData.status = data.$parent.items.status
@@ -55,8 +57,7 @@ angular.module('adminApp')
         };
         /*删除操作*/
         vm.getDeleteData = function (data) {
-            vm.changeData={}
-            console.log(data)
+            vm.changeData={};
             vm.textData = {
                 title: '您确定删除这条数据?',
                 content: '你确定要执行删除操作吗？',
@@ -79,4 +80,4 @@ angular.module('adminApp')
             }
 
         }
-    })
+    });

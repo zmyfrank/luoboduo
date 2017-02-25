@@ -79,7 +79,7 @@
                         <td>{{ items.freezed|changeJobListName:'freezedtype' }}</td>
                         <td>
                             <a class="btn btn-sm"></a>
-                            <a class="btn btn-sm">职位</a>
+                            <a class="btn btn-sm" ui-sref="app.jobList({companyName:items.name,id:items.id})">职位</a>
                             <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,1,'认证后该公司将被标记为推荐公司。','是否执行认证操作？')" ng-if="items.approved ===0" class="btn btn-sm">认证</a>
                             <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,1,'解除认证后该公司将不再标记为推荐公司。','是否执行解除操作？')" ng-if="items.approved !==0" class="btn btn-sm">解除</a>
                             <a  class="btn btn-sm" ui-sref="app.companyEdit({id:items.id})">编辑</a>

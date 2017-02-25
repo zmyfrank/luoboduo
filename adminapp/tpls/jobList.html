@@ -1,5 +1,5 @@
 <div class="container-fluid m-companylist-wrap ">
-    <div class="panel panel-default clearfix">
+    <div class="panel panel-default clearfix" ng-hide="vm.companyName">
         <form action="" class="form-inline">
             <div class="row f-rowfix">
                 <div class="form-group col-md-4 col-xs-12">
@@ -69,7 +69,8 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            职位列表
+            {{ vm.companyName }}职位列表
+            <button ng-show="vm.companyName" class="btn btn-xs btn-primary pull-right" ui-sref="app.jobEdit({companyId:vm.searchId,companyName:vm.companyName})">新增</button>
         </div>
         <div class="panel-body m-companylist-text">
             <table class="table table-striped f-table_border m-jobtable-width">
@@ -101,7 +102,7 @@
                     <td>
                         <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getData(this)" ng-if="items.status===1" class="btn btn-sm">下架</a>
                         <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getData(this)" ng-if="items.status===0" class="btn btn-sm">上架</a>
-                        <a class="btn btn-sm">编辑</a>
+                        <a class="btn btn-sm" ui-sref="app.jobEdit({id:items.id,companyId:items.companyId,companyName:vm.companyName})">编辑</a>
                         <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getDeleteData(this)" class="btn btn-sm" ng-click="vm.getDeleteData(this)">删除</a>
                     </td>
                 </tr>
