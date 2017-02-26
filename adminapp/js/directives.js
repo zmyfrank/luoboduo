@@ -139,7 +139,6 @@ angular.module('adminApp')
             }
         }
     })
-    /*分页*/
     /* 分页指令 */
     .directive('mypagintion', function () {
         /* 分页 */
@@ -265,7 +264,6 @@ angular.module('adminApp')
             }
         }
     })
-
     /* 两次弹框页面模态 */
     //模态框的提示信息
     .value('articlemodealinfo',{

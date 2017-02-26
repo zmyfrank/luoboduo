@@ -3,7 +3,7 @@
  */
 angular.module('adminApp')//主要的model名称
 .controller('mainCtrl',
-    function ($scope,$cookies,getAdminSercive,$location) {
+    function ($scope,$cookies,getAdminSercive,$location,roleModularAdmin) {
         var vm = this;
 
         /* 登陆 */
@@ -15,8 +15,11 @@ angular.module('adminApp')//主要的model名称
                     var expireDate = new Date();
                     expireDate.setDate(expireDate.getDate() + 1);
                     $cookies.putObject('login',
-                        {'status':true,'manager':res.data.data.manager.name,
-                         'role':res.data.data.role.name,},
+                        {'status':true,
+                         'manager':res.data.data.manager.name,
+                         'role':res.data.data.role.name,
+                         'id': res.data.data.role.id,
+                        },
                         [{'expires':expireDate}]);
                     $location.url('app');
                 }else {
@@ -44,5 +47,12 @@ angular.module('adminApp')//主要的model名称
             isFirstOpen: true,
             isFirstDisabled: false
         };
+/*        /!* 角色模块管理 *!/
+        roleModularAdmin.allRight().then(function (res) {
+            if (res.data.code == 0 ) {
+                var tree =[];
+                vm.roleAllRigthdata = roleModularAdmin.mergeRight(0,null,tree,res.data.data.moduleList);
+            }
+        })*/
     }
 )

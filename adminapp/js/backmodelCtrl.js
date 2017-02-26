@@ -441,23 +441,22 @@ angular.module('adminApp')
 
         /* 新增请求 */
         vm.addModular = function () {
-            //console.log(vm.adduser)
-            getAdminSercive.editUser(vm.adduser,vm.id).then(function (res) {
+            vm.modularFormData.level = 0;
+            getAdminSercive.addModular(vm.modularFormData).then(function (res) {
                 if (res.data.code == 0 ) {
-                   //$location.url('app/modular');
+                   $location.url('app/modular');
                 }
             })
         }
 
         /* 编辑请求 */
         vm.editModular = function () {
+             vm.id =  parseInt(vm.id);
             getAdminSercive.editModular(vm.modularFormData,vm.id).then(function (res) {
                 if (res.data.code == 0 ) {
-                    //$location.url('app/modular');
+                    $location.url('app/modular');
                 }
             })
         }
 
     })
-
-

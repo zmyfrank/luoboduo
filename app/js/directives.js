@@ -31,10 +31,10 @@ var mainDirectives = angular.module('mainDirectives', [])
                     imgWrapSize();
 
                     /* 轮播定时器 */
-                    scope.timer = $interval(function () {
-                        scope.dirpromise.index++;
-                        Move()
-                    }, 5000);
+                    // scope.timer = $interval(function () {
+                    //     scope.dirpromise.index++;
+                    //     Move()
+                    // }, 5000);
 
                     myfocus.hover(function () {
                             $interval.cancel(scope.timer);
@@ -66,14 +66,14 @@ var mainDirectives = angular.module('mainDirectives', [])
 
                 /* 轮播移动 */
                 function Move() {
-                    if (length == scope.dirpromise.index) {
+                    if (length == scope.dirpromise.index+3) {
                         myfocus_wrap.css('left', 0);
                         scope.dirpromise.index = 1;
                     }
 
                     if (scope.dirpromise.index == -1) {
-                        myfocus_wrap.css({left: -(length - 1) * (scope.dirpromise.movesize*5)});
-                        scope.dirpromise.index = length - 2;
+                        myfocus_wrap.css({left: -(length - 4) * (scope.dirpromise.movesize)});
+                        scope.dirpromise.index = length - 5;
                     }
 
                     myfocus_wrap.stop().animate({left: -scope.dirpromise.index * scope.dirpromise.movesize}, 800)

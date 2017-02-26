@@ -238,10 +238,13 @@ angular.module('mainServices',[])
             },
             /* 新增模块 */
             'addModular' :function (data) {
+                // var module = new FormData();
+                //     module.append(data);
                 return $http({
                     method:"POST",
                     url:searviceList.singleModular,
-                    data:data
+                    //headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+                    params: data,
                 })
             },
             /* 根据ID查询单个模块 */
@@ -253,7 +256,7 @@ angular.module('mainServices',[])
                 return $http({
                     method:"PUT",
                     url:searviceList.singleModular+id,
-                    data:data
+                    params:data
                 })
             },
             /* 删除模块 */
@@ -296,5 +299,51 @@ angular.module('mainServices',[])
                     data:data
                 })
             },
+        }
+    })
+    /* 模块管理 */
+    .factory('roleModularAdmin',function ($http,$filter,$cookies,getAdminSercive) {
+        return {
+            //获取所有模块
+            'allRight' : function () {
+               return $http({
+                    method:"GET",
+                    url:'/carrots-admin-ajax/a/u/module/',
+                    params:{next: undefined, page: 1, size: 65535}
+                }).then(function (res) {
+                    if (res.data.code == 0) {
+                        var id = $filter('accountFilter')(res.data.data.ids);
+                       $http({
+                                method:"GET",
+                                url:'/carrots-admin-ajax/a/u/multi/module?'+id,
+                        })
+                    }
+                })
+            },
+            //合并权限对应的父子级模块
+            'mergeRight' : function (pid,node, tree, modules) {
+                var now = this;
+                angular.forEach(modules, function (data, index, array) {
+                    var module = data;
+                    if (module.parentID == pid) {
+                        tree = now.mergeRight(module.id, module, tree, modules);
+                        if (pid == 0) {
+                            tree.push(module);
+                        } else {
+                            if (node.nodes == undefined) {
+                                node.nodes = [];
+                            }
+                            node.nodes.push(module);
+                        }
+                    }
+                });
+                var rolerigthdata = [];
+                angular.forEach(tree,function (item, index,arry) {
+                    if (item.nodes) {
+                        rolerigthdata.push(arry[index]);
+                    }
+                });
+                return rolerigthdata
+            }
         }
     })
