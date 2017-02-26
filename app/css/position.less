@@ -300,6 +300,7 @@ i[class^="icon-jobnav icon-zzz-"] {
 /* 轮播 */
 /*设置轮播样式*/
 .cort-ctl {
+  cursor: pointer;
   .carousel-control.left {
     display: none;
   }
@@ -320,6 +321,22 @@ i[class^="icon-jobnav icon-zzz-"] {
   }
   .carousel-indicators .active {
     background-color: red;
+  }
+  .m-slidebar_text {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 990px) {
+  .cort-ctl{
+    .carousel-indicators{
+      display: none;
+    }
+    .img-wrap {
+      display: none;
+    }
   }
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
@@ -400,13 +417,17 @@ i[class^="icon-jobnav icon-zzz-"] {
     margin-bottom: 35px;
     text-align: left;
   }
-  ul {
+  p {
     padding-bottom: 30px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  li {
-    float: left;
+  span {
+    //float: left;
   }
-  li:nth-child(n+2) {
+  span:nth-child(n+2) {
     padding-left: 10px;
     margin-left: 10px;
     border-left: 1px solid #e8e8e8;
