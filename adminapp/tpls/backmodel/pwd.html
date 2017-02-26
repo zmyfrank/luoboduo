@@ -1,0 +1,39 @@
+<div class="m-pwd-warp" style="margin-top: 100px">
+    <form class="col-md-offset-2 col-md-7 form-horizontal" name="pwdform">
+        <div class="form-group" novalidate="novalidate">
+            <label class="control-label col-xs-3 text-right">输入旧密码</label>
+            <div class="col-xs-9">
+                <input data-set ng-model="vm.pwdData.oldPwd" name="oldPwd" type="password" class="form-control" required>
+            </div>
+            <div class="col-xs-offset-3" ng-messages="pwdform.oldPwd.$error" ng-if="pwdform.oldPwd.$touched" style="padding-left: 15px; color: red;">
+                <span ng-message="required">请输入密码</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 text-right">设置新密码</label>
+            <div class="col-xs-9">
+                <input data-set ng-model="vm.pwdData.newPwd" ng-maxlength="12" ng-minlength="6"  name="newPwd" type="password" class="form-control" required>
+            </div>
+            <div class="col-xs-offset-3" ng-messages="pwdform.newPwd.$error" ng-if="pwdform.newPwd.$touched" style="padding-left: 15px; color: red;">
+                <span ng-message="required">请输入密码</span>
+                <span ng-message="minlength">密码必须为6到12位</span>
+                <span ng-message="maxlength">密码必须为6到12位</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 text-right">确认新密码</label>
+            <div class="col-xs-9">
+                <input data-set ng-model="vm.verify" name="newPwd2" type="password" class="form-control" pw-check check="{{ vm.pwdData.newPwd }}" required>
+            </div>
+            <div class="col-xs-offset-3" ng-messages="pwdform.newPwd2.$error" ng-if="pwdform.newPwd2.$touched" style="padding-left: 15px; color: red;">
+                <span ng-message="pwCheck">两次输入的密码必须一致</span>
+                <span ng-message="required">请重复输入密码</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-9 col-xs-offset-3">
+                <button ng-disabled="pwdform.$invalid" use-modal ctrclick="vm.pwdChange()" asctrclick='1' modal-twice="1" ok-choose="1" type="button" class="btn btn-success" style="width: 100%">保存</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -363,6 +363,8 @@ angular.module('adminApp')
                 modalTwice:"@",
                 /*第一次是否有确认按钮，没有就默认弹出会有*/
                 okChoose:"@",
+                /*是否为异步，异步执行这个*/
+                asctrclick:'@'
 
             },
             //scope.modaldata中对应三个参数，首先第一个模板默认显示两行，第一行是tilte，第二行是content。第二个模板默认只显示一行，success并且只有一个取消按钮
@@ -370,8 +372,16 @@ angular.module('adminApp')
                 /*给属性添加一个点击事件*/
                 ele.bind("click",function () {
                     /*执行我那边传入值的函数*/
-                    scope.modaldata=scope.ctrclick();
-                    scope.openModle();
+                    // scope.ctrclick();
+                    if (scope.asctrclick) {
+                        scope.ctrclick().then(function () {
+                            scope.modaldata=scope.ctrclick();
+                            scope.openModle();
+                        })
+                    }else {
+                        scope.modaldata=scope.ctrclick();
+                        scope.openModle();
+                    }
                 });
                 scope.openModle = function (size,num) {
                     /*打开模态框的过程*/
@@ -410,4 +420,21 @@ angular.module('adminApp')
             //dismiss也是在模态框关闭的时候进行调用,而它返回的是一个reason
             $uibModalInstance.dismiss('cancel');
         };
+    })
+    /*两次密码输入相同验证,传入一个check参数，绑定外部和它对比的参数，注意外部绑定参数需要用{{}}*/
+    .directive('pwCheck',function () {
+        return {
+            require:'ngModel',
+            scope:{
+                check:'@'
+            },
+            link:function (scope,ele,attrs,ctrl) {
+                ctrl.$validators.pwCheck = function (modelValue) {
+                    if (ctrl.$isEmpty(modelValue)) {
+                        return true;
+                    }
+                    return modelValue === scope.check?true:false;
+                }
+            }
+        }
     })

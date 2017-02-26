@@ -46,6 +46,8 @@ angular.module('mainServices',[])
             professionUrl:'/carrots-admin-ajax/a/u/profession/',
             /*公司tag请求*/
             professionTagUrl:'/carrots-admin-ajax/a/tags/',
+            /*修改密码*/
+            pwdUrl:'/carrots-admin-ajax/a/u/pwd',
         }
         /*请求的参数等*/
         return {
@@ -259,5 +261,14 @@ angular.module('mainServices',[])
                     data:data
                 })
             },
+            /*修改密码*/
+            'pwd':function (data) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.pwdUrl,
+                    data:$.param(data),
+                    headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+            }
         }
     })
