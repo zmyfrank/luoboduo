@@ -107,7 +107,7 @@ var mainDirectives = angular.module('mainDirectives', [])
         return {
             restrict: 'AE',
             replace: false,
-            templateUrl: '../tpls/focus/jobcarot.html',
+            templateUrl: 'tpls/focus/jobcarot.html',
             scope: {},
             link: function (scope, ele, attrs, supermanCtrl) {
                 getService.get_industry(1, '', '').then(function (res) {
@@ -130,7 +130,7 @@ var mainDirectives = angular.module('mainDirectives', [])
         return {
             restrict: 'AE',
             replace: true,
-            templateUrl: '../tpls/focus/jobcarot2.html',
+            templateUrl: 'tpls/focus/jobcarot2.html',
             scope: {},
             link: function (scope, ele, attrs, supermanCtrl) {
                 getService.get_article(1).then(function (res) {
