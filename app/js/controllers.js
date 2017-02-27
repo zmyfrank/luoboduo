@@ -15,12 +15,13 @@ var mainCtrl = angular.module('mainCtrl', [])
             /* 底部联系我们跳转 */
             vm.aboutWe = function (bl) {
                 aboutWe.toggle = bl;
+                $cookieStore.put('pages',4);
             }
         }
     ])
     /* 关于我们页面 */
-    .controller('weCtrl', ['$scope', 'aboutWe',
-        function ($scope, aboutWe) {
+    .controller('weCtrl', ['$scope', 'aboutWe','$cookieStore',
+        function ($scope, aboutWe,$cookieStore) {
             var vm = this;
             vm.toggle = aboutWe.toggle;
 
@@ -359,7 +360,6 @@ var mainCtrl = angular.module('mainCtrl', [])
             if (res.data.code == 0) {
                 vm.jobMinute = res.data.data;
             }
-            ;
             //console.log(vm.jobMinute);
         });
     })
