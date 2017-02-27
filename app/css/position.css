@@ -219,6 +219,11 @@ i[class^="icon-jobnav icon-zzz-"] {
   margin-right: 30px;
   border: 1px solid #e8e8e8;
 }
+.m-rmjob-wrap .img-wrap img {
+  position: relative;
+  top: 60px;
+  transform: translateY(-50%);
+}
 .m-rmjob-wrap:hover {
   cursor: pointer;
   box-shadow: 0 0 7px #DAE0E3;
@@ -274,7 +279,7 @@ i[class^="icon-jobnav icon-zzz-"] {
 }
 .m-companyicon .breadcrumb {
   display: inline-block;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 .m-companyicon .breadcrumb li {
   padding: 0;
