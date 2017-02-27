@@ -23,6 +23,7 @@ var mainCtrl = angular.module('mainCtrl', [])
         function ($scope, aboutWe) {
             var vm = this;
             vm.toggle = aboutWe.toggle;
+
         }
     ])
     /* 首页 */
