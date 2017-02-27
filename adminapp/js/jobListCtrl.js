@@ -71,11 +71,11 @@ angular.module('adminApp')
             if (vm.changeData.status==0||vm.changeData.status) {
                 vm.changeData.status = vm.changeData.status == 1 ? 0 : 1;
                 getAdminSercive.changeProStatu(vm.changeData).then(function () {
-                   vm.clear()
+                    vm.pagingdata();
                 })
             }else {
                 getAdminSercive.deletejob(vm.changeData.id).then(function () {
-                   vm.clear()
+                    vm.pagingdata();
                 })
             }
 

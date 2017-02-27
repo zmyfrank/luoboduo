@@ -147,7 +147,7 @@ var mainDirectives = angular.module('mainDirectives', [])
         return {
             restrict: 'AE',
             replace: false,
-            templateUrl: '../tpls/focus/pagination.html',
+            templateUrl: 'tpls/focus/pagination.html',
             scope: {
                 total: '=',
             },
