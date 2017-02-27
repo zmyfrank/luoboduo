@@ -326,5 +326,32 @@ var mainDirectives = angular.module('mainDirectives', [])
             }
         }
     })
+    /*模态框指令*/
+    .directive('modalUse',function ($uibModal) {
+        return {
+            restrict : "A",
+            replace: false,
+            scope:{},
+            link: function (scope,ele) {
+                ele.bind('click',function () {
+                   scope.openModal();
+                });
+                scope.openModal = function () {
+                   var modalInstance = $uibModal.open({
+                       animation:true,
+                       templateUrl:'tpls/modal.html',
+                       controller:'ModalInstanceCtrl',
+                       size:'md'
+                   })
+                }
+            }
+        }
+    })
+    .controller('ModalInstanceCtrl',function ($scope, $uibModalInstance) {
+        $scope.cancel = function () {
+            //dismiss也是在模态框关闭的时候进行调用,而它返回的是一个reason
+            $uibModalInstance.dismiss('cancel');
+        };
+    })
 
 

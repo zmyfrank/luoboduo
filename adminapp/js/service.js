@@ -51,6 +51,8 @@ angular.module('mainServices',[])
             /* 模块详细信息列表 */
             modularInfoUrl :'/carrots-admin-ajax/a/u/multi/module?',
 
+            /*修改密码*/
+            pwdUrl:'/carrots-admin-ajax/a/u/pwd',
         }
         /*请求的参数等*/
         return {
@@ -299,6 +301,15 @@ angular.module('mainServices',[])
                     data:data
                 })
             },
+            /*修改密码*/
+            'pwd':function (data) {
+                return $http({
+                    method:"PUT",
+                    url:searviceList.pwdUrl,
+                    data:$.param(data),
+                    headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+            }
         }
     })
     /* 模块管理 */

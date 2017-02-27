@@ -109,3 +109,19 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+.modal-button {
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff;
+}
+.modal-button:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  opacity: .5;
+}

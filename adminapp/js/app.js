@@ -205,5 +205,17 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
+            /*密码修改*/
+            .state('app.pwd',{
+                url:'/pwd',
+                templateUrl:'tpls/backmodel/pwd.html',
+                controller:'pwdCtrl',
+                controllerAs:'vm',
+                resolve: {
+                    home_file:_lazyLoad([
+                        'js/pwdCtrl.js'
+                    ])
+                }
+            })
     }
 ])

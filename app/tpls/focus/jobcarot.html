@@ -2,22 +2,22 @@
     <div uib-slide class="clearfix" dirslides="slides" ng-repeat="slide in slides  track by $index" index="$index">
         <div class="col-md-11 m-recompany_sliderSt" ui-sref="app.companyinfo({id:slide.id})">
             <div class="m-recompany_slider row">
-                <div class="col-md-7 m-recompany_sliderL">
-                    <div class="img-wrap col-md-4">
+                <div class="col-md-7 col-xs-6 m-recompany_sliderL">
+                    <div class="img-wrap col-xs-4">
                         <img ng-src="{{ slide.logo}}">
                     </div>
-                    <div class="col-md-7 col-md-offset-1">
+                    <div class="col-md-7 col-xs-12 col-xs-offset-1">
                         <h2>{{ slide.name }}</h2>
-                        <p>{{ slide.slogan }}</p>
+                        <p class="m-slidebar_text">{{ slide.slogan }}</p>
                         <span class="m-recompany_tag" ng-repeat="item in slide.industryList">{{ item }}</span>
                     </div>
                 </div>
-                <div class="col-md-4 m-recompany_sliderS">
+                <div class="col-md-5 col-xs-6 m-recompany_sliderS">
                     <div class="m-recompany_sliderR clearfix">
                         <h2>正在热招</h2>
-                        <ul>
-                            <li ng-repeat="item1 in slide.professionList">{{ item1 }}</li>
-                        </ul>
+                        <p>
+                            <span ng-repeat="item1 in slide.professionList">{{ item1 }}</span>
+                        </p>
                     </div>
                 </div>
             </div>

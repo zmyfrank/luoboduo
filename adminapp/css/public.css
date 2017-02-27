@@ -43,6 +43,7 @@ a:hover {
 }
 .m-hd .icon-login.down {
   color: #5cb85c;
+  cursor: pointer;
 }
 .navbar {
   margin-bottom: 0;
