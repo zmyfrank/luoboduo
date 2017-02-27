@@ -355,6 +355,10 @@ angular.module('mainServices',[])
                     }
                 });
                 return rolerigthdata
+            },
+            //当前路由权限判断
+            'urlRight' :function (right,data) {
+              return  data.indexOf(right) < 0 ? false : true;
             }
         }
     })

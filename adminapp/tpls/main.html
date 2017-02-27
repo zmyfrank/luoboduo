@@ -13,14 +13,28 @@
         </header>
         <!-- 导航 -->
         <nav class="col-md-2 m-nav">
-            <uib-accordion close-others="oneAtATime" ng-repeat="data in roleAllRigthdata">
-                    <div uib-accordion-group class="panel-default"   is-open="status.open{{$index}}" >
-                        <uib-accordion-heading>
-                            {{data.name}}{{index}}
-                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.data.open, 'glyphicon-chevron-right': !status.data.open"></i>
-                        </uib-accordion-heading>
-                        <p ui-sref="{{items.url}}" ng-repeat="items in data.nodes">{{items.name}}</p>
-                    </div>
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-default"  is-open="status.open2"  >
+                    <uib-accordion-heading>
+                        {{roleAllRightdata[2].name}}
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <p ui-sref="{{data.url}}" ng-repeat="data in roleAllRightdata[2].nodes">{{data.name}}</p>
+                </div>
+                <div uib-accordion-group class="panel-default"  is-open="status.open1"  >
+                    <uib-accordion-heading>
+                        {{roleAllRightdata[1].name}}
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                    </uib-accordion-heading>
+                    <p ui-sref="{{data.url}}" ng-repeat="data in roleAllRightdata[1].nodes">{{data.name}}</p>
+                </div>
+                <div uib-accordion-group class="panel-default"  is-open="status.open"  >
+                    <uib-accordion-heading>
+                        {{roleAllRightdata[0].name}}
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <p ui-sref="{{data.url}}" ng-repeat="data in roleAllRightdata[0].nodes">{{data.name}}</p>
+                </div>
             </uib-accordion>
         </nav>
         <!-- 表单 -->

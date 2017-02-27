@@ -47,7 +47,7 @@
 <!-- article列表 -->
 <div class="panel panel-default">
     <div class="panel-heading">Article列表
-        <button type="button" class="btn btn-xs btn-success pull-right" ui-sref="field.articleadd">+新增</button>
+        <button ng-show="modelright.create" type="button" class="btn btn-xs btn-success pull-right" ui-sref="field.articleadd">+新增</button>
     </div>
     <div class="table-responsive">
         <table class="table table-striped">
@@ -70,14 +70,16 @@
                 <td>{{data.author}}</td>
                 <td>{{data.status|articleFilter:'status'}}</td>
                 <td>
-                    <my-modeal-box>
+                    <my-modeal-box ng-show="modelright.update">
                         <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.stastus" tipstext='status'
                         tipsinfo="vm.stastusinfo(this)"><a class="btn " ng-click="open()">{{data.status == 2 ? '下线' : '上线'}}</a></my-modeal>
                     </my-modeal-box>
                     <a class="btn" ng-click="vm.edit(this)">编辑</a>
-                    <my-modeal-box><my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html" operation= "vm.delete" tipstext='delete'
-                               tipsinfo="vm.deleteinfo(this)"><a class="btn" ng-click="open()"> 删除</a></my-modeal></my-modeal-box>
-
+                    <my-modeal-box ng-show="modelright.delete">
+                        <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html" operation= "vm.delete" tipstext='delete'
+                               tipsinfo="vm.deleteinfo(this)"><a class="btn" ng-click="open()"> 删除</a>
+                        </my-modeal>
+                    </my-modeal-box>
                 </td>
             </tr>
         </table>

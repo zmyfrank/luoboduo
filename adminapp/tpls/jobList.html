@@ -70,7 +70,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             {{ vm.companyName }}职位列表
-            <button ng-show="vm.companyName" class="btn btn-xs btn-primary pull-right" ui-sref="field.jobEdit({companyId:vm.searchId,companyName:vm.companyName})">新增</button>
+            <button ng-show="modelright.create" ng-show="vm.companyName" class="btn btn-xs btn-primary pull-right" ui-sref="field.jobEdit({companyId:vm.searchId,companyName:vm.companyName})">新增</button>
         </div>
         <div class="panel-body m-companylist-text">
             <table class="table table-striped f-table_border m-jobtable-width">
@@ -102,8 +102,8 @@
                     <td>
                         <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getData(this)" ng-if="items.status===1" class="btn btn-sm">下架</a>
                         <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getData(this)" ng-if="items.status===0" class="btn btn-sm">上架</a>
-                        <a class="btn btn-sm" ui-sref="field.jobEdit({id:items.id,companyId:items.companyId,companyName:vm.companyName})">编辑</a>
-                        <a use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getDeleteData(this)" class="btn btn-sm" ng-click="vm.getDeleteData(this)">删除</a>
+                        <a ng-show="modelright.update" class="btn btn-sm" ui-sref="field.jobEdit({id:items.id,companyId:items.companyId,companyName:vm.companyName})">编辑</a>
+                        <a ng-show="modelright.delete" use-modal ctr-fn="vm.changeDataFn()" ctrclick="vm.getDeleteData(this)" class="btn btn-sm" ng-click="vm.getDeleteData(this)">删除</a>
                     </td>
                 </tr>
                 </tbody>
