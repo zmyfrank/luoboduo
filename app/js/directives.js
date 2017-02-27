@@ -31,10 +31,10 @@ var mainDirectives = angular.module('mainDirectives', [])
                     imgWrapSize();
 
                     /* 轮播定时器 */
-                    // scope.timer = $interval(function () {
-                    //     scope.dirpromise.index++;
-                    //     Move()
-                    // }, 5000);
+                    scope.timer = $interval(function () {
+                        scope.dirpromise.index++;
+                        Move()
+                    }, 5000);
 
                     myfocus.hover(function () {
                             $interval.cancel(scope.timer);
@@ -107,7 +107,7 @@ var mainDirectives = angular.module('mainDirectives', [])
         return {
             restrict: 'AE',
             replace: false,
-            templateUrl: '../tpls/focus/jobcarot.html',
+            templateUrl: 'tpls/focus/jobcarot.html',
             scope: {},
             link: function (scope, ele, attrs, supermanCtrl) {
                 getService.get_industry(1, '', '').then(function (res) {
@@ -115,7 +115,6 @@ var mainDirectives = angular.module('mainDirectives', [])
                         scope.industry1data = res.data.approvedCompanyList;
                         //console.log(scope.industry1data);
                         scope.newInd = $filter('reachIndustry')(scope.industry1data, 'industryList');
-
                         //console.log(scope.newInd);
                         scope.myInterval = 5000;
                         scope.slides = scope.industry1data;
@@ -130,7 +129,7 @@ var mainDirectives = angular.module('mainDirectives', [])
         return {
             restrict: 'AE',
             replace: true,
-            templateUrl: '../tpls/focus/jobcarot2.html',
+            templateUrl: 'tpls/focus/jobcarot2.html',
             scope: {},
             link: function (scope, ele, attrs, supermanCtrl) {
                 getService.get_article(1).then(function (res) {

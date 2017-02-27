@@ -43,12 +43,13 @@ angular.module('adminApp')
             //arcitle请求
             vm.totalItems ={};
             vm.arcitleHttp = function (params){
+                page = params.page;
                 getAdminSercive.searchArcitle(params).then(function (res) {
                     if (res.data.code == 0) {
                         //console.log(res.data.data)
                         vm.arcitledata = res.data.data.articleList;
                         vm.totalItems.totals = res.data.data.total;
-                        vm.totalItems.page = params.page;
+                        vm.totalItems.page = page;
                     }
                 })
             }
@@ -79,7 +80,7 @@ angular.module('adminApp')
                             }
                         }).then(function (res) {
                             if (res.data.code == 0) {
-                                vm.arcitleHttp(1);
+                                vm.search();
                             }
                         })
                     }
@@ -97,7 +98,7 @@ angular.module('adminApp')
                     if (res.data.code == 0) {
                         getAdminSercive.deleteArticle(vm.id).then(function (res) {
                             if (res.data.code == 0) {
-                                vm.arcitleHttp(1);
+                                vm.search();
                             }
                         })
                     }

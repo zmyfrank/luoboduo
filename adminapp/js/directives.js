@@ -161,6 +161,12 @@ angular.module('adminApp')
                         scope.currentPage = scope.total.page;
                     }
                 })
+                scope.$watch('total.page', function (n, o) {
+                    if (n!=o) {
+                        scope.totalItems = scope.total.totals;
+                        scope.currentPage = scope.total.page;
+                    }
+                })
                 scope.pageChanged = function () {
                     scope.$parent.vm.pagingdata(scope.currentPage);
                 };
