@@ -99,7 +99,7 @@
     </div>
     <div class="m-companylist_btngroup">
         <button class="btn btn-small btn-warning" ng-click="vm.confirm()" type="button" ng-disabled="jobData.$invalid">保存</button>
-        <button ng-if="!vm.companyName" class="btn btn-small btn-success" type="button"  ui-sref="app.jobList">取消</button>
-        <button ng-if="vm.companyName" class="btn btn-small btn-success" type="button"  ui-sref="app.jobList({id:vm.companyId,companyName:vm.companyName})">取消</button>
+        <button ng-if="!vm.companyName" class="btn btn-small btn-success" type="button"  ui-sref="field.positionList">取消</button>
+        <button ng-if="vm.companyName" class="btn btn-small btn-success" type="button"  ui-sref="field.positionList({id:vm.companyId,companyName:vm.companyName})">取消</button>
     </div>
 </div>

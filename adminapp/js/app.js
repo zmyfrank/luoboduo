@@ -25,7 +25,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
         $urlRouterProvider.when("", "/app");
         $statepProvider
             /* 主页面 */
-            .state('app',{
+            .state('field',{
                 url:'/app',
                 templateUrl: 'tpls/main.html',
                 controller: 'mainCtrl',
@@ -50,7 +50,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 公司列表 */
-            .state('app.companyList',{
+            .state('field.companyList',{
                 url: '/companyList',
                 templateUrl: 'tpls/companyList.html',
                 controller: 'companyListCtrl',
@@ -63,7 +63,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* article管理页面 */
-            .state('app.article',{
+            .state('field.articleList',{
                 url:'/article',
                 templateUrl: 'tpls/article.html',
                 controller: 'articleCtrl',
@@ -76,7 +76,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* article新增页面 */
-            .state('app.articleadd',{
+            .state('field.articleadd',{
                 url:'/articleadd?id',
                 templateUrl: 'tpls/articleadd.html',
                 controller: 'articleaddCtrl',
@@ -88,8 +88,8 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                     ])
                 }
             })
-            /*职位详情页面*/
-            .state('app.jobList',{
+            /*职位列表*/
+            .state('field.positionList',{
                 url:'/jobList?id$companyName',
                 templateUrl: 'tpls/jobList.html',
                 controller:'jobListCtrl',
@@ -102,7 +102,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /*添加公司*/
-            .state('app.companyEdit',{
+            .state('field.companyEdit',{
                 url:'/companyEdit?id',
                 templateUrl:'tpls/companyEdit.html',
                 controller:'companyEditCtrl',
@@ -115,7 +115,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 账户管理 */
-            .state('app.account',{
+            .state('field.manager',{
                 url:'/account',
                 templateUrl:'tpls/backmodel/account.html',
                 controller:'accountCtrl',
@@ -128,7 +128,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 用户新增/编辑页面 */
-            .state('app.accountadd',{
+            .state('field.accountadd',{
                 url:'/accountadd',
                 templateUrl:'tpls/backmodel/accountadd.html',
                 controller:'accountAddCtrl',
@@ -141,7 +141,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 角色管理页面 */
-            .state('app.role',{
+            .state('field.role',{
                 url:'/role',
                 templateUrl:'tpls/backmodel/role.html',
                 controller:'roleCtrl',
@@ -154,7 +154,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 新增编辑角色 */
-            .state('app.addrole',{
+            .state('field.addrole',{
                 url:'/addrole',
                 templateUrl:'tpls/backmodel/addrole.html',
                 controller:'addRoleCtrl',
@@ -167,7 +167,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 模块管理页面 */
-            .state('app.modular',{
+            .state('field.module',{
                 url:'/modular',
                 templateUrl:'tpls/backmodel/modular.html',
                 controller:'modularCtrl',
@@ -180,7 +180,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /* 编辑/新增模块页面 */
-            .state('app.addmodular',{
+            .state('field.addmodular',{
                 url:'/addmodular',
                 templateUrl:'tpls/backmodel/addmodular.html',
                 controller:'addModularCtrl',
@@ -193,7 +193,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /*添加职位*/
-            .state('app.jobEdit',{
+            .state('field.jobEdit',{
                 url:'/jobEdit?id&companyId&companyName',
                 templateUrl:'tpls/jobEdit.html',
                 controller:'jobEditCtrl',
@@ -206,7 +206,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             /*密码修改*/
-            .state('app.pwd',{
+            .state('field.pwd',{
                 url:'/pwd',
                 templateUrl:'tpls/backmodel/pwd.html',
                 controller:'pwdCtrl',

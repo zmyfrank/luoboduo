@@ -25,7 +25,7 @@ angular.module('adminApp')
             vm.adddata.status = tp;
             getAdminSercive.addArticle(vm.adddata).then(function (res) {
                  if (res.data.code == 0) {
-                    $state.go('app.article');
+                    $state.go('field.articleList');
                  }
             })
         }
@@ -35,7 +35,7 @@ angular.module('adminApp')
             vm.adddata.status = tp;
             getAdminSercive.editArticle(vm.adddata,vm.articleId).then(function (res) {
                 if (res.data.code == 0) {
-                    $state.go('app.article');
+                    $state.go('field.articleList');
                 }
             })
         }

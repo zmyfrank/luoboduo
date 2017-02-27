@@ -19,25 +19,25 @@
                             信息管理
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
                         </uib-accordion-heading>
-                        <p ui-sref="app.companyList">公司列表</p>
-                        <p ui-sref="app.jobList">职位列表</p>
+                        <p ui-sref="field.companyList	">公司列表</p>
+                        <p ui-sref="field.positionList">职位列表</p>
                     </div>
                     <div uib-accordion-group class="panel-default"  is-open="status.open">
                         <uib-accordion-heading>
                             Aarticle管理
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                         </uib-accordion-heading>
-                        <p ui-sref=".article"> Aarticle列表</p>
+                        <p ui-sref=".articleList"> Aarticle列表</p>
                     </div>
                     <div uib-accordion-group class="panel-default"  is-open="status.open3">
                         <uib-accordion-heading>
                             后台管理
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
                         </uib-accordion-heading>
-                        <p ui-sref=".modular">模块管理</p>
+                        <p ui-sref=".module">模块管理</p>
                         <p ui-sref=".role">角色管理</p>
                         <p ui-sref=".pwd">密码管理</p>
-                        <p ui-sref=".account">账户管理</p>
+                        <p ui-sref=".manager">账户管理</p>
                     </div>
                 </uib-accordion>
         </nav>
