@@ -45,7 +45,7 @@
                 <h3>最新职位</h3>
                 <span class="tt-underline"></span>
                 <p class="tips"> NEW POSITION</p>
-                <p class="more"><a href="#">更多&gt;</a></p>
+                <p class="more"><a ui-sref="app.joblist({'new':true})">查看更多&gt;</a></p>
             </div>
             <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="m-newsjob-row">
                 <div  uib-slide ng-repeat="slide in slides track by $index" index="$index">

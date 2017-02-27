@@ -5,6 +5,14 @@
 var routerApp = angular.module('routerApp', ['ui.router', 'oc.lazyLoad','ngCookies','ngAnimate', 'ngSanitize', 'ui.bootstrap',
     'mainDirectives','mainCtrl','mainConstant','mainServices','mainFil']);
 
+routerApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cookies){
+    if ($cookies.get('pages')) {
+        return
+    }else {
+        $cookies.put('pages', 1);
+    }
+}])
+
 routerApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
     function ($stateProvider, $urlRouterProvider,$locationProvider) {
 
