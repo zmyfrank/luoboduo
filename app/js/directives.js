@@ -31,10 +31,10 @@ var mainDirectives = angular.module('mainDirectives', [])
                     imgWrapSize();
 
                     /* 轮播定时器 */
-                    // scope.timer = $interval(function () {
-                    //     scope.dirpromise.index++;
-                    //     Move()
-                    // }, 5000);
+                    scope.timer = $interval(function () {
+                        scope.dirpromise.index++;
+                        Move()
+                    }, 5000);
 
                     myfocus.hover(function () {
                             $interval.cancel(scope.timer);
@@ -115,7 +115,6 @@ var mainDirectives = angular.module('mainDirectives', [])
                         scope.industry1data = res.data.approvedCompanyList;
                         //console.log(scope.industry1data);
                         scope.newInd = $filter('reachIndustry')(scope.industry1data, 'industryList');
-
                         //console.log(scope.newInd);
                         scope.myInterval = 5000;
                         scope.slides = scope.industry1data;
