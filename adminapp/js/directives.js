@@ -442,3 +442,11 @@ angular.module('adminApp')
             }
         }
     })
+    .directive('backnav',function () {
+        return {
+            restrict:'AE',
+            repace:false,
+            templateUrl:'tpls/backmodel/backnav.html',
+            scope:true,
+        }
+    })

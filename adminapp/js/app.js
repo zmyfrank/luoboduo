@@ -3,7 +3,7 @@
  */
 var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil','angularFileUpload','isteven-multi-select','ngMessages']);
 
-adminApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cookies){
+adminApp.run(['$rootScope','$state','$cookies','roleModularAdmin', function($rootScope,$state,$cookies,roleModularAdmin){
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
              if(toState.name=='login')return;
              //获取本地cookies值用作判断是否有登陆
@@ -12,6 +12,13 @@ adminApp.run(['$rootScope','$state','$cookies', function($rootScope,$state,$cook
                  $state.go('login');
              }
         });
+        /* 角色模块管理 */
+        roleModularAdmin.allRight().then(function (res) {
+            if (res.data.code == 0 ) {
+                var tree =[];
+                $rootScope.roleAllRigthdata = roleModularAdmin.mergeRight(0,null,tree,res.data.data.moduleList);
+            }
+        })
     }])
 
 adminApp.config(['$stateProvider', '$urlRouterProvider',

@@ -47,12 +47,6 @@ angular.module('adminApp')//主要的model名称
             isFirstOpen: true,
             isFirstDisabled: false
         };
-        /* 角色模块管理 */
-        roleModularAdmin.allRight().then(function (res) {
-            if (res.data.code == 0 ) {
-                var tree =[];
-                vm.roleAllRigthdata = roleModularAdmin.mergeRight(0,null,tree,res.data.data.moduleList);
-            }
-        })
+
     }
 )

@@ -13,33 +13,15 @@
         </header>
         <!-- 导航 -->
         <nav class="col-md-2 m-nav">
-            <uib-accordion close-others="oneAtATime">
-                    <div uib-accordion-group class="panel-default" heading="info" is-open="status.open2">
+            <uib-accordion close-others="oneAtATime" ng-repeat="data in roleAllRigthdata">
+                    <div uib-accordion-group class="panel-default"   is-open="status.open{{$index}}" >
                         <uib-accordion-heading>
-                            信息管理
-                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                            {{data.name}}{{index}}
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.data.open, 'glyphicon-chevron-right': !status.data.open"></i>
                         </uib-accordion-heading>
-                        <p ui-sref="field.companyList	">公司列表</p>
-                        <p ui-sref="field.positionList">职位列表</p>
+                        <p ui-sref="{{items.url}}" ng-repeat="items in data.nodes">{{items.name}}</p>
                     </div>
-                    <div uib-accordion-group class="panel-default"  is-open="status.open">
-                        <uib-accordion-heading>
-                            Aarticle管理
-                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                        </uib-accordion-heading>
-                        <p ui-sref=".articleList"> Aarticle列表</p>
-                    </div>
-                    <div uib-accordion-group class="panel-default"  is-open="status.open3">
-                        <uib-accordion-heading>
-                            后台管理
-                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
-                        </uib-accordion-heading>
-                        <p ui-sref=".module">模块管理</p>
-                        <p ui-sref=".role">角色管理</p>
-                        <p ui-sref=".pwd">密码管理</p>
-                        <p ui-sref=".manager">账户管理</p>
-                    </div>
-                </uib-accordion>
+            </uib-accordion>
         </nav>
         <!-- 表单 -->
         <main  class="m-bd col-md-10" ui-view>
