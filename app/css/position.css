@@ -116,6 +116,9 @@ i[class^="icon-jobnav icon-zzz-"] {
   .m-jobfocus-wrap {
     height: 450px;
   }
+  .m-jobfocus-wrap img {
+    min-height: 450px;
+  }
 }
 .m-jobfocus .carousel-control {
   opacity: 1;
