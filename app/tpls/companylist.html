@@ -93,13 +93,13 @@
                     </div>
                     <ul class="m-companyicon">
                         <li>
-                            <i class="icon-rmcompany icon-location"></i>
+                            <i class="icon-companylist icon-location-company"></i>
                             <ul class="breadcrumb">
                                 <li ng-repeat="items in item.industryList">{{ items|changeJobListName:'industrytype' }}</li>
                             </ul>
                         </li>
-                        <li><i class="icon-rmcompany icon-phone-url-white"></i>{{ item.financing|changeJobListName:'financingtype' }}</li>
-                        <li><i class="icon-rmcompany icon-shangshi-white"></i> {{ item.province|provinceFilter }}</li>
+                        <li><i class="icon-companylist icon-phone-url"></i>{{ item.financing|changeJobListName:'financingtype' }}</li>
+                        <li><i class="icon-companylist icon-shangshi"></i> {{ item.province|provinceFilter }}</li>
                     </ul>
                 </div>
             </div>
