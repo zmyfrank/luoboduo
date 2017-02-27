@@ -17,6 +17,7 @@ adminApp.run(['$rootScope','$state','$cookies','roleModularAdmin','getAdminSerci
             roterRight(toState.name);
         });
         /* 角色模块管理 */
+
         roleModularAdmin.allRight().then(function (res) {
             if (res.data.code == 0 ) {
                 var tree =[];
@@ -24,17 +25,17 @@ adminApp.run(['$rootScope','$state','$cookies','roleModularAdmin','getAdminSerci
                 $rootScope.roleAllRight =$.extend(true, {},res.data.data.moduleList);
                 //父子集合并后的权限
                 $rootScope.roleAllRightdata = roleModularAdmin.mergeRight(0,null,tree,res.data.data.moduleList);
-                if ($rootScope.loginCook) {
-                    getAdminSercive.roleIdsRight($rootScope.loginCook.id).then(function (res) {
-                        if (res.data.code == 0) {
-                            //单个角色权限
-                            $rootScope.roleRightdata = res.data.data.role.permissionsSet;
-                        }
-                    })
-                }
             }
         });
 
+        if ($rootScope.loginCook) {
+            getAdminSercive.roleIdsRight($rootScope.loginCook.id).then(function (res) {
+                if (res.data.code == 0) {
+                    //单个角色权限
+                    $rootScope.roleRightdata = res.data.data.role.permissionsSet;
+                }
+            })
+        }
 
         function roterRight(url) {
             angular.forEach( $rootScope.roleAllRight,function (data) {
