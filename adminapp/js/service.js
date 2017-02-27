@@ -324,7 +324,7 @@ angular.module('mainServices',[])
                 }).then(function (res) {
                     if (res.data.code == 0) {
                         var id = $filter('accountFilter')(res.data.data.ids);
-                       $http({
+                    return   $http({
                                 method:"GET",
                                 url:'/carrots-admin-ajax/a/u/multi/module?'+id,
                         })

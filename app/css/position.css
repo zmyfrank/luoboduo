@@ -221,7 +221,7 @@ i[class^="icon-jobnav icon-zzz-"] {
 }
 .m-rmjob-wrap .img-wrap img {
   position: relative;
-  top: 60px;
+  top: 50px;
   transform: translateY(-50%);
 }
 .m-rmjob-wrap:hover {
@@ -277,9 +277,17 @@ i[class^="icon-jobnav icon-zzz-"] {
   justify-content: space-between;
   flex-wrap: nowrap;
 }
+.m-companyicon > li {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .m-companyicon .breadcrumb {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  background: #fafafa;
+  padding: 0;
 }
 .m-companyicon .breadcrumb li {
   padding: 0;
