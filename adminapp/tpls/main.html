@@ -14,10 +14,10 @@
         <!-- 导航 -->
         <nav class="col-md-2 m-nav">
             <uib-accordion close-others="oneAtATime" ng-repeat="data in roleAllRigthdata">
-                    <div uib-accordion-group class="panel-default"   is-open="status.open{{$index}}" >
+                    <div uib-accordion-group class="panel-default"   is-open= "'status.open" >
                         <uib-accordion-heading>
-                            {{data.name}}{{index}}
-                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.data.open, 'glyphicon-chevron-right': !status.data.open"></i>
+                            {{data.name}}
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.index, 'glyphicon-chevron-right': !status.index}"></i>
                         </uib-accordion-heading>
                         <p ui-sref="{{items.url}}" ng-repeat="items in data.nodes">{{items.name}}</p>
                     </div>
