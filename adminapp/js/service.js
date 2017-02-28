@@ -346,6 +346,8 @@ angular.module('mainServices',[])
                                         s = now.roleUnRight($rootScope.roleRightdata);
                                         angular.forEach($rootScope.roleAllRightdata,function (data,index) {
                                             angular.forEach(data.nodes,function (it,k,arry) {
+                                                //console.log(it.id);
+                                                //console.log(s.indexOf(''+it.id))
                                                 if ( s.indexOf(''+it.id) == -1) {
                                                     arry.splice(k);
                                                 }
