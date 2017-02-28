@@ -22,6 +22,7 @@ angular.module('adminApp')//主要的model名称
                         },
                         [{'expires':expireDate}]);
                     $location.url('app');
+                    roleModularAdmin.allRight();
                 }else {
                     vm.loginMessage = res.data.message;
                 }
