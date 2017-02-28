@@ -52,7 +52,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             公司列表
-            <button class="btn btn-xs btn-primary pull-right" ui-sref="field.companyEdit">新增</button>
+            <button ng-show="modelright.create" class="btn btn-xs btn-primary pull-right" ui-sref="field.companyEdit">新增</button>
         </div>
         <div class="panel-body m-companylist-text">
             <table class="table table-striped f-table_border">
@@ -82,10 +82,10 @@
                             <a class="btn btn-sm" ui-sref="field.positionList({companyName:items.name,id:items.id})">职位</a>
                             <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,1,'认证后该公司将被标记为推荐公司。','是否执行认证操作？')" ng-if="items.approved ===0" class="btn btn-sm">认证</a>
                             <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,1,'解除认证后该公司将不再标记为推荐公司。','是否执行解除操作？')" ng-if="items.approved !==0" class="btn btn-sm">解除</a>
-                            <a  class="btn btn-sm" ui-sref="field.companyEdit({id:items.id})">编辑</a>
+                            <a ng-show="modelright.update" class="btn btn-sm" ui-sref="field.companyEdit({id:items.id})">编辑</a>
                             <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,0,'冻结后该公司下的所有信息将不可用。','是否执行冻结操作？')" ng-if="items.freezed===0" class="btn btn-sm">冻结</a>
                             <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.getType(this,0,'解冻后该公司下的信息将可继续使用。','是否执行解冻操作？')" ng-if="items.freezed!==0" class="btn btn-sm">解冻</a>
-                            <a use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.deleteCompany(this)" class="btn btn-sm">删除</a>
+                            <a ng-show="modelright.delete" use-modal ctr-fn="vm.modalRestult()" ctrclick="vm.deleteCompany(this)" class="btn btn-sm">删除</a>
                         </td>
                     </tr>
                 </tbody>

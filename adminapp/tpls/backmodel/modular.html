@@ -3,7 +3,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">
             模块管理
-            <button type="button" class="btn btn-xs btn-primary pull-right" ui-sref="field.addmodular">+新增</button>
+            <button ng-show="modelright.create" type="button" class="btn btn-xs btn-primary pull-right" ui-sref="field.addmodular">+新增</button>
         </h3>
     </div>
     <div class="panel-body" style="padding: 0">
@@ -32,8 +32,8 @@
                     <td>{{data.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{data.createBy}}</td>
                     <td>
-                        <a class="btn" ng-click="vm.editJump(data.id)">编辑</a>
-                        <my-modeal-box>
+                        <a ng-show="modelright.update" class="btn" ng-click="vm.editJump(data.id)">编辑</a>
+                        <my-modeal-box ng-show="modelright.delete">
                             <my-modeal ng-model="articlemodel.html" ng-model2="articlemodel2.html"  operation= "vm.delete" tipstext='deleteuser'
                                        tipsinfo="vm.deleteinfo(this)"><a class="btn " ng-click="open()">删除</a></my-modeal>
                         </my-modeal-box>

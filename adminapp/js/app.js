@@ -3,22 +3,47 @@
  */
 var adminApp = angular.module('adminApp', ['ui.router', 'oc.lazyLoad', 'ngCookies', 'ngAnimate', 'ngSanitize', 'ui.bootstrap','mainServices','mainConstant','mainFil','angularFileUpload','isteven-multi-select','ngMessages']);
 
-adminApp.run(['$rootScope','$state','$cookies','roleModularAdmin', function($rootScope,$state,$cookies,roleModularAdmin){
+adminApp.run(['$rootScope','$state','$cookies','roleModularAdmin','getAdminSercive','$stateParams',
+    function($rootScope,$state,$cookies,roleModularAdmin,getAdminSercive,$stateParams){
+        //$rootScope.modelright = $cookies.getObject('modelright');
+        //加载所有权限
+        roleModularAdmin.allRight();
+        /* 登陆判断 */
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-             if(toState.name=='login')return;
-             //获取本地cookies值用作判断是否有登陆
-             $rootScope.loginCook =  $cookies.getObject('login');
-             if (!$rootScope.loginCook) {
-                 $state.go('login');
-             }
+            if(toState.name == 'login')return;
+            //获取本地cookies值用作判断是否有登陆
+            $rootScope.loginCook =  $cookies.getObject('login');
+            if (!$rootScope.loginCook) $state.go('login');
+
+            /* 当前模块权限判断获取角色的权限 */
+            if (!$rootScope.roleRightdata) {
+                getAdminSercive.roleIdsRight($rootScope.loginCook.id).then(function (res) {
+                    if (res.data.code == 0) {
+                        //单个角色权限
+                        $rootScope.roleRightdata = res.data.data.role.permissionsSet;
+                        roterRight(toState.name);
+                    }
+                })
+            }else {
+                roterRight(toState.name);
+            }
         });
         /* 角色模块管理 */
-        roleModularAdmin.allRight().then(function (res) {
-            if (res.data.code == 0 ) {
-                var tree =[];
-                $rootScope.roleAllRigthdata = roleModularAdmin.mergeRight(0,null,tree,res.data.data.moduleList);
-            }
-        })
+        function roterRight(url) {
+            angular.forEach( $rootScope.roleAllRight,function (data) {
+                if ( url == data.url) {
+                    $rootScope.Idright = $rootScope.roleRightdata[data.id];
+                    if ($rootScope.Idright) {
+                        $rootScope.modelright = {};
+                        $rootScope.modelright.delete = roleModularAdmin.urlRight('delete',$rootScope.Idright);
+                        $rootScope.modelright.update = roleModularAdmin.urlRight('update',$rootScope.Idright);
+                        $rootScope.modelright.create = roleModularAdmin.urlRight('create',$rootScope.Idright);
+                        $rootScope.modelright.url = url;
+                        $cookies.putObject('modelright', $rootScope.modelright);
+                    }
+                }
+            })
+        }
     }])
 
 adminApp.config(['$stateProvider', '$urlRouterProvider',

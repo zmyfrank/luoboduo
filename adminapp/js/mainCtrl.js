@@ -3,7 +3,7 @@
  */
 angular.module('adminApp')//主要的model名称
 .controller('mainCtrl',
-    function ($scope,$cookies,getAdminSercive,$location,roleModularAdmin) {
+    function ($scope,$rootScope,$cookies,getAdminSercive,$location,roleModularAdmin) {
         var vm = this;
 
         /* 登陆 */
@@ -35,6 +35,8 @@ angular.module('adminApp')//主要的model名称
             getAdminSercive.outLogin().then(function (res) {
                 if (res.data.code == 0 ) {
                     $cookies.remove('login');
+                    $cookies.remove('modelright');
+                    $rootScope.roleRightdata = null;
                     $location.url('login');
                 }
             })

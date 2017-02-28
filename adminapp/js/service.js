@@ -313,10 +313,11 @@ angular.module('mainServices',[])
         }
     })
     /* 模块管理 */
-    .factory('roleModularAdmin',function ($http,$filter,$cookies,getAdminSercive) {
+    .factory('roleModularAdmin',function ($http,$filter,$rootScope,$cookies,getAdminSercive) {
         return {
             //获取所有模块
             'allRight' : function () {
+               var now = this;
                return $http({
                     method:"GET",
                     url:'/carrots-admin-ajax/a/u/module/',
@@ -324,9 +325,19 @@ angular.module('mainServices',[])
                 }).then(function (res) {
                     if (res.data.code == 0) {
                         var id = $filter('accountFilter')(res.data.data.ids);
-                    return   $http({
+                        $http({
                                 method:"GET",
                                 url:'/carrots-admin-ajax/a/u/multi/module?'+id,
+                        }).then(function (res) {
+                            if (res.data.code == 0 ) {
+                                var tree =[];
+                                //所有权限模块
+                                $rootScope.roleAllRight =$.extend(true, {},res.data.data.moduleList);
+                                //父子集合并后的权限
+                                $rootScope.roleAllRightdata = now.mergeRight(0,null,tree,res.data.data.moduleList);
+                                $cookies.putObject('roleAllRightdata', $rootScope.modelright);
+                                return ;
+                            }
                         })
                     }
                 })
@@ -355,6 +366,10 @@ angular.module('mainServices',[])
                     }
                 });
                 return rolerigthdata
+            },
+            //当前路由权限判断
+            'urlRight' :function (right,data) {
+              return  data.indexOf(right) < 0 ? false : true;
             }
         }
     })
