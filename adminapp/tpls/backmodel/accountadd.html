@@ -49,7 +49,7 @@
                 <label class="control-label col-xs-2 text-right">角色</label>
                 <div class="col-xs-3">
                     <select class="form-control" style="min-width: 160px" name="roleID" ng-model="vm.adduser.roleID"
-                        ng-options="items.value as items.name for items in vm.roled" required="" >
+                        ng-options="items.id as items.name for items in vm.roled" >
                         <option value="">请选择</option>
                     </select>
                 </div>
