@@ -5,9 +5,7 @@ angular.module('adminApp')//主要的model名称
 .controller('mainCtrl',
     function ($scope,$rootScope,$cookies,getAdminSercive,$location,roleModularAdmin) {
         var vm = this;
-
         /* 登陆 */
-
         vm.login = function () {
             getAdminSercive.login2(vm.logindata).then(function (res) {
                 if (res.data.code == 0 ) {

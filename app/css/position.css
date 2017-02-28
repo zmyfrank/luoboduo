@@ -643,3 +643,7 @@ i[class^="icon-jobnav icon-zzz-"] {
   background-color: #EB5255;
   color: #fff;
 }
+/* 公司职位搜索框 */
+.m-search-panel.conmpany {
+  margin-top: 0;
+}

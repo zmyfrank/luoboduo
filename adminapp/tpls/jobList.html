@@ -70,7 +70,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             {{ vm.companyName }}职位列表
-            <button ng-show="modelright.create" ng-show="vm.companyName" class="btn btn-xs btn-primary pull-right" ui-sref="field.jobEdit({companyId:vm.searchId,companyName:vm.companyName})">新增</button>
+            <button  ng-show="vm.companyName&&modelright.create" class="btn btn-xs btn-primary pull-right" ui-sref="field.jobEdit({companyId:vm.searchId,companyName:vm.companyName})">新增</button>
         </div>
         <div class="panel-body m-companylist-text">
             <table class="table table-striped f-table_border m-jobtable-width">
