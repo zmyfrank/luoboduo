@@ -15,6 +15,7 @@
                     <span class="input-group-addon" id="sizing-addon2">密码：</span>
                     <input type="password" ng-model="vm.logindata.pwd" class="form-control" placeholder="password" required="">
                 </div>
+                
                 <p ng-if="vm.loginMessage" style="color: red">{{vm.loginMessage}}</p>
                 <div class="btn-wrap">
                    <button type="button" ng-disabled="!loginform.$valid" ng-click="vm.login()" class="btn btn-primary">登陆</button>
