@@ -287,7 +287,6 @@ angular.module('adminApp')
                     delete item.nodes[k].right.p;
                 })
             })
-            console.log(vm.rolerigthdata);
         }
 
         /* 角色权限请求 */

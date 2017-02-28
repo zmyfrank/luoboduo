@@ -28,7 +28,7 @@
                     </uib-accordion-heading>
                     <p ui-sref="{{data.url}}" ng-repeat="data in roleAllRightdata[1].nodes">{{data.name}}</p>
                 </div>
-                <div uib-accordion-group class="panel-default"  is-open="status.open"  >
+                <div uib-accordion-group class="panel-default"  is-open="status.open">
                     <uib-accordion-heading>
                         {{roleAllRightdata[0].name}}
                         <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>

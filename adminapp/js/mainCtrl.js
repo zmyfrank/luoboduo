@@ -35,6 +35,8 @@ angular.module('adminApp')//主要的model名称
             getAdminSercive.outLogin().then(function (res) {
                 if (res.data.code == 0 ) {
                     $cookies.remove('login');
+                    $cookies.remove('modelright');
+                    $rootScope.roleRightdata = null;
                     $location.url('login');
                 }
             })
