@@ -75,6 +75,20 @@ mainFil.filter('articleFilter',function (article) {
     }
 })
 
+/* 角色列表过滤 */
+mainFil.filter('roleIDFilter',function (getAdminSercive,$filter) {
+    var value;
+    return function (id,roled) {
+        angular.forEach(roled,function (it,k) {
+            if (it.id == id ) {
+                value =  it.name;
+            }
+        })
+        return  value;
+    }
+})
+
+
 /* 用户列表请求转换请求数据 */
 mainFil.filter('accountFilter',function () {
     return function (data) {

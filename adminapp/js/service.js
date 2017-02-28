@@ -333,10 +333,26 @@ angular.module('mainServices',[])
                                 var tree =[];
                                 //所有权限模块
                                 $rootScope.roleAllRight =$.extend(true, {},res.data.data.moduleList);
+
                                 //父子集合并后的权限
                                 $rootScope.roleAllRightdata = now.mergeRight(0,null,tree,res.data.data.moduleList);
                                 $cookies.putObject('roleAllRightdata', $rootScope.modelright);
-                                return ;
+
+                                getAdminSercive.roleIdsRight($rootScope.loginCook.id).then(function (res) {
+                                    if (res.data.code == 0) {
+                                        //单个角色权限
+                                        $rootScope.roleRightdata = res.data.data.role.permissionsSet;
+
+                                        s = now.roleUnRight($rootScope.roleRightdata);
+                                        angular.forEach($rootScope.roleAllRightdata,function (data,index) {
+                                            angular.forEach(data.nodes,function (it,k,arry) {
+                                                if ( s.indexOf(''+it.id) == -1) {
+                                                    arry.splice(k);
+                                                }
+                                            })
+                                        })
+                                    }
+                                })
                             }
                         })
                     }
@@ -370,6 +386,14 @@ angular.module('mainServices',[])
             //当前路由权限判断
             'urlRight' :function (right,data) {
               return  data.indexOf(right) < 0 ? false : true;
+            },
+            //返回当前角色不可用权限
+            'roleUnRight' : function (data) {
+                var right=[]
+                angular.forEach( data,function (data,index) {
+                        right.push(index);
+                });
+                return right;
             }
         }
     })

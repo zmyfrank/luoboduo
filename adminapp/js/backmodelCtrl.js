@@ -6,7 +6,7 @@ angular.module('adminApp')
     .controller('accountCtrl',function ($scope,$filter,$location,getAdminSercive,backStageAdmin,articlemodealinfo,userIds) {
         var vm = this;
         /* 角色下拉框数据 */
-        vm.roledata =  backStageAdmin.role;
+       // vm.roledata =  backStageAdmin.role;
 
         /* 所有用户ids */
         vm.allUserhttp  = function () {
@@ -18,6 +18,18 @@ angular.module('adminApp')
                 }
             })
         }
+
+        getAdminSercive.roleIds().then(function (res) {
+            if (res.data.code == 0 ) {
+                url = $filter('accountFilter')(res.data.data.ids);
+                getAdminSercive.roleInfo(url).then (function (res) {
+                    if (res.data.code == 0 ) {
+                        vm.roledata  = res.data.data.roleList;
+                    }
+                })
+            }
+        })
+
         /* 获取用户详细信息展示到列表 */
         vm.userInfohttp =function (page) {
             /* 把数据转换成请求约定格式 */
@@ -76,10 +88,21 @@ angular.module('adminApp')
         userIds:'',
     })
     /* 用户新增/编辑页面 */
-    .controller('accountAddCtrl',function ($scope,$location,backStageAdmin,getAdminSercive) {
+    .controller('accountAddCtrl',function ($scope,$location,$filter,backStageAdmin,getAdminSercive) {
         var vm = this;
 
         /* 角色下拉框数据 */
+
+        getAdminSercive.roleIds().then(function (res) {
+            if (res.data.code == 0 ) {
+                url = $filter('accountFilter')(res.data.data.ids);
+                getAdminSercive.roleInfo(url).then (function (res) {
+                    if (res.data.code == 0 ) {
+                        vm.roled = res.data.data.roleList;
+                    }
+                })
+            }
+        })
         vm.roled =  backStageAdmin.role;
 
         /* 表单验证测试函数 */
@@ -90,6 +113,7 @@ angular.module('adminApp')
         /* 新增用户 */
         vm.addUser = function () {
             //console.log(vm.adduser)
+            console.log(vm.adduser);
             getAdminSercive.addUser(vm.adduser).then(function (res) {
                 if (res.data.code == 0 ) {
                     $location.url('app/account');

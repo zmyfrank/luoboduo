@@ -5,7 +5,7 @@
             <div class="form-group clearfix">
                 <label class="control-label col-md-3">角色</label>
                 <div class="col-md-9">
-                    <select class="form-control" ng-model='vm.roleids' ng-options="items.value as items.name for items in vm.roledata">
+                    <select class="form-control" ng-model='vm.roleids' ng-options="items.id as items.name for items in vm.roledata">
                         <option value="">全部角色</option>
                     </select>
                 </div>
@@ -47,7 +47,7 @@
                 <tr ng-repeat="data in vm.userInfo">
                     <td>{{data.id}}</td>
                     <td>{{data.name}}</td>
-                    <td>{{data.roleID == 30? '猎头':'超级管理员'}}</td>
+                    <td ng-if="vm.roledata">{{data.roleID|roleIDFilter:vm.roledata}}</td>
                     <td>{{data. createBy}}</td>
                     <td>{{data.createAt|date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{data. updateBy}}</td>
