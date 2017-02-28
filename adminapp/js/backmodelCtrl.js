@@ -5,9 +5,6 @@ angular.module('adminApp')
     /* 账户管理页面 */
     .controller('accountCtrl',function ($scope,$filter,$location,getAdminSercive,backStageAdmin,articlemodealinfo,userIds) {
         var vm = this;
-        /* 角色下拉框数据 */
-       // vm.roledata =  backStageAdmin.role;
-
         /* 所有用户ids */
         vm.allUserhttp  = function () {
             vm.roleids = '';
@@ -24,6 +21,7 @@ angular.module('adminApp')
                 url = $filter('accountFilter')(res.data.data.ids);
                 getAdminSercive.roleInfo(url).then (function (res) {
                     if (res.data.code == 0 ) {
+                        /* 角色下拉框数据 */
                         vm.roledata  = res.data.data.roleList;
                     }
                 })
